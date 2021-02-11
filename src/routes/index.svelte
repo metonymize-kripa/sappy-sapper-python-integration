@@ -1,5 +1,5 @@
 <style>
-	h1, h2, button, input, figure, p {
+	h1, h2, figure, p {
 		text-align: center;
 		margin: 0 auto;
 	}
@@ -10,11 +10,11 @@
 		margin: 0 0 0.5em 0;
 	}
 	h2 {
-		font-size: 2.8em;
+		font-size: 3em;
 		text-transform: uppercase;
-		font-weight: 700;
+		font-weight: 1000;
 		margin: 0 0 0.5em 0;
-		color: purple;
+		color: green;
 	}
 	figure {
 		margin: 0 0 1em 0;
@@ -46,11 +46,13 @@
 
 
 <svelte:head>
-	<title>Sapper project template</title>
+	<title>Sappy</title>
 </svelte:head>
 
-<h1>Enter ticker</h1>
 <input bind:value={ticker}>
+<button on:click={runAPI}>
+	Get quote
+</button>
 
 <h2>{api_output}</h2>
 
@@ -59,6 +61,4 @@
 	<figcaption>HIGH FIVE!</figcaption>
 </figure>
 
-<button on:click={runAPI}>
-	Get quote
-</button>
+
