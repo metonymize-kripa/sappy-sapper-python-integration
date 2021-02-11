@@ -10,9 +10,9 @@
 		margin: 0 0 0.5em 0;
 	}
 	h2 {
-		font-size: 3em;
+		font-size: 5.8em;
 		text-transform: uppercase;
-		font-weight: 1000;
+		font-weight: 1400;
 		margin: 0 0 0.5em 0;
 		color: green;
 	}
