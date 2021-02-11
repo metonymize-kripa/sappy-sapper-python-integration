@@ -54,7 +54,7 @@
 	Get quote
 </button>
 
-<h2>{api_output}</h2>
+<h1>{api_output}</h1>
 
 <figure>
 	<img alt='Borat' src='great-success.png'>
