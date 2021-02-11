@@ -1,5 +1,5 @@
 <style>
-	h1, figure, p {
+	h1, h2, figure, p {
 		text-align: center;
 		margin: 0 auto;
 	}
