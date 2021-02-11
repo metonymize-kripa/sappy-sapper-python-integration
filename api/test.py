@@ -1,5 +1,6 @@
 # https://towardsdatascience.com/how-to-deploy-a-python-serverless-function-to-vercel-f43c8ca393a0
 # https://svelte.dev/tutorial/tick
+# https://towardsdatascience.com/how-to-deploy-a-python-serverless-function-to-vercel-f43c8ca393a0
 
 from datetime import datetime, timedelta
 from wallstreet import Call, Put, Stock
