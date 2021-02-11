@@ -6,7 +6,7 @@
 	h1, input, button {
 		font-size: 2.8em;
 		text-transform: uppercase;
-		font-weight: 700;
+		font-weight: 400;
 		margin: 0 0 0.5em 0;
 	}
 	h2 {
@@ -54,7 +54,7 @@
 
 <input bind:value={ticker} on:keydown={handleKeydown}>
 <button on:click={runAPI}>
-	Tab/Click for quote
+	Tab or Clk
 </button>
 
 <h2><strong>{api_output}</strong></h2>
