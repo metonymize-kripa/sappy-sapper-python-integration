@@ -37,6 +37,13 @@
 <script>
 	let ticker = "SPY";
 	let api_output = ""
+	
+	async function handleKeydown(event) {
+		if (event.key !== 'Tab') return;
+		event.preventDefault();
+		runAPI();
+	}
+		
 	function runAPI() {
 		fetch("./api/test?sym="+ticker)
 			.then(d => d.text())
@@ -45,7 +52,7 @@
 </script>
 
 
-<input bind:value={ticker}>
+<input bind:value={ticker} on:keydown={handleKeydown}>
 <button on:click={runAPI}>
 	Get quote
 </button>
