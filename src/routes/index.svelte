@@ -54,7 +54,7 @@
 
 <input bind:value={ticker} on:keydown={handleKeydown}>
 <button on:click={runAPI}>
-	Get quote
+	Tab/Click for quote
 </button>
 
 <h2><strong>{api_output}</strong></h2>
