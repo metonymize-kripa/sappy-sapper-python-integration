@@ -45,10 +45,6 @@
 </script>
 
 
-<svelte:head>
-	<title>Sappy</title>
-</svelte:head>
-
 <input bind:value={ticker}>
 <button on:click={runAPI}>
 	Get quote
