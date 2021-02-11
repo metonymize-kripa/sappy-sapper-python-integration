@@ -1,5 +1,5 @@
 <style>
-	h1, h2, button, figure, p {
+	h1, h2, textarea, figure, p {
 		text-align: center;
 		margin: 0 auto;
 	}
@@ -34,8 +34,11 @@
 
 <script>
 	let ticker = "SPY";
-	let api_output = ""
-	function runAPI() {
+	let api_output = "";
+	
+	async function handleKeydown(event) {
+		if (event.key !== 'Tab') return;	
+		event.preventDefault();
 		fetch("./api/test?sym="+ticker)
 			.then(d => d.text())
 			.then(d => (api_output = d));
@@ -48,11 +51,7 @@
 </svelte:head>
 
 <h2>Enter ticker</h2>
-<input bind:value={ticker}>
-
-<button on:click={runAPI}>
-	Get quote
-</button>
+<textarea value={ticker} on:keydown={handleKeydown}></textarea>
 
 <h1>{api_output}</h1>
 
