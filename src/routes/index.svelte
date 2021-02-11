@@ -32,15 +32,31 @@
 	}
 </style>
 
+<script>
+	let ticker = "SPY";
+	let api_output = ""
+	function runAPI() {
+		fetch("./api/test?sym="+ticker)
+			.then(d => d.text())
+			.then(d => (api_output = d));
+	}
+</script>
+
+
 <svelte:head>
 	<title>Sapper project template</title>
 </svelte:head>
 
-<h1>Great success!</h1>
+<h2>Enter ticker</h2>
+<input bind:value={ticker}>
+
+<button on:click={runAPI}>
+	Get quote
+</button>
+
+<h2>{api_output}</h2>
 
 <figure>
 	<img alt='Borat' src='great-success.png'>
 	<figcaption>HIGH FIVE!</figcaption>
 </figure>
-
-<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
