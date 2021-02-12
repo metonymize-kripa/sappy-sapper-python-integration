@@ -18,7 +18,7 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
         s = Stock(dic["sym"])
         curr_date = str(datetime.date(datetime.now()))
-        my_tuple  = get_atm_ivol(s, 7)
+        #my_tuple  = get_atm_ivol(s, 7)
         #output = f"{s.ticker} (${s.price}): {n_days} day price range - ${s.price-my_tuple[1]*1.96*s.price:.2f} - ${s.price+my_tuple[1]*1.96*s.price:.2f}"
         if "sym" in dic:
             try:
