@@ -65,4 +65,6 @@
 	<figcaption>HIGH FIVE!</figcaption>
 </figure>
 
+<p>Type + Tab = Quote</p>
+
 
