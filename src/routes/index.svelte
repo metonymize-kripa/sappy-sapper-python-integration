@@ -62,8 +62,8 @@
 <h2><strong>{api_output}</strong></h2>
 
 <figure>
-	<img alt='Borat' src='great-success.png'>
-	<figcaption>HIGH FIVE!</figcaption>
+	<img alt='Fat Tony' src='FatTony.png'>
+	<figcaption>Fat Tony: I don't get mad. I get stabby.</figcaption>
 </figure>
 
 <p>Type + Tab = Quote</p>
