@@ -36,10 +36,7 @@
 
 <script>
 	let ticker = "SPY";
-	let api_output = "";
-	fetch("./api/test?sym="+ticker)
-			.then(d => d.text())
-			.then(d => (api_output = d))
+	let api_output = "⏳";
 	
 	async function handleKeydown(event) {
 		if (event.key !== 'Tab') return;
