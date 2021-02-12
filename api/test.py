@@ -23,7 +23,7 @@ class handler(BaseHTTPRequestHandler):
         if "sym" in dic:
             try:
                 #message = "Hi"
-                message = str(int(s.price}))
+                message = str(int(s.price))
             except:
                 message = "-1"
         else:
