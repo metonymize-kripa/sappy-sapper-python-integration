@@ -55,6 +55,9 @@
 
 
 <input bind:value={ticker} on:keydown={handleKeydown}>
+<button on:click={runAPI}>
+	Tab/Clk
+</button>
 
 <h2><strong>{api_output}</strong></h2>
 
@@ -65,8 +68,5 @@
 
 <p>Type + Tab = Quote</p>
 
-<button on:click={runAPI}>
-	Click if you must.
-</button>
 
 
