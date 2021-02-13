@@ -22,7 +22,10 @@ class handler(BaseHTTPRequestHandler):
         #output = f"{s.ticker} (${s.price}): {n_days} day price range - ${s.price-my_tuple[1]*1.96*s.price:.2f} - ${s.price+my_tuple[1]*1.96*s.price:.2f}"
         if "sym" in dic:
             try:
-                message = str(int(s.price))
+                if dic["sym"] == 'WTF':
+                    "r/Wsb eTF? H🥚dl."
+                else:
+                    message = str(int(s.price))
             except:
                 message = "-1"
         else:
