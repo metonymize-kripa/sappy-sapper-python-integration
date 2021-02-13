@@ -10,7 +10,7 @@
 		margin: 0 0 0.5em 0;
 	}
 	h2 {
-		font-size: 5.8em;
+		font-size: 2.8em;
 		text-transform: uppercase;
 		font-weight: 1400;
 		margin: 0 0 0.5em 0;
@@ -40,7 +40,7 @@
 	let api_output = "🛁";
 	
 	async function handleKeydown(event) {
-		if (event.key !== 'Tab') return;
+		if (event.key !== 'Return') return;
 		event.preventDefault();
 		api_output = "⏳";
 		runAPI();
@@ -56,7 +56,7 @@
 
 <input bind:value={ticker} on:keydown={handleKeydown}>
 <button on:click={runAPI}>
-	Tab or Clk
+	Enter or Clk
 </button>
 
 <h2><strong>{api_output}</strong></h2>
