@@ -18,7 +18,7 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
         if "sym" in dic:
             if dic["sym"] == 'WTF':
-                message = "r/Wsb eTF? H🥚dl."
+                message = "r/Wsb eTF?\nH🥚dl."
             else:
                 try:
                     s = Stock(dic["sym"])
