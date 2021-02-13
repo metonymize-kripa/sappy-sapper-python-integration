@@ -16,19 +16,15 @@ class handler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type','text/plain')
         self.end_headers()
-        s = Stock(dic["sym"])
-        curr_date = str(datetime.date(datetime.now()))
-        #my_tuple  = get_atm_ivol(s, 7)
-        #output = f"{s.ticker} (${s.price}): {n_days} day price range - ${s.price-my_tuple[1]*1.96*s.price:.2f} - ${s.price+my_tuple[1]*1.96*s.price:.2f}"
         if "sym" in dic:
-            try:
-                if dic["sym"] == 'WTF':
-                    "r/Wsb eTF? H🥚dl."
-                else:
+            if dic["sym"] == 'WTF':
+                message = "r/Wsb eTF? H🥚dl."
+            else:
+                try:
+                    s = Stock(dic["sym"])
                     message = str(int(s.price))
-                #message = str(int(s.price))
-            except:
-                message = "-1"
+                except:
+                    message = "-1"
         else:
             message = "Hello, stranger!"
         self.wfile.write(message.encode())
