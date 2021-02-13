@@ -40,7 +40,7 @@
 	let api_output = "🛁";
 	
 	async function handleKeydown(event) {
-		if (event.key !== 'Enter' and event.key !== 'Tab') return;
+		if (event.key !== 'Tab') return;
 		event.preventDefault();
 		api_output = "⏳";
 		runAPI();
@@ -56,7 +56,7 @@
 
 <input bind:value={ticker} on:keydown={handleKeydown}>
 <button on:click={runAPI}>
-	Enter or Clk
+	Tab/Clk
 </button>
 
 <h2><strong>{api_output}</strong></h2>
@@ -66,6 +66,6 @@
 	<figcaption>Fat Tony: I don't get mad. I get stabby.</figcaption>
 </figure>
 
-<p>Type + Tab/Enter = Quote</p>
+<p>Type + Tab = Quote</p>
 
 
