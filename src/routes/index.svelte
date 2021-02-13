@@ -40,7 +40,7 @@
 	let api_output = "🛁";
 	
 	async function handleKeydown(event) {
-		if (event.key !== 'Return') return;
+		if (event.key !== 'Enter' and event.key !== 'Tab') return;
 		event.preventDefault();
 		api_output = "⏳";
 		runAPI();
@@ -66,6 +66,6 @@
 	<figcaption>Fat Tony: I don't get mad. I get stabby.</figcaption>
 </figure>
 
-<p>Type + Tab = Quote</p>
+<p>Type + Tab/Enter = Quote</p>
 
 
