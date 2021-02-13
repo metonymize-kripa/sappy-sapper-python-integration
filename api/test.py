@@ -26,6 +26,7 @@ class handler(BaseHTTPRequestHandler):
                 if dic["sym"] == 'WTF':
                     "r/Wsb eTF? H🥚dl."
                 else:
+                    message = str(int(s.price))
                 """
                 message = str(int(s.price))
             except:
