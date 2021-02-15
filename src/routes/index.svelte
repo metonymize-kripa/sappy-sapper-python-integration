@@ -1,5 +1,5 @@
 <style>
-	h1, h2, figure, p {
+	h1, h2, h3, figure, p {
 		text-align: center;
 		margin: 0 auto;
 	}
@@ -65,12 +65,11 @@
 </button>
 
 {#if api_output.symbol == "no_symbol"}
-	<p>Please enter a symbol to see the range of price the stock can take in a week</p>
+	<p>Please enter a stock symbol.</p>
 {:else if api_output.symbol == "invalid_symbol"}
 	<h3>Your symbol was invalid. Please try again</h3>
 {:else}
-	<h1>{api_output.symbol} ($ {api_output.price})</h1>
-	<h3>One week range (3:1 odds):</h3>
+	<h3>Options implied 3:1 odds</h3>
 	<h2><span style="color:red;">${api_output.low}</span> - ${api_output.high}</h2>
 {/if}
 <figure>
