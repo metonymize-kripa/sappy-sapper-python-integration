@@ -16,6 +16,13 @@
 		margin: 0 0 0.5em 0;
 		color: green;
 	}
+	h3 {
+		font-size: 2.8em;
+		text-transform: uppercase;
+		font-weight: 1400;
+		margin: 0 0 0.5em 0;
+		color: purple;
+	}
 	figure {
 		margin: 0 0 1em 0;
 	}
