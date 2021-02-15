@@ -72,7 +72,7 @@
 {:else}
 	<h3>Price Range: Options implied 75% probability, 1 Week Outlook</h3>
 	<h2><span style="color:red;">${api_output.low}</span> - ${api_output.high}</h2>
-	<h3>Current price: ${api_output.price}</h2>
+	<h3>Current price: ${api_output.price}</h3>
 {/if}
 <figure>
 	<img alt='Fat Tony' src='FatTony.png'>
