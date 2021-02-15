@@ -4,20 +4,21 @@
 		margin: 0 auto;
 	}
 	h1, input, button {
-		font-size: 2.8em;
+		font-size: 1.8em;
 		text-transform: uppercase;
+		max-width: 50px;
 		font-weight: 400;
 		margin: 0 0 0.5em 0;
 	}
 	h2 {
-		font-size: 2.8em;
+		font-size: 1.8em;
 		text-transform: uppercase;
 		font-weight: 1400;
 		margin: 0 0 0.5em 0;
 		color: green;
 	}
 	h3 {
-		font-size: 2.8em;
+		font-size: 1.8em;
 		text-transform: uppercase;
 		font-weight: 1400;
 		margin: 0 0 0.5em 0;
@@ -69,8 +70,9 @@
 {:else if api_output.symbol == "invalid_symbol"}
 	<h3>Your symbol was invalid. Please try again</h3>
 {:else}
-	<h3>Options implied 3:1 odds</h3>
+	<h3>Price Range: Options implied 75% probability, 1 Week Outlook</h3>
 	<h2><span style="color:red;">${api_output.low}</span> - ${api_output.high}</h2>
+	<h3>Current price: ${api_output.price}</h2>
 {/if}
 <figure>
 	<img alt='Fat Tony' src='FatTony.png'>
