@@ -18,10 +18,9 @@
 	}
 	h3 {
 		font-size: 1.8em;
-		text-transform: uppercase;
 		font-weight: 1400;
 		margin: 0 0 0.5em 0;
-		color: purple;
+		color: blue;
 	}
 	figure {
 		margin: 0 0 1em 0;
@@ -70,7 +69,7 @@
 {:else}
 	<h2><span style="color:red;">${api_output.low}</span> - ${api_output.high}</h2>
 	<p>1Wk Price Band, Options implied @ 75% Prb.</p>
-	<h3>Now@{api_output.price}</h3>
+	<h3>Now@ {api_output.price}</h3>
 {/if}
 <figure>
 	<img alt='Fat Tony' src='FatTony.png'>
