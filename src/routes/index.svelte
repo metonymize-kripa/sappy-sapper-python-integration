@@ -26,7 +26,6 @@
 	}
 	p {
 		margin: 1em auto;
-		color: purple;
 	}
 	@media (min-width: 480px) {
 		h1 {
