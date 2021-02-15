@@ -1,5 +1,5 @@
 <style>
-	h1, h2, h3, figure, p {
+	h1, input, button, h2, h3, figure, p {
 		text-align: center;
 		margin: 0 auto;
 	}
@@ -60,7 +60,7 @@
 </script>
 
 <input bind:value={ticker} on:keydown={handleKeydown}>
-
+<p></p>
 <button on:click={runAPI}>
 	Tab/Clk
 </button>
