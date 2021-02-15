@@ -60,7 +60,6 @@
 </script>
 
 <input bind:value={ticker} on:keydown={handleKeydown}>
-<p></p>
 <button on:click={runAPI}>
 	Tab/Clk
 </button>
