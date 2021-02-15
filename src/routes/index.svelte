@@ -63,7 +63,7 @@
 </button>
 
 {#if api_output.symbol == "no_symbol"}
-	<p>Please enter a stock symbol.</p>
+	<p>Type Ticker then Tab/Click.</p>
 {:else if api_output.symbol == "H🥚dl."}
 	<p>H🥚dl.</p>
 {:else if api_output.symbol == "invalid_symbol"}
