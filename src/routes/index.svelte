@@ -43,8 +43,9 @@
 
 <script>
 	let ticker = "SPY";
-	let api_output = {"symbol":"no_symbol"};
-	let py_ret = "None";
+	let api_output = fetch("./api/test?sym="+ticker)
+			.then(d => d.text())
+			.then(d => (api_output = JSON.parse(d)));
 	
 	async function handleKeydown(event) {
 		if (event.key !== 'Tab') return;
