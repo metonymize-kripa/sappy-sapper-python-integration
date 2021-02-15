@@ -7,8 +7,8 @@ from wallstreet import Call, Put, Stock
 from http.server import BaseHTTPRequestHandler
 from urllib import parse
 from scipy.stats import norm
+import math
 
-#import options_calc
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
         s = self.path
@@ -16,21 +16,25 @@ class handler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type','text/plain')
         self.end_headers()
+        curr_date = str(datetime.date(datetime.now()))
+        
         if "sym" in dic:
             if dic["sym"] == 'WTF':
                 message = "r/Wsb eTF?\nH🥚dl."
             else:
                 try:
-                    s = Stock(dic["sym"])
-                    message = str(int(s.price))
+                    my_stock = Stock(dic["sym"])
+                    my_tuple = get_atm_ivol(my_stock, 7)
+                    curr_price = my_stock.price
+                    low = curr_price - 1.15*my_tuple[1]*curr_price
+                    high = curr_price + 1.15*my_tuple[1]*curr_price
+                    message = f'{{"symbol":"{my_stock.ticker}","price":"{round(my_stock.price)}","low":"{round(low)}","high":"{round(high)}"}}'
                 except:
-                    message = "-1"
+                    message = '{"symbol":"invalid_symbol"}'
         else:
             message = "Hello, stranger!"
         self.wfile.write(message.encode())
         return
-
-
 def get_expiries_bracket(ticker, num_of_days):
     c = Call(ticker)
     expiries = c.expirations
@@ -74,7 +78,6 @@ def get_strike_bracket(call_object, price_target):
     if higher_strike != lower_strike:
         lower_weight = (higher_strike - price_target)/(higher_strike - lower_strike)
     return {'lower_strike':lower_strike,'higher_strike':higher_strike, 'lower_weight':lower_weight}
-
 def get_atm_ivol(s, ndays=30):
     symbol = s.ticker
     expiry_dict = get_expiries_bracket(symbol, ndays)
