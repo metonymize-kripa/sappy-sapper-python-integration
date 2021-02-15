@@ -6,7 +6,6 @@
 	h1, input, button {
 		font-size: 1.8em;
 		text-transform: uppercase;
-		max-width: 50px;
 		font-weight: 400;
 		margin: 0 0 0.5em 0;
 	}
