@@ -32,7 +32,7 @@ class handler(BaseHTTPRequestHandler):
                 except:
                     message = '{"symbol":"invalid_symbol"}'
         else:
-            message = "Hello, stranger!"
+            message = '{"symbol":"invalid_symbol"}'
         self.wfile.write(message.encode())
         return
 def get_expiries_bracket(ticker, num_of_days):
