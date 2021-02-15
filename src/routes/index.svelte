@@ -68,5 +68,4 @@
 
 <p>Type + Tab = Quote</p>
 
-
-
+<p><em> Sign up at <a href='https://oracled.mailchimpsites.com/'> DailySpread</a></em></p>
