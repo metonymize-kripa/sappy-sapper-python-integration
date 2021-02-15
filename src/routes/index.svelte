@@ -60,8 +60,9 @@
 </script>
 
 <input bind:value={ticker} on:keydown={handleKeydown}>
+
 <button on:click={runAPI}>
-	Tab or Clk
+	Tab/Clk
 </button>
 
 {#if api_output.symbol == "no_symbol"}
