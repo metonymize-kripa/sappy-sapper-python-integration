@@ -20,7 +20,7 @@ class handler(BaseHTTPRequestHandler):
         
         if "sym" in dic:
             if dic["sym"] == 'WTF':
-                message = "r/Wsb eTF? ... H🥚dl."
+                message = '{"symbol":"H🥚dl."}'
             else:
                 try:
                     my_stock = Stock(dic["sym"])
