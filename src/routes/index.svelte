@@ -43,7 +43,7 @@
 
 <script>
 	let ticker = "SPY";
-	let api_output = runAPI();
+	let api_output = {"symbol":"no_symbol"};
 	
 	async function handleKeydown(event) {
 		if (event.key !== 'Tab') return;
