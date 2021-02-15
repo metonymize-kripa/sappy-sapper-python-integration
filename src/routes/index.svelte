@@ -69,7 +69,7 @@
 {:else if api_output.symbol == "invalid_symbol"}
 	<p>Your symbol was invalid. Please try again</p>
 {:else}
-	<p>Price Range: Options implied 75% probability, 1 Week Outlook</p>
+	<p>Price Outlook (1 Wk): Options implied (75% Prob.)</p>
 	<h2><span style="color:red;">${api_output.low}</span> - ${api_output.high}</h2>
 	<h3>Current price: ${api_output.price}</h3>
 {/if}
