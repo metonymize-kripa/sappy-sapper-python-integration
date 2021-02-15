@@ -64,6 +64,8 @@
 
 {#if api_output.symbol == "no_symbol"}
 	<p>Please enter a stock symbol.</p>
+{:else if api_output.symbol == "H🥚dl."}
+	<p>H🥚dl.</p>
 {:else if api_output.symbol == "invalid_symbol"}
 	<p>Your symbol was invalid. Please try again</p>
 {:else}
