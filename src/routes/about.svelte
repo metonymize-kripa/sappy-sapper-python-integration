@@ -4,4 +4,10 @@
 
 <h1>About this site</h1>
 
-<p>What is the shortest path to think of a stock ticker and know its current price? We are trying to answer that. But really, it's an experiment. Using Sapper, Python and Vercel. To stand up a web-service in minutes.</p>
+<p>What is the shortest path to think of a stock ticker and know its price outlook? We are trying to answer that. But really, it's an experiment. Using Sapper, Python and Vercel. To stand up an immediately useful light weight web-service in minutes.</p>
+
+<ul>
+  <li>Context: Options data is complex, hard to turn into quick tradeable signals</li>
+  <li>Idea: FatNeo range, in seconds, takes 10 minutes of painful options chain analysis out; Comparable market solutions cost $$s/month</li>
+  <li>Use case: We've been testing it out to scope and trade options on our personal accounts in minutes (1 Wk ahead $20 GME Put when FatNeo range was $30-50, 1 Wk Covered Calls on MSFT, etc.)</li>
+</ul>
