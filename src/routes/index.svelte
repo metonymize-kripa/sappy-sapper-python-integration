@@ -45,9 +45,11 @@
 	let api_output = {"symbol":"no_symbol"};
 	
 	async function handleKeydown(event) {
-		if (event.key !== 'Tab') return;
-		event.preventDefault();
-		runAPI();
+		if (event.key === 'Tab' or event.key === 'Enter' )
+			event.preventDefault();
+			runAPI();
+		else
+			 return;
 	}
 		
 	function runAPI() {
