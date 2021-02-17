@@ -57,7 +57,7 @@
 	}
 </script>
 
-<input autofocus bind:value={ticker} on:keydown={handleKeydown}>
+<input bind:value={ticker} on:keydown={handleKeydown} autofocus/>
 <button on:click={runAPI}>
 	Tab/Clk
 </button>
