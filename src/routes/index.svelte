@@ -73,11 +73,11 @@
 {:else if api_output.symbol == "invalid_symbol"}
 	<p>Your symbol was invalid. Please try again</p>
 {:else}
-	//{#if api_output.prob_up > 0.5}
+	/*{#if api_output.prob_up > 0.5}*/
 		<h2><span style="color:green;">${api_output.low} - ${api_output.high}</span></h2>
-	//{:else}
+	/*{:else}
 	//	<h2><span style="color:red;">${api_output.low} - ${api_output.high}</span></h2>
-	//{/if}
+	{/if}*/
 	<p>1Wk Price Band, Options implied @ 75% Prb.</p>
 	<h3>Now@ {api_output.price}</h3>
 {/if}
