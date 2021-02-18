@@ -28,7 +28,8 @@ class handler(BaseHTTPRequestHandler):
                     curr_price = my_stock.price
                     low = curr_price - 1.15*my_tuple[1]*curr_price
                     high = curr_price + 1.15*my_tuple[1]*curr_price
-                    message = f'{{"symbol":"{my_stock.ticker}","price":"{round(my_stock.price)}","low":"{round(low)}","high":"{round(high)}"}}'
+                    prob_move = get_probability_move(dic["sym"], 7,0)["prob_ip"]
+                    message = f'{{"symbol":"{my_stock.ticker}","prob_up":"{prob_move}", "price":"{round(my_stock.price)}","low":"{round(low)}","high":"{round(high)}"}}'
                 except:
                     message = '{"symbol":"invalid_symbol"}'
         else:
@@ -102,3 +103,37 @@ def get_atm_ivol(s, ndays=30):
     implied_ivol = shorter_ivol*expiry_dict['shorter_weight'] + longer_ivol*(1-expiry_dict['shorter_weight'])
     one_sigma_move_ndays_day = implied_ivol*math.sqrt(ndays/365)
     return (implied_ivol, one_sigma_move_ndays_day)
+
+def get_probability_move(symbol:str, n_days:int, percent:float):
+    c = Call(symbol)
+    curr_date = str(datetime.date(datetime.now()))
+    expiries = c.expirations
+    expiry_to_use = expiries[0]
+    for i in expiries:
+        days_to_exp = abs(datetime.strptime(i,'%d-%m-%Y') - datetime.strptime(curr_date,'%Y-%m-%d')).days
+        expiry_to_use = i
+        if days_to_exp >= n_days:
+            break
+    my_delta = get_delta(symbol, percent, expiry_to_use)
+    return {"move_percent":percent, 'expiry':expiry_to_use, "prob_down":my_delta['delta_down'],"prob_up":my_delta['delta_up'] }
+
+def get_delta(symbol:str, percent_move:float, expiry:str):
+    s = Stock(symbol)
+    up_px = s.price*(1+percent_move/100)
+    down_px = s.price*(1-percent_move/100)
+    call = Call(symbol,d=int(expiry[0:2]),m=int(expiry[3:5]),y=int(expiry[6:10]))
+    up_delta_dict = get_strike_bracket(call, up_px)
+    call.set_strike(up_delta_dict['lower_strike'])
+    delta1 = call.delta()*up_delta_dict['lower_weight']
+    call.set_strike(up_delta_dict['higher_strike'])
+    delta2 = call.delta()*(1-up_delta_dict['lower_weight'])
+    delta_up_move = delta1 + delta2
+
+    put = Put(symbol,d=int(expiry[0:2]),m=int(expiry[3:5]),y=int(expiry[6:10]))
+    down_delta_dict = get_strike_bracket(put, down_px)
+    put.set_strike(down_delta_dict['lower_strike'])
+    delta1 = -put.delta()*down_delta_dict['lower_weight']
+    put.set_strike(down_delta_dict['higher_strike'])
+    delta2 = -put.delta()*(1-down_delta_dict['lower_weight'])
+    delta_down_move = delta1 + delta2
+    return {'delta_up':delta_up_move,'delta_down':delta_down_move}
