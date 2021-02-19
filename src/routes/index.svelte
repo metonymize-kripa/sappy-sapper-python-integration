@@ -18,9 +18,9 @@
 		
 	}
 	button {
-		font-size: 1.8em;
+		font-size: 1.7em;
 		text-transform: uppercase;
-		font-weight: 400;
+		font-weight: 300;
 		margin: 0 auto;
 		width:40%;
 	}
