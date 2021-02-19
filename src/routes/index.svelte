@@ -74,7 +74,7 @@
 	<p>Your symbol was invalid. Please try again</p>
 {:else}
 	
-	<h2><span style="color:green;">${api_output.low} - ${api_output.high}</span></h2>
+	<h2><span style="color:purplr;">${api_output.low} - ${api_output.high}</span></h2>
 	<p>1Wk Price Band, Options implied @ 75% Prb.</p>
 	<h3>Now@ {api_output.price}</h3>
 {/if}
