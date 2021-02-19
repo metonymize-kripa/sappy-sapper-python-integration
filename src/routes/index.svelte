@@ -3,11 +3,17 @@
 		text-align: center;
 		margin: 0 auto;
 	}
-	h1, input, button {
+	h1 {
 		font-size: 1.8em;
 		text-transform: uppercase;
 		font-weight: 400;
 		margin: 0 0 0.5em 0;
+	}
+	input, button {
+		font-size: 1.8em;
+		text-transform: uppercase;
+		font-weight: 400;
+		margin: 0 auto;
 	}
 	h2 {
 		font-size: 1.8em;
