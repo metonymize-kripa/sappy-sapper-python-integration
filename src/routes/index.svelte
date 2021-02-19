@@ -14,6 +14,7 @@
 		text-transform: uppercase;
 		font-weight: 400;
 		margin: 0 auto;
+		float:center;
 	}
 	h2 {
 		font-size: 1.8em;
