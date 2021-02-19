@@ -75,7 +75,7 @@
 			.then(d => (api_output = JSON.parse(d)));
 	}
 </script>
-<div style='text-align:"center"; max-width:600px; '>
+<div style='text-align:"center"; max-width:600px; margin: 0 auto;'>
 	<input bind:value={ticker} on:keydown={handleKeydown} autofocus/>
 	<button on:click={runAPI}>
 		Tab/Clk
