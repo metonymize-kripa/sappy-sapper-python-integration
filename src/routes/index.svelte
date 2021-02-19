@@ -20,7 +20,7 @@
 	button {
 		font-size: 1.7em;
 		text-transform: uppercase;
-		font-weight: 300;
+		font-weight: 400;
 		margin: 0 auto;
 		width:40%;
 	}
@@ -78,7 +78,7 @@
 <div style='text-align:"center"; max-width:600px; margin: 0 auto;'>
 	<input bind:value={ticker} on:keydown={handleKeydown} autofocus/>
 	<button on:click={runAPI}>
-		Tab/Clk
+		GO
 	</button>
 </div>
 
