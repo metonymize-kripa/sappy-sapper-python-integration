@@ -14,7 +14,7 @@
 		text-transform: uppercase;
 		font-weight: 400;
 		margin: 0 auto;
-		float:center;
+		
 	}
 	h2 {
 		font-size: 1.8em;
@@ -67,7 +67,7 @@
 			.then(d => (api_output = JSON.parse(d)));
 	}
 </script>
-<div>
+<div text-align = "center"; align-items:center;>
 	<input bind:value={ticker} on:keydown={handleKeydown} autofocus/>
 	<button on:click={runAPI}>
 		Tab/Clk
