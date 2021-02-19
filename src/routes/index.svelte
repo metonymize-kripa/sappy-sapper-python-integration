@@ -60,12 +60,12 @@
 			.then(d => (api_output = JSON.parse(d)));
 	}
 </script>
-<div style='text-align:"center"; '>
-	<input bind:value={ticker} on:keydown={handleKeydown} autofocus/>
-	<button on:click={runAPI}>
-		Tab/Clk
-	</button>
-</div>
+
+<input bind:value={ticker} on:keydown={handleKeydown} autofocus/>
+<button on:click={runAPI}>
+	Tab/Clk
+</button>
+
 
 {#if api_output.symbol == "no_symbol"}
 	<p>Type Ticker then Tab/Click.</p>
