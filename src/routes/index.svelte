@@ -81,6 +81,7 @@
 		GO
 	</button>
 </div>
+<br>
 
 {#if api_output.symbol == "no_symbol"}
 	<p>Type Ticker then Tab/Click.</p>
