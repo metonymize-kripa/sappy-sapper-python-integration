@@ -9,12 +9,20 @@
 		font-weight: 400;
 		margin: 0 0 0.5em 0;
 	}
-	input, button {
+	input {
 		font-size: 1.8em;
 		text-transform: uppercase;
 		font-weight: 400;
 		margin: 0 auto;
+		width:60%;
 		
+	}
+	button {
+		font-size: 1.8em;
+		text-transform: uppercase;
+		font-weight: 400;
+		margin: 0 auto;
+		width:30%;
 	}
 	h2 {
 		font-size: 1.8em;
