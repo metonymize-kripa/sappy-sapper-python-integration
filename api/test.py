@@ -29,7 +29,7 @@ class handler(BaseHTTPRequestHandler):
                     low = curr_price - 1.15*my_tuple[1]*curr_price
                     high = curr_price + 1.15*my_tuple[1]*curr_price
                     prob_move = get_probability_move(dic["sym"], 7,0)["prob_up"]
-                    message = f'{{"symbol":"{my_stock.ticker}", "price":"{round(my_stock.price)}","low":"{round(low)}","high":"{round(high)}"}}'
+                    message = f'{{"symbol":"{my_stock.ticker}", "prob_up":prob_move, "price":"{round(my_stock.price)}","low":"{round(low)}","high":"{round(high)}"}}'
                 except:
                     message = '{"symbol":"invalid_symbol"}'
         else:
