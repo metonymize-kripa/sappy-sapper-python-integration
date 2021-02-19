@@ -75,7 +75,7 @@
 {:else}
 	{#if api_output.prob_up > 0.499}
 		<h2><span style="color:green;">${api_output.low} - ${api_output.high}</span></h2>
-	{else}
+	{:else}
 		<h2><span style="color:red;">${api_output.low} - ${api_output.high}</span></h2>
 	{/if}
 	<p>1Wk Price Band, Options implied @ 75% Prb.</p>
