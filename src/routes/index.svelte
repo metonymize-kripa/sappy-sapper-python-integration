@@ -88,7 +88,7 @@
 {:else if api_output.symbol == "H🥚dl."}
 	<p>H🥚dl.</p>
 {:else if api_output.symbol == "invalid_symbol"}
-	<p>Your symbol was invalid. Please try again</p>
+	<p>Bro does this ticker even options?</p>
 {:else}
 	{#if api_output.prob_up > 0.499}
 		<h2><span style="color:green;">${api_output.low} - ${api_output.high}</span></h2>
