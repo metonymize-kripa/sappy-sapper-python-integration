@@ -86,7 +86,8 @@
 	}
 		
 	function runAPI() {
-		var tx_array = ticker.split(/\s+/);
+		
+		var tx_array = ticker.trim().split(/\s+/);
 		console.log(ticker);
 		console.log(tx_array);
 		
@@ -144,6 +145,8 @@
 		<p>H🥚dl.</p>
 	{:else if api_output.symbol == "invalid_symbol"}
 		<p>Bro does this ticker even options?</p>
+	{:else if api_output.symbol == "waiting"}
+		<p>Getting results.....</p>
 	{:else}
 		{#if api_output.prob_up > 0.499}
 			<h2><span style="color:green;">${api_output.low} - ${api_output.high}</span></h2>
