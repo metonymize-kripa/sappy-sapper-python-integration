@@ -92,6 +92,7 @@
 			if (tx_array[1].toLowerCase() == 'volume')
 			{
 				cmd_used = 'volume';
+				progress.set(0);
 				fetch("https://www.insuremystock.com/stocks/volume/"+tx_array[0])
 				.then(response => response.json())
 				.then(data=>api_output=data)
@@ -101,6 +102,7 @@
 			else if (tx_array[1].toLowerCase() == 'doom')
 			{
 				cmd_used = 'doom';
+				progress.set(0);
 				fetch("https://www.insuremystock.com/options/doom/?symbol="+tx_array[0])
 				.then(response => response.json())
 				.then(data=>api_output=data)
