@@ -63,9 +63,13 @@
 </style>
 
 <script>
-	import { writable } from 'svelte/store';
+	import { tweened } from 'svelte/motion';
+	import { cubicOut } from 'svelte/easing';
 
-	const progress = writable(0);
+	const progress = tweened(0, {
+		duration: 400,
+		easing: cubicOut
+	});
 	
 	let ticker = "SPY";
 	let api_output = {"symbol":"no_symbol"};
