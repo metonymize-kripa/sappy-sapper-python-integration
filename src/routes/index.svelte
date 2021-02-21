@@ -121,9 +121,11 @@
 	{/if}
 {:else if cmd_used == "volume"}
 	{#if api_output.percentile > 60}
-		<h2><span style="color:green;">${api_output.percentile}</span></h2>
+		<h2><span style="color:green;">{api_output.percentile}</span></h2>
+	{:else #if api_output.percentile < 40}
+		<h2><span style="color:red;">{api_output.percentile}</span></h2>
 	{:else}
-		<h2><span style="color:red;">${api_output.percentile}</span></h2>
+		<h2><span style="color:black;">{api_output.percentile}</span></h2>
 	{/if}
 	
 	<h3>Now@ {api_output.price}</h3>
