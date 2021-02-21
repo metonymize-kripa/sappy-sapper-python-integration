@@ -96,6 +96,8 @@
 	
 	let ticker = "SPY";
 	let api_output = {"symbol":"no_symbol"};
+	let volume_output = {"symbol":"no_symbol"};
+	let doom_output = {"symbol":"no_symbol"};
 	let cmd_used = "range";
 	
 	async function handleKeydown(event) {
@@ -117,7 +119,7 @@
 			{
 				cmd_used = 'volume';
 				progress.set(0);
-				api_output.percentile = '-';
+				volume_output.percentile = '-';
 				fetch("https://www.insuremystock.com/stocks/volume/"+tx_array[0])
 				.then(response => response.json())
 				.then(data=>api_output=data)
@@ -127,7 +129,7 @@
 			else if (tx_array[1].toLowerCase() == 'doom')
 			{
 				cmd_used = 'doom';
-				api_output.prob_down = '-';
+				doom_output.prob_down = '-';
 				progress.set(0);
 				fetch("https://www.insuremystock.com/options/doom/?symbol="+tx_array[0])
 				.then(response => response.json())
@@ -143,10 +145,17 @@
 		else {
 			api_output = {"symbol":"waiting"};
 			cmd_used = "range";
+			progress.set(0);
+			volume_output.percentile = '-';
 			fetch("./api/test?sym="+ticker)
 				.then(d => d.text())
 				.then(d => (api_output = JSON.parse(d)))
 				.then(d => console.log(d));
+			
+			fetch("https://www.insuremystock.com/stocks/volume/"+tx_array[0])
+			.then(response => response.json())
+			.then(data=>api_output=data)
+			.then(x => progress.set(api_output.percentile/100));
 		}
 		
 		
@@ -176,24 +185,33 @@
 			<h2><span style="color:red;">${api_output.low} - ${api_output.high}</span></h2>
 		{/if}
 		<p>1Wk Price Band, Options implied @ 75% Prb.</p>
-		<h3>Now@ {api_output.price}</h3>
+		<h3>Now@ ${api_output.price}</h3>
+		{#if volume_output.percentile > 60}
+			<span style="color:green;"><progress value={$progress} data-label="{volume_output.percentile}-%ile"></progress></span>
+		{:else if api_output.percentile < 40}
+			<span style="color:red;"><progress value={$progress} data-label="{volume_output.percentile}-%ile"></progress></span>
+		{:else}
+			<span style="color:black;"><progress value={$progress} data-label="{volume_output.percentile}-%ile"></progress></span>
+		{/if}
 	{/if}
 {:else if cmd_used == "volume"}
 	
-	{#if api_output.percentile > 60}
-		<span style="color:green;"><progress value={$progress} data-label="{api_output.percentile}-%ile"></progress></span>
+	{#if volume_output.percentile > 60}
+		<span style="color:green;"><progress value={$progress} data-label="{volume_output.percentile}-%ile"></progress></span>
 	{:else if api_output.percentile < 40}
-		<span style="color:red;"><progress value={$progress} data-label="{api_output.percentile}-%ile"></progress></span>
+		<span style="color:red;"><progress value={$progress} data-label="{volume_output.percentile}-%ile"></progress></span>
 	{:else}
-		<span style="color:black;"><progress value={$progress} data-label="{api_output.percentile}-%ile"></progress></span>
+		<span style="color:black;"><progress value={$progress} data-label="{volume_output.percentile}-%ile"></progress></span>
 	{/if}
 	
 	<p>Current stock volume rank based on past 2 weeks</p>
 {:else if cmd_used == "doom"}
-	{#if api_output.prob_down < 0.20}
-		<span style="color:green;"><progress value={$progress} data-label="{Math.round(api_output.prob_down*100)}%"></progress></span>
+	{#if doom_output.prob_down == '-'}
+		<span style="color:green;"><progress value={$progress} data-label="--"></progress></span>
+	{#if doom_output.prob_down < 0.20}
+		<span style="color:green;"><progress value={$progress} data-label="{Math.round(doom_output.prob_down*100)}%"></progress></span>
 	{:else }
-		<span style="color:red;"><progress value={$progress} data-label="{Math.round(api_output.prob_down*100)}%"></progress></span>
+		<span style="color:red;"><progress value={$progress} data-label="{Math.round(doom_output.prob_down*100)}%"></progress></span>
 	{/if}
 	<p>Chance of 20%+ decline in year ahead</p>
 	
