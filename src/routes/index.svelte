@@ -179,6 +179,7 @@
 		<span style="color:red;"><progress value={$progress}></progress></span>
 	{/if}
 	<p>Chance of 20%+ decline in year ahead</p>
+	<div style="background:green;width:300px;height:50px;"><progress value={$progress}></progress></div>
 
 {:else }
 	
