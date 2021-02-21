@@ -58,11 +58,8 @@
 	progress:before {
 	  content: attr(data-label);
 	  font-size: 0.8em;
-	  position: absolute;
 	  text-align: center;
-	  top: 5px;
-	  left: 0;
-	  right: 0;
+	  margin: 0 auto;
 	}
 	
 	@media (min-width: 480px) {
