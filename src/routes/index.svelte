@@ -70,9 +70,13 @@
 	}
 		
 	function runAPI() {
-		fetch("./api/test?sym="+ticker)
+		/*fetch("./api/test?sym="+ticker)
 			.then(d => d.text())
-			.then(d => (api_output = JSON.parse(d)));
+			.then(d => (api_output = JSON.parse(d)));*/
+		fetch("https://www.insuremystock.com/options/range/"+ticker)
+			.then(response => response.json())
+			.then(data=>api_output=data);
+		
 	}
 </script>
 <div style='text-align: center; max-width:600px; margin: 0 auto;'>
