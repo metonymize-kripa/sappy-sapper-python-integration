@@ -77,7 +77,7 @@
 			if (tx_array[1].toLowerCase() == 'volume')
 			{
 				cmd_used = 'volume';
-				fetch("https://www.insuremystock.com/stocks/volume/"+ticker)
+				fetch("https://www.insuremystock.com/stocks/volume/"+tx_array[1])
 				.then(response => response.json())
 				.then(data=>api_output=data);
 			}
