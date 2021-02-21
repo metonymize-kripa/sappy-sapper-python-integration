@@ -73,7 +73,7 @@
 	
 	let ticker = "SPY";
 	let api_output = {"symbol":"no_symbol"};
-	let cmd_used = 'range';
+	let cmd_used = "range";
 	
 	async function handleKeydown(event) {
 		if (event.key === 'Tab' || event.key === 'Enter' ) {
@@ -89,6 +89,7 @@
 		var tx_array = ticker.split(/\s+/);
 		console.log(ticker);
 		console.log(tx_array);
+		
 		if (tx_array.length > 1)
 		{
 			if (tx_array[1].toLowerCase() == 'volume')
@@ -117,11 +118,13 @@
 		}
 		
 		else {
+			console.log("here");
 			cmd_used == "range";
 			fetch("./api/test?sym="+ticker)
 				.then(d => d.text())
 				.then(d => (api_output = JSON.parse(d)));
 		}
+		console.log("cmd_used");
 		
 	}
 </script>
