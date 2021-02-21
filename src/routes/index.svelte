@@ -58,6 +58,7 @@
 <script>
 	let ticker = "SPY";
 	let api_output = {"symbol":"no_symbol"};
+	let cmd_used = 'range';
 	
 	async function handleKeydown(event) {
 		if (event.key === 'Tab' || event.key === 'Enter' ) {
@@ -70,12 +71,27 @@
 	}
 		
 	function runAPI() {
-		/*fetch("./api/test?sym="+ticker)
-			.then(d => d.text())
-			.then(d => (api_output = JSON.parse(d)));*/
-		fetch("https://www.insuremystock.com/options/range/"+ticker)
-			.then(response => response.json())
-			.then(data=>api_output=data);
+		var tx_array = ticker.split(/\s+/);
+		if (tx_array.length > 1)
+		{
+			if (tx_array[1].toLowerCase() == 'volume')
+			{
+				cmd_used = 'volume';
+				fetch("https://www.insuremystock.com/stocks/volume/"+ticker)
+				.then(response => response.json())
+				.then(data=>api_output=data);
+			}
+			else
+			{
+				cmd_sued == 'invalid';
+			}
+		}
+		
+		else{
+			fetch("./api/test?sym="+ticker)
+				.then(d => d.text())
+				.then(d => (api_output = JSON.parse(d)));
+		}
 		
 	}
 </script>
@@ -87,19 +103,29 @@
 </div>
 <br>
 
-{#if api_output.symbol == "no_symbol"}
-	<p>Type Ticker then Tab/Click.</p>
-{:else if api_output.symbol == "H🥚dl."}
-	<p>H🥚dl.</p>
-{:else if api_output.symbol == "invalid_symbol"}
-	<p>Bro does this ticker even options?</p>
-{:else}
-	{#if api_output.prob_up > 0.499}
-		<h2><span style="color:green;">${api_output.low} - ${api_output.high}</span></h2>
+{#if cmd_used == "range"}
+	{#if api_output.symbol == "no_symbol"}
+		<p>Type Ticker then Tab/Click.</p>
+	{:else if api_output.symbol == "H🥚dl."}
+		<p>H🥚dl.</p>
+	{:else if api_output.symbol == "invalid_symbol"}
+		<p>Bro does this ticker even options?</p>
 	{:else}
-		<h2><span style="color:red;">${api_output.low} - ${api_output.high}</span></h2>
+		{#if api_output.prob_up > 0.499}
+			<h2><span style="color:green;">${api_output.low} - ${api_output.high}</span></h2>
+		{:else}
+			<h2><span style="color:red;">${api_output.low} - ${api_output.high}</span></h2>
+		{/if}
+		<p>1Wk Price Band, Options implied @ 75% Prb.</p>
+		<h3>Now@ {api_output.price}</h3>
 	{/if}
-	<p>1Wk Price Band, Options implied @ 75% Prb.</p>
+{:else if cmd_used == "volume"}
+	{#if api_output.percentile > 60}
+		<h2><span style="color:green;">${api_output.percentile}</span></h2>
+	{:else}
+		<h2><span style="color:red;">${api_output.percentile}</span></h2>
+	{/if}
+	
 	<h3>Now@ {api_output.price}</h3>
 {/if}
 <figure>
