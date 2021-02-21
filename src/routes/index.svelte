@@ -55,6 +55,16 @@
 		height:40px;
 		margin: 0 auto;
 	}
+	progress:before {
+	  content: attr(data-label);
+	  font-size: 0.8em;
+	  position: absolute;
+	  text-align: center;
+	  top: 5px;
+	  left: 0;
+	  right: 0;
+	}
+	
 	@media (min-width: 480px) {
 		h1 {
 			font-size: 4em;
@@ -156,7 +166,7 @@
 {:else if cmd_used == "volume"}
 	
 	{#if api_output.percentile > 60}
-		<span style="color:green;"><progress value={$progress}></progress></span>
+		<span style="color:green;"><progress value={$progress} data-label="50% Complete"></progress></span>
 	{:else if api_output.percentile < 40}
 		<span style="color:red;"><progress value={$progress}></progress></span>
 	{:else}
