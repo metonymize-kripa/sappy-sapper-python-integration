@@ -143,7 +143,6 @@
 	{:else }
 		<h2><span style="color:red;">{api_output.prob_down}</span></h2>
 	{/if}
-{/if}
 
 {:else }
 	
