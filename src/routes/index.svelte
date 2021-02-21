@@ -53,6 +53,7 @@
 		display: block;
 		width: 200px;
 		height:40px;
+		margin: 0 auto;
 	}
 	@media (min-width: 480px) {
 		h1 {
@@ -62,13 +63,9 @@
 </style>
 
 <script>
-	import { tweened } from 'svelte/motion';
-	import { cubicOut } from 'svelte/easing';
+	import { writable } from 'svelte/store';
 
-	const progress = tweened(0, {
-		duration: 400,
-		easing: cubicOut
-	});
+	const progress = writable(0);
 	
 	let ticker = "SPY";
 	let api_output = {"symbol":"no_symbol"};
@@ -101,8 +98,8 @@
 				cmd_used = 'doom';
 				fetch("https://www.insuremystock.com/options/doom/?symbol="+tx_array[0])
 				.then(response => response.json())
-				.then(data=>api_output=data);
-				progress.set(api_output.prob_down);
+				.then(data=>api_output=data)
+				.then(x => progress.set(api_output.prob_down));
 			}
 			else
 			{
