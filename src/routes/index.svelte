@@ -48,6 +48,12 @@
 	p {
 		margin: 1em auto;
 	}
+	
+	progress {
+		display: block;
+		width: 200px;
+		height:40px;
+	}
 	@media (min-width: 480px) {
 		h1 {
 			font-size: 4em;
@@ -56,6 +62,14 @@
 </style>
 
 <script>
+	import { tweened } from 'svelte/motion';
+	import { cubicOut } from 'svelte/easing';
+
+	const progress = tweened(0, {
+		duration: 400,
+		easing: cubicOut
+	});
+	
 	let ticker = "SPY";
 	let api_output = {"symbol":"no_symbol"};
 	let cmd_used = 'range';
@@ -80,6 +94,7 @@
 				fetch("https://www.insuremystock.com/stocks/volume/"+tx_array[0])
 				.then(response => response.json())
 				.then(data=>api_output=data);
+				progress.set(api_output.percentile/100);
 			}
 			else if (tx_array[1].toLowerCase() == 'doom')
 			{
@@ -87,6 +102,7 @@
 				fetch("https://www.insuremystock.com/options/doom/?symbol="+tx_array[0])
 				.then(response => response.json())
 				.then(data=>api_output=data);
+				progress.set(api_output.prob_down);
 			}
 			else
 			{
@@ -127,6 +143,7 @@
 		<h3>Now@ {api_output.price}</h3>
 	{/if}
 {:else if cmd_used == "volume"}
+	<progress value={$progress}></progress>
 	{#if api_output.percentile > 60}
 		<h2><span style="color:green;">{api_output.percentile}</span></h2>
 	{:else if api_output.percentile < 40}
@@ -138,6 +155,7 @@
 	<h3>Now@ {api_output.price}</h3>
 
 {:else if cmd_used == "doom"}
+	<progress value={$progress}></progress>
 	{#if api_output.prob_down < 0.20}
 		<h2><span style="color:green;">{Math.round(api_output.prob_down*100)}</span></h2>
 	{:else }
