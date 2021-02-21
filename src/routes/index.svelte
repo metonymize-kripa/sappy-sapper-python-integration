@@ -81,9 +81,16 @@
 				.then(response => response.json())
 				.then(data=>api_output=data);
 			}
+			else if (tx_array[1].toLowerCase() == 'doom')
+			{
+				cmd_used = 'doom';
+				fetch("https://www.insuremystock.com/options/doom/?symbol="+tx_array[0])
+				.then(response => response.json())
+				.then(data=>api_output=data);
+			}
 			else
 			{
-				cmd_sued == 'invalid';
+				cmd_used == 'invalid';
 			}
 		}
 		
@@ -122,7 +129,7 @@
 {:else if cmd_used == "volume"}
 	{#if api_output.percentile > 60}
 		<h2><span style="color:green;">{api_output.percentile}</span></h2>
-	{:else #if api_output.percentile < 40}
+	{:else if api_output.percentile < 40}
 		<h2><span style="color:red;">{api_output.percentile}</span></h2>
 	{:else}
 		<h2><span style="color:black;">{api_output.percentile}</span></h2>
@@ -130,6 +137,20 @@
 	
 	<h3>Now@ {api_output.price}</h3>
 {/if}
+{:else if cmd_used == "doom"}
+	{#if api_output.prob_down < 20}
+		<h2><span style="color:green;">{api_output.prob_down}</span></h2>
+	{:else }
+		<h2><span style="color:red;">{api_output.prob_down}</span></h2>
+	{/if}
+{/if}
+
+{:else }
+	
+	<h2><span style="color:red;">INVALID COMMAND</span></h2>
+
+{/if}
+
 <figure>
 	<img alt='Fat Tony' src='FatTony.png'>
 	<figcaption>Fat Tony: I don't get mad. I get stabby.</figcaption>
