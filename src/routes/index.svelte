@@ -122,9 +122,10 @@
 			cmd_used == "range";
 			fetch("./api/test?sym="+ticker)
 				.then(d => d.text())
-				.then(d => (api_output = JSON.parse(d)));
+				.then(d => (api_output = JSON.parse(d)))
+				.then(d => console.log(d));
 		}
-		console.log("cmd_used");
+		console.log(cmd_used);
 		
 	}
 </script>
