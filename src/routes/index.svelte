@@ -71,10 +71,11 @@
 	
 	progress:before {
 	  content: attr(data-label);
-	  font-size: 0.8em;
+	  font-size: 1em;
 	  text-align: center;
-	  margin: 10px 50px;
-	 position: absolute;
+	  margin: 8px 75px;
+	  position: absolute;
+	  font-weight: 800;
 	}
 	
 	@media (min-width: 480px) {
@@ -178,23 +179,22 @@
 {:else if cmd_used == "volume"}
 	
 	{#if api_output.percentile > 60}
-		<span style="color:green;"><progress value={$progress} data-label="{api_output.percentile}%"></progress></span>
+		<span style="color:green;"><progress value={$progress} data-label="{api_output.percentile}-%ile"></progress></span>
 	{:else if api_output.percentile < 40}
-		<span style="color:red;"><progress value={$progress} data-label="{api_output.percentile}%"></progress></span>
+		<span style="color:red;"><progress value={$progress} data-label="{api_output.percentile}-%ile"></progress></span>
 	{:else}
 		<span style="color:green;"><progress value={$progress}></progress></span>
 	{/if}
 	
 	<p>Current stock volume rank based on past 2 weeks</p>
 {:else if cmd_used == "doom"}
-
 	{#if api_output.prob_down < 0.20}
-		<span style="color:green;"><progress value={$progress}></progress></span>
+		<span style="color:green;"><progress value={$progress} data-label="{api_output.prob_down*100}%"></progress></span>
 	{:else }
-		<span style="color:red;"><progress value={$progress}></progress></span>
+		<span style="color:red;"><progress value={$progress} data-label="{api_output.prob_down*100}%"></progress></span>
 	{/if}
 	<p>Chance of 20%+ decline in year ahead</p>
-	<div style="background:green;width:300px;height:50px;"><progress value={$progress}></progress></div>
+	
 
 {:else }
 	
