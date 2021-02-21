@@ -136,7 +136,7 @@
 	{/if}
 	
 	<h3>Now@ {api_output.price}</h3>
-{/if}
+
 {:else if cmd_used == "doom"}
 	{#if api_output.prob_down < 20}
 		<h2><span style="color:green;">{api_output.prob_down}</span></h2>
