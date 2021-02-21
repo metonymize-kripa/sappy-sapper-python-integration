@@ -141,22 +141,22 @@
 		<h3>Now@ {api_output.price}</h3>
 	{/if}
 {:else if cmd_used == "volume"}
-	<span style="color:purplle;"><progress value={$progress}></progress></span>
+	
 	{#if api_output.percentile > 60}
-		<h2><span style="color:green;">{api_output.percentile}</span></h2>
+		<span style="color:green;"><progress value={$progress}></progress></span>
 	{:else if api_output.percentile < 40}
-		<h2><span style="color:red;">{api_output.percentile}</span></h2>
+		<span style="color:red;"><progress value={$progress}></progress></span>
 	{:else}
-		<h2><span style="color:black;">{api_output.percentile}</span></h2>
+		<span style="color:green;"><progress value={$progress}></progress></span>
 	{/if}
 	
 	<p>Current stock volume rank based on past 2 weeks</p>
 {:else if cmd_used == "doom"}
-	<progress value={$progress}></progress>
+
 	{#if api_output.prob_down < 0.20}
-		<h2><span style="color:green;">{Math.round(api_output.prob_down*100)}</span></h2>
+		<span style="color:green;"><progress value={$progress}></progress></span>
 	{:else }
-		<h2><span style="color:red;">{Math.round(api_output.prob_down*100)}</span></h2>
+		<span style="color:red;"><progress value={$progress}></progress></span>
 	{/if}
 	<p>Chance that the stock falls 20% in a year</p>
 
