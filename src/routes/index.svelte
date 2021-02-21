@@ -189,9 +189,9 @@
 	<p>Current stock volume rank based on past 2 weeks</p>
 {:else if cmd_used == "doom"}
 	{#if api_output.prob_down < 0.20}
-		<span style="color:green;"><progress value={$progress} data-label="{api_output.prob_down*100}%"></progress></span>
+		<span style="color:green;"><progress value={$progress} data-label="{Math.round(api_output.prob_down*100)}%"></progress></span>
 	{:else }
-		<span style="color:red;"><progress value={$progress} data-label="{api_output.prob_down*100}%"></progress></span>
+		<span style="color:red;"><progress value={$progress} data-label="{Math.round(api_output.prob_down*100)}%"></progress></span>
 	{/if}
 	<p>Chance of 20%+ decline in year ahead</p>
 	
