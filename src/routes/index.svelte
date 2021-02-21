@@ -113,13 +113,13 @@
 			}
 			else
 			{
-				cmd_used == 'invalid';
+				cmd_used = 'invalid';
 			}
 		}
 		
 		else {
 			console.log("here");
-			cmd_used == "range";
+			cmd_used = "range";
 			fetch("./api/test?sym="+ticker)
 				.then(d => d.text())
 				.then(d => (api_output = JSON.parse(d)))
