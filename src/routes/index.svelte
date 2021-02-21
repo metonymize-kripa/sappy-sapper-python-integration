@@ -87,7 +87,8 @@
 		
 	function runAPI() {
 		var tx_array = ticker.split(/\s+/);
-		cmd_used == 'range';
+		console.log(ticker);
+		console.log(tx_array);
 		if (tx_array.length > 1)
 		{
 			if (tx_array[1].toLowerCase() == 'volume')
@@ -115,8 +116,8 @@
 			}
 		}
 		
-		else{
-			
+		else {
+			cmd_used == "range";
 			fetch("./api/test?sym="+ticker)
 				.then(d => d.text())
 				.then(d => (api_output = JSON.parse(d)));
