@@ -117,6 +117,7 @@
 			{
 				cmd_used = 'volume';
 				progress.set(0);
+				api_output.percentile = '-';
 				fetch("https://www.insuremystock.com/stocks/volume/"+tx_array[0])
 				.then(response => response.json())
 				.then(data=>api_output=data)
@@ -126,6 +127,7 @@
 			else if (tx_array[1].toLowerCase() == 'doom')
 			{
 				cmd_used = 'doom';
+				api_output.prob_down = '-';
 				progress.set(0);
 				fetch("https://www.insuremystock.com/options/doom/?symbol="+tx_array[0])
 				.then(response => response.json())
@@ -183,7 +185,7 @@
 	{:else if api_output.percentile < 40}
 		<span style="color:red;"><progress value={$progress} data-label="{api_output.percentile}-%ile"></progress></span>
 	{:else}
-		<span style="color:green;"><progress value={$progress}></progress></span>
+		<span style="color:black;"><progress value={$progress} data-label="{api_output.percentile}-%ile"></progress></span>
 	{/if}
 	
 	<p>Current stock volume rank based on past 2 weeks</p>
