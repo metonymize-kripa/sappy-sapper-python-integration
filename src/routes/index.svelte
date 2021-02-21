@@ -87,6 +87,7 @@
 		
 	function runAPI() {
 		var tx_array = ticker.split(/\s+/);
+		cmd_used == 'range';
 		if (tx_array.length > 1)
 		{
 			if (tx_array[1].toLowerCase() == 'volume')
@@ -115,7 +116,7 @@
 		}
 		
 		else{
-			cmd_used == 'range';
+			
 			fetch("./api/test?sym="+ticker)
 				.then(d => d.text())
 				.then(d => (api_output = JSON.parse(d)));
@@ -132,7 +133,6 @@
 <br>
 
 {#if cmd_used == "range"}
-	{api_output}
 	{#if api_output.symbol == "no_symbol"}
 		<p>Type Ticker then Tab/Click.</p>
 	{:else if api_output.symbol == "H🥚dl."}
