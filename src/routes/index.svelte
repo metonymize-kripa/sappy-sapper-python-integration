@@ -150,8 +150,7 @@
 		<h2><span style="color:black;">{api_output.percentile}</span></h2>
 	{/if}
 	
-	<h3>Now@ {api_output.price}</h3>
-
+	<p>Current stock volume rank based on past 2 weeks</p>
 {:else if cmd_used == "doom"}
 	<progress value={$progress}></progress>
 	{#if api_output.prob_down < 0.20}
@@ -159,6 +158,7 @@
 	{:else }
 		<h2><span style="color:red;">{Math.round(api_output.prob_down*100)}</span></h2>
 	{/if}
+	<p>Chance that the stock falls 20% in a year</p>
 
 {:else }
 	
