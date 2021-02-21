@@ -188,7 +188,7 @@
 		<h3>Now@ ${api_output.price}</h3>
 		{#if volume_output.percentile > 60}
 			<span style="color:green;"><progress value={$progress} data-label="{volume_output.percentile}-%ile"></progress></span>
-		{:else if api_output.percentile < 40}
+		{:else if volume_output.percentile < 40}
 			<span style="color:red;"><progress value={$progress} data-label="{volume_output.percentile}-%ile"></progress></span>
 		{:else}
 			<span style="color:black;"><progress value={$progress} data-label="{volume_output.percentile}-%ile"></progress></span>
@@ -198,7 +198,7 @@
 	
 	{#if volume_output.percentile > 60}
 		<span style="color:green;"><progress value={$progress} data-label="{volume_output.percentile}-%ile"></progress></span>
-	{:else if api_output.percentile < 40}
+	{:else if volume_output.percentile < 40}
 		<span style="color:red;"><progress value={$progress} data-label="{volume_output.percentile}-%ile"></progress></span>
 	{:else}
 		<span style="color:black;"><progress value={$progress} data-label="{volume_output.percentile}-%ile"></progress></span>
@@ -208,7 +208,7 @@
 {:else if cmd_used == "doom"}
 	{#if doom_output.prob_down == '-'}
 		<span style="color:green;"><progress value={$progress} data-label="--"></progress></span>
-	{#if doom_output.prob_down < 0.20}
+	{:else if doom_output.prob_down < 0.20}
 		<span style="color:green;"><progress value={$progress} data-label="{Math.round(doom_output.prob_down*100)}%"></progress></span>
 	{:else }
 		<span style="color:red;"><progress value={$progress} data-label="{Math.round(doom_output.prob_down*100)}%"></progress></span>
