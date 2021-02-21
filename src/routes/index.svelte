@@ -138,10 +138,10 @@
 	<h3>Now@ {api_output.price}</h3>
 
 {:else if cmd_used == "doom"}
-	{#if api_output.prob_down < 20}
-		<h2><span style="color:green;">{api_output.prob_down}</span></h2>
+	{#if api_output.prob_down < 0.20}
+		<h2><span style="color:green;">{Math.round(api_output.prob_down*100)}</span></h2>
 	{:else }
-		<h2><span style="color:red;">{api_output.prob_down}</span></h2>
+		<h2><span style="color:red;">{Math.round(api_output.prob_down*100)}</span></h2>
 	{/if}
 
 {:else }
