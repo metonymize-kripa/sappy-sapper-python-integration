@@ -122,8 +122,8 @@
 				volume_output.percentile = '-';
 				fetch("https://www.insuremystock.com/stocks/volume/"+tx_array[0])
 				.then(response => response.json())
-				.then(data=>api_output=data)
-				.then(x => progress.set(api_output.percentile/100));
+				.then(data=>volume_output=data)
+				.then(x => progress.set(volume_output.percentile/100));
 				
 			}
 			else if (tx_array[1].toLowerCase() == 'doom')
@@ -133,8 +133,8 @@
 				progress.set(0);
 				fetch("https://www.insuremystock.com/options/doom/?symbol="+tx_array[0])
 				.then(response => response.json())
-				.then(data=>api_output=data)
-				.then(x => progress.set(api_output.prob_down));
+				.then(data=>doom_output=data)
+				.then(x => progress.set(doom_output.prob_down));
 			}
 			else
 			{
@@ -154,8 +154,8 @@
 			
 			fetch("https://www.insuremystock.com/stocks/volume/"+tx_array[0])
 			.then(response => response.json())
-			.then(data=>api_output=data)
-			.then(x => progress.set(api_output.percentile/100));
+			.then(data=>volume_output=data)
+			.then(x => progress.set(volume_output.percentile/100));
 		}
 		
 		
