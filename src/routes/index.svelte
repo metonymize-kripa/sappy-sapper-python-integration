@@ -131,6 +131,7 @@
 <br>
 
 {#if cmd_used == "range"}
+	{api_output}
 	{#if api_output.symbol == "no_symbol"}
 		<p>Type Ticker then Tab/Click.</p>
 	{:else if api_output.symbol == "H🥚dl."}
