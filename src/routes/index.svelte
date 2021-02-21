@@ -171,7 +171,7 @@
 	{:else }
 		<span style="color:red;"><progress value={$progress}></progress></span>
 	{/if}
-	<p>Chance that the stock falls 20% in a year</p>
+	<p>Chance of 20%+ decline in year ahead</p>
 
 {:else }
 	
