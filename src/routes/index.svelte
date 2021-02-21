@@ -90,8 +90,9 @@
 				cmd_used = 'volume';
 				fetch("https://www.insuremystock.com/stocks/volume/"+tx_array[0])
 				.then(response => response.json())
-				.then(data=>api_output=data);
-				progress.set(api_output.percentile/100);
+				.then(data=>api_output=data)
+				.then(x => progress.set(api_output.percentile/100));
+				
 			}
 			else if (tx_array[1].toLowerCase() == 'doom')
 			{
@@ -140,7 +141,7 @@
 		<h3>Now@ {api_output.price}</h3>
 	{/if}
 {:else if cmd_used == "volume"}
-	<progress value={$progress}></progress>
+	<span style="color:purplle;"><progress value={$progress}></progress></span>
 	{#if api_output.percentile > 60}
 		<h2><span style="color:green;">{api_output.percentile}</span></h2>
 	{:else if api_output.percentile < 40}
