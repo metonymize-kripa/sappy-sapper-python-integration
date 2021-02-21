@@ -55,11 +55,26 @@
 		height:40px;
 		margin: 0 auto;
 	}
+	
+	.progress-div {
+	    width: 200px;
+	    height: 40px;
+	    align-items: center;
+	    text-align: center;
+	    margin: 0 auto;	
+	}
+	.progress-label{
+	    position: absolute;
+	    display: block;
+	    margin: -32px 90px;
+	}
+	
 	progress:before {
 	  content: attr(data-label);
 	  font-size: 0.8em;
 	  text-align: center;
-	  margin: 0 auto;
+	  margin: 10px 50px;
+	 position: absolute;
 	}
 	
 	@media (min-width: 480px) {
@@ -163,9 +178,9 @@
 {:else if cmd_used == "volume"}
 	
 	{#if api_output.percentile > 60}
-		<span style="color:green;"><progress value={$progress} data-label="50% Complete"></progress></span>
+		<span style="color:green;"><progress value={$progress} data-label="{api_output.percentile}%"></progress></span>
 	{:else if api_output.percentile < 40}
-		<span style="color:red;"><progress value={$progress}></progress></span>
+		<span style="color:red;"><progress value={$progress} data-label="{api_output.percentile}%"></progress></span>
 	{:else}
 		<span style="color:green;"><progress value={$progress}></progress></span>
 	{/if}
