@@ -55,6 +55,17 @@
 		height:40px;
 		margin: 0 auto;
 	}
+	.bear, .bull, .neutral {
+		text-align: center;
+		margin: 0 auto;
+		display:block;
+	}
+	.bear{
+		color:red;
+	}
+	.bull{
+		color:green;
+	}
 	
 	/*.progress-div {
 	    width: 200px;
@@ -187,6 +198,7 @@
 		{/if}
 		<p>1Wk Price Band, Options implied @ 75% Prb.</p>
 		<h3>Now@ ${api_output.price}</h3>
+		<progress value={$progress} data-label="Volume">
 		{#if volume_output.percentile > 60}
 			<span style="color:green;"><progress value={$progress} data-label="Volume"></progress></span>
 		{:else if volume_output.percentile < 40}
@@ -198,11 +210,11 @@
 {:else if cmd_used == "volume"}
 	<progress value={$progress} data-label="{volume_output.percentile}-%ile"></progress>
 	{#if volume_output.percentile > 60}
-		<span style="color:green;">Volume Index</span>
+		<span class="bull">Volume Index</span>
 	{:else if volume_output.percentile < 40}
-		<span style="color:red;">Volume Index</span>
+		<span class="bear">Volume Index</span>
 	{:else}
-		<span style="color:black;">Volume Index</span>
+		<span class="neutral">Volume Index</span>
 	{/if}
 	
 	<p>Current stock volume rank based on past 2 weeks</p>
