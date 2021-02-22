@@ -226,7 +226,7 @@
 	{:else if doom_output.prob_down < 0.20}
 		<span class="bull">Crash Index @ {Math.round(doom_output.prob_down*100)}</span>
 	{:else }
-		<span class="bear">Crash IndexCrash Index @ {Math.round(doom_output.prob_down*100)}</span>
+		<span class="bear">Crash Index @ {Math.round(doom_output.prob_down*100)}</span>
 	{/if}
 	<p>Chance of 20%+ decline in year ahead</p>
 	
