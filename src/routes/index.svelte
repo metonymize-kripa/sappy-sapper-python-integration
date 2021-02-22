@@ -56,7 +56,7 @@
 		margin: 0 auto;
 	}
 	
-	.progress-div {
+	/*.progress-div {
 	    width: 200px;
 	    height: 40px;
 	    align-items: center;
@@ -77,6 +77,7 @@
 	  position: absolute;
 	  font-weight: 800;
 	}
+	*/
 	
 	@media (min-width: 480px) {
 		h1 {
@@ -195,13 +196,13 @@
 		{/if}
 	{/if}
 {:else if cmd_used == "volume"}
-	
+	<progress value={$progress} data-label="{volume_output.percentile}-%ile"></progress>
 	{#if volume_output.percentile > 60}
-		<span style="color:green;"><progress value={$progress} data-label="{volume_output.percentile}-%ile"></progress></span>
+		<span style="color:green;">Volume Index</span>
 	{:else if volume_output.percentile < 40}
-		<span style="color:red;"><progress value={$progress} data-label="{volume_output.percentile}-%ile"></progress></span>
+		<span style="color:red;">Volume Index</span>
 	{:else}
-		<span style="color:black;"><progress value={$progress} data-label="{volume_output.percentile}-%ile"></progress></span>
+		<span style="color:black;">Volume Index</span>
 	{/if}
 	
 	<p>Current stock volume rank based on past 2 weeks</p>
