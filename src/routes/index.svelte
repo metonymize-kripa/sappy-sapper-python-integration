@@ -200,22 +200,22 @@
 		<h3>Now@ ${api_output.price}</h3>
 		<progress value={$progress} data-label="Volume"></progress>
 		{#if volume_output.percentile > 60}
-			<span class="bull">Volume Index</span>
+			<span class="bull">Current relative volume level</span>
 		{:else if volume_output.percentile < 40}
-			<span class="bear">Volume Index</span>
+			<span class="bear">Current relative volume level</span>
 		{:else}
-			<span class="neutral">Volume Index</span>
+			<span class="neutral">Current relative volume level</span>
 		{/if}
 		<br>
 	{/if}
 {:else if cmd_used == "volume"}
 	<progress value={$progress} data-label="{volume_output.percentile}-%ile"></progress>
 	{#if volume_output.percentile > 60}
-		<span class="bull">Volume Index</span>
+		<span class="bull">Current relative volume level</span>
 	{:else if volume_output.percentile < 40}
-		<span class="bear">Volume Index</span>
+		<span class="bear">Current relative volume level</span>
 	{:else}
-		<span class="neutral">Volume Index</span>
+		<span class="neutral">Current relative volume level</span>
 	{/if}
 	
 	<p>Current stock volume rank based on past 2 weeks</p>
