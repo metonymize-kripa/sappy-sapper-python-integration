@@ -222,7 +222,7 @@
 {:else if cmd_used == "doom"}
 	<progress value={$progress} data-label="--"></progress>
 	{#if doom_output.prob_down == '-'}
-		<span class="neutral">Crash IndexCrash Index @ {Math.round(doom_output.prob_down*100)}</span>
+		<span class="neutral">Crash Index</span>
 	{:else if doom_output.prob_down < 0.20}
 		<span class="bull">Crash Index @ {Math.round(doom_output.prob_down*100)}</span>
 	{:else }
