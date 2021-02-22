@@ -198,13 +198,13 @@
 		{/if}
 		<p>1Wk Price Band, Options implied @ 75% Prb.</p>
 		<h3>Now@ ${api_output.price}</h3>
-		<progress value={$progress} data-label="Volume">
+		<progress value={$progress} data-label="Volume"></progress>
 		{#if volume_output.percentile > 60}
-			<span style="color:green;"><progress value={$progress} data-label="Volume"></progress></span>
+			<span class="bull">Volume Index</span>
 		{:else if volume_output.percentile < 40}
-			<span style="color:red;"><progress value={$progress} data-label="Volume"></progress></span>
+			<span class="bear">Volume Index</span>
 		{:else}
-			<span style="color:black;"><progress value={$progress} data-label="Volume"></progress></span>
+			<span class="neutral">Volume Index</span>
 		{/if}
 	{/if}
 {:else if cmd_used == "volume"}
