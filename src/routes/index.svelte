@@ -143,7 +143,7 @@
 				cmd_used = 'doom';
 				doom_output.prob_down = '-';
 				progress.set(0);
-				fetch("https://www.insuremystock.com/options/doom/?symbol="+tx_array[0])
+				fetch("https://www.insuremystock.com/options/doom/?symbol="+tx_array[0]+"?days=30&percent=5")
 				.then(response => response.json())
 				.then(data=>doom_output=data)
 				.then(x => progress.set(doom_output.prob_down));
@@ -228,7 +228,7 @@
 	{:else }
 		<span class="bear">Crash Index @ {Math.round(doom_output.prob_down*100)}</span>
 	{/if}
-	<p>Chance of 20%+ decline in year ahead</p>
+	<p>Options implied Prb. of 5%👇 in month ahead</p>
 	
 
 {:else }
