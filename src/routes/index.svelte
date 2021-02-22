@@ -57,7 +57,7 @@
 	}
 	.bear, .bull, .neutral {
 		text-align: center;
-		margin: 0 auto;
+		margin: -0.7em auto;
 		display:block;
 	}
 	.bear{
@@ -219,12 +219,13 @@
 	
 	<p>Current stock volume rank based on past 2 weeks</p>
 {:else if cmd_used == "doom"}
+	<progress value={$progress} data-label="--"></progress>
 	{#if doom_output.prob_down == '-'}
-		<span style="color:green;"><progress value={$progress} data-label="--"></progress></span>
+		<span class="neutral">Crash Index</span>
 	{:else if doom_output.prob_down < 0.20}
-		<span style="color:green;"><progress value={$progress} data-label="{Math.round(doom_output.prob_down*100)}%"></progress></span>
+		<span class="bull">Crash Index</span>
 	{:else }
-		<span style="color:red;"><progress value={$progress} data-label="{Math.round(doom_output.prob_down*100)}%"></progress></span>
+		<span class="bear">Crash Index</span>
 	{/if}
 	<p>Chance of 20%+ decline in year ahead</p>
 	
