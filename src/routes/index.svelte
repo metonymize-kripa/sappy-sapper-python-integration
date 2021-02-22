@@ -206,6 +206,7 @@
 		{:else}
 			<span class="neutral">Volume Index</span>
 		{/if}
+		<br>
 	{/if}
 {:else if cmd_used == "volume"}
 	<progress value={$progress} data-label="{volume_output.percentile}-%ile"></progress>
