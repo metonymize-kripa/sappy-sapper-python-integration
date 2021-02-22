@@ -57,7 +57,7 @@
 	}
 	.bear, .bull, .neutral {
 		text-align: center;
-		margin: -0.7em auto;
+		margin: -10px auto;
 		display:block;
 	}
 	.bear{
