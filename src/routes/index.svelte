@@ -233,7 +233,7 @@
 {:else if cmd_used == "ape"}
 	<p> Apes together but heed sage <a href="https://en.wikipedia.org/wiki/Kelly_criterion"> Kelly's advice</a> </p>
 	{#if ape_output.kelly != '-'}
-		<h3>Do not invest more than {Math.round(ape_output.kelly*100)}% </h3>
+		<h2>Don't put more than {Math.round(ape_output.kelly*100)}% in this stonk</h2>
 	{/if}
 {:else if cmd_used == "doom"}
 	<progress value={$progress} data-label="--"></progress>
