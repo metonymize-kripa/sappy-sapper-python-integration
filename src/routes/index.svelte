@@ -257,6 +257,4 @@
 	<figcaption>Fat Tony: I don't get mad. I get stabby.</figcaption>
 </figure>
 
-<p>Type + Tab = Quote</p>
-
 <p><strong> Sign up for the <a href='https://oracled.mailchimpsites.com/'> DailySpread</a></strong></p>
