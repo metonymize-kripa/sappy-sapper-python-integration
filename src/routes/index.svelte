@@ -110,6 +110,7 @@
 	let api_output = {"symbol":"no_symbol"};
 	let volume_output = {"symbol":"no_symbol"};
 	let doom_output = {"symbol":"no_symbol"};
+	let ape_output = {"symbol":"no_symbol"};
 	let cmd_used = "range";
 	
 	async function handleKeydown(event) {
@@ -147,6 +148,16 @@
 				.then(response => response.json())
 				.then(data=>doom_output=data)
 				.then(x => progress.set(doom_output.prob_down));
+			}
+			else if (tx_array[1].toLowerCase() == 'ape')
+			{
+				cmd_used = 'ape';
+				ape_output.kelly = '-';
+				progress.set(0);
+				fetch("https://www.insuremystock.com/options/kelly/"+tx_array[0])
+				.then(response => response.json())
+				.then(data=>ape_output=data)
+				.then(x => progress.set(ape_output.kelly));
 			}
 			else
 			{
@@ -219,6 +230,11 @@
 	{/if}
 	
 	<p>Current stock volume rank based on past 2 weeks</p>
+{:else if cmd_used == "ape"}
+	<p> Apes together but heed sage <a href="https://en.wikipedia.org/wiki/Kelly_criterion"> Kelly's advice</a> </p>
+	<h3>Do not invest more than {ape_output.kelly}% in this </h3>
+	
+	
 {:else if cmd_used == "doom"}
 	<progress value={$progress} data-label="--"></progress>
 	{#if doom_output.prob_down == '-'}
@@ -230,7 +246,6 @@
 	{/if}
 	<p>Chance of 20%+ decline in year ahead</p>
 	
-
 {:else }
 	
 	<h2><span style="color:red;">INVALID COMMAND</span></h2>
