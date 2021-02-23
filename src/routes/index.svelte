@@ -232,7 +232,9 @@
 	<p>Current stock volume rank based on past 2 weeks</p>
 {:else if cmd_used == "ape"}
 	<p> Apes together but heed sage <a href="https://en.wikipedia.org/wiki/Kelly_criterion"> Kelly's advice</a> </p>
-	<h3>Do not invest more than {Math.round(ape_output.kelly*100)}% </h3>
+	{#if ape_output.kelly != '-'}
+		<h3>Do not invest more than {Math.round(ape_output.kelly*100)}% </h3>
+	{/if}
 {:else if cmd_used == "doom"}
 	<progress value={$progress} data-label="--"></progress>
 	{#if doom_output.prob_down == '-'}
