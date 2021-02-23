@@ -153,7 +153,7 @@
 			{
 				cmd_used = 'ape';
 				ape_output.kelly = '-';
-				progress.set(0);
+				
 				fetch("https://www.insuremystock.com/options/kelly/"+tx_array[0])
 				.then(response => response.json())
 				.then(data=>ape_output=data)
@@ -232,9 +232,7 @@
 	<p>Current stock volume rank based on past 2 weeks</p>
 {:else if cmd_used == "ape"}
 	<p> Apes together but heed sage <a href="https://en.wikipedia.org/wiki/Kelly_criterion"> Kelly's advice</a> </p>
-	<h3>Do not invest more than {ape_output.kelly}% in this </h3>
-	
-	
+	<h3>Do not invest more than {Math.round(ape_output.kelly*100)}% </h3>
 {:else if cmd_used == "doom"}
 	<progress value={$progress} data-label="--"></progress>
 	{#if doom_output.prob_down == '-'}
