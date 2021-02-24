@@ -109,7 +109,7 @@
 		easing: cubicOut
 	});
 	
-	let ticker = "SPY";
+	let ticker = "AAL";
 	let api_output = {"symbol":"no_symbol"};
 	let volume_output = {"symbol":"no_symbol"};
 	let doom_output = {"symbol":"no_symbol"};
