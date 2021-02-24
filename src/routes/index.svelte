@@ -236,7 +236,7 @@
 {:else if cmd_used == "ape"}
 	<p> Experimental feature </p>
 	{#if ape_output.kelly != '-'}
-		<h2>Kelly-efficient bet size < {Math.round(ape_output.kelly*100)}%</h2>
+		<h2>Consider Kelly-efficient bet sizing of {Math.round(ape_output.kelly*100)}%</h2>
 	{/if}
 {:else if cmd_used == "doom"}
 	<progress value={$progress} data-label="--"></progress>
