@@ -197,7 +197,7 @@
 	</button>
 </div>
 
-{# if api_output.symbol == "waiting"}
+{#if api_output.symbol == "waiting"}
     <p>Getting results.....</p>
 {:else}
     <h2><span style="class:{api_output.main_class};">{api_output.main_point}</h2>
