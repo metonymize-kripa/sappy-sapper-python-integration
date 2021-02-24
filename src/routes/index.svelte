@@ -19,7 +19,7 @@
 	}
 	button {
 		text-transform: uppercase;
-		margin: 0 auto;
+		margin: 10 auto;
 		width:40%;
 	}
 	h2 {
