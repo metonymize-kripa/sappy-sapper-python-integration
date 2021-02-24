@@ -21,6 +21,7 @@
 		text-transform: uppercase;
 		margin: 10 auto;
 		width:40%;
+		font-size: 1.8em;
 	}
 	h2 {
 		font-size: 1.8em;
