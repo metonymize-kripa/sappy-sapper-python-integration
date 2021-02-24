@@ -117,8 +117,8 @@
 	let cmd_used = "range";
 	
 	async function handleKeydown(event) {
-		if (event.key === 'Tab' || event.key === 'Enter' ) {
-			event.preventDefault();
+		if (event.key === 'Enter') {
+			//event.preventDefault();
 			runAPI();
 		}
 		else {
@@ -188,7 +188,7 @@
 	}
 </script>
 
-<div style='text-align: center; max-width:600px; margin: 0 auto;'>
+<div style='text-align: left; max-width:600px; margin: 0 auto;'>
 	<AutoComplete items={tickers} bind:selectedItem={ticker} on:keydown={handleKeydown} maxItemsToShowInList=5/>
 	<button on:click={runAPI}>
 		GO
