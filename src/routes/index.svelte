@@ -197,7 +197,7 @@
 	}
 </script>
 
-<div style='text-align: left; max-width:600px; margin: 10 auto;'>
+<div style='margin: 10 auto;'>
 	<AutoComplete items={tickers} bind:selectedItem={ticker} on:keydown={handleKeydown} maxItemsToShowInList=5/>
 	<button on:click={runAPI}>
 		GO
