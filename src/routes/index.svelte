@@ -66,6 +66,13 @@
 		color:green;
 	}
 	
+	autocomplete{
+		width:60%;
+	}
+	.autocomplete{
+		width:60%;
+	}
+	
 	/*.progress-div {
 	    width: 200px;
 	    height: 40px;
