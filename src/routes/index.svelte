@@ -234,7 +234,7 @@
 	
 	<p>Current stock volume rank based on past 2 weeks</p>
 {:else if cmd_used == "ape"}
-	<p> Experimental feature, <a href="https://en.wikipedia.org/wiki/Kelly_criterion"> Kelly's advice</a> </p>
+	<p> Experimental feature <a href="https://en.wikipedia.org/wiki/Kelly_criterion"> Kelly's advice</a> </p>
 	{#if ape_output.kelly != '-'}
 		<h2>Kelly-efficient bet size < {Math.round(ape_output.kelly*100)}%</h2>
 	{/if}
