@@ -256,15 +256,13 @@
 
 {/if}
 
-<h1><br></h1>
 <hr>
 
-<h1>Test fancy autocomplete ... </h1>
+<h3>Test fancy autocomplete ... </h3>
 
 <AutoComplete items={tickers} bind:selectedItem={selectedTicker} maxItemsToShowInList=5/>
 <h3>Hello <strong>{selectedTicker}!</strong></h3>
 
-<h1><br></h1>
 <hr>
 
 <figure>
