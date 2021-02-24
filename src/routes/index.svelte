@@ -188,21 +188,12 @@
 	}
 </script>
 
-<hr>
-
-
-
-<h3>Hello <strong>{selectedTicker}!</strong></h3>
-
-<hr>
-
 <div style='text-align: center; max-width:600px; margin: 0 auto;'>
 	<AutoComplete items={tickers} bind:selectedItem={ticker} on:keydown={handleKeydown} maxItemsToShowInList=5/>
 	<button on:click={runAPI}>
 		GO
 	</button>
 </div>
-<br>
 
 {#if cmd_used == "range"}
 	{#if api_output.symbol == "no_symbol"}
