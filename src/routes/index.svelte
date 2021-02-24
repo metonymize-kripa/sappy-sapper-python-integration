@@ -14,10 +14,7 @@
 		text-transform: uppercase;
 		font-weight: 400;
 		margin: 0 auto;
-
 		width:60%;
-
-
 	}
 	button {
 		text-transform: uppercase;
@@ -113,11 +110,11 @@
 	let ticker = "SPY";
 
 	let api_output = {"symbol":"no_symbol"};
-	let volume_output = {"symbol":"no_symbol"};
+	/*let volume_output = {"symbol":"no_symbol"};
 	let doom_output = {"symbol":"no_symbol"};
 	let ape_output = {"symbol":"no_symbol"};
 	let cmd_used = "range";
-
+    */
 	async function handleKeydown(event) {
 		if (event.key === 'Enter') {
 			//event.preventDefault();
@@ -127,10 +124,8 @@
 			 return;
 		}
 	}
-
 	function runAPI() {
-
-		var tx_array = ticker.trim().split(/\s+/);
+		/*var tx_array = ticker.trim().split(/\s+/);
 		if (tx_array.length > 1)
 		{
 			if (tx_array[1].toLowerCase() == 'volume' || tx_array[1].toLowerCase() == 'wsb' || tx_array[1].toLowerCase() == 'new2')
@@ -170,21 +165,21 @@
 			}
 		}
 
-		else {
+		else {*/
 			api_output = {"symbol":"waiting"};
-			cmd_used = "range";
+			/*cmd_used = "range";*/
 			progress.set(0);
-			volume_output.percentile = '-';
+
 			fetch("./api/test?input_cmd="+ticker)
 				.then(d => d.text())
 				.then(d => (api_output = JSON.parse(d)))
 				.then(d => console.log(d));
 
-			fetch("https://www.insuremystock.com/stocks/volume/"+tx_array[0])
+			/*fetch("https://www.insuremystock.com/stocks/volume/"+tx_array[0])
 			.then(response => response.json())
 			.then(data=>volume_output=data)
-			.then(x => progress.set(volume_output.percentile/100));
-		}
+			.then(x => progress.set(volume_output.percentile/100));*/
+
 
 
 	}
