@@ -187,8 +187,17 @@
 		
 	}
 </script>
+
+<hr>
+
+
+
+<h3>Hello <strong>{selectedTicker}!</strong></h3>
+
+<hr>
+
 <div style='text-align: center; max-width:600px; margin: 0 auto;'>
-	<input bind:value={ticker} on:keydown={handleKeydown} autofocus/>
+	<AutoComplete items={tickers} bind:selectedItem={ticker} on:keydown={handleKeydown} maxItemsToShowInList=5/>
 	<button on:click={runAPI}>
 		GO
 	</button>
@@ -255,15 +264,6 @@
 	<h2><span style="color:red;">INVALID COMMAND</span></h2>
 
 {/if}
-
-<hr>
-
-<h3>Test fancy autocomplete ... </h3>
-
-<AutoComplete items={tickers} bind:selectedItem={selectedTicker} maxItemsToShowInList=5/>
-<h3>Hello <strong>{selectedTicker}!</strong></h3>
-
-<hr>
 
 <figure>
 	<img alt='Fat Tony' src='FatTony.png'>
