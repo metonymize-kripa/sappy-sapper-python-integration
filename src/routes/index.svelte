@@ -14,14 +14,14 @@
 		text-transform: uppercase;
 		font-weight: 400;
 		margin: 0 auto;
-		width:50%;
+		width:60%;
 		
 	}
 	button {
 		text-transform: uppercase;
 		margin: 10 auto;
-		width:40%;
-		font-size: 1.8em;
+		width:30%;
+		font-size: 1.6em;
 	}
 	h2 {
 		font-size: 1.8em;
