@@ -18,9 +18,7 @@
 		
 	}
 	button {
-		font-size: 1.7em;
 		text-transform: uppercase;
-		font-weight: 400;
 		margin: 0 auto;
 		width:40%;
 	}
@@ -188,7 +186,7 @@
 	}
 </script>
 
-<div style='text-align: left; max-width:600px; margin: 0 auto;'>
+<div style='text-align: left; max-width:600px; margin: 10 auto;'>
 	<AutoComplete items={tickers} bind:selectedItem={ticker} on:keydown={handleKeydown} maxItemsToShowInList=5/>
 	<button on:click={runAPI}>
 		GO
