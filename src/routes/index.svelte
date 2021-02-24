@@ -69,7 +69,10 @@
 	Autocomplete{
 		width:60%;
 	}
-	.autocomplete{
+	.autocomplete-input{
+		width:60%;
+	}
+	.input .autocomplete-input{
 		width:60%;
 	}
 	
