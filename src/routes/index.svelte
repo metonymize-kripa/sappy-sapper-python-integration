@@ -66,7 +66,7 @@
 		color:green;
 	}
 	
-	autocomplete{
+	Autocomplete{
 		width:60%;
 	}
 	.autocomplete{
