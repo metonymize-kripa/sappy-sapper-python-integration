@@ -10,7 +10,7 @@ import requests
 #from scipy.stats import norm
 import math
 API_URL = 'https://www.insuremystock.com/'
-SKILL_MAP = ['range':'options/range/', 'ape':'options/kelly/', 'doom':'options/doom/' , 'volume':'stocks/volume/', 'prob_pct':'options/prob_pct/']
+SKILL_MAP = {'range':'options/range/', 'ape':'options/kelly/', 'doom':'options/doom/' , 'volume':'stocks/volume/', 'prob_pct':'options/prob_pct/'}
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -40,11 +40,11 @@ class handler(BaseHTTPRequestHandler):
                 try:
                     if skill == 'range':
                         api_output = make_range_response(symbol, api_output)
-                    elif skill == 'doom'
+                    elif skill == 'doom':
                         api_output = make_doom_response(symbol, api_output)
-                    elif skill == 'volume'
+                    elif skill == 'volume':
                         api_output = make_volume_response(symbol, api_output)
-                    elif skill == 'ape'
+                    elif skill == 'ape':
                         api_output = make_ape_response(symbol, api_output)
                     else:
                         api_output['main_point'] = f"Invalid Command - {skill}"
@@ -55,7 +55,7 @@ class handler(BaseHTTPRequestHandler):
             api_output['main_point'] = f"Bro, you need to type in sumthin"
         self.wfile.write(message.encode())
         return
-        
+
 def make_range_response(symbol, resp_dict):
     api_end_point = f"{API_URL}{SKILL_MAP['range']}{symbol}"
     resp = requests.get(api_end_point)
@@ -70,7 +70,7 @@ def make_range_response(symbol, resp_dict):
         resp_dict['supporting_data'] = f'Now@ ${round(input_dict["price"])}'
         resp_dict['secondary_point'] = f'{input_dict["volume"]/input_dict["avg_10d_volume"]:.2f}x adv (input_dict["volume_pct"] %ile)'
         if input_dict['volume_pct' > 55]:
-            resp_dict['secondary_class'] =  = 'bullish'
+            resp_dict['secondary_class'] = 'bullish'
         elif input_dict['volume_pct' < 45]:
             resp_dict['secondary_class'] = 'bearish'
         resp_dict['secondary_description'] =  'Current relative volume'
@@ -113,7 +113,7 @@ def make_volume_response(symbol, resp_dict):
         resp_dict['supporting_data'] = f'Now@ {(input_dict["volume"])}'
         resp_dict['secondary_point'] = input_dict["percentile"]
         if input_dict['volume_pct' > 55]:
-            resp_dict['secondary_class'] =  = 'bullish'
+            resp_dict['secondary_class'] = 'bullish'
         elif input_dict['volume_pct' < 45]:
             resp_dict['secondary_class'] = 'bearish'
         resp_dict['secondary_description'] =  'Current volume percentile'
