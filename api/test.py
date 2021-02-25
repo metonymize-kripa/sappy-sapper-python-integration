@@ -25,7 +25,7 @@ class handler(BaseHTTPRequestHandler):
                       'secondary_point':'',
                       'secondary_class':'neutral',
                       'secondary_description':'' }
-        self.wfile.write(json.dumps(api_output))
+        self.wfile.write((json.dumps(api_output)).encode())
         return
         if "input_cmd" in dic:
             if dic["input_cmd"] == 'WTF':
