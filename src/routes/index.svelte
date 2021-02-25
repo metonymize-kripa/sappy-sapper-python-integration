@@ -69,10 +69,10 @@
 		color:green;
 	}
     .autocomplete-list-item{
-        text-align:left;
+        text-align:left!important;
     }
     autocomplete-list-item{
-        text-align:left;
+        text-align:left !important;
     }
 
 	/*.progress-div {
