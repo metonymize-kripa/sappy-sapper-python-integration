@@ -1,6 +1,6 @@
 {
-  "name": "TODO",
-  "description": "TODO",
+  "name": "FatNeo",
+  "description": "FatNeo",
   "version": "0.0.1",
   "scripts": {
     "start": "sapper dev",

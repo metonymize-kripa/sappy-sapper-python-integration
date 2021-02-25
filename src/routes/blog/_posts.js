@@ -15,6 +15,21 @@ const posts = [
 			<p><strong> Sign up for the <a href='https://oracled.mailchimpsites.com/'> DailySpread</a></strong></p>
 		`
   }
+  {
+      title: 'How do I use the tool?',
+      slug: 'tutorial-main',
+      html: `
+            <h1> Type the symbol and hit enter. Data comes out nice and good></h1>
+            <figure>
+            	<img alt='Type symbol and Go' src='FatNeo_Tutorial_1_1.png'>
+            	<figcaption>Type the symbol and hit enter</figcaption>
+            </figure>
+            <figure>
+            	<img alt='Type symbol and Go' src='FatNeo_Tutorial_1_2.png'>
+            	<figcaption>Data will open your trading mind</figcaption>
+            </figure>
+        `
+    }
 ];
 
 posts.forEach(post => {

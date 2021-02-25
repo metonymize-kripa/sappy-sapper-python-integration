@@ -71,9 +71,6 @@
     :global(.autocomplete-list-item){
         text-align:left!important;
     }
-    :global(autocomplete-list-item){
-        text-align:left !important;
-    }
 
 	/*.progress-div {
 	    width: 200px;
