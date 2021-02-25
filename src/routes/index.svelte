@@ -150,7 +150,7 @@
 </script>
 
 <div>
-	<AutoComplete  class="my-ac" items={tickers} bind:selectedItem={ticker} on:keydown={handleKeydown} maxItemsToShowInList=5/>
+	<AutoComplete  class="my-ac" items={tickers} bind:selectedItem={ticker} on:keydown={handleKeydown} maxItemsToShowInList=5 hideArrow=true/>
 	<button on:click={runAPI}>
 		GO
 	</button>
