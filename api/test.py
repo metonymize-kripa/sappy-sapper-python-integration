@@ -61,15 +61,15 @@ def make_range_response(symbol, resp_dict):
         input_dict = resp.json()
         resp_dict['main_point'] = f'${round(input_dict["low_range"])} - ${round(input_dict["high_range"])}'
         resp_dict['description'] = '1Wk Price Band, Options implied @ 75% Prb.'
-        if input_dict['prob_up' > 0.6]:
+        if float(input_dict['prob_up']) > 0.6:
             resp_dict['main_class'] = 'bullish'
-        elif input_dict['prob_up' < 0.4]:
+        elif float(input_dict['prob_up']) < 0.4:
             resp_dict['main_class'] = 'bearish'
         resp_dict['supporting_data'] = f'Now@ ${round(input_dict["price"])}'
-        resp_dict['secondary_point'] = f'{input_dict["volume"]/input_dict["avg_10d_volume"]:.2f}x adv (input_dict["volume_pct"] %ile)'
-        if input_dict['volume_pct' > 55]:
+        resp_dict['secondary_point'] = f'{input_dict["today_volume"]/input_dict["avg_10d_volume"]:.2f}x adv (input_dict["volume_pct"] %ile)'
+        if int(input_dict['volume_pct']) > 55:
             resp_dict['secondary_class'] = 'bullish'
-        elif input_dict['volume_pct' < 45]:
+        elif int(input_dict['volume_pct']) < 45:
             resp_dict['secondary_class'] = 'bearish'
         resp_dict['secondary_description'] =  'Current relative volume'
     return resp_dict
