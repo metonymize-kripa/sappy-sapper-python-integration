@@ -100,6 +100,10 @@ def make_ape_response(symbol, resp_dict):
         resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f"Don't put more than {round(input_dict['kelly']*100)}% in this stonk"
         resp_dict['description'] = """Apes together but heed sage <a href="https://en.wikipedia.org/wiki/Kelly_criterion"> Kelly's advice</a>"""
+        if float(input_dict['prob_up']) > 0.6:
+            resp_dict['main_class'] = 'bullish'
+        elif float(input_dict['prob_up']) < 0.4:
+            resp_dict['main_class'] = 'bearish'
     return resp_dict
 
 def make_volume_response(symbol, resp_dict):
