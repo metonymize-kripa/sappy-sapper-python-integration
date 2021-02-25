@@ -18,8 +18,8 @@
 	}
 	button {
 		text-transform: uppercase;
-		margin: auto;
-		width:50%;
+		margin: 0 auto;
+		width:100%;
 		font-size: 1.6em;
 	}
 	h2 {
@@ -91,8 +91,8 @@
 	}
 	*/
 	div.container1{
-	  margin: auto;
-	  width: 50%;
+	  margin: 0 auto;
+	  width: 100%;
 	}
 
 	@media (min-width: 480px) {
@@ -142,8 +142,9 @@
 	<AutoComplete  class="my-ac" items={tickers} bind:selectedItem={ticker} 
 		      on:keydown={handleKeydown} 
 		      maxItemsToShowInList=5 hideArrow=true placeholder="AAL" showClear=true />
-	<p></p> 
+	
 	<br>
+	
 	<button on:click={runAPI}>
 		GO
 	</button>
