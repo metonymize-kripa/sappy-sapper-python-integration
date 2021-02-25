@@ -19,7 +19,7 @@
 	button {
 		text-transform: uppercase;
 		margin: 0 auto;
-		width:60%;
+		width:20%;
 		font-size: 1.6em;
 	}
 	
