@@ -92,8 +92,14 @@
 	  font-weight: 800;
 	}
 	*/
+    div.autocomplete{
+        width:60% !important;
+    }
     .autocomplete{
-    width:60%;
+        width:60% !important;
+    }
+    autocomplete{
+        width:60% !important;
     }
 
 	@media (min-width: 480px) {
