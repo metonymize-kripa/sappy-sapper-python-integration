@@ -90,7 +90,7 @@
 	  font-weight: 800;
 	}
 	*/
-	.autocomplete{
+	div.test_container{
 	  margin: auto;
 	  width: 50%;
 	}
@@ -138,10 +138,11 @@
 	}
 </script>
 
-<div>
+<div class=test_container>
 	<AutoComplete  class="my-ac" items={tickers} bind:selectedItem={ticker} 
 		      on:keydown={handleKeydown} 
 		      maxItemsToShowInList=5 hideArrow=true placeholder="AAL" showClear=true />
+	<br>
 	<button on:click={runAPI}>
 		GO
 	</button>
