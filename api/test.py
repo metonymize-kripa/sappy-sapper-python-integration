@@ -81,9 +81,9 @@ def make_doom_response(symbol, resp_dict):
         input_dict = resp.json()
         resp_dict['main_point'] = f'Crash Index @{round(100*input_dict["prob_down"])}'
         resp_dict['description'] = 'Options implied Prb. of 5%👇 in month ahead'
-        if float(input_dict['prob_down'] < 0.1):
+        if float(input_dict['prob_down']) < 0.1:
             resp_dict['main_class'] = 'bullish'
-        elif float(input_dict['prob_down'] > 0.2:
+        elif float(input_dict['prob_down']) > 0.2:
             resp_dict['main_class'] = 'bearish'
     return resp_dict
 
