@@ -8,7 +8,7 @@ from urllib import parse
 import requests
 import json
 API_URL = 'https://www.insuremystock.com/'
-SKILL_MAP = {'range':'options/range/', 'ape':'options/kelly/','kelly':'options/kelly/', 'doom':'options/doom/' , 'volume':'stocks/volume/', 'prob_pct':'options/prob_pct/'}
+SKILL_MAP = {'range':'options/range/', 'ape':'options/kelly/','kelly':'options/kelly/','doom':'options/doom/' , 'volume':'stocks/volume/', 'prob_pct':'options/prob_pct/','wsb':'stocks/volume/', 'new2':'options/kelly/' }
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -98,8 +98,9 @@ def make_ape_response(symbol, resp_dict):
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
         resp_dict['symbol'] = symbol
-        resp_dict['main_point'] = f"Don't put more than {round(input_dict['kelly']*100)}% in this stonk"
-        resp_dict['description'] = """Apes together but heed sage <a href="https://en.wikipedia.org/wiki/Kelly_criterion"> Kelly's advice</a>"""
+
+        resp_dict['main_point'] = f"Consider Kelly-efficient bet sizing of: {round(input_dict['kelly']*100)}% "
+        resp_dict['description'] = "Experimental feature"
         if float(input_dict['prob_up']) > 0.6:
             resp_dict['main_class'] = 'bullish'
         elif float(input_dict['prob_up']) < 0.4:
@@ -113,7 +114,7 @@ def make_volume_response(symbol, resp_dict):
         input_dict = resp.json()
         resp_dict['symbol'] = symbol
         adv_x_volume = input_dict["volume"]/input_dict["avg_10d_volume"]
-        resp_dict['main_point'] = f'{adv_x_volume:.2f}x adv'
+        resp_dict['main_point'] = f'{adv_x_volume:.2f} times'
         resp_dict['description'] = 'Relative Volume based on 10 days average'
         if adv_x_volume > 1:
             resp_dict['main_class'] = 'bullish'
