@@ -51,7 +51,7 @@ class handler(BaseHTTPRequestHandler):
                     api_output['main_point'] = f"Invalid Command - {skill}"
         else:
             api_output['main_point'] = f"Bro, you need to type in sumthin"
-        self.wfile.write(json.dumps(api_output.encode()))
+        self.wfile.write(json.dumps(api_output))
         return
 
 def make_range_response(symbol, resp_dict):
