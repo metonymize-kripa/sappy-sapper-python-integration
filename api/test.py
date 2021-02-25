@@ -18,7 +18,8 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Content-type','text/plain')
         self.end_headers()
         curr_date = str(datetime.date(datetime.now()))
-        api_output = {'main_point':'',
+        api_output = {'symbol':'trying..'
+                      'main_point':'',
                       'main_class':'neutral',
                       'description':'',
                       'supporting_data':'',
@@ -59,6 +60,7 @@ def make_range_response(symbol, resp_dict):
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f'${round(input_dict["low_range"])} - ${round(input_dict["high_range"])}'
         resp_dict['description'] = '1Wk Price Band, Options implied @ 75% Prb.'
         if float(input_dict['prob_up']) > 0.6:
@@ -79,6 +81,7 @@ def make_doom_response(symbol, resp_dict):
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f'Crash Index @{round(100*input_dict["prob_down"])}'
         resp_dict['description'] = 'Options implied Prb. of 5%👇 in month ahead'
         if float(input_dict['prob_down']) < 0.1:
@@ -92,6 +95,7 @@ def make_ape_response(symbol, resp_dict):
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f"Don't put more than {round(input_dict['kelly']*100)}% in this stonk"
         resp_dict['description'] = """Apes together but heed sage <a href="https://en.wikipedia.org/wiki/Kelly_criterion"> Kelly's advice</a>"""
     return resp_dict
@@ -101,6 +105,7 @@ def make_volume_response(symbol, resp_dict):
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        resp_dict['symbol'] = symbol
         adv_x_volume = input_dict["volume"]/input_dict["avg_10d_volume"]
         resp_dict['main_point'] = f'{adv_x_volume:.2f}x adv'
         resp_dict['description'] = 'Relative Volume based on 10 days average'
