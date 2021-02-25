@@ -90,7 +90,7 @@
 	  font-weight: 800;
 	}
 	*/
-	div.test_container{
+	div.container1{
 	  margin: auto;
 	  width: 50%;
 	}
@@ -138,7 +138,7 @@
 	}
 </script>
 
-<div class=test_container>
+<div class=container1>
 	<AutoComplete  class="my-ac" items={tickers} bind:selectedItem={ticker} 
 		      on:keydown={handleKeydown} 
 		      maxItemsToShowInList=5 hideArrow=true placeholder="AAL" showClear=true />
