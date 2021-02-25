@@ -167,7 +167,7 @@
 
 <figure>
 	<img alt='Fat Tony' src='FatTony.png'>
-	<figcaption>Fat Tony: I don't get mad. I get stabby.</figcaption>
+	<figcaption>Fat Tony: I don't get upset. I get stabby.</figcaption>
 </figure>
 
 <p><strong> Sign up for the <a href='https://oracled.mailchimpsites.com/'> DailySpread</a></strong></p>
