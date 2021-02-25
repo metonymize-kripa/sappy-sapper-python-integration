@@ -92,7 +92,7 @@
 	  font-weight: 800;
 	}
 	*/
-    autocomplete{
+    .autocomplete{
     width:60%;
     }
 
