@@ -14,7 +14,7 @@ const posts = [
     html: `
 			<p><strong> Sign up for the <a href='https://oracled.mailchimpsites.com/'> DailySpread</a></strong></p>
 		`
-  }
+  },
   {
       title: 'How do I use the tool?',
       slug: 'tutorial-main',
