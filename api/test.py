@@ -109,13 +109,13 @@ def make_volume_response(symbol, resp_dict):
         input_dict = resp.json()
         resp_dict['symbol'] = symbol
         adv_x_volume = input_dict["volume"]/input_dict["avg_10d_volume"]
-        resp_dict['main_point'] = f'{adv_x_volume}x adv'
+        resp_dict['main_point'] = f'{adv_x_volume:.2f}x adv'
         resp_dict['description'] = 'Relative Volume based on 10 days average'
         if adv_x_volume > 1:
             resp_dict['main_class'] = 'bullish'
         elif adv_x_volume < 0.7:
             resp_dict['main_class'] = 'bearish'
-        resp_dict['supporting_data'] = f'Now@ {(input_dict["volume"])}'
+        resp_dict['supporting_data'] = f'Now@{(input_dict["volume"])}'
         resp_dict['secondary_point'] = input_dict["percentile"]
         if float(input_dict['percentile']) > 55:
             resp_dict['secondary_class'] = 'bullish'
