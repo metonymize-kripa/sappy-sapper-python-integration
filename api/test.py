@@ -52,7 +52,7 @@ class handler(BaseHTTPRequestHandler):
                     api_output['main_point'] = f"Invalid Command - {skill}"
         else:
             api_output['main_point'] = f"Bro, you need to type in sumthin"
-        self.wfile.write((str(api_output)).encode())
+        self.wfile.write((json.dumps(api_output)).encode())
         return
 
 def make_range_response(symbol, resp_dict):
@@ -68,7 +68,7 @@ def make_range_response(symbol, resp_dict):
         elif float(input_dict['prob_up']) < 0.4:
             resp_dict['main_class'] = 'bearish'
         resp_dict['supporting_data'] = f'Now@ ${round(input_dict["price"])}'
-        resp_dict['secondary_point'] = f'{input_dict["today_volume"]/input_dict["avg_10d_volume"]:.2f}x adv {input_dict["volume_pct"]} %ile)'
+        resp_dict['secondary_point'] = f'{input_dict["today_volume"]/input_dict["avg_10d_volume"]:.2f}x adv {input_dict["volume_pct"]:.2f} %ile)'
         if int(input_dict['volume_pct']) > 55:
             resp_dict['secondary_class'] = 'bullish'
         elif int(input_dict['volume_pct']) < 45:
