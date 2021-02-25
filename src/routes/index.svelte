@@ -68,7 +68,7 @@
 	.bullish{
 		color:green;
 	}
-    .autocomplete-list{
+    .autocomplete-list-item{
         text-align:left;
     }
 
