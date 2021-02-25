@@ -71,6 +71,9 @@
     .autocomplete-list-item{
         text-align:left;
     }
+    autocomplete-list-item{
+        text-align:left;
+    }
 
 	/*.progress-div {
 	    width: 200px;
