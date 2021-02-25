@@ -125,12 +125,11 @@
 	function runAPI() {
 
 			api_output = {"symbol":"waiting"};
-			/*cmd_used = "range";*/
 			progress.set(0);
 			fetch("./api/test?input_cmd="+ticker)
 				.then(d => d.text())
-                .then(d => console.log(d))
-				.then(d => (api_output = JSON.parse(d)));
+                .then(d => console.log(d));
+				//.then(d => (api_output = JSON.parse(d)));
 
 	}
 </script>
@@ -144,6 +143,8 @@
 
 {#if api_output.symbol == "waiting"}
     <p>Getting results.....</p>
+{:else if api_output.symbol == "welcome"}
+    <p>Type in something</p>
 {:else}
     <h2><span style="class:{api_output.main_class};">{api_output.main_point}</h2>
     <p>{api_output.description}</p>
