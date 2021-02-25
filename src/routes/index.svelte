@@ -22,7 +22,7 @@
 		width:20%;
 		font-size: 1.6em;
 	}
-	
+
 	h2 {
 		font-size: 1.8em;
 		text-transform: uppercase;
@@ -68,6 +68,9 @@
 	.bullish{
 		color:green;
 	}
+    .autocomplete-list{
+        text-align:left;
+    }
 
 	/*.progress-div {
 	    width: 200px;
@@ -112,7 +115,7 @@
 		easing: cubicOut
 	});
 
-	
+
 	let api_output = {"symbol":"welcome"};
 
 	async function handleKeydown(event) {
@@ -137,9 +140,9 @@
 
 
 <div style='text-align: center; max-width:600px; margin: 0 auto;'>
-	
-        <AutoComplete  class="my-ac" items={tickers} bind:selectedItem={ticker} 
-		      on:keydown={handleKeydown} 
+
+        <AutoComplete  class="my-ac" items={tickers} bind:selectedItem={ticker}
+		      on:keydown={handleKeydown}
 		      maxItemsToShowInList=5 hideArrow=true placeholder="AAL" showClear=true />
 
         <button on:click={runAPI}>
