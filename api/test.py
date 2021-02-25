@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 from http.server import BaseHTTPRequestHandler
 from urllib import parse
 import requests
-import math
+import json
 API_URL = 'https://www.insuremystock.com/'
 SKILL_MAP = {'range':'options/range/', 'ape':'options/kelly/', 'doom':'options/doom/' , 'volume':'stocks/volume/', 'prob_pct':'options/prob_pct/'}
 
