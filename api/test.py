@@ -79,7 +79,7 @@ def make_range_response(symbol, resp_dict):
             resp_dict['secondary_class'] = 'bullish'
         elif int(input_dict['volume_pct']) < 45:
             resp_dict['secondary_class'] = 'bearish'
-        resp_dict['secondary_description'] =  'Current relative volume'
+        resp_dict['secondary_description'] =  'Relative Volume based on 10 days average'
     return resp_dict
 
 def make_doom_response(symbol, resp_dict):
