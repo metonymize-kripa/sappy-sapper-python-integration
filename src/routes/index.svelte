@@ -142,13 +142,12 @@
 	<AutoComplete  class="my-ac" items={tickers} bind:selectedItem={ticker} 
 		      on:keydown={handleKeydown} 
 		      maxItemsToShowInList=5 hideArrow=true placeholder="AAL" showClear=true />
-	
-	<br>
+</div>	
 	
 	<button on:click={runAPI}>
 		GO
 	</button>
-</div>
+
 
 {#if api_output.symbol == "waiting"}
     <p>Getting results.....</p>
