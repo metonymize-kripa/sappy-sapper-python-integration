@@ -19,14 +19,10 @@
 	button {
 		text-transform: uppercase;
 		margin: 0 auto;
-		width:20%;
+		width:60%;
 		font-size: 1.6em;
 	}
-	.autocomplete {
-		margin: 0 auto;
-		width:100%;
-		font-size: 1.6em;
-	}	
+	
 	h2 {
 		font-size: 1.8em;
 		text-transform: uppercase;
@@ -99,7 +95,6 @@
 	.myDiv {
 		margin: 0 auto;
 		width:100%;
-		font-size: 1.6em;
 	}
 
 	@media (min-width: 480px) {
