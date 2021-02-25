@@ -70,7 +70,7 @@ def make_range_response(symbol, resp_dict):
         elif float(input_dict['prob_up']) < 0.4:
             resp_dict['main_class'] = 'bearish'
         resp_dict['supporting_data'] = f'Now@ ${round(input_dict["price"])}'
-        resp_dict['secondary_point'] = f'{input_dict["today_volume"]/input_dict["avg_10d_volume"]:.2f}x adv {input_dict["volume_pct"]:.2f}-%ile'
+        resp_dict['secondary_point'] = f'{input_dict["today_volume"]/input_dict["avg_10d_volume"]:.2f}x adv ({round(input_dict["volume_pct"]}-%ile)'
         if int(input_dict['volume_pct']) > 55:
             resp_dict['secondary_class'] = 'bullish'
         elif int(input_dict['volume_pct']) < 45:
