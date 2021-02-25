@@ -51,7 +51,7 @@ class handler(BaseHTTPRequestHandler):
                         api_output['main_point'] = f"Invalid Command - {skill}"
                     #message = f'{{"symbol":"{my_stock.ticker}", "prob_up":{prob_move}, "price":"{round(my_stock.price)}","low":"{round(low)}","high":"{round(high)}"}}'
                 except:
-                    api_output['main_point'] = f"Invalid Command - {skill}"
+                    api_output['main_point'] = f"Seem like Invalid Command - {skill}"
         else:
             api_output['main_point'] = f"Bro, you need to type in sumthin"
         self.wfile.write((json.dumps(api_output)).encode())
@@ -117,9 +117,9 @@ def make_volume_response(symbol, resp_dict):
             resp_dict['main_class'] = 'bearish'
         resp_dict['supporting_data'] = f'Now@ {(input_dict["volume"])}'
         resp_dict['secondary_point'] = input_dict["percentile"]
-        if float(input_dict['volume_pct']) > 55:
+        if float(input_dict['percentile']) > 55:
             resp_dict['secondary_class'] = 'bullish'
-        elif float(input_dict['volume_pct']) < 45:
+        elif float(input_dict['percentile']) < 45:
             resp_dict['secondary_class'] = 'bearish'
         resp_dict['secondary_description'] =  'Current volume percentile'
     return resp_dict
