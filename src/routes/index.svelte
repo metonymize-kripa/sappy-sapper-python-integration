@@ -111,7 +111,7 @@
 
 	let ticker = "SPY";
 
-	let api_output = {"symbol":"no_symbol"};
+	let api_output = {"symbol":"waiting"};
 
 	async function handleKeydown(event) {
 		if (event.key === 'Enter') {
