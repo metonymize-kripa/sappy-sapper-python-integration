@@ -18,8 +18,8 @@
 	}
 	button {
 		text-transform: uppercase;
-		margin: 10 auto;
-		width:30%;
+		margin: auto;
+		width:50%;
 		font-size: 1.6em;
 	}
 	h2 {
@@ -90,21 +90,10 @@
 	  font-weight: 800;
 	}
 	*/
-    div.autocomplete{
-        width:60% !important;
-    }
-    .autocomplete{
-        width:60% !important;
-    }
-    autocomplete{
-        width:60% !important;
-    }
-    .my-ac{
-    width:60%;
-    }
-     div autocomplete{
-       width: 60% !impoertant;
-}
+	.autocomplete{
+	  margin: auto;
+	  width: 50%;
+	}
 
 	@media (min-width: 480px) {
 		h1 {
