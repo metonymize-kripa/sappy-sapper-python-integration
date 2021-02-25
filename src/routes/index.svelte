@@ -99,6 +99,9 @@
     autocomplete{
         width:60% !important;
     }
+     div autocomplete{
+       width: 60% !impoertant;
+}
 
 	@media (min-width: 480px) {
 		h1 {
