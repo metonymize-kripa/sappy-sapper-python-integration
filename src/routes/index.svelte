@@ -1,5 +1,5 @@
 <style>
-	h1, h2, h3, figure, p {
+	h1, h2, h3,h4, figure, p {
 		text-align: center;
 		margin: 0 auto;
 	}
@@ -34,6 +34,11 @@
 		font-weight: 1400;
 		margin: 0 0 0.5em 0;
 		color: blue;
+	}
+    h4 {
+		font-size: 1.2em;
+		font-weight: 600;
+		margin: 0 0 0.5em 0;
 	}
 	figure {
 		margin: 0 0 1em 0;
@@ -151,7 +156,7 @@
     <h2><span style="class:{api_output.main_class};">{api_output.main_point}</h2>
     <p>{@html api_output.description}</p>
     <h3>{api_output.supporting_data}</h3>
-    <h2><span style="class:{api_output.secondary_class};">{api_output.secondary_point}</h2>
+    <h4><span style="class:{api_output.secondary_class};">{api_output.secondary_point}</h4>
     <p>{api_output.secondary_description}</p>
 {/if}
 
