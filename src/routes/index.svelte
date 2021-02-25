@@ -87,6 +87,9 @@
 	  font-weight: 800;
 	}
 	*/
+    autocomplete{
+    width:60%;
+    }
 
 	@media (min-width: 480px) {
 		h1 {
@@ -146,7 +149,7 @@
     <p>Type in something</p>
 {:else}
     <h2><span style="class:{api_output.main_class};">{api_output.main_point}</h2>
-    <p>{api_output.description}</p>
+    <p>{@html api_output.description}</p>
     <h3>{api_output.supporting_data}</h3>
     <h2><span style="class:{api_output.secondary_class};">{api_output.secondary_point}</h2>
     <p>{api_output.secondary_description}</p>
