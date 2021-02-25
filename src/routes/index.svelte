@@ -90,10 +90,6 @@
 	  font-weight: 800;
 	}
 	*/
-	div.container1{
-	  margin: 0 auto;
-	  width: 100%;
-	}
 
 	@media (min-width: 480px) {
 		h1 {
@@ -138,12 +134,9 @@
 	}
 </script>
 
-<div class=container1>
 	<AutoComplete  class="my-ac" items={tickers} bind:selectedItem={ticker} 
 		      on:keydown={handleKeydown} 
 		      maxItemsToShowInList=5 hideArrow=true placeholder="AAL" showClear=true />
-</div>	
-	
 	<button on:click={runAPI}>
 		GO
 	</button>
