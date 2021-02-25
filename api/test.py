@@ -8,7 +8,7 @@ from urllib import parse
 import requests
 import json
 API_URL = 'https://www.insuremystock.com/'
-SKILL_MAP = {'range':'options/range/', 'ape':'options/kelly/', 'doom':'options/doom/' , 'volume':'stocks/volume/', 'prob_pct':'options/prob_pct/'}
+SKILL_MAP = {'range':'options/range/', 'ape':'options/kelly/','kelly':'options/kelly/', 'doom':'options/doom/' , 'volume':'stocks/volume/', 'prob_pct':'options/prob_pct/'}
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -44,6 +44,8 @@ class handler(BaseHTTPRequestHandler):
                     elif skill == 'volume':
                         api_output = make_volume_response(symbol, api_output)
                     elif skill == 'ape':
+                        api_output = make_ape_response(symbol, api_output)
+                    elif skill == 'kelly':
                         api_output = make_ape_response(symbol, api_output)
                     else:
                         api_output['main_point'] = f"Invalid Command - {skill}"
