@@ -22,6 +22,11 @@
 		width:100%;
 		font-size: 1.6em;
 	}
+	.autocomplete {
+		margin: 0 auto;
+		width:100%;
+		font-size: 1.6em;
+	}	
 	h2 {
 		font-size: 1.8em;
 		text-transform: uppercase;
@@ -134,18 +139,14 @@
 	}
 </script>
 
- <div class="columns">
-      <div class="column">
+
         <AutoComplete  class="my-ac" items={tickers} bind:selectedItem={ticker} 
 		      on:keydown={handleKeydown} 
 		      maxItemsToShowInList=5 hideArrow=true placeholder="AAL" showClear=true />
-      </div>
-	 <div class="column is-one-third">
+
         <button on:click={runAPI}>
 		GO
 	</button>
-      </div>
-    </div>
 
 {#if api_output.symbol == "waiting"}
     <p>Getting results.....</p>
