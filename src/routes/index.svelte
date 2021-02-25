@@ -134,13 +134,18 @@
 	}
 </script>
 
-	<AutoComplete  class="my-ac" items={tickers} bind:selectedItem={ticker} 
+ <div class="columns">
+      <div class="column">
+        <AutoComplete  class="my-ac" items={tickers} bind:selectedItem={ticker} 
 		      on:keydown={handleKeydown} 
 		      maxItemsToShowInList=5 hideArrow=true placeholder="AAL" showClear=true />
-	<button on:click={runAPI}>
+      </div>
+	 <div class="column is-one-third">
+        <button on:click={runAPI}>
 		GO
 	</button>
-
+      </div>
+    </div>
 
 {#if api_output.symbol == "waiting"}
     <p>Getting results.....</p>
