@@ -68,10 +68,10 @@
 	.bullish{
 		color:green;
 	}
-    .autocomplete-list-item{
+    :global(.autocomplete-list-item){
         text-align:left!important;
     }
-    autocomplete-list-item{
+    :global(autocomplete-list-item){
         text-align:left !important;
     }
 
