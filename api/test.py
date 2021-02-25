@@ -81,9 +81,9 @@ def make_doom_response(symbol, resp_dict):
         input_dict = resp.json()
         resp_dict['main_point'] = f'Crash Index @{round(100*input_dict["prob_down"])}'
         resp_dict['description'] = 'Options implied Prb. of 5%👇 in month ahead'
-        if input_dict['prob_down' < 0.1]:
+        if float(input_dict['prob_down'] < 0.1):
             resp_dict['main_class'] = 'bullish'
-        elif input_dict['prob_down' > 0.2]:
+        elif float(input_dict['prob_down'] > 0.2:
             resp_dict['main_class'] = 'bearish'
     return resp_dict
 
@@ -110,9 +110,9 @@ def make_volume_response(symbol, resp_dict):
             resp_dict['main_class'] = 'bearish'
         resp_dict['supporting_data'] = f'Now@ {(input_dict["volume"])}'
         resp_dict['secondary_point'] = input_dict["percentile"]
-        if input_dict['volume_pct' > 55]:
+        if float(input_dict['volume_pct']) > 55:
             resp_dict['secondary_class'] = 'bullish'
-        elif input_dict['volume_pct' < 45]:
+        elif float(input_dict['volume_pct']) < 45:
             resp_dict['secondary_class'] = 'bearish'
         resp_dict['secondary_description'] =  'Current volume percentile'
     return resp_dict
