@@ -19,11 +19,12 @@ const posts = [
       title: 'How do I use the tool?',
       slug: 'tutorial-main',
       html: `
-            <h1> Type the symbol and hit enter. Data comes out nice and good></h1>
+            <h1 style="color:blue;"> Type the symbol and hit enter or click Go</h1>
             <figure>
             	<img alt='Type symbol and Go' src='FatNeo_Tutorial_1_1.png'>
             	<figcaption>Type the symbol and hit enter</figcaption>
             </figure>
+            <h1 style="color:blue;"> Enjoy the simplicity </h1>
             <figure>
             	<img alt='Type symbol and Go' src='FatNeo_Tutorial_1_2.png'>
             	<figcaption>Data will open your trading mind</figcaption>
