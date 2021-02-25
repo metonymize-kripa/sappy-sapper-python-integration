@@ -35,7 +35,7 @@ class handler(BaseHTTPRequestHandler):
                 skill = "range"
                 symbol = cmd_list[0].lower()
                 if len(cmd_list) > 1:
-                    skill = cmd_list[0].lower()
+                    skill = cmd_list[1].lower()
                 try:
                     if skill == 'range':
                         api_output = make_range_response(symbol, api_output)
