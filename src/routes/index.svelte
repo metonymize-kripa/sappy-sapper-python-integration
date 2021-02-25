@@ -129,8 +129,9 @@
 			progress.set(0);
 			fetch("./api/test?input_cmd="+ticker)
 				.then(d => d.text())
+                .then(d => console.log(d));
 				.then(d => (api_output = JSON.parse(d)))
-				.then(d => console.log(d));
+
 	}
 </script>
 
