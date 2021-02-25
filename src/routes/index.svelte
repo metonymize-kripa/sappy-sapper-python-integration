@@ -61,10 +61,10 @@
    .neutral {
         color:black;
 	}
-	.bear{
+	.bearish{
 		color:red;
 	}
-	.bull{
+	.bullish{
 		color:green;
 	}
 
