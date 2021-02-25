@@ -128,13 +128,13 @@
 			progress.set(0);
 			fetch("./api/test?input_cmd="+ticker)
 				.then(d => d.text())
-                .then(d => console.log(d));
+                .then(d => console.log(d))
 				.then(d => (api_output = JSON.parse(d)));
 
 	}
 </script>
 
-<div style='margin: 10 auto;'>
+<div>
 	<AutoComplete items={tickers} bind:selectedItem={ticker} on:keydown={handleKeydown} maxItemsToShowInList=5/>
 	<button on:click={runAPI}>
 		GO
