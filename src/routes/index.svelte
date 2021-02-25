@@ -146,7 +146,7 @@
 {:else}
     <h2><span style="class:{api_output.main_class};">{api_output.main_point}</h2>
     <p>{api_output.description}</p>
-    <h3>{supporting_data}</h3>
+    <h3>{api_output.supporting_data}</h3>
     <h2><span style="class:{api_output.secondary_class};">{api_output.secondary_point}</h2>
     <p>{api_output.secondary_description}</p>
 {/if}
