@@ -99,6 +99,9 @@
     autocomplete{
         width:60% !important;
     }
+    .my-ac{
+    width:60%;
+    }
      div autocomplete{
        width: 60% !impoertant;
 }
@@ -149,7 +152,7 @@
 </script>
 
 <div>
-	<AutoComplete items={tickers} bind:selectedItem={ticker} on:keydown={handleKeydown} maxItemsToShowInList=5/>
+	<AutoComplete  class="my-ac" items={tickers} bind:selectedItem={ticker} on:keydown={handleKeydown} maxItemsToShowInList=5/>
 	<button on:click={runAPI}>
 		GO
 	</button>
@@ -161,10 +164,10 @@
     <p>Type in something</p>
 {:else}
     <br>
-    <h2 style="class:{api_output.main_class};">{api_output.main_point}</h2>
+    <h2 class="{api_output.main_class};">{api_output.main_point}</h2>
     <p>{@html api_output.description}</p>
     <h3>{api_output.supporting_data}</h3>
-    <h4 style="class:{api_output.secondary_class};">{api_output.secondary_point}</h4>
+    <h4 class="{api_output.secondary_class};">{api_output.secondary_point}</h4>
     <p>{api_output.secondary_description}</p>
 {/if}
 
