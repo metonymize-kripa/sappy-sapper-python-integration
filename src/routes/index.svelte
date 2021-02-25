@@ -91,11 +91,6 @@
 	  font-weight: 800;
 	}
 	*/
-	
-	.myDiv {
-		margin: 0 auto;
-		width:100%;
-	}
 
 	@media (min-width: 480px) {
 		h1 {
@@ -141,8 +136,8 @@
 </script>
 
 
-<div class="myDiv">
-
+<div style='text-align: center; max-width:600px; margin: 0 auto;'>
+	
         <AutoComplete  class="my-ac" items={tickers} bind:selectedItem={ticker} 
 		      on:keydown={handleKeydown} 
 		      maxItemsToShowInList=5 hideArrow=true placeholder="AAL" showClear=true />
