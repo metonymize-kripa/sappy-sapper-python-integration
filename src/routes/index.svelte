@@ -19,7 +19,7 @@
 	button {
 		text-transform: uppercase;
 		margin: 0 auto;
-		width:100%;
+		width:20%;
 		font-size: 1.6em;
 	}
 	.autocomplete {
@@ -147,6 +147,8 @@
         <button on:click={runAPI}>
 		GO
 	</button>
+
+    <br>
 
 {#if api_output.symbol == "waiting"}
     <p>Getting results.....</p>
