@@ -3,11 +3,9 @@
 # https://towardsdatascience.com/how-to-deploy-a-python-serverless-function-to-vercel-f43c8ca393a0
 
 from datetime import datetime, timedelta
-#from wallstreet import Call, Put, Stock
 from http.server import BaseHTTPRequestHandler
 from urllib import parse
 import requests
-#from scipy.stats import norm
 import math
 API_URL = 'https://www.insuremystock.com/'
 SKILL_MAP = {'range':'options/range/', 'ape':'options/kelly/', 'doom':'options/doom/' , 'volume':'stocks/volume/', 'prob_pct':'options/prob_pct/'}

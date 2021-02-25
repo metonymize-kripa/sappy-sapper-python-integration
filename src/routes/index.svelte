@@ -116,7 +116,7 @@
 	async function handleKeydown(event) {
 		if (event.key === 'Enter') {
 			//event.preventDefault();
-			//runAPI();
+			runAPI();
 		}
 		else {
 			 return;
