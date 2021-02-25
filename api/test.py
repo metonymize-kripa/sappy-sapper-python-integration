@@ -25,7 +25,8 @@ class handler(BaseHTTPRequestHandler):
                       'secondary_point':'',
                       'secondary_class':'neutral',
                       'secondary_description':'' }
-
+        self.wfile.write(json.dumps(api_output,default=str))
+        return
         if "input_cmd" in dic:
             if dic["input_cmd"] == 'WTF':
                 message = '{"symbol":"H🥚dl."}'
@@ -51,8 +52,8 @@ class handler(BaseHTTPRequestHandler):
                     api_output['main_point'] = f"Invalid Command - {skill}"
         else:
             api_output['main_point'] = f"Bro, you need to type in sumthin"
-        self.wfile.write(json.dumps(api_output,default=str)))
-        return
+        self.wfile.write(json.dumps(api_output,default=str))
+        #return
 
 def make_range_response(symbol, resp_dict):
     api_end_point = f"{API_URL}{SKILL_MAP['range']}{symbol}"
