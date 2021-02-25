@@ -95,6 +95,12 @@
 	  font-weight: 800;
 	}
 	*/
+	
+	.myDiv {
+		margin: 0 auto;
+		width:100%;
+		font-size: 1.6em;
+	}
 
 	@media (min-width: 480px) {
 		h1 {
@@ -140,6 +146,8 @@
 </script>
 
 
+<div class="myDiv">
+
         <AutoComplete  class="my-ac" items={tickers} bind:selectedItem={ticker} 
 		      on:keydown={handleKeydown} 
 		      maxItemsToShowInList=5 hideArrow=true placeholder="AAL" showClear=true />
@@ -148,6 +156,7 @@
 		GO
 	</button>
 
+</div>
     <br>
 
 {#if api_output.symbol == "waiting"}
