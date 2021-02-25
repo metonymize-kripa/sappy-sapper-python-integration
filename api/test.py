@@ -18,7 +18,7 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Content-type','text/plain')
         self.end_headers()
         curr_date = str(datetime.date(datetime.now()))
-        api_output = {'symbol':'trying..'
+        api_output = {'symbol':'trying..',
                       'main_point':'',
                       'main_class':'neutral',
                       'description':'',
