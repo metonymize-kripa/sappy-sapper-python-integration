@@ -82,20 +82,20 @@ def make_volume_response(symbol, resp_dict):
     return resp_dict
 
 def make_call_response(symbol, resp_dict):
-    # api_end_point = f"{API_URL}options/call_trades/{symbol}"
-    # resp = requests.get(api_end_point)
-    # if resp.ok: #Good response from FastAPI
-    #     input_dict = resp.json()
-    #     resp_dict['symbol'] = symbol
-    #     best_call = input_dict["best_call"]
-    #     best_spread = input_dict["best_spread"]
-    #     if best_call:
-    #         resp_dict['main_point'] = f'${best_call["strike"]} Strike Call Expiring on {best_call["expiry"]}'
-    #         resp_dict['description'] = "Optimal covered call to sell"
-    #         resp_dict['supporting_data'] = f'Now@ ${best_call["bid"]}'
-    #     if best_spread:
-    #         resp_dict['secondary_point'] = f'Buy ${best_spread["strike_to_buy"]} and sell ${best_spread["strike_to_sell"]} call (expiring on {best_spread["expiry"]})'
-    #         resp_dict['secondary_description'] = "Optimal call spread to sell given probalities implied by options"
+    api_end_point = f"{API_URL}options/call_trades/{symbol}"
+    resp = requests.get(api_end_point)
+    if resp.ok: #Good response from FastAPI
+        input_dict = resp.json()
+        resp_dict['symbol'] = symbol
+        best_call = input_dict["best_call"]
+        best_spread = input_dict["best_spread"]
+        if best_call:
+            resp_dict['main_point'] = f'${best_call["strike"]} Strike Call Expiring on {best_call["expiry"]}'
+            resp_dict['description'] = "Optimal covered call to sell"
+            resp_dict['supporting_data'] = f'Now@ ${best_call["bid"]}'
+        if best_spread:
+            resp_dict['secondary_point'] = f'Buy ${best_spread["strike_to_buy"]} and sell ${best_spread["strike_to_sell"]} call (expiring on {best_spread["expiry"]})'
+            resp_dict['secondary_description'] = "Optimal call spread to sell given probalities implied by options"
     return resp_dict
 
 #SKILL_MAP = {'range':'options/range/', 'ape':'options/kelly/','kelly':'options/kelly/','doom':'options/doom/' , 'volume':'stocks/volume/', 'prob_pct':'options/prob_pct/','wsb':'stocks/volume/', 'new2':'options/kelly/' }
