@@ -9,44 +9,6 @@ import json
 import requests
 API_URL = 'https://www.insuremystock.com/'
 
-class handler(BaseHTTPRequestHandler):
-    def do_GET(self):
-        s = self.path
-        dic = dict(parse.parse_qsl(parse.urlsplit(s).query))
-        self.send_response(200)
-        self.send_header('Content-type','text/plain')
-        self.end_headers()
-        curr_date = str(datetime.date(datetime.now()))
-        api_output = {'symbol':'trying..',
-                      'main_point':'',
-                      'main_class':'neutral',
-                      'description':'',
-                      'supporting_data':'',
-                      'secondary_point':'',
-                      'secondary_class':'neutral',
-                      'secondary_description':'' }
-
-        if "input_cmd" in dic:
-            if dic["input_cmd"] == 'WTF':
-                message = '{"symbol":"H🥚dl."}'
-            else:
-                cmd_list = dic["input_cmd"].strip().split()
-                skill = "range"
-                symbol = cmd_list[0].lower()
-                if len(cmd_list) > 1:
-                    skill = cmd_list[1].lower()
-                try:
-                    if skill in FUNCTION_MAP:
-                        api_output = FUNCTION_MAP.get(skill)(symbol, api_output)
-                    else:
-                        api_output['main_point'] = f"Invalid Command - {skill}"
-                    #message = f'{{"symbol":"{my_stock.ticker}", "prob_up":{prob_move}, "price":"{round(my_stock.price)}","low":"{round(low)}","high":"{round(high)}"}}'
-                except:
-                    api_output['main_point'] = f"Seem like Invalid Command - {skill}"
-        else:
-            api_output['main_point'] = f"Bro, you need to type in sumthin"
-        self.wfile.write((json.dumps(api_output)).encode())
-        return
 
 def make_range_response(symbol, resp_dict):
     api_end_point = f"{API_URL}options/range/{symbol}"
@@ -138,3 +100,42 @@ def make_call_response(symbol, resp_dict):
 """
 #SKILL_MAP = {'range':'options/range/', 'ape':'options/kelly/','kelly':'options/kelly/','doom':'options/doom/' , 'volume':'stocks/volume/', 'prob_pct':'options/prob_pct/','wsb':'stocks/volume/', 'new2':'options/kelly/' }
 FUNCTION_MAP = {'range':make_range_response, 'ape':make_ape_response,'kelly':make_ape_response,'doom':make_doom_response , 'volume':make_volume_response,'wsb':make_volume_response, 'new2':make_ape_response} # 'call':make_call_response }
+
+class handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        s = self.path
+        dic = dict(parse.parse_qsl(parse.urlsplit(s).query))
+        self.send_response(200)
+        self.send_header('Content-type','text/plain')
+        self.end_headers()
+        curr_date = str(datetime.date(datetime.now()))
+        api_output = {'symbol':'trying..',
+                      'main_point':'',
+                      'main_class':'neutral',
+                      'description':'',
+                      'supporting_data':'',
+                      'secondary_point':'',
+                      'secondary_class':'neutral',
+                      'secondary_description':'' }
+
+        if "input_cmd" in dic:
+            if dic["input_cmd"] == 'WTF':
+                message = '{"symbol":"H🥚dl."}'
+            else:
+                cmd_list = dic["input_cmd"].strip().split()
+                skill = "range"
+                symbol = cmd_list[0].lower()
+                if len(cmd_list) > 1:
+                    skill = cmd_list[1].lower()
+                try:
+                    if skill in FUNCTION_MAP:
+                        api_output = FUNCTION_MAP.get(skill)(symbol, api_output)
+                    else:
+                        api_output['main_point'] = f"Invalid Command - {skill}"
+                    #message = f'{{"symbol":"{my_stock.ticker}", "prob_up":{prob_move}, "price":"{round(my_stock.price)}","low":"{round(low)}","high":"{round(high)}"}}'
+                except:
+                    api_output['main_point'] = f"Seem like Invalid Command - {skill}"
+        else:
+            api_output['main_point'] = f"Bro, you need to type in sumthin"
+        self.wfile.write((json.dumps(api_output)).encode())
+        return
