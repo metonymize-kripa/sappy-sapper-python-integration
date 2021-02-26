@@ -80,7 +80,7 @@ def make_volume_response(symbol, resp_dict):
             resp_dict['secondary_class'] = 'bearish'
         resp_dict['secondary_description'] =  'Current volume percentile'
     return resp_dict
-"""
+
 def make_call_response(symbol, resp_dict):
     api_end_point = f"{API_URL}options/call_trades/{symbol}"
     resp = requests.get(api_end_point)
@@ -97,9 +97,9 @@ def make_call_response(symbol, resp_dict):
             resp_dict['secondary_point'] = f'Buy ${best_spread["strike_to_buy"]} and sell ${best_spread["strike_to_sell"]} call (expiring on {best_spread["expiry"]})'
             resp_dict['secondary_description'] = "Optimal call spread to sell given probalities implied by options"
     return resp_dict
-"""
+
 #SKILL_MAP = {'range':'options/range/', 'ape':'options/kelly/','kelly':'options/kelly/','doom':'options/doom/' , 'volume':'stocks/volume/', 'prob_pct':'options/prob_pct/','wsb':'stocks/volume/', 'new2':'options/kelly/' }
-FUNCTION_MAP = {'range':make_range_response, 'ape':make_ape_response,'kelly':make_ape_response,'doom':make_doom_response , 'volume':make_volume_response,'wsb':make_volume_response, 'new2':make_ape_response} # 'call':make_call_response }
+FUNCTION_MAP = {'range':make_range_response, 'ape':make_ape_response,'kelly':make_ape_response,'doom':make_doom_response , 'volume':make_volume_response,'wsb':make_volume_response, 'new2':make_ape_response, 'call':make_call_response }
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
