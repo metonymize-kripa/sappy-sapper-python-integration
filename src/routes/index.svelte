@@ -172,5 +172,9 @@
 	<figcaption>Fat Tony: I don't get testy. I get stabby.</figcaption>
 </figure>
 -->
+<figure>
+	<img alt='Fat Tony' src='FatNeoSPYHowTo.gif'>
+	<figcaption>How to?</figcaption>
+</figure>
 
 <p><strong> Sign up for the <a href='https://oracled.mailchimpsites.com/'> DailySpread</a></strong></p>
