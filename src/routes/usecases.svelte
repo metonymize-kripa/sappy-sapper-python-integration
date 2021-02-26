@@ -42,7 +42,6 @@ Here are a few use cases to inspire your exploration with our tools. Be bold. Ho
 	{#each photos as photo}
 		<figure>
 			<img src='{dsrandom.randomGifDrift()}' alt={photo.title}>
-			<figcaption>{photo.title}</figcaption>
 		</figure>
 	{:else}
 		<!-- this block renders when photos.length === 0 -->
