@@ -15,7 +15,7 @@ Here are a few use cases to inspire your exploration with our tools. Be bold. Ho
 	let photos = [];
 
 	onMount(async () => {
-		const res = await fetch(`https://jsonplaceholder.typicode.com/photos?_limit=9`);
+		const res = await fetch(`https://jsonplaceholder.typicode.com/photos?_limit=3`);
 		photos = await res.json();
 	});
 </script>
