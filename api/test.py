@@ -137,4 +137,4 @@ def make_call_response(symbol, resp_dict):
     return resp_dict
 """
 #SKILL_MAP = {'range':'options/range/', 'ape':'options/kelly/','kelly':'options/kelly/','doom':'options/doom/' , 'volume':'stocks/volume/', 'prob_pct':'options/prob_pct/','wsb':'stocks/volume/', 'new2':'options/kelly/' }
-FUNCTION_MAP = {'range':make_range_response, 'ape':make_ape_response,'kelly':make_ape_response,'doom':make_doom_response , 'volume':make_volume_response,'wsb':make_volume_response, 'new2':make_ape_response, 'call':make_call_response, }
+FUNCTION_MAP = {'range':make_range_response, 'ape':make_ape_response,'kelly':make_ape_response,'doom':make_doom_response , 'volume':make_volume_response,'wsb':make_volume_response, 'new2':make_ape_response} # 'call':make_call_response }
