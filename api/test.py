@@ -5,8 +5,8 @@
 from datetime import datetime, timedelta
 from http.server import BaseHTTPRequestHandler
 from urllib import parse
-import requests
 import json
+import requests
 API_URL = 'https://www.insuremystock.com/'
 
 class handler(BaseHTTPRequestHandler):
