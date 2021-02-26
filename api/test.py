@@ -89,7 +89,6 @@ def make_ape_response(symbol, resp_dict):
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
         resp_dict['symbol'] = symbol
-
         resp_dict['main_point'] = f"Consider Kelly-efficient bet sizing of: {round(input_dict['kelly']*100)}% "
         resp_dict['description'] = "Experimental feature"
         if float(input_dict['prob_up']) > 0.6:
@@ -120,5 +119,22 @@ def make_volume_response(symbol, resp_dict):
         resp_dict['secondary_description'] =  'Current volume percentile'
     return resp_dict
 
+def make_call_response(symbol, resp_dict):
+    api_end_point = f"{API_URL}options/call_trades/{symbol}"
+    resp = requests.get(api_end_point)
+    if resp.ok: #Good response from FastAPI
+        input_dict = resp.json()
+        resp_dict['symbol'] = symbol
+        best_call = input_dict["best_call"]
+        best_spread = input_dict["best_spread"]
+        if best_call:
+            resp_dict['main_point'] = f'${best_call["strike"]} Strike Call Expiring on {best_call["expiry"]}'
+            resp_dict['description'] = "Optimal covered call to sell"
+            resp_dict['supporting_data'] = f'Now@ ${best_call["bid"]}'
+        if best_spread:
+            resp_dict['secondary_point'] = f'Buy ${best_spread["strike_to_buy"]} and sell ${best_spread["strike_to_sell"]} call (expiring on {best_spread["expiry"]})'
+            resp_dict['secondary_description'] = "Optimal call spread to sell given probalities implied by options"
+    return resp_dict
+
 #SKILL_MAP = {'range':'options/range/', 'ape':'options/kelly/','kelly':'options/kelly/','doom':'options/doom/' , 'volume':'stocks/volume/', 'prob_pct':'options/prob_pct/','wsb':'stocks/volume/', 'new2':'options/kelly/' }
-FUNCTION_MAP = {'range':make_range_response, 'ape':make_ape_response,'kelly':make_ape_response,'doom':make_doom_response , 'volume':make_volume_response,'wsb':make_volume_response, 'new2':make_ape_response }
+FUNCTION_MAP = {'range':make_range_response, 'ape':make_ape_response,'kelly':make_ape_response,'doom':make_doom_response , 'volume':make_volume_response,'wsb':make_volume_response, 'new2':make_ape_response, 'call':make_call_response, }
