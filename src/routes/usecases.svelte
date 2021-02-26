@@ -14,6 +14,7 @@ Here are a few use cases to inspire your exploration with our tools. Be bold. Ho
 
 <script>
 	import { onMount } from 'svelte';
+	const dsrandom = require('random-gif');
 
 	let photos = [];
 
@@ -40,7 +41,7 @@ Here are a few use cases to inspire your exploration with our tools. Be bold. Ho
 <div class="photos">
 	{#each photos as photo}
 		<figure>
-			<img src={photo.thumbnailUrl} alt={photo.title}>
+			<img src='{dsrandom.randomGifDrift()}' alt={photo.title}>
 			<figcaption>{photo.title}</figcaption>
 		</figure>
 	{:else}
