@@ -7,6 +7,9 @@
 <p>Options are just one of the many sources of insights that we make available for traders.
 Here are a few use cases to inspire your exploration with our tools. Be bold. Hope you have fun!</p>
 
+<h2><strong>Avoiding melt down</strong></h2>
+<p>Using TICKER DOOM allows us to estimate the options implied probability of a sharp near term drop.</p>
+
 <h1>✨ FatNeo's Wall of Fame [Placeholder in works]</h1>
 
 <script>
@@ -15,7 +18,7 @@ Here are a few use cases to inspire your exploration with our tools. Be bold. Ho
 	let photos = [];
 
 	onMount(async () => {
-		const res = await fetch(`https://jsonplaceholder.typicode.com/photos?_limit=3`);
+		const res = await fetch(`https://jsonplaceholder.typicode.com/photos?_limit=4`);
 		photos = await res.json();
 	});
 </script>
@@ -24,7 +27,7 @@ Here are a few use cases to inspire your exploration with our tools. Be bold. Ho
 	.photos {
 		width: 100%;
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(2, 1fr);
 		grid-gap: 8px;
 	}
 
@@ -45,6 +48,3 @@ Here are a few use cases to inspire your exploration with our tools. Be bold. Ho
 		<p>loading...</p>
 	{/each}
 </div>
-
-<h2><strong>Avoiding melt down</strong></h2>
-<p>Using TICKER DOOM allows us to estimate the options implied probability of a sharp near term drop.</p>
