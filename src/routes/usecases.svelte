@@ -10,10 +10,11 @@ Here are a few use cases to inspire your exploration with our tools. Be bold. Ho
 <h2><strong>Avoiding melt down</strong></h2>
 <p>Using TICKER DOOM allows us to estimate the options implied probability of a sharp near term drop.</p>
 
-<h1>✨ Fat Neo's Wall of Fame [Placeholder in works]</h1>
+<h1>✨ Fat Neo's Wall of Fame</h1>
 
 <script>
 	import { onMount } from 'svelte';
+	const dsrandom = require('random-gif');
 
 	let photos = [];
 
@@ -40,8 +41,7 @@ Here are a few use cases to inspire your exploration with our tools. Be bold. Ho
 <div class="photos">
 	{#each photos as photo}
 		<figure>
-			<img src={photo.thumbnailUrl} alt={photo.title}>
-			<figcaption>{photo.title}</figcaption>
+			<img src='{dsrandom.randomGifDrift()}' alt={photo.title}>
 		</figure>
 	{:else}
 		<!-- this block renders when photos.length === 0 -->
