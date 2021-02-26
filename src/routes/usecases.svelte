@@ -17,7 +17,7 @@ Here are a few use cases to inspire your exploration with our tools. Be bold. Ho
 	let photos = [];
 
 	onMount(async () => {
-		const res = await fetch(`https://jsonplaceholder.typicode.com/photos?_limit=20`);
+		const res = await fetch(`https://jsonplaceholder.typicode.com/photos?_limit=9`);
 		photos = await res.json();
 	});
 </script>
@@ -26,7 +26,7 @@ Here are a few use cases to inspire your exploration with our tools. Be bold. Ho
 	.photos {
 		width: 100%;
 		display: grid;
-		grid-template-columns: repeat(5, 1fr);
+		grid-template-columns: repeat(3, 1fr);
 		grid-gap: 8px;
 	}
 
@@ -36,7 +36,7 @@ Here are a few use cases to inspire your exploration with our tools. Be bold. Ho
 	}
 </style>
 
-<h1>Photo album</h1>
+<h1>✨ FatNeo's Wall of Fame</h1>
 
 <div class="photos">
 	{#each photos as photo}
