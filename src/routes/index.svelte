@@ -167,7 +167,7 @@
 {/if}
 
 <figure>
-	<img alt='Fat Tony' src='FatTony.png'>
+	<img alt='Fat Tony' src='{randomGifHacker()}'>
 	<figcaption>Fat Tony: I don't get testy. I get stabby.</figcaption>
 </figure>
 
