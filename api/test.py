@@ -8,8 +8,6 @@ from urllib import parse
 import requests
 import json
 API_URL = 'https://www.insuremystock.com/'
-SKILL_MAP = {'range':'options/range/', 'ape':'options/kelly/','kelly':'options/kelly/','doom':'options/doom/' , 'volume':'stocks/volume/', 'prob_pct':'options/prob_pct/','wsb':'stocks/volume/', 'new2':'options/kelly/' }
-
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -40,18 +38,6 @@ class handler(BaseHTTPRequestHandler):
                 try:
                     if skill in FUNCTION_MAP:
                         api_output = FUNCTION_MAP.get(skill)(symbol, api_output)
-                    # elif skill == 'doom':
-                    #     api_output = make_doom_response(symbol, api_output)
-                    # elif skill == 'volume':
-                    #     api_output = make_volume_response(symbol, api_output)
-                    # elif skill == 'ape':
-                    #     api_output = make_ape_response(symbol, api_output)
-                    # elif skill == 'kelly':
-                    #     api_output = make_ape_response(symbol, api_output)
-                    # elif skill == 'wsb':
-                    #     api_output = make_volume_response(symbol, api_output)
-                    # elif skill == 'new2':
-                    #     api_output = make_ape_response(symbol, api_output)
                     else:
                         api_output['main_point'] = f"Invalid Command - {skill}"
                     #message = f'{{"symbol":"{my_stock.ticker}", "prob_up":{prob_move}, "price":"{round(my_stock.price)}","low":"{round(low)}","high":"{round(high)}"}}'
@@ -126,7 +112,7 @@ def make_volume_response(symbol, resp_dict):
         elif adv_x_volume < 0.7:
             resp_dict['main_class'] = 'bearish'
         #resp_dict['supporting_data'] = f'Now@{(input_dict["percentile"])}'
-        resp_dict['secondary_point'] = f'Now@{(input_dict["percentile"])}'
+        resp_dict['secondary_point'] = f'Now@{int(input_dict["percentile"])}'
         if float(input_dict['percentile']) > 55:
             resp_dict['secondary_class'] = 'bullish'
         elif float(input_dict['percentile']) < 45:
@@ -134,4 +120,5 @@ def make_volume_response(symbol, resp_dict):
         resp_dict['secondary_description'] =  'Current volume percentile'
     return resp_dict
 
+#SKILL_MAP = {'range':'options/range/', 'ape':'options/kelly/','kelly':'options/kelly/','doom':'options/doom/' , 'volume':'stocks/volume/', 'prob_pct':'options/prob_pct/','wsb':'stocks/volume/', 'new2':'options/kelly/' }
 FUNCTION_MAP = {'range':make_range_response, 'ape':make_ape_response,'kelly':make_ape_response,'doom':make_doom_response , 'volume':make_volume_response,'wsb':make_volume_response, 'new2':make_ape_response }
