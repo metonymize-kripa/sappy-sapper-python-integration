@@ -154,6 +154,9 @@
 
 {#if api_output.symbol == "waiting"}
     <h3> Options data 🏋️ getting results ...</h3>
+	<figure style='width:10%;margin:0 auto'>
+	<img alt='Loading' src='loadcat.gif'>
+</figure>
 {:else if api_output.symbol == "welcome"}
     <h2>Type'n pick ☝️ </h2>
     <br>
