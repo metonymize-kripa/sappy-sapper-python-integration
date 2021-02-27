@@ -8,7 +8,25 @@ from urllib import parse
 import json
 import requests
 API_URL = 'https://www.insuremystock.com/'
+FAT_NEO_API_URL = 'https://api.fatneo.com/parse'
 
+
+def make_wsb_response(symbol, resp_dict):
+    api_end_point = f"{FAT_NEO_API_URL}/{symbol} WSB"
+    resp = requests.get(api_end_point)
+    if resp.ok: #Good response from FastAPI
+        input_dict = resp.json()
+        resp_dict['symbol'] = symbol
+        resp_dict['main_point'] = f'{input_dict["skill_output"]}'
+        resp_dict['description'] = 'Fraction of mentions on r/wsb'
+        if float(input_dict['skill_output']) > 0.01:
+            resp_dict['main_class'] = 'bullish'
+        elif float(input_dict['prob_up']) < 0.001:
+            resp_dict['main_class'] = 'bearish'
+        resp_dict['supporting_data'] = ''
+        resp_dict['secondary_point'] = ''
+        resp_dict['secondary_description'] =  ''
+    return resp_dict
 
 def make_range_response(symbol, resp_dict):
     api_end_point = f"{API_URL}options/range/{symbol}"
@@ -103,7 +121,7 @@ def make_call_response(symbol, resp_dict):
     return resp_dict
 
 #SKILL_MAP = {'range':'options/range/', 'ape':'options/kelly/','kelly':'options/kelly/','doom':'options/doom/' , 'volume':'stocks/volume/', 'prob_pct':'options/prob_pct/','wsb':'stocks/volume/', 'new2':'options/kelly/' }
-FUNCTION_MAP = {'range':make_range_response, 'ape':make_ape_response,'kelly':make_ape_response,'doom':make_doom_response , 'volume':make_volume_response,'wsb':make_volume_response, 'new2':make_ape_response, 'call':make_call_response }
+FUNCTION_MAP = {'range':make_range_response, 'ape':make_ape_response,'kelly':make_ape_response,'doom':make_doom_response , 'volume':make_volume_response,'wsb':make_wsb_response, 'new2':make_ape_response, 'call':make_call_response }
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
