@@ -164,7 +164,7 @@
     <h2>👇</h2>
 
 <figure style='width:80%;margin:0 auto'>
-	<img alt='Fat Tony' src='FatNeoSPYHowTo.gif'>
+	<img alt='Fat Tony' src='FatNeoSPYHowTo-Fx.gif'>
 	<figcaption>Fat Tony: I don't normally teach, but when I do, I do. 🎷</figcaption>
 </figure>
 {:else}
