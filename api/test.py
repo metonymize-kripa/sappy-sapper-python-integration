@@ -17,15 +17,15 @@ def make_wsb_response(symbol, resp_dict):
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
         resp_dict['symbol'] = symbol
-        resp_dict['main_point'] = f'{round(100*input_dict["skill_output"])%}'
-        resp_dict['description'] = 'Fraction of mentions on r/wsb'
+        resp_dict['main_point'] = f'{round(100*input_dict["skill_output"]):.2f}%'
+        resp_dict['description'] = 'Percentage of mentions on r/wsb'
         if float(input_dict['skill_output']) > 0.01:
             resp_dict['main_class'] = 'bullish'
         elif float(input_dict['prob_up']) < 0.001:
             resp_dict['main_class'] = 'bearish'
         resp_dict['supporting_data'] = ''
         resp_dict['secondary_point'] = ''
-        resp_dict['secondary_description'] =  'Pulled as of '+input_dict["datetime"]
+        resp_dict['secondary_description'] =  f'Pulled as of {input_dict["datetime"]}'
     return resp_dict
 
 def make_range_response(symbol, resp_dict):
