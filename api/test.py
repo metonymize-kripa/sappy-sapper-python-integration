@@ -25,7 +25,9 @@ def make_wsb_response(symbol, resp_dict):
             resp_dict['main_class'] = 'bearish'
         resp_dict['supporting_data'] = ''
         resp_dict['secondary_point'] = ''
+
         resp_dict['secondary_description'] =  f'Pulled as of {input_dict["datetime"]}'
+
     return resp_dict
 
 def make_range_response(symbol, resp_dict):
