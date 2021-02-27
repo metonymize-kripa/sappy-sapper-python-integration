@@ -17,7 +17,7 @@ def make_wsb_response(symbol, resp_dict):
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
         resp_dict['symbol'] = symbol
-        resp_dict['main_point'] = f'{round(input_dict["skill_output"]):.2f}'
+        resp_dict['main_point'] = f'{input_dict["skill_output"]}'
         resp_dict['description'] = 'Fraction of mentions on r/wsb'
         if float(input_dict['skill_output']) > 0.01:
             resp_dict['main_class'] = 'bullish'
