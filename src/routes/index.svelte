@@ -155,12 +155,12 @@
 {#if api_output.symbol == "waiting"}
     <p>Getting results.....</p>
 {:else if api_output.symbol == "welcome"}
-    <h3>🖖, type to seek ... it looks like</h3>
-<h1>👇 </h1>
+    <h3>🖖 type'n pick</h3>
+<h1>👇</h1>
 
 <figure style='width:80%;margin:0 auto'>
 	<img alt='Fat Tony' src='FatNeoSPYHowTo.gif'>
-	<figcaption>How to?</figcaption>
+	<figcaption>Fat Tony: I don't normally teach, but when I do, I do. 🎷</figcaption>
 </figure>
 {:else}
     <br>
