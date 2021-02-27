@@ -19,10 +19,10 @@ def make_wsb_response(symbol, resp_dict):
         resp_dict['symbol'] = symbol
         #resp_dict['main_point'] = f'{round(100*float(input_dict["skill_output"])):.2f}%'
         resp_dict['description'] = 'Percentage of mentions on r/wsb'
-        if float(input_dict['skill_output']) > 0.01:
-            resp_dict['main_class'] = 'bullish'
-        elif float(input_dict['prob_up']) < 0.001:
-            resp_dict['main_class'] = 'bearish'
+        #if float(input_dict['skill_output']) > 0.01:
+        #    resp_dict['main_class'] = 'bullish'
+        #elif float(input_dict['prob_up']) < 0.001:
+        #    resp_dict['main_class'] = 'bearish'
         resp_dict['supporting_data'] = ''
         resp_dict['secondary_point'] = ''
 
