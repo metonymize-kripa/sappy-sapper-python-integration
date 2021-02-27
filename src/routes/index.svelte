@@ -155,8 +155,8 @@
 {#if api_output.symbol == "waiting"}
     <h3> Options data 🏋️ getting results ...</h3>
 {:else if api_output.symbol == "welcome"}
-    <h3>🖖 type'n pick</h3>
-<h1>👇</h1>
+    <h3>🖖 type'n pick ☝️ </h3>
+<h1>How to 👇</h1>
 
 <figure style='width:80%;margin:0 auto'>
 	<img alt='Fat Tony' src='FatNeoSPYHowTo.gif'>
