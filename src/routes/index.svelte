@@ -153,7 +153,7 @@
     <br>
 
 {#if api_output.symbol == "waiting"}
-    <h3>🏋️ Getting results.....</p>
+    <h3> Options data 🏋️ getting results ...</h3>
 {:else if api_output.symbol == "welcome"}
     <h3>🖖 type'n pick</h3>
 <h1>👇</h1>
