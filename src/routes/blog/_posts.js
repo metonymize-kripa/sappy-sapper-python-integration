@@ -30,7 +30,7 @@ const posts = [
         `
     },
     {
-        title: 'What is <b>range</b>?',
+        title: 'What is range?',
         slug: 'tutorial-range',
         html: `
               Using options data we calculate at-the-money implied volatility and use that as a proxy for standard deviation(sigma). Default range is the one that give us the 75% probabilty. If you want 90% probability range use sigma=1.96.
@@ -38,7 +38,7 @@ const posts = [
           `
      },
     {
-        title: 'What is <b>doom</b>?',
+        title: 'What is doom?',
         slug: 'tutorial-doom',
         html: `
                 Using options data we calculate probability of options expiring in the money. For a call that is eqivalent to the probability of stock being over strike and for the put the prob of stock being below the strike. Doom gives us the probability of put expiring in the money.
@@ -46,7 +46,7 @@ const posts = [
             `
     },
     {
-        title: 'What is <b>volume</b>?',
+        title: 'What is volume?',
         slug: 'tutorial-volume',
         html: `
                   Using stock volume from past 10 days, we calculate the current level in two ways - as a multiple of average daily volume and as a percentile. Volume numbers during a trading session are scaled appropriately.
@@ -54,7 +54,7 @@ const posts = [
               `
     },
     {
-        title: 'What is <b>call</b>?',
+        title: 'What is call?',
         slug: 'tutorial-call',
         html: `
                 Using options data we calculate the probabilty of a call option expiring in the money. That probabilty along with premium received gives us an idea of which option has the maximum payoff potential. Similar methodology is used to find the optimal spread trade.
@@ -62,7 +62,7 @@ const posts = [
               `
     },
     {
-        title: 'What is <b>kelly</b>?',
+        title: 'What is kelly?',
         slug: 'tutorial-kelly',
         html: `
                 Using at-the-money options data we calculate the options implied probabilty of stock going up.  Based on those probabilty we calculate the optimal betting size of stock using Kelly criterion
