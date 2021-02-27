@@ -20,11 +20,11 @@ const posts = [
       slug: 'tutorial-main',
       html: `
             <h1 style="color:blue;"> Type the symbol and hit enter or click Go</h1>
-            <figure>
+            <figure style='width:80%;margin:0 auto'>
             	<img alt='Type symbol and Go' src='FatNeo_Tutorial_1_1.png'>
             </figure>
             <h1 style="color:blue;"> Enjoy the simplicity </h1>
-            <figure>
+            <figure style='width:80%;margin:0 auto'>
             	<img alt='Enjoy the data' src='FatNeo_Tutorial_1_2.png'>
             </figure>
         `
