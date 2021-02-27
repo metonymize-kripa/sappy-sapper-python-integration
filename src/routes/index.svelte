@@ -171,6 +171,7 @@
 	<figcaption>Fat Tony: I don't get testy. I get stabby.</figcaption>
 </figure>
 -->
+<br>
 <figure style='width:400px;margin:0 auto'>
 	<img alt='Fat Tony' src='FatNeoSPYHowTo.gif'>
 	<figcaption>How to?</figcaption>
