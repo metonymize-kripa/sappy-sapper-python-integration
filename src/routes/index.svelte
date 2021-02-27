@@ -153,7 +153,7 @@
     <br>
 
 {#if api_output.symbol == "waiting"}
-    <p>Getting results.....</p>
+    <h3>🏋️ Getting results.....</p>
 {:else if api_output.symbol == "welcome"}
     <h3>🖖 type'n pick</h3>
 <h1>👇</h1>
@@ -178,4 +178,4 @@
 </figure>
 -->
 <br>
-<p><strong> Sign up for the <a href='https://oracled.mailchimpsites.com/'> DailySpread</a></strong></p>
+<p><strong> Sign up for the <a href='https://oracled.mailchimpsites.com/'> 📯 DailySpread 📯</a></strong></p>
