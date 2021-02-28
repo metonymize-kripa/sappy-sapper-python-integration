@@ -156,7 +156,7 @@
 <div style='text-align: center; max-width:600px; margin: 0 auto;'>
 
         <AutoComplete class="my-ac"
-		      textCleanFunction={stashWysiwygTextInput}
+		       <!-- textCleanFunction={stashWysiwygTextInput} -->
 		      items={tickers} bind:selectedItem={selected_ticker}
 		      on:keydown={handleKeydown}
 		      maxItemsToShowInList=7 hideArrow=true placeholder="AAL" showClear=true />
