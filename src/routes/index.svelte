@@ -195,5 +195,5 @@
 	<figcaption>Fat Tony: I don't get testy. I get stabby.</figcaption>
 </figure>
 -->
-<br>
-<p><strong> Sign up for the <a href='https://oracled.mailchimpsites.com/'> 📯 DailySpread 📯</a></strong></p>
+<h1>📯</h1>
+<p><strong> Sign up for the <a href='https://oracled.mailchimpsites.com/'>DailySpread</a></strong></p>
