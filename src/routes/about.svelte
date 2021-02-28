@@ -1,3 +1,13 @@
+<style>
+	figure {
+		margin: 0 0 1em 0;
+	}
+	img {
+		width: 100%;
+		margin: 0 0 1em 0;
+	}
+</style>
+
 <svelte:head>
 	<title>About</title>
 </svelte:head>
