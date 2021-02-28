@@ -169,7 +169,7 @@
 		      textCleanFunction={stashWysiwygTextInput}
 		      items={tickers} bind:selectedItem={selected_ticker}
 		      on:keydown={handleKeydown}
-		      maxItemsToShowInList=10 hideArrow=true placeholder="SPY DIV" showClear=true />
+		      maxItemsToShowInList=10 hideArrow=true placeholder={dispatched_ticker} showClear=true />
 	 <!-- textCleanFunction={stashWysiwygTextInput} -->
 	<!-- on:beforeChange={stashWysiwygTextInput} -->
 	<!-- on:onChange={updateWysiwygTextInput} -->
