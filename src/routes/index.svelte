@@ -142,7 +142,9 @@
 
 <div style='text-align: center; max-width:600px; margin: 0 auto;'>
 
-        <AutoComplete  class="my-ac" items={tickers} bind:selectedItem={ticker}
+        <AutoComplete class="my-ac"
+		      bind:name="wysiwyg_ticker"
+		      items={tickers} bind:selectedItem={ticker}
 		      on:keydown={handleKeydown}
 		      maxItemsToShowInList=7 hideArrow=true placeholder="AAL" showClear=true />
 
