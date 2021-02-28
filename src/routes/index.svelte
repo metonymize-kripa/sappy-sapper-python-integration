@@ -146,10 +146,13 @@
 			api_output = {"symbol":"waiting"};
 			progress.set(0);
 			//if ( selected_ticker === "") {
-			if ( selected_ticker === "" || selected_ticker !== wysiwyg_ticker) {
+			if ( selected_ticker === "" ) {
 				dispatched_ticker = wysiwyg_ticker
 			}
 			else {
+				if ( selected_ticker !== wysiwyg_ticker) {
+				wysiwyg_ticker = selected_ticker
+				}
 				dispatched_ticker = selected_ticker
 			}
 			fetch("./api/test?input_cmd="+dispatched_ticker)
@@ -165,7 +168,6 @@
         <AutoComplete class="my-ac"
 		      textCleanFunction={stashWysiwygTextInput}
 		      items={tickers} bind:selectedItem={selected_ticker}
-		      on:onChange={updateWysiwygTextInput}
 		      on:keydown={handleKeydown}
 		      maxItemsToShowInList=10 hideArrow=true placeholder="SPY DIV" showClear=true />
 	 <!-- textCleanFunction={stashWysiwygTextInput} -->
