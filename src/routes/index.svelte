@@ -120,6 +120,10 @@
 
 
 	let api_output = {"symbol":"welcome"};
+	
+	function stashWysiwygTextInput(input_text) {
+		wysiwyg_ticker = input_text
+	}
 
 	async function handleKeydown(event) {
 		if (event.key === 'Enter') {
@@ -151,7 +155,7 @@
 <div style='text-align: center; max-width:600px; margin: 0 auto;'>
 
         <AutoComplete class="my-ac"
-		      name="wysiwyg_input" bind:value={wysiwyg_ticker}
+		      textCleanFunction={stashWysiwygTextInput}
 		      items={tickers} bind:selectedItem={selected_ticker}
 		      on:keydown={handleKeydown}
 		      maxItemsToShowInList=7 hideArrow=true placeholder="AAL" showClear=true />
