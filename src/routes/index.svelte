@@ -188,7 +188,7 @@
 
 {#if api_output.symbol == "waiting"}
     <h1>{dispatched_ticker} ...</h1>
-	<figure style='width:10%;margin:0 auto'>
+	<figure style='width:10%'>
 		<img alt='Loading' src='loadcat.gif'>
 	</figure>
 {:else if api_output.symbol == "welcome"}
