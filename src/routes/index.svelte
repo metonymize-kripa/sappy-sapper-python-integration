@@ -121,7 +121,7 @@
 
 	let api_output = {"symbol":"welcome"};
 	
-	async function stashWysiwygTextInput(input_text) {
+	function stashWysiwygTextInput(input_text) {
 		wysiwyg_ticker = input_text
 		return input_text;
 	}
@@ -156,6 +156,7 @@
 <div style='text-align: center; max-width:600px; margin: 0 auto;'>
 
         <AutoComplete class="my-ac"
+		      textCleanFunction={stashWysiwygTextInput}
 		      items={tickers} bind:selectedItem={selected_ticker}
 		      on:keydown={handleKeydown}
 		      maxItemsToShowInList=7 hideArrow=true placeholder="AAL" showClear=true />
@@ -165,7 +166,7 @@
 		GO
 	</button>
 	
-	
+	<p>Input:{wysiwyg_ticker}, Selected:{selected_ticker}, Dispatched:{dispatched_ticker} ...</p>
 
 </div>
     <br>
