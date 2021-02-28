@@ -164,12 +164,13 @@
 
         <AutoComplete class="my-ac"
 		      textCleanFunction={stashWysiwygTextInput}
-		      onChange={updateWysiwygTextInput}
 		      items={tickers} bind:selectedItem={selected_ticker}
+		      on:onChange={updateWysiwygTextInput}
 		      on:keydown={handleKeydown}
 		      maxItemsToShowInList=10 hideArrow=true placeholder="SPY DIV" showClear=true />
 	 <!-- textCleanFunction={stashWysiwygTextInput} -->
 	<!-- on:beforeChange={stashWysiwygTextInput} -->
+	<!-- on:onChange={updateWysiwygTextInput} -->
 
         <button on:click={runAPI}>
 		GO
