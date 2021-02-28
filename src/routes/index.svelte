@@ -105,6 +105,7 @@
 </style>
 
 <script>
+	import 'chota';
 	import {Button} from 'svelte-chota';
  	import { mdiDelete,mdiAccountPlus,mdiSend } from '@mdi/js';
 	import { tweened } from 'svelte/motion';
