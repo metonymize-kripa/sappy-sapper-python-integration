@@ -127,7 +127,7 @@
 		return input_text;
 	}
 	
-	function updateWysiwygTextInput() {
+	async function updateWysiwygTextInput() {
 		wysiwyg_ticker = selected_ticker
 	}
 
