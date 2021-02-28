@@ -22,9 +22,6 @@
     "svelte-loader": "^2.9.0",
     "webpack": "^4.7.0",
     "simple-svelte-autocomplete":"^1.2.4",
-    "@mdi/js":"^5.9.55",
-    "chota":"0.8.0",
-    "svelte-chota":"^1.8.3",
     "random-gif":"^1.0.0"
   }
 }
