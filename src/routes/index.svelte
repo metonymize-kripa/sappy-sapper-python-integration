@@ -105,9 +105,6 @@
 </style>
 
 <script>
-	import 'chota';
-	import {Button} from 'svelte-chota';
- 	import { mdiDelete,mdiAccountPlus,mdiSend } from '@mdi/js';
 	import { tweened } from 'svelte/motion';
 	import { cubicOut } from 'svelte/easing';
 	import AutoComplete from "simple-svelte-autocomplete";
@@ -177,12 +174,10 @@
 	<!-- on:beforeChange={stashWysiwygTextInput} -->
 	<!-- on:onChange={updateWysiwygTextInput} -->
 
-	<!--
         <button on:click={runAPI}>
 		GO
 	</button>
-	-->
-	<Button outline primary iconRight={mdiSend} on:click={runAPI} >Go</Button>
+
 	
 	<p>Input:{wysiwyg_ticker}, Selected:{selected_ticker}, Dispatched:{dispatched_ticker} ...</p>
 
