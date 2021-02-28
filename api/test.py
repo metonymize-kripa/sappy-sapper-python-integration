@@ -38,7 +38,7 @@ def make_div_response(symbol, resp_dict):
             resp_dict['main_point'] = "{symbol} has had no dividend. A shame"
         else:
             resp_dict['main_point'] = f'Last dividend: ${input_dict["div"]}'
-            resp_dict['description'] = f'Last Dividend Date : {datetime.strptime(best_call["div_date"], "%Y-%m-%d").strftime("%b %d")}'
+            resp_dict['description'] = f'Last Dividend Date : {datetime.strptime(input_dict["div_date"], "%Y-%m-%d").strftime("%b %d")}'
             if input_dict["div_yld"]:
                 resp_dict['supporting_data'] = f'Div Yield @ {round(100*input_dict["div_yld"])}%'
 
