@@ -141,7 +141,8 @@
 
 			api_output = {"symbol":"waiting"};
 			progress.set(0);
-			if ( selected_ticker === "") {
+			//if ( selected_ticker === "") {
+			if ( selected_ticker === "" || selected_ticker !== wysiwyg_ticker) {
 				dispatched_ticker = wysiwyg_ticker
 			}
 			else {
