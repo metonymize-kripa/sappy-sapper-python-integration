@@ -41,7 +41,9 @@ Here are a few use cases to inspire your exploration with our tools. Be bold. Ho
 <div class="photos">
 	{#each photos as photo}
 		<figure>
-			<img src='{dsrandom.randomGifDrift()}' alt={photo.title}>
+			<img src={photo.thumbnailUrl} alt={photo.title}>
+			<figcaption>{photo.title}</figcaption>
+			<!--  <img src='{dsrandom.randomPhotoMoto()}' alt={photo.title}> -->
 		</figure>
 	{:else}
 		<!-- this block renders when photos.length === 0 -->
