@@ -4,7 +4,7 @@
 
 <h1>Skills, the Key</h1>
 
-p>By a Fat Neo skill we mean something like "SPY SKILL ↩️". It is how Fat Neo helps you trade faster, smarter, funner.</p>
+<p>By a Fat Neo skill we mean something like "SPY SKILL ↩️". It is how Fat Neo helps you trade faster, smarter, funner.</p>
 <p>What are all the skills that Fat Neo has? How do they work? We try to answer these questions briefly on this page,
     with links to more detailed sources and methodology that you can find in the blog section. </p>
 
