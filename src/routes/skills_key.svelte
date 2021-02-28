@@ -14,6 +14,7 @@
   <li><strong>🎲 KELLY:</strong> Entering <a href="https://fatneo.vercel.app/blog/tutorial-kelly">_TICKER_ KELLY</a> is an experimental feature, to do Options Implied Kelly optimal bet sizing. Perhaps one of the most overlooked tool by investors.</li>
   <li><strong>📈 CALL:</strong> Entering <a href="https://fatneo.vercel.app/blog/tutorial-call">_TICKER_ CALL</a> is an experimental feature, to find the optimal covered call/call-spread to sell in the month ahead</li>
   <li><strong>🔊 VOLUME:</strong> Entering <a href="https://fatneo.vercel.app/blog/tutorial-volume">_TICKER_ VOLUME</a> gets you a basic comparative view of stock volume vs the recent average</li>
+  <li><strong>🔊 DIV:</strong> Entering <a href="https://fatneo.vercel.app/blog/tutorial-dividend">_TICKER_ DIV</a> gets you a basic view of stock dividends</li>
   <li><strong>🎢 WSB:</strong> Entering _TICKER_ WSB is an experimental feature, offering a directional feel for sentiment on Reddit's WallStreetBets (e.g. Mentions)</li>
     <li><strong>📯 _USER_X_:</strong> We are just getting started and are all ears. Most of the skills above came from users like you. Connect below.</li>
 </ul>

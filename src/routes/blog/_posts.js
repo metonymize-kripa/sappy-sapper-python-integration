@@ -68,7 +68,15 @@ const posts = [
                 Using at-the-money options data we calculate the options implied probabilty of stock going up.  Based on those probabilty we calculate the optimal betting size of stock using Kelly criterion
                 For more information - <a href="https://en.wikipedia.org/wiki/Kelly_criterion">Kelly Criterion</a>
               `
-    }
+    },
+    {
+        title: 'What is div?',
+        slug: 'tutorial-div',
+        html: `
+                The recent dividend data is displayed along with the dividend yield (rate). Dividend yield is the percentage of money you earn on your stock investment as dividend payout.
+                  For more information - <a href="https://finance.yahoo.com/quote/c">Yahoo Finance</a>
+              `
+    },
 ];
 
 posts.forEach(post => {
