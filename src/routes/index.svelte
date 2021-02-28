@@ -149,7 +149,7 @@
 			fetch("./api/test?input_cmd="+dispatched_ticker)
 				.then(d => d.text())
 				.then(d => (api_output = JSON.parse(d)));
-
+			selected_ticker = ""
 	}
 </script>
 
@@ -178,7 +178,6 @@
 	<figure style='width:10%;margin:0 auto'>
 		<img alt='Loading' src='loadcat.gif'>
 	</figure>
-{selected_ticker = ""}
 {:else if api_output.symbol == "welcome"}
     <h2>Type then pick ☝️ </h2>
 {:else}
