@@ -159,6 +159,8 @@
         <button on:click={runAPI}>
 		GO
 	</button>
+	
+	<p>The wysiwyg input is {wysiwyg_ticker}, while selected input is {selected_ticker}</p>
 
 </div>
     <br>
