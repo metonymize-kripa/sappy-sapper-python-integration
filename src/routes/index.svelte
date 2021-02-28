@@ -121,8 +121,9 @@
 
 	let api_output = {"symbol":"welcome"};
 	
-	function stashWysiwygTextInput(input_text) {
+	async function stashWysiwygTextInput(input_text) {
 		wysiwyg_ticker = input_text
+		return input_text;
 	}
 
 	async function handleKeydown(event) {
