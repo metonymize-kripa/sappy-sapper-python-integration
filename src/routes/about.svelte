@@ -12,10 +12,10 @@
   <li><strong>Use case:</strong> We've been testing it out to scope and trade options on our personal accounts in minutes (1 Wk ahead $20 GME Put when FatNeo range was $30-50, 1 Wk Covered Calls on MSFT, etc.)</li>
 </ul>
 
+<p><strong>Test and learn feedback:<a href='https://oracled.mailchimpsites.com/'>here</a></strong></p>
+
 <h1>How to?</h1>
 <figure style='width:80%;margin:0 auto'>
 	<img alt='Fat Tony' src='FatNeoSPYHowTo-Fx.gif'>
 	<figcaption>Fat Tony: I don't normally teach, but when I do, I do. 🎷</figcaption>
 </figure>
-
-<p><strong>Test and learn feedback:<a href='https://oracled.mailchimpsites.com/'>here</a></strong></p>
