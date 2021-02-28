@@ -163,7 +163,7 @@
 </script>
 
 
-<div style='text-align: center; max-width:600px; margin: 0 auto;'>
+<div style='text-align: center; max-width:90%; margin: 0 auto;'>
 
         <AutoComplete class="my-ac"
 		      textCleanFunction={stashWysiwygTextInput}
