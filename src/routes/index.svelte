@@ -179,14 +179,6 @@
 	</figure>
 {:else if api_output.symbol == "welcome"}
     <h2>Type'n pick ☝️ </h2>
-    <br>
-    <p>How to?</p>
-    <h2>👇</h2>
-
-<figure style='width:80%;margin:0 auto'>
-	<img alt='Fat Tony' src='FatNeoSPYHowTo-Fx.gif'>
-	<figcaption>Fat Tony: I don't normally teach, but when I do, I do. 🎷</figcaption>
-</figure>
 {:else}
     <br>
     <h2 class="{api_output.main_class}">{api_output.main_point}</h2>
