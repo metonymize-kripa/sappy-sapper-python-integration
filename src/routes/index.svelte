@@ -133,7 +133,8 @@
 			runAPI();
 		}
 		else {
-			 return;
+			selected_ticker = ""
+			return;
 		}
 	}
 	function runAPI() {
