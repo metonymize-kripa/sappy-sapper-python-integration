@@ -143,7 +143,7 @@
 				dispatched_ticker = selected_ticker
 			}
 			else {
-				dispatched_ticker = wysiwyg_ticker
+				dispatched_ticker = selected_ticker
 			}
 			fetch("./api/test?input_cmd="+dispatched_ticker)
 				.then(d => d.text())
@@ -156,11 +156,12 @@
 <div style='text-align: center; max-width:600px; margin: 0 auto;'>
 
         <AutoComplete class="my-ac"
-		      on:beforeChange={stashWysiwygTextInput}
+		      textCleanFunction={stashWysiwygTextInput}
 		      items={tickers} bind:selectedItem={selected_ticker}
 		      on:keydown={handleKeydown}
 		      maxItemsToShowInList=7 hideArrow=true placeholder="AAL" showClear=true />
 	 <!-- textCleanFunction={stashWysiwygTextInput} -->
+	<!-- on:beforeChange={stashWysiwygTextInput} -->
 
         <button on:click={runAPI}>
 		GO
