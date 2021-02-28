@@ -126,6 +126,10 @@
 		wysiwyg_ticker = input_text
 		return input_text;
 	}
+	
+	function updateWysiwygTextInput() {
+		wysiwyg_ticker = selected_ticker
+	}
 
 	async function handleKeydown(event) {
 		if (event.key === 'Enter') {
@@ -160,6 +164,7 @@
 
         <AutoComplete class="my-ac"
 		      textCleanFunction={stashWysiwygTextInput}
+		      onChange={updateWysiwygTextInput}
 		      items={tickers} bind:selectedItem={selected_ticker}
 		      on:keydown={handleKeydown}
 		      maxItemsToShowInList=10 hideArrow=true placeholder="SPY DIV" showClear=true />
