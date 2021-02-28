@@ -182,7 +182,7 @@
 		GO
 	</button>
 	-->
-	<Button outline primary iconRight={mdiSend}>Go</Button>
+	<Button outline primary iconRight={mdiSend} on:click={runAPI} >Go</Button>
 	
 	<p>Input:{wysiwyg_ticker}, Selected:{selected_ticker}, Dispatched:{dispatched_ticker} ...</p>
 
