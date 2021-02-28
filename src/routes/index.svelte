@@ -36,7 +36,7 @@
 		margin: 0 0 0.5em 0;
 		color: blue;
 	}
-    h4 {
+    	h4 {
 		font-size: 1.2em;
 		font-weight: 600;
 		margin: 0 0 0.5em 0;
@@ -53,7 +53,7 @@
 	}
 
 
-   .neutral {
+   	.neutral {
         color:black;
 	}
 	.bearish{
@@ -62,6 +62,10 @@
 	.bullish{
 		color:green;
 	}
+	
+	:global(.autocomplete-list-item){
+        text-align:left!important;
+	}
 	/*
 		progress {
 		display: block;
@@ -69,9 +73,6 @@
 		height:40px;
 		margin: 0 auto;
 	}
-    :global(.autocomplete-list-item){
-        text-align:left!important;
-    }
 
 	.progress-div {
 	    width: 200px;
