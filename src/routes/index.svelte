@@ -178,7 +178,7 @@
 		<img alt='Loading' src='loadcat.gif'>
 	</figure>
 {:else if api_output.symbol == "welcome"}
-    <h2>Type'n pick ☝️ </h2>
+    <h2>Type then pick ☝️ </h2>
 {:else}
     <br>
     <h2 class="{api_output.main_class}">{api_output.main_point}</h2>
