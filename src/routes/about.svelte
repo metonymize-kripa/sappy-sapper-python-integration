@@ -24,7 +24,7 @@
 
 <p><strong>Test and learn feedback:<a href='https://oracled.mailchimpsites.com/'>here</a></strong></p>
 <h1>How do I use the tool?</h1>
-            <h3 style="color:blue;"> Type the symbol and hit enter or click Go</h1>
+            <h3 style="color:blue;"> Type the symbol and hit enter or click Go</h3>
             <figure style='width:80%;margin:0 auto'>
             	<img alt='Type symbol and Go' src='FatNeo_Tutorial_1_1.png'>
             </figure>
