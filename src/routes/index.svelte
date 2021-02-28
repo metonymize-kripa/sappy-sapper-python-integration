@@ -1,5 +1,30 @@
 <style>
-	h1, h2, h3,h4, figure, p {
+	figure {
+		margin: 0 0 1em 0;
+	}
+	img {
+		width: 100%;
+		margin: 0 0 1em 0;
+	}
+	p {
+		margin: 1em auto;
+	}
+
+   	.neutral {
+        color:black;
+	}
+	.bearish{
+		color:red;
+	}
+	.bullish{
+		color:green;
+	}
+	
+	:global(.autocomplete-list-item){
+        text-align:left!important;
+	}
+	/*
+		h1, h2, h3,h4, figure, p {
 		text-align: center;
 		margin: 0 auto;
 	}
@@ -16,12 +41,7 @@
 		margin: 0 auto;
 		width:60%;
 	}
-	button {
-		text-transform: uppercase;
-		margin: 0 auto;
-		width:20%;
-		font-size: 1.6em;
-	}
+
 
 	h2 {
 		font-size: 1.8em;
@@ -41,32 +61,13 @@
 		font-weight: 600;
 		margin: 0 0 0.5em 0;
 	}
-	figure {
-		margin: 0 0 1em 0;
-	}
-	img {
-		width: 100%;
-		margin: 0 0 1em 0;
-	}
-	p {
-		margin: 1em auto;
-	}
-
-
-   	.neutral {
-        color:black;
-	}
-	.bearish{
-		color:red;
-	}
-	.bullish{
-		color:green;
-	}
 	
-	:global(.autocomplete-list-item){
-        text-align:left!important;
+	button {
+		text-transform: uppercase;
+		margin: 0 auto;
+		width:20%;
+		font-size: 1.6em;
 	}
-	/*
 		progress {
 		display: block;
 		width: 200px;
