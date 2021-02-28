@@ -1,17 +1,6 @@
 <style>
-	figure {
-		margin: 0 0 1em 0;
-	}
-	img {
-		width: 100%;
-		margin: 0 0 1em 0;
-	}
-	p {
-		margin: 1em auto;
-	}
-
-   	.neutral {
-        color:black;
+   	.neutral{
+        	color:black;
 	}
 	.bearish{
 		color:red;
@@ -41,8 +30,6 @@
 		margin: 0 auto;
 		width:60%;
 	}
-
-
 	h2 {
 		font-size: 1.8em;
 		text-transform: uppercase;
@@ -61,7 +48,6 @@
 		font-weight: 600;
 		margin: 0 0 0.5em 0;
 	}
-	
 	button {
 		text-transform: uppercase;
 		margin: 0 auto;
@@ -74,7 +60,16 @@
 		height:40px;
 		margin: 0 auto;
 	}
-
+	figure {
+		margin: 0 0 1em 0;
+	}
+	img {
+		width: 100%;
+		margin: 0 0 1em 0;
+	}
+	p {
+		margin: 1em auto;
+	}
 	.progress-div {
 	    width: 200px;
 	    height: 40px;
@@ -164,26 +159,24 @@
 </script>
 
 
+<!--
 <div style='text-align: center; max-width:90%; margin: 0 auto;'>
-
+</div>
+-->
         <AutoComplete class="my-ac"
 		      textCleanFunction={stashWysiwygTextInput}
 		      items={tickers} bind:selectedItem={selected_ticker}
 		      on:keydown={handleKeydown}
 		      maxItemsToShowInList=10 hideArrow=true placeholder={dispatched_ticker} showClear=true />
-	 <!-- textCleanFunction={stashWysiwygTextInput} -->
-	<!-- on:beforeChange={stashWysiwygTextInput} -->
-	<!-- on:onChange={updateWysiwygTextInput} -->
 
         <button on:click={runAPI}>
 		GO
 	</button>
 
-	
+<!--	
 	<p>Input:{wysiwyg_ticker}, Selected:{selected_ticker}, Dispatched:{dispatched_ticker} ...</p>
-
-</div>
     <br>
+-->
 
 {#if api_output.symbol == "waiting"}
     <h1>{dispatched_ticker} ...</h1>
@@ -207,5 +200,4 @@
 	<figcaption>Fat Tony: I don't get testy. I get stabby.</figcaption>
 </figure>
 -->
-<h1>📯</h1>
-<p><strong> Sign up for the <a href='https://oracled.mailchimpsites.com/'>DailySpread</a></strong></p>
+<p><strong>📯 Sign up for the <a href='https://oracled.mailchimpsites.com/'>DailySpread</a></strong></p>
