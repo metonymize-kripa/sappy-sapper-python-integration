@@ -123,6 +123,7 @@
 	
 	function stashWysiwygTextInput(input_text) {
 		wysiwyg_ticker = input_text
+		return input_text
 	}
 
 	async function handleKeydown(event) {
@@ -164,16 +165,17 @@
 		GO
 	</button>
 	
-	<p>The wysiwyg input is {wysiwyg_ticker}, while selected input is {selected_ticker}</p>
+	
 
 </div>
     <br>
 
 {#if api_output.symbol == "waiting"}
+    <h1>{wysiwyg_ticker} ...</h1>
     <h3> Options data 🏋️ getting results ...</h3>
 	<figure style='width:10%;margin:0 auto'>
 	<img alt='Loading' src='loadcat.gif'>
-</figure>
+
 {:else if api_output.symbol == "welcome"}
     <h2>Type'n pick ☝️ </h2>
     <br>
