@@ -123,7 +123,6 @@
 	
 	function stashWysiwygTextInput(input_text) {
 		wysiwyg_ticker = input_text
-		return input_text
 	}
 
 	async function handleKeydown(event) {
@@ -171,7 +170,7 @@
     <br>
 
 {#if api_output.symbol == "waiting"}
-    <h1>{wysiwyg_ticker} ...</h1>
+    <h1>{dispatched_ticker} ...</h1>
     <h3> Options data 🏋️ getting results ...</h3>
 	<figure style='width:10%;margin:0 auto'>
 		<img alt='Loading' src='loadcat.gif'>
