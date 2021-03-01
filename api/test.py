@@ -144,12 +144,16 @@ def make_call_response(symbol, resp_dict):
             resp_dict['main_point'] = f'${best_call["strike"]} Strike Call Expiring on {datetime.strptime(best_call["expiry"], "%d-%m-%Y").strftime("%d %b")}'
             resp_dict['description'] = "Optimal covered call to sell"
             resp_dict['supporting_data'] = f'Now@ ${best_call["bid"]}'
+            if best_call["using_last"] == "true":
+                resp_dict['supporting_data'] = f'Now@ ${best_call["bid"]} (**USING STALE DATA**)'
             resp_dict['main_class'] = 'bullish'
         else:
             resp_dict['main_point'] = f''
         if best_spread:
             resp_dict['secondary_point'] = f'Buy ${best_spread["strike_to_buy"]} strike call and sell ${best_spread["strike_to_sell"]} strike call'
             resp_dict['secondary_description'] = "Optimal call spread to sell given probalities implied by options"
+            if best_spread["spread_using_last"] == "true":
+                resp_dict['secondary_description'] = "Optimal call spread to sell given probalities (**USING STALE DATA**)"
             resp_dict['secondary_class'] = 'bullish'
     return resp_dict
 
