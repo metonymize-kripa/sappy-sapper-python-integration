@@ -44,16 +44,16 @@
 	
 	function numPartiallyMatchedFromArrayOfStrings(str1, arr_strs) {
 		matches = arr_strs.filter( this_str => str1.lower().includes(this_str) );
-		return matches.length()
+		return matches.length
 		
 	}
 	
 	function skillType(query, batch_commands) {
 		if ( numPartiallyMatchedFromArrayOfStrings(query, batch_commands) > 0 ) {
-			return "Slow skill: ";
+			return "Slow skill: "
 		}
 		else {
-			return "Quick skill: ";
+			return "Quick skill: "
 		}
 	}
 	
@@ -125,7 +125,7 @@
 -->
 
 {#if api_output.symbol == "waiting"}
-    <h1>{dispatched_ticker} ...</h1>
+    <h1>{skillType(dispatched_ticker,batch_commands)+dispatched_ticker} ...</h1>
 	<figure style='width:10%'>
 		<img alt='Loading' src='loadcat.gif'>
 	</figure>
