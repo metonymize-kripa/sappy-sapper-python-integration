@@ -49,7 +49,8 @@
 	}
 	
 	function skillType(query, batch_commands) {
-		if ( numPartiallyMatchedFromArrayOfStrings(query, batch_commands) > 0 ) {
+		//if ( numPartiallyMatchedFromArrayOfStrings(query, batch_commands) > 0 ) {
+		if ( query.toLowerCase().includes("call") ||  query.toLowerCase().includes("wise") ) {
 			return "Slow skill: "
 		}
 		else {
