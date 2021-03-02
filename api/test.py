@@ -65,7 +65,7 @@ def make_dive_response(symbol, resp_dict):
         input_dict = resp.json()
         resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f'${float(input_dict["skill_output"]["nextestpayout"]):.2f}'
-        resp_dict['description'] = 'Next dividend payout on '+input_dict["skill_output"]["nextpaydate"]
+        resp_dict['description'] = 'ExDiv: '+input_dict["skill_output"]["exdiv"]+'; '+Next dividend payout on '+input_dict["skill_output"]["nextpaydate"]
         resp_dict['supporting_data'] = ''
         resp_dict['secondary_point'] = f'{100*float(input_dict["skill_output"]["divyield"]):.2f}%'
         resp_dict['secondary_description'] =  f'Annual dividend yield, estimate as of {input_dict["datetime"]}'
