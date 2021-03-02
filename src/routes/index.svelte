@@ -37,7 +37,7 @@
 	let api_output = {"symbol":"welcome"};
 	
 	function concatArraysWithoutRepetition(arr1, arr2) {
-		cleanedArr2 = arr2.filter( ( el ) => !arr1.includes( el ) );
+		let cleanedArr2 = arr2.filter( ( el ) => !arr1.includes( el ) );
 		return arr1.concat(cleanedArr2)
 	}
 	
