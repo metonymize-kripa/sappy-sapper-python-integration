@@ -42,18 +42,18 @@
 		return arr1.concat(cleaned_arr2)
 	}
 	
-	function numMatchesInArrayOfStrings(str1, arr_strs) {
-		matches = arr_strs.filter( this_str => this_str.lower().includes(str1.lower) );
-		return matches.len()
+	function numPartiallyMatchedFromArrayOfStrings(str1, arr_strs) {
+		matches = arr_strs.filter( this_str => str1.lower().includes(this_str) );
+		return matches.length()
 		
 	}
 	
-	function skillType(ticker_query, batch_commands) {
-		if ( numMatchesInArrayOfStrings(ticker_query, batch_commands) > 0 ) {
-			return "Quick skill: ";
+	function skillType(query, batch_commands) {
+		if ( numPartiallyMatchedFromArrayOfStrings(query, batch_commands) > 0 ) {
+			return "Slow skill: ";
 		}
 		else {
-			return "Slow skill: ";
+			return "Quick skill: ";
 		}
 	}
 	
@@ -125,7 +125,7 @@
 -->
 
 {#if api_output.symbol == "waiting"}
-    <h1>{skillType(dispatched_ticker, batch_commands)+dispatched_ticker} ...</h1>
+    <h1>{skillType(dispatched_ticker,batch_commands)+dispatched_ticker} ...</h1>
 	<figure style='width:10%'>
 		<img alt='Loading' src='loadcat.gif'>
 	</figure>
