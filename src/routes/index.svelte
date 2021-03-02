@@ -125,7 +125,7 @@
 -->
 
 {#if api_output.symbol == "waiting"}
-    <h1>{skillType(dispatched_ticker,batch_commands)+dispatched_ticker} ...</h1>
+    <h1>{dispatched_ticker} ...</h1>
 	<figure style='width:10%'>
 		<img alt='Loading' src='loadcat.gif'>
 	</figure>
