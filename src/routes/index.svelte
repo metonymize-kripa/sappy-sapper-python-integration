@@ -36,6 +36,11 @@
 
 	let api_output = {"symbol":"welcome"};
 	
+	function concatArraysWithoutRepetition(arr1, arr2) {
+		cleanedArr2 = arr2.filter( ( el ) => !arr1.includes( el ) );
+		return arr1.concat(cleanedArr2)
+	}
+	
 	function stashWysiwygTextInput(input_text) {
 		wysiwyg_ticker = input_text
 		return input_text;
@@ -73,7 +78,7 @@
 				.then(d => d.text())
 				.then(d => (api_output = JSON.parse(d)));
 			selected_ticker = ""
-			cached_tickers = ([dispatched_ticker].concat(cached_tickers)).slice(0,5)
+			cached_tickers = concatArraysWithoutRepetition([dispatched_ticker],cached_tickers).slice(0,5)
 	}
 </script>
 
@@ -87,7 +92,7 @@
 -->
         <AutoComplete class="my-ac"
 		      textCleanFunction={stashWysiwygTextInput}
-		      items={cached_tickers.concat(tickers)} bind:selectedItem={selected_ticker}
+		      items={concatArraysWithoutRepetition(cached_tickers,tickers)} bind:selectedItem={selected_ticker}
 		      on:keydown={handleKeydown}
 		      maxItemsToShowInList=10 hideArrow=true placeholder={dispatched_ticker} showClear=true />
 
