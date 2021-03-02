@@ -43,7 +43,7 @@
 	}
 	
 	function numPartiallyMatchedFromArrayOfStrings(str1, arr_strs) {
-		matches = arr_strs.filter( this_str => str1.lower().includes(this_str) );
+		matches = arr_strs.filter( this_str => str1.toLowerCase().includes(this_str) );
 		return matches.length
 		
 	}
