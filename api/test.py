@@ -58,6 +58,19 @@ def make_div2_response(symbol, resp_dict):
         resp_dict['secondary_description'] =  f'Pulled as of {input_dict["datetime"]}'
     return resp_dict
 
+def make_dive_response(symbol, resp_dict):
+    api_end_point = f"{FAT_NEO_API_URL}/{symbol} DIVE"
+    resp = requests.get(api_end_point)
+    if resp.ok: #Good response from FastAPI
+        input_dict = resp.json()
+        resp_dict['symbol'] = symbol
+        resp_dict['main_point'] = f'${float(input_dict["skill_output"]["nextestpayout"]):.2f}'
+        resp_dict['description'] = 'Payout expected on '+input_dict["skill_output"]["nextpaydate"]
+        resp_dict['supporting_data'] = ''
+        resp_dict['secondary_point'] = f'{100*float(input_dict["skill_output"]["nextestpayout"]):.2f}%'
+        resp_dict['secondary_description'] =  f'Dividend yield, estimate as of {input_dict["skill_output"]["divyield"]}'
+    return resp_dict
+
 def make_div_response(symbol, resp_dict):
     api_end_point = f"{API_URL}stocks/dividend/{symbol}"
     resp = requests.get(api_end_point)
@@ -180,7 +193,8 @@ FUNCTION_MAP = {'range':make_range_response,
                 'wise':make_wise_response, 
                 'call':make_call_response, 
                 'div':make_div_response,
-                'div2':make_div2_response}
+                'div2':make_div2_response,
+                'dive':make_dive_response}
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
