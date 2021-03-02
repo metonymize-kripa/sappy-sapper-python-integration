@@ -115,13 +115,17 @@
 		      maxItemsToShowInList=10 hideArrow=true placeholder={dispatched_ticker} showClear=true />
 
 
-	<Button 
-	    on:mouseenter={ e => button_text="Let's Go!" }
-	    on:mouseleave={ e => button_text="Really?" }
-	    on:click={runAPI}
-	>{button_text}</Button>
+	<button class="button icon-only">
+  <img src="https://icongr.am/feather/search.svg?size=24">
+		on:click={runAPI}
+</button>
 
 <!--	
+<Button 
+	    on:mouseenter={ e => button_text="Go" }
+	    on:mouseleave={ e => button_text="Go" }
+	    on:click={runAPI}
+	>{button_text}</Button>
 	<p>Input:{wysiwyg_ticker}, Selected:{selected_ticker}, Dispatched:{dispatched_ticker} ...</p>
     <br>
 -->
