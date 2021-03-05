@@ -137,6 +137,21 @@ def make_ape_response(symbol, resp_dict):
             resp_dict['main_class'] = 'bearish'
     return resp_dict
 
+def make_twitter_response(symbol, resp_dict):
+    api_end_point = f"{API_URL}sentiment/twitter/{symbol}"
+    resp = requests.get(api_end_point)
+    if resp.ok: #Good response from FastAPI
+        input_dict = resp.json()
+        resp_dict['symbol'] = symbol
+        twitter_index = round(input_dict['twitter_index'])
+        resp_dict['main_point'] = f"Twitter sentiment index is : {twitter_index}% "
+        resp_dict['description'] = "Experimental feature: Real time twitter sentiment"
+        if int(twitter_index) > 20:
+            resp_dict['main_class'] = 'bullish'
+        elif int(twitter_index) < -20:
+            resp_dict['main_class'] = 'bearish'
+    return resp_dict
+
 def make_volume_response(symbol, resp_dict):
     api_end_point = f"{API_URL}stocks/volume/{symbol}"
     resp = requests.get(api_end_point)
@@ -185,17 +200,18 @@ def make_call_response(symbol, resp_dict):
     return resp_dict
 
 #SKILL_MAP = {'range':'options/range/', 'ape':'options/kelly/','kelly':'options/kelly/','doom':'options/doom/' , 'volume':'stocks/volume/', 'prob_pct':'options/prob_pct/','wsb':'stocks/volume/', 'new2':'options/kelly/' }
-FUNCTION_MAP = {'range':make_range_response, 
+FUNCTION_MAP = {'range':make_range_response,
                 'ape':make_ape_response,
                 'kelly':make_ape_response,
-                'doom':make_doom_response , 
+                'doom':make_doom_response ,
                 'volume':make_volume_response,
-                'wsb':make_wsb_response, 
-                'wise':make_wise_response, 
-                'call':make_call_response, 
+                'wsb':make_wsb_response,
+                'wise':make_wise_response,
+                'call':make_call_response,
                 'div':make_div_response,
                 'div2':make_div2_response,
-                'dive':make_dive_response}
+                'dive':make_dive_response,
+                'twitter':make_twitter_response}
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
