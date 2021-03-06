@@ -62,8 +62,10 @@
 
 
 <div class="row">
-  <div class="col-8"><input  bind:value={ticker} on:keydown={handleKeydown} autofocus/></div>
+<div class="grouped col-12">
+ <div class="col-8"> <input  bind:value={ticker} on:keydown={handleKeydown} autofocus/></div>
   <div class="col-4"><button  class="button primary" on:click={runAPI}> GO </button></div>
+</div>
 </div>
 
 <div class="row">
