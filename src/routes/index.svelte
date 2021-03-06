@@ -85,7 +85,7 @@
             <h3>{api_output.supporting_data}</h3>
             <h4 class="{api_output.secondary_class}">{api_output.secondary_point}</h4>
             {#if api_output.meter_value > -1}
-                <meter value="{api.meter_value}" min ="0" max="100"></meter>
+                <meter value="{api_output.meter_value}" min ="0" max="100"></meter>
             {/if}
             <p>{api_output.secondary_description}</p>
         {/if}
