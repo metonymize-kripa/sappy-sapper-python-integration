@@ -70,20 +70,23 @@
 
 <div class="row">
     <div class="col-8">
+        <meter style="color:red" value='3' min ="0" max="10">yesss</meter>
         {#if api_output.symbol == "waiting"}
             <h1>Running quantum computing ...</h1>
         	<figure style='width:10%'>
         		<img alt='Loading' src='loadcat.gif'>
         	</figure>
         {:else if api_output.symbol == "welcome"}
-            <h2> ☝️ Type symbol+skill+↵ </h2>
+            <h2> ☝️ Symbol+skill+↵ </h2>
         {:else}
             <br>
             <h2 class="{api_output.main_class}">{api_output.main_point}</h2>
             <p>{@html api_output.description}</p>
             <h3>{api_output.supporting_data}</h3>
             <h4 class="{api_output.secondary_class}">{api_output.secondary_point}</h4>
-            <meter value='3' min ="0" max="10">yesss</meter>
+            {#if api_output.meter_value > -1"}
+                <meter value="{api.meter_value}" min ="0" max="100"></meter>
+            {/if}
             <p>{api_output.secondary_description}</p>
         {/if}
     </div>

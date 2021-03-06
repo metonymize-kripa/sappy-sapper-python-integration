@@ -106,6 +106,7 @@ def make_range_response(symbol, resp_dict):
             resp_dict['secondary_class'] = 'bullish'
         elif int(input_dict['volume_pct']) < 45:
             resp_dict['secondary_class'] = 'bearish'
+        resp_dict['meter_value'] = int(input_dict['volume_pct'])
         resp_dict['secondary_description'] =  'Relative Volume based on 10 days average'
     return resp_dict
 
@@ -117,10 +118,12 @@ def make_doom_response(symbol, resp_dict):
         resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f'Crash Index @{round(100*input_dict["prob_down"])}'
         resp_dict['description'] = 'Options implied Prb. of 5%👇 in month ahead'
-        if float(input_dict['prob_down']) < 0.1:
+        prob_down = float(input_dict['prob_down'])
+        if prob_down < 0.1:
             resp_dict['main_class'] = 'bullish'
-        elif float(input_dict['prob_down']) > 0.2:
+        elif prob_down > 0.2:
             resp_dict['main_class'] = 'bearish'
+        resp_dict['meter_value'] = round(prob_down*100)
     return resp_dict
 
 def make_ape_response(symbol, resp_dict):
@@ -131,10 +134,13 @@ def make_ape_response(symbol, resp_dict):
         resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f"Consider Kelly-efficient bet sizing of: {round(input_dict['kelly']*100)}% "
         resp_dict['description'] = "Experimental feature"
-        if float(input_dict['prob_up']) > 0.6:
+        prob_up = float(input_dict['prob_up'])
+        if prob_up > 0.6:
             resp_dict['main_class'] = 'bullish'
-        elif float(input_dict['prob_up']) < 0.4:
+        elif prob_up < 0.4:
             resp_dict['main_class'] = 'bearish'
+        resp_dict['meter_value'] = round(prob_up*100)
+
     return resp_dict
 
 def make_twitter_response(symbol, resp_dict):
@@ -150,6 +156,7 @@ def make_twitter_response(symbol, resp_dict):
             resp_dict['main_class'] = 'bullish'
         elif int(twitter_index) < -20:
             resp_dict['main_class'] = 'bearish'
+        resp_dict['meter_value'] = twitter_index
     return resp_dict
 
 def make_volume_response(symbol, resp_dict):
@@ -166,11 +173,14 @@ def make_volume_response(symbol, resp_dict):
         elif adv_x_volume < 0.7:
             resp_dict['main_class'] = 'bearish'
         #resp_dict['supporting_data'] = f'Now@{(input_dict["percentile"])}'
-        resp_dict['secondary_point'] = f'Now@{int(input_dict["percentile"])}'
-        if float(input_dict['percentile']) > 55:
+        percentile = int(input_dict['percentile'])
+        resp_dict['secondary_point'] = f'Now@{percentile}'
+        if percentile > 55:
             resp_dict['secondary_class'] = 'bullish'
-        elif float(input_dict['percentile']) < 45:
+        elif percentile < 45:
             resp_dict['secondary_class'] = 'bearish'
+        resp_dict['meter_value'] = percentile
+
         resp_dict['secondary_description'] =  'Current volume percentile'
     return resp_dict
 
@@ -228,6 +238,7 @@ class handler(BaseHTTPRequestHandler):
                       'supporting_data':'',
                       'secondary_point':'',
                       'secondary_class':'neutral',
+                      'meter_value':-1,
                       'secondary_description':'' }
 
         if "input_cmd" in dic:
