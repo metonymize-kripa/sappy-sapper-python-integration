@@ -67,22 +67,39 @@
 </div>
 
 <br>
+<div class="row">
+    <div class="col-8">
+        {#if api_output.symbol == "waiting"}
+            <h1>Running quantum computing ...</h1>
+        	<figure style='width:10%'>
+        		<img alt='Loading' src='loadcat.gif'>
+        	</figure>
+        {:else if api_output.symbol == "welcome"}
+            <h2> ☝️ Type symbol+skill+↵ </h2>
+        {:else}
+            <br>
+            <h2 class="{api_output.main_class}">{api_output.main_point}</h2>
+            <p>{@html api_output.description}</p>
+            <h3>{api_output.supporting_data}</h3>
+            <h4 class="{api_output.secondary_class}">{api_output.secondary_point}</h4>
+            <p>{api_output.secondary_description}</p>
+        {/if}
+    </div>
+    <div class="card col-4 bg-light" style="font-size:1.5rem;padding:0.1rem 0.5rem;">
+      <header>
+        <h4>Skills Sheet</h4>
+      </header>
 
-{#if api_output.symbol == "waiting"}
-    <h1>Running quantum computing ...</h1>
-	<figure style='width:10%'>
-		<img alt='Loading' src='loadcat.gif'>
-	</figure>
-{:else if api_output.symbol == "welcome"}
-    <h2> ☝️ Type, pick, go  </h2>
-{:else}
-    <br>
-    <h2 class="{api_output.main_class}">{api_output.main_point}</h2>
-    <p>{@html api_output.description}</p>
-    <h3>{api_output.supporting_data}</h3>
-    <h4 class="{api_output.secondary_class}">{api_output.secondary_point}</h4>
-    <p>{api_output.secondary_description}</p>
-{/if}
+      <span class="text-white bg-primary bd-dark">IBM</span> - 7 day price range<br>
+      <span class="text-white bg-primary bd-dark">IBM DOOM</span> - Prb of stock crash<br>
+      <span class="text-white bg-primary bd-dark">IBM VOLUME</span> - Relative(10d) vol<br>
+      <span class="text-white bg-primary bd-dark">IBM DIV</span> - Last div <br>
+      <span class="text-white bg-primary bd-dark">IBM DIVE</span> - Upcoming (Est) div<br>
+      <span class="text-white bg-primary bd-dark">IBM KELLY</span> - optimal allocation<br>
+      <span class="text-white bg-primary bd-dark">IBM CALL</span> - optimal calls<br>
+
+    </div>
+</div>
 
 <p><strong>📯 Sign up for the <a href='https://oracled.mailchimpsites.com/'>DailySpread</a></strong></p>
 <p>Check us at <a href='https://bearfox.live/'>Bearfox.live</a>, See us in action at <a href='https://oracled.com/'>Oracled.com</a></p>
