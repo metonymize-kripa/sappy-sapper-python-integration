@@ -82,7 +82,6 @@
         {:else if api_output.symbol == "welcome"}
             <h2> ☝️ Symbol+skill+↵ </h2>
         {:else}
-            <br>
             <h2 class="{api_output.main_class}">{api_output.main_point}</h2>
             <p>{@html api_output.description}</p>
             <h3>{api_output.supporting_data}</h3>
