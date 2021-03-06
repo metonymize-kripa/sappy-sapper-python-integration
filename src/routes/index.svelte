@@ -12,6 +12,10 @@
     max-width:80rem;
     margin:0 auto;
     }
+    :global(meter){
+    width:12rem;
+    height:3rem;
+    }
 
 	:global(.autocomplete-list-item){
         text-align:left!important;
@@ -70,7 +74,6 @@
 
 <div class="row">
     <div class="col-8">
-        <meter style="color:red" value='3' min ="0" max="10">yesss</meter>
         {#if api_output.symbol == "waiting"}
             <h1>Running quantum computing ...</h1>
         	<figure style='width:10%'>
