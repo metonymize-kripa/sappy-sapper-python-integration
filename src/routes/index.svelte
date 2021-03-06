@@ -81,6 +81,7 @@
             <p>{@html api_output.description}</p>
             <h3>{api_output.supporting_data}</h3>
             <h4 class="{api_output.secondary_class}">{api_output.secondary_point}</h4>
+            <meter value='3' min ="0" max="10">yesss</meter>
             <p>{api_output.secondary_description}</p>
         {/if}
     </div>
