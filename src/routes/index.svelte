@@ -62,11 +62,10 @@
 
 
 <div class="row">
-  <input style="width:60%;" bind:value={ticker} on:keydown={handleKeydown} autofocus/>
-   <button style="width:30%;margin-left:2%;" class="button primary" on:click={runAPI}> GO </button>
+  <div class="col-8"><input  bind:value={ticker} on:keydown={handleKeydown} autofocus/></div>
+  <div class="col-4"><button  class="button primary" on:click={runAPI}> GO </button></div>
 </div>
 
-<br>
 <div class="row">
     <div class="col-8">
         {#if api_output.symbol == "waiting"}
