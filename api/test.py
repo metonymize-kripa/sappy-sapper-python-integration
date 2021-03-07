@@ -123,7 +123,7 @@ def make_doom_response(symbol, resp_dict):
             resp_dict['main_class'] = 'bullish'
         elif prob_down > 0.2:
             resp_dict['main_class'] = 'bearish'
-        
+
     return resp_dict
 
 def make_ape_response(symbol, resp_dict):
@@ -140,7 +140,7 @@ def make_ape_response(symbol, resp_dict):
         elif prob_up < 0.4:
             resp_dict['main_class'] = 'bearish'
         prob_up_percent = round(prob_up*100)
-        resp_dict['secondary_point'] = f"Probability of upside:@{prob_up_percent}""
+        resp_dict['secondary_point'] = f"Probability of upside:@{prob_up_percent}"
         resp_dict['meter_value'] = prob_up_percent
 
     return resp_dict
