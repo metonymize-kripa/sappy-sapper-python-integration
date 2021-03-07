@@ -100,19 +100,18 @@
             </div>
         {/if}
     </div>
-    <div class="card col-4 bg-light" style="font-size:1.5rem;padding:0.1rem 0.5rem;">
+    <div class="card col-4 bg-light" style="font-size:1.4rem;padding:0.1rem 0.5rem;">
       <header>
         <h4>Skills Sheet</h4>
       </header>
-
       <span class="text-white bg-primary bd-dark">IBM</span> - 7 day price range<br>
-      <span class="text-white bg-primary bd-dark">IBM DOOM</span> - Prb of stock crash<br>
-      <span class="text-white bg-primary bd-dark">IBM VOLUME</span> - Relative(10d) vol<br>
-      <span class="text-white bg-primary bd-dark">IBM DIV</span> - Last div <br>
-      <span class="text-white bg-primary bd-dark">IBM DIVE</span> - Upcoming (Est) div<br>
-      <span class="text-white bg-primary bd-dark">IBM KELLY</span> - optimal allocation<br>
-      <span class="text-white bg-primary bd-dark">IBM CALL</span> - optimal calls<br>
-
+      <span class="text-white bg-primary bd-dark">ibm doom</span> - Prb of stock crash<br>
+      <span class="text-white bg-primary bd-dark">ibm volume</span> - Relative(10d) vol<br>
+      <span class="text-white bg-primary bd-dark">ibm div</span> - Last div <br>
+      <span class="text-white bg-primary bd-dark">ibm dive</span> - Upcoming (Est) div<br>
+      <span class="text-white bg-primary bd-dark">ibm kelly</span> - optimal allocation<br>
+      <span class="text-white bg-primary bd-dark">ibm call</span> - optimal calls<br>
+      <span class="text-white bg-primary bd-dark">ibm twitter</span> - optimal calls<br>
     </div>
 </div>
 <footer>
