@@ -124,12 +124,13 @@
       </header>
       <span class="text-white bg-primary bd-dark">IBM</span> - 7 day price range<br>
       <span class="text-white bg-primary bd-dark">ibm doom</span> - Prb of stock crash<br>
+      <span class="text-white bg-primary bd-dark">ibm wsb</span> - Mentions on r/wallstreetbets<br>
       <span class="text-white bg-primary bd-dark">ibm volume</span> - Relative(10d) vol<br>
       <span class="text-white bg-primary bd-dark">ibm div</span> - Last div <br>
       <span class="text-white bg-primary bd-dark">ibm dive</span> - Upcoming (Est) div<br>
       <span class="text-white bg-primary bd-dark">ibm kelly</span> - Optimal allocation<br>
       <span class="text-white bg-primary bd-dark">ibm call</span> - Optimal calls<br>
-      <span class="text-white bg-primary bd-dark">ibm twtter</span> - Twitter sentiment<br>
+      <span class="text-white bg-primary bd-dark">ibm twitter</span> - Twitter sentiment<br>
     </div>
 </div>
 <footer>
