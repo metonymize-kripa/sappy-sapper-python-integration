@@ -34,6 +34,11 @@
 	let batch_commands = ["call", "wise"];
     let ticker = "";
 
+    import { stores } from '@sapper/app';
+    const { preloading, page, session } = stores();
+    const { host, path, params, query } = $page;
+
+
     async function handleKeydown(event) {
 		if (event.key === 'Tab' || event.key === 'Enter' ) {
 			event.preventDefault();
@@ -66,15 +71,28 @@
 				.then(d => d.text())
 				.then(d => (api_output = JSON.parse(d)));
 	}
+    let cmd_to_run_from_get="";
+    let symbol_to_run_from_get='spy';
+    if ('cmd' in  query){
+        cmd_to_run_from_get = query['cmd'];
+        if ('symbol' in  query){
+            symbol_to_run_from_get = query['symbol'];
+        }
+        ticker = symbol_to_run_from_get+" "+cmd_to_run_from_get;
+        runAPI();
+
+    }
+
 </script>
 
 
 <div class="row">
 <div class="grouped col-12">
- <div class="col-8"> <input  bind:value={ticker} on:keydown={handleKeydown} autofocus/></div>
-  <div class="col-4"><button  class="button primary" on:click={runAPI}> GO </button></div>
+ <div class="col-8"> <input bind:value={ticker} on:keydown={handleKeydown} autofocus/></div>
+  <div class="col-4"><button class="button primary" on:click={runAPI}> GO </button></div>
 </div>
 </div>
+
 
 <div class="row">
     <div class="col-8">
