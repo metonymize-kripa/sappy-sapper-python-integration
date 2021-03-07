@@ -86,9 +86,11 @@
         {:else if api_output.symbol == "welcome"}
             <h2> ☝️ Symbol+skill+↵ </h2>
         {:else}
-            <h2 class="{api_output.main_class}">{api_output.main_point}</h2>
-            <p>{@html api_output.description}</p>
-            <h3 class="supporting">{api_output.supporting_data}</h3>
+            <div class='bd-dark'>
+                <h2 class="{api_output.main_class}">{api_output.main_point}</h2>
+                <p>{@html api_output.description}</p>
+                <h3 class="supporting">{api_output.supporting_data}</h3>
+            </div>
             <h4 class="{api_output.secondary_class}">{api_output.secondary_point}</h4>
             {#if api_output.meter_value > -1}
                 <meter value="{api_output.meter_value}" min ="0" max="100"></meter>
