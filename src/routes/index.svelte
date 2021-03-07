@@ -8,6 +8,10 @@
 	.bullish{
 		color:green;
 	}
+    .supporting{
+        color:navy;
+    }
+
     :global(body) {
     max-width:80rem;
     margin:0 auto;
@@ -84,7 +88,7 @@
         {:else}
             <h2 class="{api_output.main_class}">{api_output.main_point}</h2>
             <p>{@html api_output.description}</p>
-            <h3>{api_output.supporting_data}</h3>
+            <h3 class="supporting">{api_output.supporting_data}</h3>
             <h4 class="{api_output.secondary_class}">{api_output.secondary_point}</h4>
             {#if api_output.meter_value > -1}
                 <meter value="{api_output.meter_value}" min ="0" max="100"></meter>
@@ -107,6 +111,7 @@
 
     </div>
 </div>
-
+<footer>
 <p><strong>📯 Sign up for the <a href='https://oracled.mailchimpsites.com/'>DailySpread</a></strong></p>
 <p>Check us at <a href='https://bearfox.live/'>Bearfox.live</a>, See us in action at <a href='https://oracled.com/'>Oracled.com</a></p>
+</footer>
