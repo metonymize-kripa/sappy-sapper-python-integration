@@ -92,7 +92,7 @@
                 <h3 class="supporting">{api_output.supporting_data}</h3>
             </div>
             <div style="padding:0 1rem; margin-top:1rem;" class='text-grey text-center'>
-                <h4 class="{api_output.secondary_class}">{api_output.secondary_point}</h4>
+                <h4 style="margin:0.5rem 0 0 0; " class="{api_output.secondary_class}">{api_output.secondary_point}</h4>
                 {#if api_output.meter_value > -1}
                     <meter value="{api_output.meter_value}" min ="0" max="100"></meter>
                 {/if}
