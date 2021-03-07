@@ -127,9 +127,9 @@
       <span class="text-white bg-primary bd-dark">ibm volume</span> - Relative(10d) vol<br>
       <span class="text-white bg-primary bd-dark">ibm div</span> - Last div <br>
       <span class="text-white bg-primary bd-dark">ibm dive</span> - Upcoming (Est) div<br>
-      <span class="text-white bg-primary bd-dark">ibm kelly</span> - optimal allocation<br>
-      <span class="text-white bg-primary bd-dark">ibm call</span> - optimal calls<br>
-      <span class="text-white bg-primary bd-dark">ibm twitter</span> - optimal calls<br>
+      <span class="text-white bg-primary bd-dark">ibm kelly</span> - Optimal allocation<br>
+      <span class="text-white bg-primary bd-dark">ibm call</span> - Optimal calls<br>
+      <span class="text-white bg-primary bd-dark">ibm twtter</span> - Twitter sentiment<br>
     </div>
 </div>
 <footer>
