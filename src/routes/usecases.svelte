@@ -7,10 +7,7 @@
 <p>Options are just one of the many sources of insights that we make available for traders.
 Here are a few use cases to inspire your exploration with our tools. Be bold. Hope you have fun!</p>
 
-<h2><strong>Avoiding melt down</strong></h2>
-<p>Using TICKER DOOM allows us to estimate the options implied probability of a sharp near term drop.</p>
-
-<h1>✨ Fat Neo's Wall of Fame</h1>
+<h1>✨Fat Neo's Wall of Fame</h1>
 
 <script>
 	import { onMount } from 'svelte';
