@@ -13,6 +13,7 @@
         {
 			fetch("./api/test?input_cmd="+table_list[i]['symbol']+" range")
 				.then(d => d.text())
+                .then(d=>console.log(d))
 				.then(d => (table_list[i]["range"] = JSON.parse(d).main_point));
             fetch("./api/test?input_cmd="+table_list[i].symbol+" kelly")
 				.then(d => d.text())
