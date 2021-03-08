@@ -11,9 +11,9 @@
     function get_portfolio_data() {
         for(var i = 0; i < table_list.length; i++)
         {
-			fetch("./api/test?input_cmd="+table_list[i].symbol+" range")
+			fetch("./api/test?input_cmd="+table_list[i]['symbol']+" range")
 				.then(d => d.text())
-				.then(d => (table_list[i].symbol = JSON.parse(d).main_point));
+				.then(d => (table_list[i].range = JSON.parse(d).main_point));
             fetch("./api/test?input_cmd="+table_list[i].symbol+" kelly")
 				.then(d => d.text())
 				.then(d => (table_list[i].prob_up = JSON.parse(d).meter_value));
