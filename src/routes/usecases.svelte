@@ -51,16 +51,3 @@ Here are a few use cases to inspire your exploration with our tools. Be bold. Ho
         TSLA has had a bad run during Feb. It fell over 30%. One of our users believed that the stock had hit the bottom. Using <a  href="/?symbol=tsla&cmd=kelly">fatneo's Kelly skill</a> he knew the probability of upside is more than 50%. The volatility was high and so he sold a weekly $520 put and made over $1,000.
     </div>
 </div>
-
-<div class="photos">
-	{#each photos as photo}
-		<figure>
-			<img src={photo.thumbnailUrl} alt={photo.title}>
-			<figcaption>{photo.title}</figcaption>
-			<!--  <img src='{dsrandom.randomPhotoMoto()}' alt={photo.title}> -->
-		</figure>
-	{:else}
-		<!-- this block renders when photos.length === 0 -->
-		<p>loading...</p>
-	{/each}
-</div>
