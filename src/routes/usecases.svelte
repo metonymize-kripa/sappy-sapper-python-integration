@@ -36,7 +36,7 @@ Here are a few use cases to inspire your exploration with our tools. Be bold. Ho
 		width: 100%;
 		margin: 0;
 	}
-</style>
+</style> 
 <div class="row">
     <div class="card col-6 bg-light" >
       <header>
