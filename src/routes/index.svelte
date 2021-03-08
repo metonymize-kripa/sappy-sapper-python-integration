@@ -85,6 +85,7 @@
 
 </script>
 
+<h1> 🎉 Welcome Boris </h1>
 
 <div class="row">
 <div class="grouped col-12">
@@ -92,8 +93,6 @@
   <div class="col-4"><button class="button primary" on:click={runAPI}> GO </button></div>
 </div>
 </div>
-
-<h2> 🎉 Welcome Boris </h2>
 
 <div class="row">
     <div class="col-8">
