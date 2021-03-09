@@ -17,7 +17,7 @@
     let table_list= [];
     for(var i = 0; i < symbol_list.length; i++)
     {
-        table_list.push({"symbol":symbol_list[i],"doom":"NA","prob_up":"NA","kelly":"NA","twitter":"NA"});
+        table_list.push({"symbol":symbol_list[i],"doom":"NA","prob_up":"NA","kelly":"NA"});
     }
     function get_portfolio_data() {
         for(var i = 0; i < table_list.length; i++)
@@ -48,7 +48,7 @@
                     }
                 }
               });
-          fetch("https://www.insuremystock.com/sentiment/twitter/"+table_list[i]['symbol'])
+          /*fetch("https://www.insuremystock.com/sentiment/twitter/"+table_list[i]['symbol'])
 			.then(d => d.text())
             .then(function(d) {
                 var my_dict = JSON.parse(d);
@@ -60,7 +60,7 @@
                         table_list[k].twitter = Math.round(my_dict.twitter_index);
                     }
                 }
-              });
+              });*/
         }
         }
 
@@ -79,7 +79,7 @@
           <th>Optimal Allocation</th>
           <th>Doom</th>
           <th>Upside Prob</th>
-          <th>Twitter Sentiment</th>
+
         </tr>
     </thead>
     <tbody>
@@ -90,7 +90,6 @@
                 <td>${kelly}</td>
                 <td>{doom}%</td>
                 <td>{prob_up}%</td>
-                <td>{twitter}%</td>
             </tr>
             {:else}
             <tr class="bearish">
@@ -98,7 +97,6 @@
             <td>${kelly}</td>
             <td>{doom}%</td>
             <td>{prob_up}%</td>
-            <td>{twitter}%</td>
             </tr>
             {/if}
         {/each}

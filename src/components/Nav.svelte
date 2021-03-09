@@ -51,9 +51,9 @@
 <nav>
 	<ul>
 		<li><a class='{segment === undefined ? "selected" : ""}' href='.'>Home</a></li>
-		<li><a class='{segment === "about" ? "selected" : ""}' href='about'>About</a></li>
+	<!--	<li><a class='{segment === "about" ? "selected" : ""}' href='about'>About</a></li>
 		<li><a class='{segment === "skills_key" ? "selected" : ""}' href='skills_key'>Skills</a></li>
-		<li><a class='{segment === "usecases" ? "selected" : ""}' href='usecases'>Usecases</a></li>
+		<li><a class='{segment === "usecases" ? "selected" : ""}' href='usecases'>Usecases</a></li> -->
         <li><a class='{segment === "portfolio" ? "selected" : ""}' href='portfolio '>My Portfolio</a></li>
         <li><a class='{segment === "watch_list" ? "selected" : ""}' href='watch_list '>Watch List</a></li>
 
