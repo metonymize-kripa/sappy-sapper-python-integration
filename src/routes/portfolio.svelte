@@ -101,15 +101,19 @@
         {#each table_list as { symbol,range,prob_up,wsb }, i}
         {#if prob_up>50}
             <tr class=".bullish">
-        {:else}
-            <tr class=".bearish">
-        {/if}
-
                 <td>{symbol}</td>
                 <td>{range}</td>
                 <td>{prob_up}%</td>
                 <td>{wsb}</td>
             </tr>
+            {:else}
+            <tr class=".bearish">
+                <td>{symbol}</td>
+                <td>{range}</td>
+                <td>{prob_up}%</td>
+                <td>{wsb}</td>
+            </tr>
+            {/if}
         {/each}
     </tbody>
 </table>
