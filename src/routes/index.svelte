@@ -85,7 +85,7 @@
 
 </script>
 
-<h1>💫 WTF, welcome!</h1>
+<h1>💫 WTF! welcome!</h1>
 
 <div class="row">
 <div class="grouped col-12">
