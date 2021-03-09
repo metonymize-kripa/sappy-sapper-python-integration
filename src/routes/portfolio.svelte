@@ -13,7 +13,7 @@
         {
             fetch("https://www.insuremystock.com/options/range/"+table_list[i]['symbol'])
               .then(function(data) {
-              console.log(data);
+              console.log(data.text());
                 var my_dict = JSON.parse(data);
                 console.log(data);
               });
