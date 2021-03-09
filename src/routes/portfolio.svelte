@@ -25,6 +25,21 @@
                     }
                 }
               });
+              fetch("./api/test?input_cmd="+table_list[i]['symbol']+" wsb")
+  				.then(d => d.text())
+                .then(function(d) {
+
+                    var my_dict = JSON.parse(d);
+                    for (var k = 0; k < table_list.length; k++)
+                    {
+                        if (table_list[k].symbol == my_dict.symbol)
+                        {
+                            table_list[k].wsb = my_dict.main_point;
+
+                        }
+                    }
+                  });
+
 
         }
         }
