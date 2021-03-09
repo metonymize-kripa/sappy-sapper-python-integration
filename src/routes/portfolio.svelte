@@ -1,6 +1,17 @@
 <svelte:head>
 	<title>My Portfolio </title>
 </svelte:head>
+<style>
+   	.neutral{
+        color:black;
+	}
+	.bearish{
+		color:red;
+	}
+	.bullish{
+		color:green;
+	}
+</style>
 <script>
     let symbol_list = ["ABBV","AMC","GILD","GME","IBM","MO","T","XOM"];
     let table_list= [];
@@ -21,7 +32,7 @@
                     if (table_list[k].symbol.toUpperCase() == my_dict.symbol.toUpperCase())
                     {
                         table_list[k].range = "$"+Math.round(my_dict.low_range)+"-$"+Math.round(my_dict.high_range);
-                        table_list[k].prob_up = Math.round(my_dict.prob_up*100)+"%";
+                        table_list[k].prob_up = Math.round(my_dict.prob_up*100);
                     }
                 }
               });
@@ -88,10 +99,15 @@
     </thead>
     <tbody>
         {#each table_list as { symbol,range,prob_up,wsb }, i}
-            <tr>
+        {#if prob_up>50}
+            <tr class=".bullish">
+        {:else}
+            <tr class=".bearish">
+        {/if}
+
                 <td>{symbol}</td>
                 <td>{range}</td>
-                <td>{prob_up}</td>
+                <td>{prob_up}%</td>
                 <td>{wsb}</td>
             </tr>
         {/each}
