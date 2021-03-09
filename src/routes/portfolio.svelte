@@ -20,13 +20,12 @@
                 {
                     if (table_list[k].symbol == my_dict.symbol)
                     {
-                        table_list[k].range = my_dict.low_range;
-
+                        table_list[k].range = "$"+Math.round(my_dict.low_range)+"-$"+Math.round(my_dict.low_range);
+                        table_list[k].prob_up = Math.round(my_dict.prob_up*100)+"%";
                     }
                 }
-                
-                console.log(my_dict);
               });
+
         }
         }
         /*fetch("https://www.insuremystock.com/options/range/"+table_list[i]['symbol'])
