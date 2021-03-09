@@ -17,7 +17,7 @@
     let table_list= [];
     for(var i = 0; i < symbol_list.length; i++)
     {
-        table_list.push({"symbol":symbol_list[i],"range":"NA","prob_up":"NA","wsb":"NA"});
+        table_list.push({"symbol":symbol_list[i],"buy_rating":"NA","kelly":"NA","range":"NA","prob_up":"NA","wsb":"NA"});
     }
     function get_portfolio_data() {
         for(var i = 0; i < table_list.length; i++)
@@ -48,6 +48,34 @@
                         }
                     }
                   });
+              fetch("https://www.insuremystock.com/options/kelly/"+table_list[i]['symbol'])
+              .then(d => d.text())
+              .then(function(d) {
+                  var my_dict = JSON.parse(d);
+                  for (var k = 0; k < table_list.length; k++)
+                  {
+                      if (table_list[k].symbol.toUpperCase() == my_dict.symbol.toUpperCase())
+                      {
+                          table_list[k].kelly = (my_dict.kelly*100).toFixed(2);
+
+                      }
+                  }
+                });
+                fetch("https://www.insuremystock.com/options/prob_sigma/"+table_list[i]['symbol']+"?days=7&sigma=0.5")
+                .then(d => d.text())
+                .then(function(d) {
+                    var my_dict = JSON.parse(d);
+                    for (var k = 0; k < table_list.length; k++)
+                    {
+                        if (table_list[k].symbol.toUpperCase() == my_dict.symbol.toUpperCase())
+                        {
+                            table_list[k].buy_rating = (my_dict.norm_prob_up*100).toFixed(2);
+
+                        }
+                    }
+                  });
+
+
         }
         }
         /*fetch("https://www.insuremystock.com/options/range/"+table_list[i]['symbol'])
@@ -84,16 +112,20 @@
         <tr>
 
           <th>Symbol</th>
+          <th>Buy Rating</th>
+          <th>Optimal Allocation</th>
           <th>Range</th>
           <th>Upside Prob</th>
           <th>WSB Mentions</th>
         </tr>
     </thead>
     <tbody>
-        {#each table_list as { symbol,range,prob_up,wsb }, i}
+        {#each table_list as {symbol,buy_rating,kelly,range,prob_up,wsb }, i}
         {#if prob_up>50}
             <tr class="bullish">
                 <td>{symbol}</td>
+                <td>{buy_rating}</td>
+                <td>${kelly}</td>
                 <td>{range}</td>
                 <td>{prob_up}%</td>
                 <td>{wsb}</td>
@@ -101,6 +133,8 @@
             {:else}
             <tr class="bearish">
                 <td>{symbol}</td>
+                <td>{buy_rating}</td>
+                <td>${kelly}</td>
                 <td>{range}</td>
                 <td>{prob_up}%</td>
                 <td>{wsb}</td>
