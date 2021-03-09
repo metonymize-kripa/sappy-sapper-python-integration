@@ -11,6 +11,13 @@
 </script>
 
 <style>
+	figure {
+		margin: 0 0 1em 0;
+	}
+	img {
+		width: 100%;
+		margin: 0 0 1em 0;
+	}
 	ul {
 		margin: 0 0 1em 0;
 		line-height: 1.5;

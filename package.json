@@ -1,6 +1,6 @@
 {
-  "name": "TODO",
-  "description": "TODO",
+  "name": "FatNeo",
+  "description": "FatNeo",
   "version": "0.0.1",
   "scripts": {
     "start": "sapper dev",
@@ -20,6 +20,9 @@
     "sapper": "^0.27.0",
     "svelte": "^3.0.0",
     "svelte-loader": "^2.9.0",
-    "webpack": "^4.7.0"
+    "webpack": "^4.7.0",
+    "simple-svelte-autocomplete":"^1.2.4",
+    "svelte-chota":"^1.8.3",
+    "random-gif":"^1.0.0"
   }
 }

@@ -1,118 +1,45 @@
 <style>
-	h1, h2, h3, figure, p {
-		text-align: center;
-		margin: 0 auto;
+   	.neutral{
+        color:black;
 	}
-	h1 {
-		font-size: 1.8em;
-		text-transform: uppercase;
-		font-weight: 400;
-		margin: 0 0 0.5em 0;
-	}
-	input {
-		font-size: 1.8em;
-		text-transform: uppercase;
-		font-weight: 400;
-		margin: 0 auto;
-		width:50%;
-		
-	}
-	button {
-		font-size: 1.7em;
-		text-transform: uppercase;
-		font-weight: 400;
-		margin: 0 auto;
-		width:40%;
-	}
-	h2 {
-		font-size: 1.8em;
-		text-transform: uppercase;
-		font-weight: 1400;
-		margin: 0 0 0.5em 0;
-		color: green;
-	}
-	h3 {
-		font-size: 1.8em;
-		font-weight: 1400;
-		margin: 0 0 0.5em 0;
-		color: blue;
-	}
-	figure {
-		margin: 0 0 1em 0;
-	}
-	img {
-		width: 100%;
-		max-width: 100px;
-		margin: 0 0 1em 0;
-	}
-	p {
-		margin: 1em auto;
-	}
-	
-	progress {
-		display: block;
-		width: 200px;
-		height:40px;
-		margin: 0 auto;
-	}
-	.bear, .bull, .neutral {
-		text-align: center;
-		margin: -10px auto;
-		display:block;
-	}
-	.bear{
+	.bearish{
 		color:red;
 	}
-	.bull{
+	.bullish{
 		color:green;
 	}
-	
-	/*.progress-div {
-	    width: 200px;
-	    height: 40px;
-	    align-items: center;
-	    text-align: center;
-	    margin: 0 auto;	
-	}
-	.progress-label{
-	    position: absolute;
-	    display: block;
-	    margin: -32px 90px;
-	}
-	
-	progress:before {
-	  content: attr(data-label);
-	  font-size: 1em;
-	  text-align: center;
-	  margin: 8px 75px;
-	  position: absolute;
-	  font-weight: 800;
-	}
-	*/
-	
-	@media (min-width: 480px) {
-		h1 {
-			font-size: 4em;
-		}
+    .supporting{
+        color:navy;
+    }
+
+    :global(body) {
+    max-width:80rem;
+    margin:0 auto;
+    }
+    :global(meter){
+    width:12rem;
+    height:3rem;
+    }
+
+	:global(.autocomplete-list-item){
+        text-align:left!important;
 	}
 </style>
 
 <script>
 	import { tweened } from 'svelte/motion';
 	import { cubicOut } from 'svelte/easing';
+	import {Button} from 'svelte-chota';
+	let button_text = 'Go';
+	let batch_commands = ["call", "wise"];
+    let ticker = "";
 
-	const progress = tweened(0, {
-		duration: 400,
-		easing: cubicOut
-	});
-	
-	let ticker = "SPY";
-	let api_output = {"symbol":"no_symbol"};
-	let volume_output = {"symbol":"no_symbol"};
-	let doom_output = {"symbol":"no_symbol"};
-	let cmd_used = "range";
-	
-	async function handleKeydown(event) {
+    import { stores } from '@sapper/app';
+    const { preloading, page, session } = stores();
+    const { host, path, params, query } = $page;
+
+
+    async function handleKeydown(event) {
 		if (event.key === 'Tab' || event.key === 'Enter' ) {
 			event.preventDefault();
 			runAPI();
@@ -121,127 +48,92 @@
 			 return;
 		}
 	}
-		
-	function runAPI() {
-		
-		var tx_array = ticker.trim().split(/\s+/);
-		if (tx_array.length > 1)
-		{
-			if (tx_array[1].toLowerCase() == 'volume')
-			{
-				cmd_used = 'volume';
-				progress.set(0);
-				volume_output.percentile = '-';
-				fetch("https://www.insuremystock.com/stocks/volume/"+tx_array[0])
-				.then(response => response.json())
-				.then(data=>volume_output=data)
-				.then(x => progress.set(volume_output.percentile/100));
-				
-			}
-			else if (tx_array[1].toLowerCase() == 'doom')
-			{
-				cmd_used = 'doom';
-				doom_output.prob_down = '-';
-				progress.set(0);
-				fetch("https://www.insuremystock.com/options/doom/?symbol="+tx_array[0]+"?days=30&percent=5")
-				.then(response => response.json())
-				.then(data=>doom_output=data)
-				.then(x => progress.set(doom_output.prob_down));
-			}
-			else
-			{
-				cmd_used = 'invalid';
-			}
+	const progress = tweened(0, {
+		duration: 400,
+		easing: cubicOut
+	});
+
+	let api_output = {"symbol":"welcome"};
+
+	function skillType(query, batch_commands) {
+		if ( query.toLowerCase().includes("call") ||  query.toLowerCase().includes("wise") ) {
+			return "Slow skill: "
 		}
-		
 		else {
-			api_output = {"symbol":"waiting"};
-			cmd_used = "range";
-			progress.set(0);
-			volume_output.percentile = '-';
-			fetch("./api/test?sym="+ticker)
-				.then(d => d.text())
-				.then(d => (api_output = JSON.parse(d)))
-				.then(d => console.log(d));
-			
-			fetch("https://www.insuremystock.com/stocks/volume/"+tx_array[0])
-			.then(response => response.json())
-			.then(data=>volume_output=data)
-			.then(x => progress.set(volume_output.percentile/100));
+			return ""
 		}
-		
-		
 	}
+
+	function runAPI() {
+			api_output = {"symbol":"waiting"};
+			progress.set(0);
+			fetch("./api/test?input_cmd="+ticker)
+				.then(d => d.text())
+				.then(d => (api_output = JSON.parse(d)));
+	}
+    let cmd_to_run_from_get="";
+    let symbol_to_run_from_get='spy';
+    if ('cmd' in  query){
+        cmd_to_run_from_get = query['cmd'];
+        if ('symbol' in  query){
+            symbol_to_run_from_get = query['symbol'];
+        }
+        ticker = symbol_to_run_from_get+" "+cmd_to_run_from_get;
+        runAPI();
+
+    }
+
 </script>
-<div style='text-align: center; max-width:600px; margin: 0 auto;'>
-	<input bind:value={ticker} on:keydown={handleKeydown} autofocus/>
-	<button on:click={runAPI}>
-		GO
-	</button>
+
+
+<div class="row">
+<div class="grouped col-12">
+ <div class="col-8"> <input bind:value={ticker} on:keydown={handleKeydown} autofocus/></div>
+  <div class="col-4"><button class="button primary" on:click={runAPI}> GO </button></div>
 </div>
-<br>
+</div>
 
-{#if cmd_used == "range"}
-	{#if api_output.symbol == "no_symbol"}
-		<p>Type Ticker then Tab/Click.</p>
-	{:else if api_output.symbol == "H🥚dl."}
-		<p>H🥚dl.</p>
-	{:else if api_output.symbol == "invalid_symbol"}
-		<p>Bro does this ticker even options?</p>
-	{:else if api_output.symbol == "waiting"}
-		<p>Getting results.....</p>
-	{:else}
-		{#if api_output.prob_up > 0.499}
-			<h2><span style="color:green;">${api_output.low} - ${api_output.high}</span></h2>
-		{:else}
-			<h2><span style="color:red;">${api_output.low} - ${api_output.high}</span></h2>
-		{/if}
-		<p>1Wk Price Band, Options implied @ 75% Prb.</p>
-		<h3>Now@ ${api_output.price}</h3>
-		<progress value={$progress} data-label="Volume"></progress>
-		{#if volume_output.percentile > 60}
-			<span class="bull">Current relative volume level</span>
-		{:else if volume_output.percentile < 40}
-			<span class="bear">Current relative volume level</span>
-		{:else}
-			<span class="neutral">Current relative volume level</span>
-		{/if}
-		<br>
-	{/if}
-{:else if cmd_used == "volume"}
-	<progress value={$progress} data-label="{volume_output.percentile}-%ile"></progress>
-	{#if volume_output.percentile > 60}
-		<span class="bull">Current relative volume level</span>
-	{:else if volume_output.percentile < 40}
-		<span class="bear">Current relative volume level</span>
-	{:else}
-		<span class="neutral">Current relative volume level</span>
-	{/if}
-	
-	<p>Current stock volume rank based on past 2 weeks</p>
-{:else if cmd_used == "doom"}
-	<progress value={$progress} data-label="--"></progress>
-	{#if doom_output.prob_down == '-'}
-		<span class="neutral">Crash Index</span>
-	{:else if doom_output.prob_down < 0.20}
-		<span class="bull">Crash Index @ {Math.round(doom_output.prob_down*100)}</span>
-	{:else }
-		<span class="bear">Crash Index @ {Math.round(doom_output.prob_down*100)}</span>
-	{/if}
-	<p>Options implied Prb. of 5%👇 in month ahead</p>
-	
 
-{:else }
-	
-	<h2><span style="color:red;">INVALID COMMAND</span></h2>
-
-{/if}
-
-<figure>
-	<img alt='Fat Tony' src='FatTony.png'>
-	<figcaption>Fat Tony: I don't get mad. I get stabby.</figcaption>
-</figure>
-
-<p>Type + Tab = Quote</p>
-
-<p><strong> Sign up for the <a href='https://oracled.mailchimpsites.com/'> DailySpread</a></strong></p>
+<div class="row">
+    <div class="col-8">
+        {#if api_output.symbol == "waiting"}
+            <h1>Running quantum computing ...</h1>
+        	<figure style='width:10%'>
+        		<img alt='Loading' src='loadcat.gif'>
+        	</figure>
+        {:else if api_output.symbol == "welcome"}
+            <h2> ☝️ Symbol+skill+↵ </h2>
+        {:else}
+            <div style="padding:0 1rem;" class='bd-dark text-center'>
+                <h2 class="{api_output.main_class}">{api_output.main_point}</h2>
+                <p>{@html api_output.description}</p>
+                <h3 class="supporting">{api_output.supporting_data}</h3>
+            </div>
+            <div style="padding:0 1rem; margin-top:1rem;" class='text-grey text-center'>
+                <h4 style="margin:0.5rem 0 0 0; " class="{api_output.secondary_class}">{api_output.secondary_point}</h4>
+                {#if api_output.meter_value > -1}
+                    <meter value="{api_output.meter_value}" min ="0" max="100"></meter>
+                {/if}
+                <p>{api_output.secondary_description}</p>
+            </div>
+        {/if}
+    </div>
+    <div class="card col-4 bg-light" style="font-size:1.4rem;padding:0.1rem 0.5rem;">
+      <header>
+        <h4>Skills Sheet</h4>
+      </header>
+      <span class="text-white bg-primary bd-dark">IBM</span> - 7 day price range<br>
+      <span class="text-white bg-primary bd-dark">ibm doom</span> - Prb of stock crash<br>
+      <span class="text-white bg-primary bd-dark">ibm wsb</span> - r/wallstreetbets mentions<br>
+      <span class="text-white bg-primary bd-dark">ibm volume</span> - Relative(10d) vol<br>
+      <span class="text-white bg-primary bd-dark">ibm div</span> - Last div <br>
+      <span class="text-white bg-primary bd-dark">ibm dive</span> - Upcoming (Est) div<br>
+      <span class="text-white bg-primary bd-dark">ibm kelly</span> - Optimal allocation<br>
+      <span class="text-white bg-primary bd-dark">ibm call</span> - Optimal calls<br>
+      <span class="text-white bg-primary bd-dark">ibm twitter</span> - Twitter sentiment<br>
+    </div>
+</div>
+<footer>
+<p><strong>📯 Sign up for the <a href='https://oracled.mailchimpsites.com/'>DailySpread</a></strong></p>
+<p>Check us at <a href='https://bearfox.live/'>Bearfox.live</a>, See us in action at <a href='https://oracled.com/'>Oracled.com</a></p>
+</footer>

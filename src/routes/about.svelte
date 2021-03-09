@@ -1,3 +1,13 @@
+<style>
+	figure {
+		margin: 0 0 1em 0;
+	}
+	img {
+		width: 100%;
+		margin: 0 0 1em 0;
+	}
+</style>
+
 <svelte:head>
 	<title>About</title>
 </svelte:head>
@@ -13,3 +23,17 @@
 </ul>
 
 <p><strong>Test and learn feedback:<a href='https://oracled.mailchimpsites.com/'>here</a></strong></p>
+<h1>How do I use the tool?</h1>
+            <h3> Type the symbol and hit enter or click Go</h3>
+            <figure style='width:80%;margin:0 auto'>
+            	<img alt='Type symbol and Go' src='FatNeo_Tutorial_1_1.png'>
+            </figure>
+            <h3> Enjoy the simplicity </h3>
+            <figure style='width:80%;margin:0 auto'>
+            	<img alt='Enjoy the data' src='FatNeo_Tutorial_1_2.png'>
+            </figure>
+<h1>Like this ...</h1>
+<figure style='width:80%;margin:0 auto'>
+	<img alt='Fat Tony' src='FatNeoSPYHowTo-Fx.gif'>
+	<figcaption>Fat Tony: I don't normally teach, but when I do, I do. 🎷</figcaption>
+</figure>
