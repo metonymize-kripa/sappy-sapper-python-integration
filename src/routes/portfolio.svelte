@@ -11,14 +11,37 @@
     function get_portfolio_data() {
         for(var i = 0; i < table_list.length; i++)
         {
-			fetch("./api/test?input_cmd="+table_list[i]['symbol']+" range")
+            fetch("https://www.insuremystock.com/options/range/"+table_list[i]['symbol'])
+              .then(function(data) {
+                var my_dict = JSON.parse(data);
+                console.log(data);
+              });
+        }
+        }
+        /*fetch("https://www.insuremystock.com/options/range/"+table_list[i]['symbol'])
+            .then(d => d.text())
+            .then(d=>({
+                my_dict = JSON.parse(d);
+                for (var k = 0; k < table_list.length; k++)
+                {
+                    if (table_list[k].symbol == my_dict.symbol)
+                    {
+                        table_list[k].range = my_dict.low_range;
+
+                    }
+                }
+                }
+                console.log(table_list)
+            }));
+            //.then(d => (table_list[i].range = JSON.parse(d).low_range));
+            fetch("./api/test?input_cmd="+table_list[i]['symbol']+" range")
 				.then(d => d.text())
 				.then(d => (table_list[i].range = JSON.parse(d).main_point));
             fetch("./api/test?input_cmd="+table_list[i].symbol+" kelly")
 				.then(d => d.text())
 				.then(d => (table_list[i].prob_up = JSON.parse(d).meter_value));
-        }
-	}
+
+	}*/
 
 </script>
 
@@ -49,6 +72,6 @@
     </tbody>
 </table>
 <br>
-<button class="pull-left button primary" on:click={get_portfolio_data}>
+<button class="pull-left button primary" on:click={get_portfolio_data()}>
     Refresh
 </button>
