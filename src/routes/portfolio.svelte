@@ -2,13 +2,13 @@
 	<title>My Portfolio </title>
 </svelte:head>
 <style>
-   	neutral{
+   	.neutral{
         color:black;
 	}
-	bearish{
+	.bearish{
 		color:red;
 	}
-	bullish{
+	.bullish{
 		color:green;
 	}
 </style>
