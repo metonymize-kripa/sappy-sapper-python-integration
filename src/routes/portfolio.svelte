@@ -101,8 +101,8 @@
         {#each table_list as { symbol,range,prob_up,wsb }, i}
         {#if prob_up>50}
             <tr class=".bullish">
-                <td>{symbol}</td>
-                <td>{range}</td>
+                <td class=".bullish">{symbol}</td>
+                <td class=".bullish">{range}</td>
                 <td>{prob_up}%</td>
                 <td>{wsb}</td>
             </tr>
