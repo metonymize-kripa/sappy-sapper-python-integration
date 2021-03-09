@@ -16,7 +16,15 @@
             .then(function(d) {
 
                 var my_dict = JSON.parse(d);
-                table_list[i].range = my_dict.low_range;
+                for (var k = 0; k < table_list.length; k++)
+                {
+                    if (table_list[k].symbol == my_dict.symbol)
+                    {
+                        table_list[k].range = my_dict.low_range;
+
+                    }
+                }
+                
                 console.log(my_dict);
               });
         }
