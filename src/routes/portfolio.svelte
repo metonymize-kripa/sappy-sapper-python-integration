@@ -18,7 +18,7 @@
                 var my_dict = JSON.parse(d);
                 for (var k = 0; k < table_list.length; k++)
                 {
-                    if (table_list[k].symbol == my_dict.symbol)
+                    if (table_list[k].symbol.toUpperCase() == my_dict.symboltoUpperCase())
                     {
                         table_list[k].range = "$"+Math.round(my_dict.low_range)+"-$"+Math.round(my_dict.high_range);
                         table_list[k].prob_up = Math.round(my_dict.prob_up*100)+"%";
@@ -33,7 +33,7 @@
                     console.log(my_dict);
                     for (var k = 0; k < table_list.length; k++)
                     {
-                        if (table_list[k].symbol == my_dict.symbol)
+                        if (table_list[k].symbol.toUpperCase() == my_dict.symbol.toUpperCase())
                         {
                             table_list[k].wsb = my_dict.main_point;
 
