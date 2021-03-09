@@ -2,7 +2,7 @@
 	<title>My Portfolio </title>
 </svelte:head>
 <script>
-    let symbol_list = ["IBM","T","XOM","MO","GILD","ABBV"];
+    let symbol_list = ["ABBV","AMC",""GILD","GME","IBM","MO","T","XOM"];
     let table_list= [];
     for(var i = 0; i < symbol_list.length; i++)
     {
