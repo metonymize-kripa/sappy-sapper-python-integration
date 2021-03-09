@@ -2,13 +2,13 @@
 	<title>My Portfolio </title>
 </svelte:head>
 <style>
-   	.neutral{
+   	neutral{
         color:black;
 	}
-	.bearish{
+	bearish{
 		color:red;
 	}
-	.bullish{
+	bullish{
 		color:green;
 	}
 </style>
@@ -100,14 +100,14 @@
     <tbody>
         {#each table_list as { symbol,range,prob_up,wsb }, i}
         {#if prob_up>50}
-            <tr class=".bullish">
-                <td class=".bullish">{symbol}</td>
-                <td class=".bullish">{range}</td>
+            <tr class="bullish">
+                <td>{symbol}</td>
+                <td>{range}</td>
                 <td>{prob_up}%</td>
                 <td>{wsb}</td>
             </tr>
             {:else}
-            <tr class=".bearish">
+            <tr class="bearish">
                 <td>{symbol}</td>
                 <td>{range}</td>
                 <td>{prob_up}%</td>
