@@ -12,9 +12,10 @@
         for(var i = 0; i < table_list.length; i++)
         {
             fetch("https://www.insuremystock.com/options/range/"+table_list[i]['symbol'])
-              .then(function(data) {
+            .then(d => d.text())
+            .then(function(d) {
 
-                var my_dict = JSON.parse(data.text());
+                var my_dict = JSON.parse(d);
                 console.log(my_dict);
               });
         }
