@@ -16,6 +16,7 @@
             .then(function(d) {
 
                 var my_dict = JSON.parse(d);
+                table_list[i].range = my_dict.low_range;
                 console.log(my_dict);
               });
         }
