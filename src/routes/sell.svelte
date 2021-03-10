@@ -21,67 +21,56 @@
 <script>
     let symbol_list = ["CVNA","AMC","SKT","GME","GVIP"];
     let table_list= [];
+    let table_show = [];
     for(var i = 0; i < symbol_list.length; i++)
     {
-        table_list.push({"symbol":symbol_list[i],"sell_rating":"NA","kelly":"NA","doom":"NA","prob_down":"NA"});
+        table_list.push({"symbol":symbol_list[i].toUpperCase(),"kelly":"NA","prob_down":"NA"});
+        //table_dict[symbol_list[i].toUpperCase()] = {"kelly":"NA","prob_down":"NA"}
     }
     function compare( a, b ) {
-      if ( a.sell_rating < b.sell_rating ){
+      if ( parseFloat(a.kelly) < parseFloat(b.kelly) ){
         return -1;
       }
-      if ( a.sell_rating > b.sell_rating ){
+      if ( parseFloat(a.kelly) > parseFloat(b.kelly)){
         return 1;
       }
       return 0;
     }
     function get_portfolio_data() {
+
         for(var i = 0; i < table_list.length; i++)
         {
-            fetch("https://www.insuremystock.com/options/kelly/"+table_list[i]['symbol'])
+            fetch("https://www.insuremystock.com/options/prob_pct/"+table_list[i]['symbol']+"?days=7&percent=10")
             .then(d => d.text())
             .then(function(d) {
                 var my_dict = JSON.parse(d);
                 for (var k = 0; k < table_list.length; k++)
                 {
-                    if (table_list[k].symbol.toUpperCase() == my_dict.symbol.toUpperCase())
+                    if (table_list[k].symbol == my_dict.symbol.toUpperCase())
                     {
-                        table_list[k].kelly = (my_dict.kelly*100).toFixed(2);
-                        table_list[k].prob_down = Math.round((1-my_dict.prob_up)*100);
-                    }
-                }
-              });
-          fetch("https://www.insuremystock.com/options/doom/?days=30&percent=5&symbol="+table_list[i]['symbol'])
-			.then(d => d.text())
-            .then(function(d) {
-                var my_dict = JSON.parse(d);
-                console.log(my_dict);
-                for (var k = 0; k < table_list.length; k++)
-                {
-                    if (table_list[k].symbol.toUpperCase() == my_dict.symbol.toUpperCase())
-                    {
-                        table_list[k].doom = Math.round(my_dict.prob_down*100);
+                        table_list[k].prob_down = Math.round(my_dict.prob_down*100);
                     }
                 }
               });
 
-          fetch("https://www.insuremystock.com/options/prob_sigma/"+table_list[i]['symbol']+"?days=7&sigma=0.5")
-			.then(d => d.text())
-            .then(function(d) {
-                var my_dict = JSON.parse(d);
-                console.log(my_dict);
-                for (var k = 0; k < table_list.length; k++)
-                {
-                    if (table_list[k].symbol.toUpperCase() == my_dict.symbol.toUpperCase())
-                    {
-                        table_list[k].sell_rating = (my_dict.prob_down*50/my_dict.prob_up).toFixed(2);
-                    }
+              fetch("https://www.insuremystock.com/options/kelly/"+table_list[i]['symbol'])
+              .then(d => d.text())
+              .then(function(d) {
+                  var my_dict = JSON.parse(d);
+                  for (var k = 0; k < table_list.length; k++)
+                  {
+                      if (table_list[k].symbol == my_dict.symbol.toUpperCase())
+                      {
+                          table_list[k].kelly = (my_dict.kelly2*100).toFixed(2);
+                      }
                 }
-              });
-
+                });
         }
-        table_list=table_list.sort(compare);
+        table_list = table_list.sort(compare);
     }
 
+get_portfolio_data();
+get_portfolio_data();
 </script>
 
 <h1>Candidates </h1>
@@ -90,38 +79,30 @@
 
     <thead>
         <tr>
-
-          <th class="emphasis">Symbol</th>
-          <th class="emphasis">SellRating</th>
-          <th class="emphasis">$ to invest</th>
-          <th class="no-emphasis">Meltdown Prob</th>
-          <th class="no-emphasis">Prob↓</th>
+            <th class="emphasis">Symbol</th>
+            <th class="emphasis">$ to keep</th>
 
         </tr>
     </thead>
     <tbody>
-        {#each table_list as { symbol,sell_rating,kelly,doom,prob_down}, i}
-        {#if sell_rating<50}
+        {#each table_list as { symbol,kelly,prob_down}, i}
+        {#if kelly>0}
             <tr class="bullish">
                 <td class="emphasis">{symbol}</td>
-                <td class="emphasis">{sell_rating}</td>
                 <td class="emphasis">${kelly}</td>
-                <td class="no-emphasis">{doom}%</td>
-                <td class="no-emphasis">{prob_down}%</td>
+
             </tr>
             {:else}
             <tr class="bearish">
                 <td>{symbol}</td>
-                <td>{sell_rating}</td>
                 <td>${kelly}</td>
-                <td>{doom}%</td>
-                <td>{prob_down}%</td>
+                
             </tr>
             {/if}
         {/each}
     </tbody>
 </table>
 <br>
-<button class="pull-left button primary" on:click={get_portfolio_data()}>
-    Refresh
+<button class="pull-left button primary" on:click={get_portfolio_data}>
+    Sort
 </button>
