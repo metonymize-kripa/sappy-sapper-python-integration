@@ -9,7 +9,7 @@
 </style>
 
 <svelte:head>
-	<title>Pricing</title>
+
 </svelte:head>
 <script>
 import {Button,Container,Row,Col,Card,Modal} from 'svelte-chota';
@@ -25,7 +25,7 @@ function openModalSignup() {
 
 <h1 class="is-center">Pricing</h1>
 <div class="row">
-    <div class="col-4 card">
+    <div class="col-6 card">
       <header>
         <h4>Free</h4>
       </header>
@@ -39,7 +39,7 @@ function openModalSignup() {
          <Button primary on:click={openModalSignup}>Sign up</Button>
       </footer>
     </div>
-    <div class="col-4 card bg-light">
+    <div class="col-6 card bg-light">
       <header>
         <h4>Basic: $3/Month</h4>
       </header>
@@ -54,7 +54,7 @@ function openModalSignup() {
          <Button primary on:click={openModalPayment}>Sign up</Button>
       </footer>
     </div>
-    <div class="col-4 card">
+    <div class="col-6 card">
       <header>
         <h4>Advanced: $30/Month</h4>
       </header>
@@ -68,7 +68,6 @@ function openModalSignup() {
          <Button primary on:click={openModalPayment}>Sign up</Button>
       </footer>
     </div>
-    <div class="col-3 "></div>
     <div class="col-6 card">
       <header>
         <h4>Enterprise: $Bespoke</h4>

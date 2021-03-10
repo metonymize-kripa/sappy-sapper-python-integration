@@ -70,7 +70,7 @@
 
 </script>
 
-<h1>Portfolio at a glance</h1>
+<h1>Picks for daily spread</h1>
 
 <table class="striped">
 
