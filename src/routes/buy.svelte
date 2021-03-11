@@ -2,6 +2,10 @@
 	<title>Buy</title>
 </svelte:head>
 <style>
+    body {
+        max-width:80rem;
+        margin:0 auto;
+    }
    	.neutral{
         color:black;
 	}
@@ -19,7 +23,9 @@
     }
 </style>
 <script>
-let symbol_list = ["LBRDK", "IAC", "TWTR", "SE", "MELI", "GME", "RBLX", "AMC", "TSLA", "PLTR"];
+    import { stores } from '@sapper/app';
+    const { preloading, page, session } = stores();
+    let symbol_list = ["LBRDK", "IAC", "TWTR", "SE", "MELI", "GME", "RBLX", "AMC", "TSLA", "PLTR"];
     //let symbol_list = ["LBRDK","IAC","TWTR","SE","MELI","GME","TSLA","AMC","PLTR","SPY"];
     //let table_dict= {};
     let table_list=[];

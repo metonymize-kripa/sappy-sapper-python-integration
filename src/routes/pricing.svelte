@@ -1,4 +1,8 @@
 <style>
+body {
+        max-width:80rem;
+        margin:0 auto;
+    }
 	figure {
 		margin: 0 0 1em 0;
 	}
@@ -60,7 +64,7 @@ function openModalSignup() {
       </header>
       Why don't you want to pay thousands for bloomberg?
       If you are really done with them call us and maybe we can do something for you
-      <br><br>
+      <br><br><br>
       <footer class="is-center">
          <Button primary on:click={openModalSignup}>Sign up</Button>
       </footer>

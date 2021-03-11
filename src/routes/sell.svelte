@@ -2,6 +2,10 @@
 	<title>Sell</title>
 </svelte:head>
 <style>
+body {
+        max-width:80rem;
+        margin:0 auto;
+    }
    	.neutral{
         color:black;
 	}
@@ -96,7 +100,7 @@ get_portfolio_data();
             <tr class="bearish">
                 <td>{symbol}</td>
                 <td>${kelly}</td>
-                
+
             </tr>
             {/if}
         {/each}
