@@ -131,6 +131,7 @@
       <span class="text-white bg-primary bd-dark">ibm kelly</span> - Optimal allocation<br>
       <span class="text-white bg-primary bd-dark">ibm call</span> - Optimal calls<br>
       <span class="text-white bg-primary bd-dark">ibm twitter</span> - Twitter sentiment<br>
+      <span class="text-white bg-primary bd-dark">BTC crypto</span> - crypto 7 day range <br>
     </div>
 </div>
 <footer>
