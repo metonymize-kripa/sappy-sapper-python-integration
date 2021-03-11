@@ -97,13 +97,13 @@ get_portfolio_data();
         {#each table_list as { symbol,kelly,prob_up}, i}
         {#if kelly>0}
             <tr class="bullish">
-                <td class="emphasis">{symbol}</td>
+                <td class="emphasis"> <a  href="/?symbol={symbol}&cmd=call">{symbol}</a></td>
                 <td class="emphasis">${kelly}</td>
                 <td class="no-emphasis">{prob_up}%</td>
             </tr>
             {:else}
             <tr class="bearish">
-                <td class="emphasis">{symbol}</td>
+                <td class="emphasis"> <a class="bearish" href="/?symbol={symbol}&cmd=call">{symbol}</a></td>
                 <td class="emphasis">${kelly}</td>
                 <td class="no-emphasis">{prob_up}%</td>
             </tr>
