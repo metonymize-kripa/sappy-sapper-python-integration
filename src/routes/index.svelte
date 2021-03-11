@@ -103,7 +103,11 @@
         		<img alt='Loading' src='loadcat.gif'>
         	</figure>
         {:else if api_output.symbol == "welcome"}
-            <h2> ☝️ Symbol+skill+↵ </h2>
+            <h2> ☝️ Symbol ⎵ skill ↵ </h2>
+        <!--    <figure>
+            	<img alt='Fat Tony' src='FatTony.png'>
+            	<figcaption>Fat Tony: I don't get mad. I get stabby.</figcaption>
+            </figure> -->
         {:else}
             <div style="padding:0 1rem;" class='bd-dark text-center'>
                 <h2 class="{api_output.main_class}">{api_output.main_point}</h2>
