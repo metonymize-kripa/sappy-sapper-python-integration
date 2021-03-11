@@ -116,9 +116,9 @@ def make_crypto_response(symbol, resp_dict):
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
         resp_dict['symbol'] = symbol
-        resp_dict['main_point'] = f'${round(input_dict["low_range"])} - ${round(input_dict["high_range"])}'
+        resp_dict['main_point'] = f'${round(input_dict["low_range"]):,} - ${round(input_dict["high_range"]):,}'
         resp_dict['description'] = '1Wk Price Band, Options implied @ 75% Prb.'
-        resp_dict['supporting_data'] = f'Now@ ${round(input_dict["price"])}'
+        resp_dict['supporting_data'] = f'Now@ ${round(input_dict["price"]):,}'
         resp_dict['secondary_point'] = f'{input_dict["today_volume"]/input_dict["avg_10d_volume"]:.2f} times'
         resp_dict['secondary_description'] =  'Relative Volume based on 10 days average'
     return resp_dict
