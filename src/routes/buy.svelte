@@ -19,7 +19,8 @@
     }
 </style>
 <script>
-    let symbol_list = ["LBRDK","IAC","TWTR","SE","MELI","GME","TSLA","AMC","PLTR","SPY"];
+let symbol_list = ["LBRDK", "IAC", "TWTR", "SE", "MELI", "GME", "RBLX", "AMC", "TSLA", "PLTR"];
+    //let symbol_list = ["LBRDK","IAC","TWTR","SE","MELI","GME","TSLA","AMC","PLTR","SPY"];
     //let table_dict= {};
     let table_list=[];
     let table_show = [];
