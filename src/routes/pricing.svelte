@@ -63,11 +63,9 @@ function openModalSignup() {
         <h4>Professional:</h4>
       </header>
       Why don't you want to pay thousands for bloomberg?
-      If you are really done with them call us and maybe we can do something for you
-      <br><br><br>
-      <footer class="is-center">
-         <Button primary on:click={openModalSignup}>Sign up</Button>
-      </footer>
+      If you are really done with them call us if you can and maybe we will do something for you.
+
+
     </div>
 
 </div>
