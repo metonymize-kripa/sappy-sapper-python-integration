@@ -63,7 +63,7 @@ function openModalSignup() {
         <h4>Professional:</h4>
       </header>
       Why don't you want to pay thousands for bloomberg?
-      If you are really done with them call us if you can and maybe we will do something for you.
+      If you are really done with them call us (if you can) and maybe, just maybe we will do something for you.
 
 
     </div>
