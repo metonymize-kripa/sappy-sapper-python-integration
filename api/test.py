@@ -110,6 +110,19 @@ def make_range_response(symbol, resp_dict):
         resp_dict['secondary_description'] =  'Relative Volume based on 10 days average'
     return resp_dict
 
+def make_crypto_response(symbol, resp_dict):
+    api_end_point = f"{API_URL}crypto/range/{symbol}"
+    resp = requests.get(api_end_point)
+    if resp.ok: #Good response from FastAPI
+        input_dict = resp.json()
+        resp_dict['symbol'] = symbol
+        resp_dict['main_point'] = f'${round(input_dict["low_range"])} - ${round(input_dict["high_range"])}'
+        resp_dict['description'] = '1Wk Price Band, Options implied @ 75% Prb.'
+        resp_dict['supporting_data'] = f'Now@ ${round(input_dict["price"])}'
+        resp_dict['secondary_point'] = f'{input_dict["today_volume"]/input_dict["avg_10d_volume"]:.2f} times'
+        resp_dict['secondary_description'] =  'Relative Volume based on 10 days average'
+    return resp_dict
+
 def make_doom_response(symbol, resp_dict):
     api_end_point = f"{API_URL}options/doom/{symbol}/?days=30&percent=5"
     resp = requests.get(api_end_point)
@@ -223,7 +236,8 @@ FUNCTION_MAP = {'range':make_range_response,
                 'div':make_div_response,
                 'div2':make_div2_response,
                 'dive':make_dive_response,
-                'twitter':make_twitter_response}
+                'twitter':make_twitter_response,
+                'crypto':make_crypto_response}
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
