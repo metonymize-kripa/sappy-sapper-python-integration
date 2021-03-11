@@ -54,7 +54,7 @@ Here are a few use cases to inspire your exploration with our tools. Be bold. Ho
         <h4>Profiting from the DailySpread</h4>
       </header>
         One of our users just shared a way to use our Kelly picks from the <a href="https://oracled.mailchimpsites.com/">DailySpread</a> to make money in a way that hadn't really occured to us until he shared it.
-	Here's the tip, in his own words <it>"just because of my positions (i.e. didn't have the stock to call) but have been buying at, holding "until" and selling at the [covered]call position and it's worked 5 out of 5 times"</it>
+	Here's the tip, in his own words <i>"just because of my positions (i.e. didn't have the stock to call) but have been buying at, holding "until" and selling at the [covered]call position and it's worked 5 out of 5 times"</i>
     </div>
     <div class="card col-6 bg-light" >
       <header>
