@@ -238,17 +238,18 @@ def make_gamma_response(symbol, resp_dict):
         strike_2 = input_dict["strike_2"]
         gamma_1_perc = gamma_1*100/shares
         gamma_2_perc = gamma_2*100/shares
-        expiry_use = datetime.strptime(input_dict["expiry"], "%Y-%m-%d").strftime("%d %b")
+        expiry_use = datetime.strptime(input_dict["expiry_to_use"], "%Y-%m-%d").strftime("%d %b")
         print(expiry_use)
         resp_dict['main_point'] = f'Best Gamma Squeeze candidate: {input_dict["strike_1"]} Strike Call, Expiry: {expiry_use}'
         resp_dict['description'] = "Maximum gamma squeeze at this strike"
-        resp_dict['supporting_data'] = f'Gamma Squeeze Ratio @ {gamma_1_perc}'
+        resp_dict['supporting_data'] = f'Gamma Squeeze Ratio @ {gamma_1_perc:.2f}%'
         if gamma_1_perc > 10:
             resp_dict['main_class'] = 'bullish'
         resp_dict['secondary_point'] = f'Next Best Gamma Squeeze candidate: {input_dict["strike_2"]} Strike Call, Expiry: {expiry_use}'
-        resp_dict['secondary_description'] = f'Gamma Squeeze Ratio @ {gamma_2_perc}'
+        resp_dict['secondary_description'] = f'Gamma Squeeze Ratio @ {gamma_2_perc:.2f}'
         if gamma_2_perc > 10:
             resp_dict['secondary_class'] = 'bullish'
+        resp_dict['explain'] =  "Gamma Squeeze happens when the Open Interest in the option is high and stock approches the strike. As stock nears the strike the market makers rush to hedge the position. Higher the open interest more the hedging demand and that pushes the stock up (or down) a lot. GME is a classic example.<br>The Gamma Squeeze Ratio is the percentage of float market makers would need ot hedge the position as the stock price approaces the strike. Any number over 5% is a good for the squeeze"  
 
     return resp_dict
 

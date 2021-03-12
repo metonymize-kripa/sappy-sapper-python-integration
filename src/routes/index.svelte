@@ -116,6 +116,7 @@
                 {/if}
                 <p>{api_output.secondary_description}</p>
             </div>
+            <p>{api_output.explain}</p>
         {/if}
     </div>
     <div class="card col-4 bg-light" style="font-size:1.4rem;padding:0.1rem 0.5rem;">
