@@ -73,8 +73,7 @@ body {
         table_list = table_list.sort(compare);
     }
 
-get_portfolio_data();
-get_portfolio_data();
+/*get_portfolio_data();*/
 </script>
 
 <h1>Candidates </h1>
