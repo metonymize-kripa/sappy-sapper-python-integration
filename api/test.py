@@ -244,7 +244,7 @@ def make_gamma_response(symbol, resp_dict):
         if gamma_1_perc > 10:
             resp_dict['main_class'] = 'bullish'
         resp_dict['secondary_point'] = f'Next Best Gamma Squeeze candidate: {input_dict["strike_2"]} Strike Call, Expiry: {expiry_use}'
-        resp_dict['secondary_description'] = f'Gamma Squeeze Ratio @ {gamma_2_perc:.2f}'
+        resp_dict['secondary_description'] = f'Gamma Squeeze Ratio @ {gamma_2_perc:.2f}%'
         if gamma_2_perc > 10:
             resp_dict['secondary_class'] = 'bullish'
         resp_dict['explain'] =  "Gamma Squeeze happens when the Open Interest in the option is high and stock approches the strike. As stock nears the strike the market makers rush to hedge the position. Higher the open interest more the hedging demand and that pushes the stock up (or down) a lot. GME is a classic example.<br>The Gamma Squeeze Ratio is the percentage of float market makers would need ot hedge the position as the stock price approaces the strike. Any number over 5% is a good for the squeeze"  
