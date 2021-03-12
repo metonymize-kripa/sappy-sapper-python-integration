@@ -88,8 +88,8 @@ get_portfolio_data();
     <thead>
         <tr>
           <th class="emphasis">Symbol</th>
-          <th class="emphasis">$ to invest *</th>
-          <th class="no-emphasis">Windfall Chance 🔱</th>
+          <th class="emphasis">$ to invest*</th>
+          <th class="no-emphasis">Windfall Chance🔱</th>
 
         </tr>
     </thead>
