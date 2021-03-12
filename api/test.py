@@ -230,6 +230,7 @@ def make_gamma_response(symbol, resp_dict):
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
         resp_dict['symbol'] = symbol
+        print(input_dict)
         shares = input_dict["stock_float"]
         gamma_1 = input_dict["gamma_1"]
         strike_1 = input_dict["strike_1"]
@@ -237,12 +238,14 @@ def make_gamma_response(symbol, resp_dict):
         strike_2 = input_dict["strike_2"]
         gamma_1_perc = gamma_1*100/shares
         gamma_2_perc = gamma_2*100/shares
-        resp_dict['main_point'] = f'Best Gamma Squeeze candidate: {input_dict["strike_1"]} Strike Call, Expiry: {datetime.strptime(input_dict["expiry"], "%Y-%m-%d").strftime("%d %b")}'
+        expiry_use = datetime.strptime(input_dict["expiry"], "%Y-%m-%d").strftime("%d %b")
+        print(expiry_use)
+        resp_dict['main_point'] = f'Best Gamma Squeeze candidate: {input_dict["strike_1"]} Strike Call, Expiry: {expiry_use}'
         resp_dict['description'] = "Maximum gamma squeeze at this strike"
         resp_dict['supporting_data'] = f'Gamma Squeeze Ratio @ {gamma_1_perc}'
         if gamma_1_perc > 10:
             resp_dict['main_class'] = 'bullish'
-        resp_dict['secondary_point'] = f'Next Best Gamma Squeeze candidate: {input_dict["strike_2"]} Strike Call, Expiry: {datetime.strptime(input_dict["expiry"], "%Y-%m-%d").strftime("%d %b")}'
+        resp_dict['secondary_point'] = f'Next Best Gamma Squeeze candidate: {input_dict["strike_2"]} Strike Call, Expiry: {expiry_use}'
         resp_dict['secondary_description'] = f'Gamma Squeeze Ratio @ {gamma_2_perc}'
         if gamma_2_perc > 10:
             resp_dict['secondary_class'] = 'bullish'
