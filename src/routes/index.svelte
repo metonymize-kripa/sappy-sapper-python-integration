@@ -11,6 +11,10 @@
     .supporting{
         color:navy;
     }
+    .explain{
+    font-size:1rem;
+    color:grey;
+    }
 
     :global(body) {
     max-width:80rem;
@@ -116,7 +120,7 @@
                 {/if}
                 <p>{api_output.secondary_description}</p>
             </div>
-            <p>{api_output.explain}</p>
+            <p class="explain">{@html api_output.explain}</p>
         {/if}
     </div>
     <div class="card col-4 bg-light" style="font-size:1.4rem;padding:0.1rem 0.5rem;">
