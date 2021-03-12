@@ -23,7 +23,7 @@ body {
     }
 </style>
 <script>
-    let symbol_list = ["CVNA","AMC","SKT","GME","GVIP"];
+    let symbol_list = ["IAC", "PLTR", "BB","CVNA","GME", "SKT", "AMC"];
     let table_list= [];
     let table_show = [];
     for(var i = 0; i < symbol_list.length; i++)
