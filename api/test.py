@@ -224,6 +224,31 @@ def make_call_response(symbol, resp_dict):
             resp_dict['secondary_class'] = 'bullish'
     return resp_dict
 
+def make_gamma_response(symbol, resp_dict):
+    api_end_point = f"{API_URL}options/gamma/{symbol}"
+    resp = requests.get(api_end_point)
+    if resp.ok: #Good response from FastAPI
+        input_dict = resp.json()
+        resp_dict['symbol'] = symbol
+        shares = input_dict["stock_float"]
+        gamma_1 = input_dict["gamma_1"]
+        strike_1 = input_dict["strike_1"]
+        gamma_2 = input_dict["gamma_2"]
+        strike_2 = input_dict["strike_2"]
+        gamma_1_perc = gamma_1*100/shares
+        gamma_2_perc = gamma_2*100/shares
+        resp_dict['main_point'] = f'Best Gamma Squeeze candidate: {input_dict["strike_1"]} Strike Call, Expiry: {datetime.strptime(input_dict["expiry"], "%Y-%m-%d").strftime("%d %b")}'
+        resp_dict['description'] = "Maximum gamma squeeze at this strike"
+        resp_dict['supporting_data'] = f'Gamma Squeeze Ratio @ {gamma_1_perc}'
+        if gamma_1_perc > 10:
+            resp_dict['main_class'] = 'bullish'
+        resp_dict['secondary_point'] = f'Next Best Gamma Squeeze candidate: {input_dict["strike_2"]} Strike Call, Expiry: {datetime.strptime(input_dict["expiry"], "%Y-%m-%d").strftime("%d %b")}'
+        resp_dict['secondary_description'] = f'Gamma Squeeze Ratio @ {gamma_2_perc}'
+        if gamma_2_perc > 10:
+            resp_dict['secondary_class'] = 'bullish'
+
+    return resp_dict
+
 #SKILL_MAP = {'range':'options/range/', 'ape':'options/kelly/','kelly':'options/kelly/','doom':'options/doom/' , 'volume':'stocks/volume/', 'prob_pct':'options/prob_pct/','wsb':'stocks/volume/', 'new2':'options/kelly/' }
 FUNCTION_MAP = {'range':make_range_response,
                 'ape':make_ape_response,
@@ -237,7 +262,9 @@ FUNCTION_MAP = {'range':make_range_response,
                 'div2':make_div2_response,
                 'dive':make_dive_response,
                 'twitter':make_twitter_response,
-                'crypto':make_crypto_response}
+                'crypto':make_crypto_response,
+                'gamma':make_gamma_response}
+
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
