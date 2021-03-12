@@ -120,7 +120,7 @@
                 {/if}
                 <p>{api_output.secondary_description}</p>
             </div>
-            <p class="explain">{@html api_output.explain}</p>
+            <p class="explain">{api_output.explain}</p>
         {/if}
     </div>
     <div class="card col-4 bg-light" style="font-size:1.4rem;padding:0.1rem 0.5rem;">
