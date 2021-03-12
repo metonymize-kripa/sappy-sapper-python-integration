@@ -88,8 +88,8 @@ get_portfolio_data();
     <thead>
         <tr>
           <th class="emphasis">Symbol</th>
-          <th class="emphasis">$ to invest</th>
-          <th class="no-emphasis">Windfall Chance</th>
+          <th class="emphasis">$ to invest *</th>
+          <th class="no-emphasis">Windfall Chance 🔱</th>
 
         </tr>
     </thead>
@@ -115,3 +115,7 @@ get_portfolio_data();
 <button class="pull-left button primary" on:click={get_portfolio_data}>
     Sort
 </button>
+<br><br><br>
+* - Optimal allocation amounts for a $100 portfolio
+<br>
+🔱 - Probability that the stock moves up 10% in a week

@@ -84,7 +84,7 @@ get_portfolio_data();
     <thead>
         <tr>
             <th class="emphasis">Symbol</th>
-            <th class="emphasis">$ to keep</th>
+            <th class="emphasis">Max $ allowed 🔱</th>
 
         </tr>
     </thead>
@@ -110,3 +110,5 @@ get_portfolio_data();
 <button class="pull-left button primary" on:click={get_portfolio_data}>
     Sort
 </button>
+<br><br>
+🔱 - Do not allocate more than this in a $100 portfolio.
