@@ -210,8 +210,8 @@ def make_call_response(symbol, resp_dict):
 
         if best_call and 'strike' in best_call:
             resp_dict['main_point'] = f'${best_call["strike"]} Strike Call Expiring on {datetime.strptime(best_call["expiry"], "%d-%m-%Y").strftime("%d %b")}'
-            resp_dict['description'] = "Optimal covered call to sell"
-            resp_dict['supporting_data'] = f'Now@ ${best_call["bid"]}'
+            resp_dict['description'] = "This is the optimal covered call to sell"
+            resp_dict['supporting_data'] = f'Current option price: ${best_call["bid"]}'
             if best_call["using_last"] == "true":
                 resp_dict['supporting_data'] = f'Now@ ${best_call["bid"]} (**USING STALE DATA**)'
             resp_dict['main_class'] = 'bullish'
@@ -219,10 +219,11 @@ def make_call_response(symbol, resp_dict):
             resp_dict['main_point'] = "Call data is unavailable"
         if best_spread:
             resp_dict['secondary_point'] = f'Buy ${best_spread["strike_to_buy"]} strike call and sell ${best_spread["strike_to_sell"]} strike call'
-            resp_dict['secondary_description'] = "Optimal call spread to sell given probalities implied by options"
+            resp_dict['secondary_description'] = "This is the optimal call spread to sell"
             if best_spread["spread_using_last"] == "true":
-                resp_dict['secondary_description'] = "Optimal call spread to sell given probalities (**USING STALE DATA**)"
+                resp_dict['secondary_description'] = "This is the optimal call spread to sell (**USING STALE DATA**)"
             resp_dict['secondary_class'] = 'bullish'
+        resp_dict['explain'] =  "FatNeo calculates the possible future price of stock based on option prices. Option prices are, in a way, market's way to predicting stock price. We use some really cool math to do the complicated calculations for you and find the optimal calls and spread for you. "
     return resp_dict
 
 def make_gamma_response(symbol, resp_dict):
