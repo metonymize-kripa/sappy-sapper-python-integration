@@ -131,16 +131,16 @@
       <header>
         <h4>Skills Sheet</h4>
       </header>
-      <span class="text-white bg-primary bd-dark">{card_ticker}</span> - 7 day price range<br>
-      <span class="text-white bg-primary bd-dark">{card_ticker} doom</span> - Prb of stock crash<br>
-      <span class="text-white bg-primary bd-dark">{card_ticker} wsb</span> - r/wallstreetbets mentions<br>
-      <span class="text-white bg-primary bd-dark">{card_ticker} volume</span> - Relative(10d) vol<br>
-      <span class="text-white bg-primary bd-dark">{card_ticker} div</span> - Last div <br>
-      <span class="text-white bg-primary bd-dark">{card_ticker} dive</span> - Upcoming (Est) div<br>
-      <span class="text-white bg-primary bd-dark">{card_ticker} kelly</span> - Optimal allocation<br>
-      <span class="text-white bg-primary bd-dark">{card_ticker} call</span> - Optimal calls<br>
-      <span class="text-white bg-primary bd-dark">{card_ticker} twitter</span> - Twitter sentiment<br>
-      <span class="text-white bg-primary bd-dark">BTC crypto</span> - crypto 7 day range <br>
+      <a class="text-white bg-primary bd-dark" href="/$symbol={card_ticker}&cmd=">{card_ticker}</a> - 7 day price range<br>
+      <a class="text-white bg-primary bd-dark" href="/$symbol={card_ticker}&cmd=doom">{card_ticker} doom</a> - Prb of stock crash<br>
+      <a class="text-white bg-primary bd-dark">{card_ticker} wsb</a> - r/wallstreetbets mentions<br>
+      <a class="text-white bg-primary bd-dark">{card_ticker} volume</a> - Relative(10d) vol<br>
+      <a class="text-white bg-primary bd-dark">{card_ticker} div</a> - Last div <br>
+      <a class="text-white bg-primary bd-dark">{card_ticker} dive</a> - Upcoming (Est) div<br>
+      <a class="text-white bg-primary bd-dark">{card_ticker} kelly</a> - Optimal allocation<br>
+      <a class="text-white bg-primary bd-dark">{card_ticker} call</a> - Optimal calls<br>
+      <a class="text-white bg-primary bd-dark">{card_ticker} twitter</a> - Twitter sentiment<br>
+      <a class="text-white bg-primary bd-dark">BTC crypto</a> - crypto 7 day range <br>
     </div>
 </div>
 <footer>
