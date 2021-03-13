@@ -37,6 +37,7 @@
 	let button_text = 'Go';
 	let batch_commands = ["call", "wise"];
     let ticker = "";
+    let card_ticker = 'SPY';
 
     import { stores } from '@sapper/app';
     const { preloading, page, session } = stores();
@@ -73,7 +74,10 @@
 			progress.set(0);
 			fetch("./api/test?input_cmd="+ticker)
 				.then(d => d.text())
-				.then(d => (api_output = JSON.parse(d)));
+				.then(d => {
+                                api_output = JSON.parse(d);
+                                card_ticker = api_output.symbol;
+                            });
 	}
     let cmd_to_run_from_get="";
     let symbol_to_run_from_get='spy';
@@ -127,15 +131,15 @@
       <header>
         <h4>Skills Sheet</h4>
       </header>
-      <span class="text-white bg-primary bd-dark">IBM</span> - 7 day price range<br>
-      <span class="text-white bg-primary bd-dark">ibm doom</span> - Prb of stock crash<br>
-      <span class="text-white bg-primary bd-dark">ibm wsb</span> - r/wallstreetbets mentions<br>
-      <span class="text-white bg-primary bd-dark">ibm volume</span> - Relative(10d) vol<br>
-      <span class="text-white bg-primary bd-dark">ibm div</span> - Last div <br>
-      <span class="text-white bg-primary bd-dark">ibm dive</span> - Upcoming (Est) div<br>
-      <span class="text-white bg-primary bd-dark">ibm kelly</span> - Optimal allocation<br>
-      <span class="text-white bg-primary bd-dark">ibm call</span> - Optimal calls<br>
-      <span class="text-white bg-primary bd-dark">ibm twitter</span> - Twitter sentiment<br>
+      <span class="text-white bg-primary bd-dark">{card_ticker}</span> - 7 day price range<br>
+      <span class="text-white bg-primary bd-dark">{card_ticker} doom</span> - Prb of stock crash<br>
+      <span class="text-white bg-primary bd-dark">{card_ticker} wsb</span> - r/wallstreetbets mentions<br>
+      <span class="text-white bg-primary bd-dark">{card_ticker} volume</span> - Relative(10d) vol<br>
+      <span class="text-white bg-primary bd-dark">{card_ticker} div</span> - Last div <br>
+      <span class="text-white bg-primary bd-dark">{card_ticker} dive</span> - Upcoming (Est) div<br>
+      <span class="text-white bg-primary bd-dark">{card_ticker} kelly</span> - Optimal allocation<br>
+      <span class="text-white bg-primary bd-dark">{card_ticker} call</span> - Optimal calls<br>
+      <span class="text-white bg-primary bd-dark">{card_ticker} twitter</span> - Twitter sentiment<br>
       <span class="text-white bg-primary bd-dark">BTC crypto</span> - crypto 7 day range <br>
     </div>
 </div>
