@@ -213,7 +213,7 @@ def make_call_response(symbol, resp_dict):
             resp_dict['description'] = "This is the optimal covered call to sell"
             resp_dict['supporting_data'] = f'Current option price: ${best_call["bid"]}'
             if best_call["using_last"] == "true":
-                resp_dict['supporting_data'] = f'Now@ ${best_call["bid"]} (**USING STALE DATA**)'
+                resp_dict['supporting_data'] = f'Current option price: ${best_call["bid"]} (**USING STALE DATA**)'
             resp_dict['main_class'] = 'bullish'
         else:
             resp_dict['main_point'] = "Call data is unavailable"
@@ -223,7 +223,34 @@ def make_call_response(symbol, resp_dict):
             if best_spread["spread_using_last"] == "true":
                 resp_dict['secondary_description'] = "This is the optimal call spread to sell (**USING STALE DATA**)"
             resp_dict['secondary_class'] = 'bullish'
-        resp_dict['explain'] =  "FatNeo calculates the possible future price of stock based on option prices. Option prices are, in a way, market's way to predicting stock price. We use some really cool math to do the complicated calculations for you and find the optimal calls and spread for you. "
+        resp_dict['explain'] =  "FatNeo calculates the possible future price of stock based on option prices. Option prices are, in a way, market's way of predicting stock price. We use some really cool math to do the complicated calculations for you and find the optimal calls and spread for you. "
+    return resp_dict
+
+def make_put_response(symbol, resp_dict):
+    api_end_point = f"{API_URL}options/put_trades/{symbol}"
+    resp = requests.get(api_end_point)
+    if resp.ok: #Good response from FastAPI
+        input_dict = resp.json()
+        resp_dict['symbol'] = symbol
+        best_call = input_dict["best_put"]
+        best_spread = input_dict["best_spread"]
+
+        if best_call and 'strike' in best_call:
+            resp_dict['main_point'] = f'${best_put["strike"]} Strike Put Expiring on {datetime.strptime(best_put["expiry"], "%d-%m-%Y").strftime("%d %b")}'
+            resp_dict['description'] = "This is the optimal put to sell"
+            resp_dict['supporting_data'] = f'Current option price: ${best_put["bid"]}'
+            if best_call["using_last"] == "true":
+                resp_dict['supporting_data'] = f'Current option price: ${best_put["bid"]} (**USING STALE DATA**)'
+            resp_dict['main_class'] = 'bullish'
+        else:
+            resp_dict['main_point'] = "Put data is unavailable"
+        if best_spread:
+            resp_dict['secondary_point'] = f'Buy ${best_spread["strike_to_buy"]} strike put and sell ${best_spread["strike_to_sell"]} strike put'
+            resp_dict['secondary_description'] = "This is the optimal put spread to sell"
+            if best_spread["spread_using_last"] == "true":
+                resp_dict['secondary_description'] = "This is the optimal put spread to sell (**USING STALE DATA**)"
+            resp_dict['secondary_class'] = 'bullish'
+        resp_dict['explain'] =  "FatNeo calculates the possible future price of stock based on option prices. Option prices are, in a way, market's way of predicting stock price. We use some really cool math to do the complicated calculations for you and find the optimal puts and spread for you. "
     return resp_dict
 
 def make_gamma_response(symbol, resp_dict):
@@ -262,6 +289,7 @@ FUNCTION_MAP = {'range':make_range_response,
                 'wsb':make_wsb_response,
                 'wise':make_wise_response,
                 'call':make_call_response,
+                'put':make_put_response,
                 'div':make_div_response,
                 'div2':make_div2_response,
                 'dive':make_dive_response,
