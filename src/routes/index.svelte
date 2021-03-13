@@ -131,16 +131,16 @@
       <header>
         <h4>Skills Sheet</h4>
       </header>
-      <a class="text-white bg-primary bd-dark" href="/$symbol={card_ticker}&cmd=">{card_ticker}</a> - 7 day price range<br>
-      <a class="text-white bg-primary bd-dark" href="/$symbol={card_ticker}&cmd=doom">{card_ticker} doom</a> - Prb of stock crash<br>
-      <a class="text-white bg-primary bd-dark">{card_ticker} wsb</a> - r/wallstreetbets mentions<br>
-      <a class="text-white bg-primary bd-dark">{card_ticker} volume</a> - Relative(10d) vol<br>
-      <a class="text-white bg-primary bd-dark">{card_ticker} div</a> - Last div <br>
-      <a class="text-white bg-primary bd-dark">{card_ticker} dive</a> - Upcoming (Est) div<br>
-      <a class="text-white bg-primary bd-dark">{card_ticker} kelly</a> - Optimal allocation<br>
-      <a class="text-white bg-primary bd-dark">{card_ticker} call</a> - Optimal calls<br>
-      <a class="text-white bg-primary bd-dark">{card_ticker} twitter</a> - Twitter sentiment<br>
-      <a class="text-white bg-primary bd-dark">BTC crypto</a> - crypto 7 day range <br>
+      <a class="text-white bg-primary bd-dark" href="/?symbol={card_ticker}&cmd=">{card_ticker}</a> - 7 day price range<br>
+      <a class="text-white bg-primary bd-dark" href="/?symbol={card_ticker}&cmd=doom">{card_ticker} doom</a> - Prb of stock crash<br>
+      <a class="text-white bg-primary bd-dark" href="/?symbol={card_ticker}&cmd=wsb">{card_ticker} wsb</a> - r/wallstreetbets mentions<br>
+      <a class="text-white bg-primary bd-dark" href="/?symbol={card_ticker}&cmd=volume">{card_ticker} volume</a> - Relative(10d) vol<br>
+      <a class="text-white bg-primary bd-dark" href="/?symbol={card_ticker}&cmd=div">{card_ticker} div</a> - Last div <br>
+      <a class="text-white bg-primary bd-dark" href="/?symbol={card_ticker}&cmd=dive">{card_ticker} dive</a> - Upcoming (Est) div<br>
+      <a class="text-white bg-primary bd-dark" href="/?symbol={card_ticker}&cmd=kelly">{card_ticker} kelly</a> - Optimal allocation<br>
+      <a class="text-white bg-primary bd-dark" href="/?symbol={card_ticker}&cmd=call">{card_ticker} call</a> - Optimal calls<br>
+      <a class="text-white bg-primary bd-dark" href="/?symbol={card_ticker}&cmd=twitter">{card_ticker} twitter</a> - Twitter sentiment<br>
+      <a class="text-white bg-primary bd-dark" href="/?symbol=BTC&cmd=crypto">BTC crypto</a> - crypto 7 day range <br>
     </div>
 </div>
 <footer>
