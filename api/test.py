@@ -95,19 +95,20 @@ def make_range_response(symbol, resp_dict):
         input_dict = resp.json()
         resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f'${round(input_dict["low_range"])} - ${round(input_dict["high_range"])}'
-        resp_dict['description'] = '1Wk Price Band, Options implied @ 75% Prb.'
+        resp_dict['description'] = 'Expected stock price range for next 7 days'
         if float(input_dict['prob_up']) > 0.6:
             resp_dict['main_class'] = 'bullish'
         elif float(input_dict['prob_up']) < 0.4:
             resp_dict['main_class'] = 'bearish'
-        resp_dict['supporting_data'] = f'Now@ ${round(input_dict["price"])}'
+        resp_dict['supporting_data'] = f'Current stock price: ${round(input_dict["price"])}'
         resp_dict['secondary_point'] = f'{input_dict["today_volume"]/input_dict["avg_10d_volume"]:.2f} times'
         if int(input_dict['volume_pct']) > 55:
             resp_dict['secondary_class'] = 'bullish'
         elif int(input_dict['volume_pct']) < 45:
             resp_dict['secondary_class'] = 'bearish'
         resp_dict['meter_value'] = int(input_dict['volume_pct'])
-        resp_dict['secondary_description'] =  'Relative Volume based on 10 days average'
+        resp_dict['secondary_description'] =  'Relative Volume based on past 10 days average'
+        resp_dict['explain'] =  "FatNeo calculates the possible future price of stock based on option prices. Option prices are, in a way, market's way of predicting stock price. We use some really cool math to do the complicated calculations for you and find the range the stock will fall in with a 75% probability"
     return resp_dict
 
 def make_crypto_response(symbol, resp_dict):
