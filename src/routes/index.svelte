@@ -11,6 +11,10 @@
     .supporting{
         color:navy;
     }
+    .explain{
+    font-size:1rem;
+    color:grey;
+    }
 
     :global(body) {
     max-width:80rem;
@@ -33,6 +37,7 @@
 	let button_text = 'Go';
 	let batch_commands = ["call", "wise"];
     let ticker = "";
+    let card_ticker = 'SPY';
 
     import { stores } from '@sapper/app';
     const { preloading, page, session } = stores();
@@ -69,7 +74,10 @@
 			progress.set(0);
 			fetch("./api/test?input_cmd="+ticker)
 				.then(d => d.text())
-				.then(d => (api_output = JSON.parse(d)));
+				.then(d => {
+                                api_output = JSON.parse(d);
+                                card_ticker = api_output.symbol;
+                            });
 	}
     let cmd_to_run_from_get="";
     let symbol_to_run_from_get='spy';
@@ -116,21 +124,24 @@
                 {/if}
                 <p>{api_output.secondary_description}</p>
             </div>
+            <p class="explain">{@html api_output.explain}</p>
         {/if}
     </div>
     <div class="card col-4 bg-light" style="font-size:1.4rem;padding:0.1rem 0.5rem;">
       <header>
         <h4>Skills Sheet</h4>
       </header>
-      <span class="text-white bg-primary bd-dark">IBM</span> - 7 day price range<br>
-      <span class="text-white bg-primary bd-dark">ibm doom</span> - Prb of stock crash<br>
-      <span class="text-white bg-primary bd-dark">ibm wsb</span> - r/wallstreetbets mentions<br>
-      <span class="text-white bg-primary bd-dark">ibm volume</span> - Relative(10d) vol<br>
-      <span class="text-white bg-primary bd-dark">ibm div</span> - Last div <br>
-      <span class="text-white bg-primary bd-dark">ibm dive</span> - Upcoming (Est) div<br>
-      <span class="text-white bg-primary bd-dark">ibm kelly</span> - Optimal allocation<br>
-      <span class="text-white bg-primary bd-dark">ibm call</span> - Optimal calls<br>
-      <span class="text-white bg-primary bd-dark">ibm twitter</span> - Twitter sentiment<br>
+      <a class="text-white bg-primary bd-dark" href="/?symbol={card_ticker}&cmd=">{card_ticker}</a> - 7 day price range<br>
+      <a class="text-white bg-primary bd-dark" href="/?symbol={card_ticker}&cmd=doom">{card_ticker} doom</a> - Prb of stock crash<br>
+      <a class="text-white bg-primary bd-dark" href="/?symbol={card_ticker}&cmd=wsb">{card_ticker} wsb</a> - r/wallstreetbets mentions<br>
+      <a class="text-white bg-primary bd-dark" href="/?symbol={card_ticker}&cmd=volume">{card_ticker} volume</a> - Relative(10d) vol<br>
+      <a class="text-white bg-primary bd-dark" href="/?symbol={card_ticker}&cmd=div">{card_ticker} div</a> - Last div <br>
+      <a class="text-white bg-primary bd-dark" href="/?symbol={card_ticker}&cmd=dive">{card_ticker} dive</a> - Upcoming (Est) div<br>
+      <a class="text-white bg-primary bd-dark" href="/?symbol={card_ticker}&cmd=kelly">{card_ticker} kelly</a> - Optimal allocation<br>
+      <a class="text-white bg-primary bd-dark" href="/?symbol={card_ticker}&cmd=call">{card_ticker} call</a> - Optimal calls<br>
+      <a class="text-white bg-primary bd-dark" href="/?symbol={card_ticker}&cmd=call">{card_ticker} put</a> - Optimal puts<br>
+      <a class="text-white bg-primary bd-dark" href="/?symbol={card_ticker}&cmd=twitter">{card_ticker} twitter</a> - Twitter sentiment<br>
+      <!-- <a class="text-white bg-primary bd-dark" href="/?symbol=BTC&cmd=crypto">BTC crypto</a> - crypto 7 day range <br> -->
     </div>
 </div>
 <footer>

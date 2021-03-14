@@ -95,18 +95,32 @@ def make_range_response(symbol, resp_dict):
         input_dict = resp.json()
         resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f'${round(input_dict["low_range"])} - ${round(input_dict["high_range"])}'
-        resp_dict['description'] = '1Wk Price Band, Options implied @ 75% Prb.'
+        resp_dict['description'] = 'Expected stock price range for next 7 days'
         if float(input_dict['prob_up']) > 0.6:
             resp_dict['main_class'] = 'bullish'
         elif float(input_dict['prob_up']) < 0.4:
             resp_dict['main_class'] = 'bearish'
-        resp_dict['supporting_data'] = f'Now@ ${round(input_dict["price"])}'
+        resp_dict['supporting_data'] = f'Current stock price: ${round(input_dict["price"])}'
         resp_dict['secondary_point'] = f'{input_dict["today_volume"]/input_dict["avg_10d_volume"]:.2f} times'
         if int(input_dict['volume_pct']) > 55:
             resp_dict['secondary_class'] = 'bullish'
         elif int(input_dict['volume_pct']) < 45:
             resp_dict['secondary_class'] = 'bearish'
         resp_dict['meter_value'] = int(input_dict['volume_pct'])
+        resp_dict['secondary_description'] =  'Relative Volume based on past 10 days average'
+        resp_dict['explain'] =  "FatNeo calculates the possible future price of stock based on option prices. Option prices are, in a way, market's way of predicting stock price. We use some really cool math to do the complicated calculations for you and find the range the stock will fall in with a 75% probability"
+    return resp_dict
+
+def make_crypto_response(symbol, resp_dict):
+    api_end_point = f"{API_URL}crypto/range/{symbol}"
+    resp = requests.get(api_end_point)
+    if resp.ok: #Good response from FastAPI
+        input_dict = resp.json()
+        resp_dict['symbol'] = symbol
+        resp_dict['main_point'] = f'${round(input_dict["low_range"]):,} - ${round(input_dict["high_range"]):,}'
+        resp_dict['description'] = '1Wk Price Band, Historical implied @ 75% Prb.'
+        resp_dict['supporting_data'] = f'Now@ ${round(input_dict["price"]):,}'
+        resp_dict['secondary_point'] = f'{input_dict["today_volume"]/input_dict["avg_10d_volume"]:.2f} times'
         resp_dict['secondary_description'] =  'Relative Volume based on 10 days average'
     return resp_dict
 
@@ -194,21 +208,77 @@ def make_call_response(symbol, resp_dict):
         resp_dict['symbol'] = symbol
         best_call = input_dict["best_call"]
         best_spread = input_dict["best_spread"]
-        if best_call:
+
+        if best_call and 'strike' in best_call:
             resp_dict['main_point'] = f'${best_call["strike"]} Strike Call Expiring on {datetime.strptime(best_call["expiry"], "%d-%m-%Y").strftime("%d %b")}'
-            resp_dict['description'] = "Optimal covered call to sell"
-            resp_dict['supporting_data'] = f'Now@ ${best_call["bid"]}'
+            resp_dict['description'] = "This is the optimal covered call to sell"
+            resp_dict['supporting_data'] = f'Current option price: ${best_call["bid"]}'
             if best_call["using_last"] == "true":
-                resp_dict['supporting_data'] = f'Now@ ${best_call["bid"]} (**USING STALE DATA**)'
+                resp_dict['supporting_data'] = f'Current option price: ${best_call["bid"]} (**USING STALE DATA**)'
             resp_dict['main_class'] = 'bullish'
         else:
-            resp_dict['main_point'] = f''
+            resp_dict['main_point'] = "Call data is unavailable"
         if best_spread:
             resp_dict['secondary_point'] = f'Buy ${best_spread["strike_to_buy"]} strike call and sell ${best_spread["strike_to_sell"]} strike call'
-            resp_dict['secondary_description'] = "Optimal call spread to sell given probalities implied by options"
+            resp_dict['secondary_description'] = "This is the optimal call spread to sell"
             if best_spread["spread_using_last"] == "true":
-                resp_dict['secondary_description'] = "Optimal call spread to sell given probalities (**USING STALE DATA**)"
+                resp_dict['secondary_description'] = "This is the optimal call spread to sell (**USING STALE DATA**)"
             resp_dict['secondary_class'] = 'bullish'
+        resp_dict['explain'] =  "FatNeo calculates the possible future price of stock based on option prices. Option prices are, in a way, market's way of predicting stock price. We use some really cool math to do the complicated calculations for you and find the optimal calls and spread for you. "
+    return resp_dict
+
+def make_put_response(symbol, resp_dict):
+    api_end_point = f"{API_URL}options/put_trades/{symbol}"
+    resp = requests.get(api_end_point)
+    if resp.ok: #Good response from FastAPI
+        input_dict = resp.json()
+        resp_dict['symbol'] = symbol
+        best_put = input_dict["best_put"]
+        best_spread = input_dict["best_spread"]
+
+        if best_put and 'strike' in best_put:
+            resp_dict['main_point'] = f'${best_put["strike"]} Strike Put Expiring on {datetime.strptime(best_put["expiry"], "%d-%m-%Y").strftime("%d %b")}'
+            resp_dict['description'] = "This is the optimal put to sell"
+            resp_dict['supporting_data'] = f'Current option price: ${best_put["bid"]}'
+            if best_put["using_last"] == "true":
+                resp_dict['supporting_data'] = f'Current option price: ${best_put["bid"]} (**USING STALE DATA**)'
+            resp_dict['main_class'] = 'bullish'
+        else:
+            resp_dict['main_point'] = "Put data is unavailable"
+        if best_spread:
+            resp_dict['secondary_point'] = f'Buy ${best_spread["strike_to_buy"]} strike put and sell ${best_spread["strike_to_sell"]} strike put'
+            resp_dict['secondary_description'] = "This is the optimal put spread to sell"
+            if best_spread["spread_using_last"] == "true":
+                resp_dict['secondary_description'] = "This is the optimal put spread to sell (**USING STALE DATA**)"
+            resp_dict['secondary_class'] = 'bullish'
+        resp_dict['explain'] =  "FatNeo calculates the possible future price of stock based on option prices. Option prices are, in a way, market's way of predicting stock price. We use some really cool math to do the complicated calculations for you and find the optimal puts and spread for you. "
+    return resp_dict
+
+def make_gamma_response(symbol, resp_dict):
+    api_end_point = f"{API_URL}options/gamma/{symbol}"
+    resp = requests.get(api_end_point)
+    if resp.ok: #Good response from FastAPI
+        input_dict = resp.json()
+        resp_dict['symbol'] = symbol
+        shares = input_dict["stock_float"]
+        gamma_1 = input_dict["gamma_1"]
+        strike_1 = input_dict["strike_1"]
+        gamma_2 = input_dict["gamma_2"]
+        strike_2 = input_dict["strike_2"]
+        gamma_1_perc = gamma_1*100/shares
+        gamma_2_perc = gamma_2*100/shares
+        expiry_use = datetime.strptime(input_dict["expiry_to_use"], "%Y-%m-%d").strftime("%d %b")
+        resp_dict['main_point'] = f'Best Gamma Squeeze candidate: {input_dict["strike_1"]} Strike Call, Expiry: {expiry_use}'
+        resp_dict['description'] = "Maximum gamma squeeze at this strike"
+        resp_dict['supporting_data'] = f'Gamma Squeeze Ratio @ {gamma_1_perc:.2f}%'
+        if gamma_1_perc > 10:
+            resp_dict['main_class'] = 'bullish'
+        resp_dict['secondary_point'] = f'Next Best Gamma Squeeze candidate: {input_dict["strike_2"]} Strike Call, Expiry: {expiry_use}'
+        resp_dict['secondary_description'] = f'Gamma Squeeze Ratio @ {gamma_2_perc:.2f}%'
+        if gamma_2_perc > 10:
+            resp_dict['secondary_class'] = 'bullish'
+        resp_dict['explain'] =  "Gamma Squeeze happens when the Open Interest in the option is high and stock approches the strike. As stock nears the strike the market makers rush to hedge the position. Higher the open interest more the hedging demand and that pushes the stock up (or down) a lot.<br> GME is a classic example. The Gamma Squeeze Ratio is the percentage of float market makers would need ot hedge the position as the stock price approaces the strike. Any number over 5% is a good for the squeeze"
+
     return resp_dict
 
 #SKILL_MAP = {'range':'options/range/', 'ape':'options/kelly/','kelly':'options/kelly/','doom':'options/doom/' , 'volume':'stocks/volume/', 'prob_pct':'options/prob_pct/','wsb':'stocks/volume/', 'new2':'options/kelly/' }
@@ -220,10 +290,14 @@ FUNCTION_MAP = {'range':make_range_response,
                 'wsb':make_wsb_response,
                 'wise':make_wise_response,
                 'call':make_call_response,
+                'put':make_put_response,
                 'div':make_div_response,
                 'div2':make_div2_response,
                 'dive':make_dive_response,
-                'twitter':make_twitter_response}
+                'twitter':make_twitter_response,
+                'crypto':make_crypto_response,
+                'gamma':make_gamma_response}
+
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -241,7 +315,8 @@ class handler(BaseHTTPRequestHandler):
                       'secondary_point':'',
                       'secondary_class':'neutral',
                       'meter_value':-1,
-                      'secondary_description':'' }
+                      'secondary_description':'',
+                      'explain':"" }
 
         if "input_cmd" in dic:
             if dic["input_cmd"] == 'WTF':
