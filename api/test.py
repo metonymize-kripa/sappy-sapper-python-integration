@@ -232,14 +232,14 @@ def make_put_response(symbol, resp_dict):
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
         resp_dict['symbol'] = symbol
-        best_call = input_dict["best_put"]
+        best_put = input_dict["best_put"]
         best_spread = input_dict["best_spread"]
 
-        if best_call and 'strike' in best_call:
+        if best_put and 'strike' in best_put:
             resp_dict['main_point'] = f'${best_put["strike"]} Strike Put Expiring on {datetime.strptime(best_put["expiry"], "%d-%m-%Y").strftime("%d %b")}'
             resp_dict['description'] = "This is the optimal put to sell"
             resp_dict['supporting_data'] = f'Current option price: ${best_put["bid"]}'
-            if best_call["using_last"] == "true":
+            if best_put["using_last"] == "true":
                 resp_dict['supporting_data'] = f'Current option price: ${best_put["bid"]} (**USING STALE DATA**)'
             resp_dict['main_class'] = 'bullish'
         else:

@@ -139,8 +139,9 @@
       <a class="text-white bg-primary bd-dark" href="/?symbol={card_ticker}&cmd=dive">{card_ticker} dive</a> - Upcoming (Est) div<br>
       <a class="text-white bg-primary bd-dark" href="/?symbol={card_ticker}&cmd=kelly">{card_ticker} kelly</a> - Optimal allocation<br>
       <a class="text-white bg-primary bd-dark" href="/?symbol={card_ticker}&cmd=call">{card_ticker} call</a> - Optimal calls<br>
+      <a class="text-white bg-primary bd-dark" href="/?symbol={card_ticker}&cmd=call">{card_ticker} put</a> - Optimal puts<br>
       <a class="text-white bg-primary bd-dark" href="/?symbol={card_ticker}&cmd=twitter">{card_ticker} twitter</a> - Twitter sentiment<br>
-      <a class="text-white bg-primary bd-dark" href="/?symbol=BTC&cmd=crypto">BTC crypto</a> - crypto 7 day range <br>
+      <!-- <a class="text-white bg-primary bd-dark" href="/?symbol=BTC&cmd=crypto">BTC crypto</a> - crypto 7 day range <br> -->
     </div>
 </div>
 <footer>
