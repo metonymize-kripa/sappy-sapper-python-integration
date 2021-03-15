@@ -121,7 +121,7 @@
             <h2> ☝️ Symbol+skill+↵ </h2>
         {:else}
             <div style="padding:0 1rem;" class='bd-dark text-center'>
-                <h2 class="{api_output.main_class}">{api_output.main_point}</h2>
+                <h2 class="{api_output.main_class}">{@html api_output.main_point}</h2>
                 <p>{@html api_output.description}</p>
                 <h3 class="supporting">{api_output.supporting_data}</h3>
             </div>
