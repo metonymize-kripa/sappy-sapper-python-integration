@@ -93,6 +93,8 @@ def make_range_response(symbol, resp_dict):
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        if 'error' in input_dict:
+            return {'main_point':"Option data is unavailable"}
         resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f'${round(input_dict["low_range"])} - ${round(input_dict["high_range"])}'
         resp_dict['description'] = 'Expected stock price range for next 7 days'
@@ -205,6 +207,8 @@ def make_call_response(symbol, resp_dict):
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        if 'error' in input_dict:
+            return {'main_point':"Option data is unavailable"}
         resp_dict['symbol'] = symbol
         best_call = input_dict["best_call"]
         best_spread = input_dict["best_spread"]
@@ -232,6 +236,8 @@ def make_put_response(symbol, resp_dict):
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        if 'error' in input_dict:
+            return {'main_point':"Option data is unavailable"}
         resp_dict['symbol'] = symbol
         best_put = input_dict["best_put"]
         best_spread = input_dict["best_spread"]
