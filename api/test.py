@@ -97,7 +97,8 @@ def make_range_response(symbol, resp_dict):
             resp_dict['main_point'] = "Option data is unavailable"
             return resp_dict
         resp_dict['symbol'] = symbol
-        resp_dict['main_point'] = f'''${round(input_dict["low_range"])} - ${round(input_dict["high_range"])}<a class="card-button text-white bg-primary bd-dark" on:click="getAPIData('call',{symbol})" href="">sell call</a>'''
+        resp_dict['main_point'] = f'${round(input_dict["low_range"])} - ${round(input_dict["high_range"])}'
+        #resp_dict['main_point'] = f'''${round(input_dict["low_range"])} - ${round(input_dict["high_range"])}<a class="card-button text-white bg-primary bd-dark" on:click="getAPIData('call',{symbol})" href="">sell call</a>'''
         resp_dict['description'] = 'Expected stock price range for next 7 days'
         if float(input_dict['prob_up']) > 0.6:
             resp_dict['main_class'] = 'bullish'
