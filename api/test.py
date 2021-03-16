@@ -168,7 +168,7 @@ def make_ape_response(symbol, resp_dict):
         prob_up_percent = round(prob_up*100)
         resp_dict['secondary_point'] = f"Probability of upside:{prob_up_percent}%"
         resp_dict['meter_value'] = prob_up_percent
-        resp_dict['explain'] = "We use <a href = 'https://en.wikipedia.org/wiki/Kelly_criterion'>kelly criterion</a> to find the optimal amount you should invest in this stock. Some investor use fraction kelly criterion where they invest a fraction of what kelly suggests"
+        resp_dict['explain'] = "We use <a href = 'https://en.wikipedia.org/wiki/Kelly_criterion'>kelly criterion</a> to find the optimal amount you should invest in this stock. <br>Some investor use fraction kelly criterion where they invest a fraction of what kelly suggests"
 
 
     return resp_dict
@@ -187,7 +187,7 @@ def make_twitter_response(symbol, resp_dict):
         elif int(twitter_index) < -20:
             resp_dict['main_class'] = 'bearish'
         resp_dict['meter_value'] = twitter_index
-        resp_dict['explain'] = "We scan tweets in real-time and use some complicated AI/ML algorithm to find the sentiment of those tweets. We then assign it a normalized value. Tl;dr 100% means everyone (almost) on twitter loves the stock and -100% means everyone hates it."
+        resp_dict['explain'] = "We scan tweets in real-time and use some complicated AI/ML algorithm to find the sentiment of those tweets. We then assign it a normalized value. <br>tl;dr 100% means everyone (almost) on twitter loves the stock and -100% means everyone hates it."
     return resp_dict
 
 def make_volume_response(symbol, resp_dict):
@@ -205,14 +205,14 @@ def make_volume_response(symbol, resp_dict):
             resp_dict['main_class'] = 'bearish'
         #resp_dict['supporting_data'] = f'Now@{(input_dict["percentile"])}'
         percentile = int(input_dict['percentile'])
-        resp_dict['secondary_point'] = f'Now@{percentile}'
+        resp_dict['secondary_point'] = f'Current volume percentile: {percentile}'
         if percentile > 55:
             resp_dict['secondary_class'] = 'bullish'
         elif percentile < 45:
             resp_dict['secondary_class'] = 'bearish'
         resp_dict['meter_value'] = percentile
-
-        resp_dict['secondary_description'] =  'Current volume percentile'
+        resp_dict['secondary_description'] =  'Rank based on past 10 days'
+        resp_dict['explain'] = "FatNeo calculates current volume and compares it to last 10 days average volume. The Relative volume number is how many times current volume is as a ratio of average. More than 1 means today is a heavy volume day.<br> The percentile is a rank out of 100. We rank past volumes and assign the current volume a rank based on past. 100 means today is the heaviest volume and 0 means the lowest. "
     return resp_dict
 
 def make_call_response(symbol, resp_dict):
