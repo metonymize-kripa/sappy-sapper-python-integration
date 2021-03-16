@@ -93,8 +93,13 @@ def make_range_response(symbol, resp_dict):
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        if 'error' in input_dict:
+            resp_dict['main_point'] = "Option data is unavailable"
+            return resp_dict
         resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f'${round(input_dict["low_range"])} - ${round(input_dict["high_range"])}'
+        resp_dict['tag1'] = "sell put"
+        resp_dict['tag2'] = "sell call"
         resp_dict['description'] = 'Expected stock price range for next 7 days'
         if float(input_dict['prob_up']) > 0.6:
             resp_dict['main_class'] = 'bullish'
@@ -129,6 +134,9 @@ def make_doom_response(symbol, resp_dict):
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        if 'error' in input_dict:
+            resp_dict['main_point'] = "Option data is unavailable"
+            return resp_dict
         resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f'Crash Index @{round(100*input_dict["prob_down"])}'
         resp_dict['description'] = 'Options implied Prb. of 5%👇 in month ahead'
@@ -145,6 +153,9 @@ def make_ape_response(symbol, resp_dict):
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        if 'error' in input_dict:
+            resp_dict['main_point'] = "Option data is unavailable"
+            return resp_dict
         resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f"Consider Kelly-efficient bet sizing of: {round(input_dict['kelly']*100)}% "
         resp_dict['description'] = "Experimental feature"
@@ -205,6 +216,9 @@ def make_call_response(symbol, resp_dict):
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        if 'error' in input_dict:
+            resp_dict['main_point'] = "Option data is unavailable"
+            return resp_dict
         resp_dict['symbol'] = symbol
         best_call = input_dict["best_call"]
         best_spread = input_dict["best_spread"]
@@ -232,6 +246,9 @@ def make_put_response(symbol, resp_dict):
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        if 'error' in input_dict:
+            resp_dict['main_point'] = "Option data is unavailable"
+            return resp_dict
         resp_dict['symbol'] = symbol
         best_put = input_dict["best_put"]
         best_spread = input_dict["best_spread"]
@@ -316,7 +333,9 @@ class handler(BaseHTTPRequestHandler):
                       'secondary_class':'neutral',
                       'meter_value':-1,
                       'secondary_description':'',
-                      'explain':"" }
+                      'explain':'',
+                      'tag1':'',
+                      'tag2':'' }
 
         if "input_cmd" in dic:
             if dic["input_cmd"] == 'WTF':

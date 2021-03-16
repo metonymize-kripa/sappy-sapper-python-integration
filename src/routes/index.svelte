@@ -82,6 +82,7 @@
 				.then(d => {
                                 api_output = JSON.parse(d);
                                 card_ticker = api_output.symbol;
+                                console.log(api_output);
                                 tag1 = api_output.tag1;
                                 tag2 = api_output.tag2;
                             });
@@ -125,7 +126,7 @@
             <h2> ☝️ Symbol+skill+↵ </h2>
         {:else}
             <div style="padding:0 1rem;" class='bd-dark text-center'>
-                <a class="text-white bg-primary bd-dark" on:click={getAPIData('put',api_output.symbol)}>{tag1}</a><h2 class="{api_output.main_class}">{ api_output.main_point}</h2><a class="text-white bg-primary bd-dark" on:click={getAPIData('call',api_output.symbol)}>{tag2}</a>
+                <a class="text-white bg-primary bd-dark" on:click={getAPIData("put",api_output.symbol)}>{tag1}</a><h2 class="{api_output.main_class}">{ api_output.main_point}</h2><a class="text-white bg-primary bd-dark" on:click={getAPIData("call",api_output.symbol)}>{tag2}</a>
                 <p>{@html api_output.description}</p>
                 <h3 class="supporting">{api_output.supporting_data}</h3>
             </div>
