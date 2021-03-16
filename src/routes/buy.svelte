@@ -113,7 +113,7 @@
 </table>
 <br>
 <button class="pull-left button primary" on:click={get_portfolio_data}>
-    Sort
+    Fetch/Sort
 </button>
 <br><br><br>
 * - Optimal allocation amounts for a $100 portfolio

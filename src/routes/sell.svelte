@@ -108,7 +108,7 @@ body {
 </table>
 <br>
 <button class="pull-left button primary" on:click={get_portfolio_data}>
-    Sort
+    Fetch/Sort
 </button>
 <br><br>
 🔱 - Do not allocate more than this in a $100 portfolio.
