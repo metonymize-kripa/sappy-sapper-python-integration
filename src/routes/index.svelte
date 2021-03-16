@@ -12,7 +12,7 @@
         color:navy;
     }
     .explain{
-    font-size:1rem;
+    font-size:1.2rem;
     color:grey;
     }
     a.card-button:hover{
