@@ -157,8 +157,8 @@ def make_ape_response(symbol, resp_dict):
             resp_dict['main_point'] = "Option data is unavailable"
             return resp_dict
         resp_dict['symbol'] = symbol
-        resp_dict['main_point'] = f"Consider Kelly-efficient bet sizing of: {round(input_dict['kelly']*100)}% "
-        resp_dict['description'] = "Experimental feature"
+        resp_dict['main_point'] = f"Optimal portfolio allocation: {round(input_dict['kelly']*100)}% "
+        resp_dict['description'] = "Do not invest more than this"
         prob_up = float(input_dict['prob_up'])
         if prob_up > 0.6:
             resp_dict['main_class'] = 'bullish'
@@ -167,6 +167,8 @@ def make_ape_response(symbol, resp_dict):
         prob_up_percent = round(prob_up*100)
         resp_dict['secondary_point'] = f"Probability of upside:@{prob_up_percent}"
         resp_dict['meter_value'] = prob_up_percent
+        resp_dict['explain'] = "We use <a href = 'https://en.wikipedia.org/wiki/Kelly_criterion'>kelly criterion</a> to find the optimal amount you should invest in this stock. Some investor use fraction kelly criterion where they invest a fraction of what kelly suggests"
+
 
     return resp_dict
 
