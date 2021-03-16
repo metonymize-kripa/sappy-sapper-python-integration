@@ -138,13 +138,14 @@ def make_doom_response(symbol, resp_dict):
             resp_dict['main_point'] = "Option data is unavailable"
             return resp_dict
         resp_dict['symbol'] = symbol
-        resp_dict['main_point'] = f'Crash Index @{round(100*input_dict["prob_down"])}'
+        resp_dict['main_point'] = f'Chance of stock crashing down: {round(100*input_dict["prob_down"])}%'
         resp_dict['description'] = 'Options implied Prb. of 5%👇 in month ahead'
         prob_down = float(input_dict['prob_down'])
         if prob_down < 0.1:
             resp_dict['main_class'] = 'bullish'
         elif prob_down > 0.2:
             resp_dict['main_class'] = 'bearish'
+        resp_dict['explain'] =  "FatNeo calculates the probability that the future price of stock falls down 5%. Option prices are, in a way, market's way of predicting stock price. We use some really cool math to do the complicated calculations for you and find the drawdown probability"
 
     return resp_dict
 
@@ -165,7 +166,7 @@ def make_ape_response(symbol, resp_dict):
         elif prob_up < 0.4:
             resp_dict['main_class'] = 'bearish'
         prob_up_percent = round(prob_up*100)
-        resp_dict['secondary_point'] = f"Probability of upside:@{prob_up_percent}"
+        resp_dict['secondary_point'] = f"Probability of upside:{prob_up_percent}%"
         resp_dict['meter_value'] = prob_up_percent
         resp_dict['explain'] = "We use <a href = 'https://en.wikipedia.org/wiki/Kelly_criterion'>kelly criterion</a> to find the optimal amount you should invest in this stock. Some investor use fraction kelly criterion where they invest a fraction of what kelly suggests"
 
@@ -179,13 +180,14 @@ def make_twitter_response(symbol, resp_dict):
         input_dict = resp.json()
         resp_dict['symbol'] = symbol
         twitter_index = round(input_dict['twitter_index'])
-        resp_dict['main_point'] = f"Twitter sentiment index is : {twitter_index}% "
-        resp_dict['description'] = "Experimental feature: Real time twitter sentiment"
+        resp_dict['main_point'] = f"Twitter sentiment: {twitter_index}% "
+        resp_dict['description'] = "What are the current tweets saying about {symbol}"
         if int(twitter_index) > 20:
             resp_dict['main_class'] = 'bullish'
         elif int(twitter_index) < -20:
             resp_dict['main_class'] = 'bearish'
         resp_dict['meter_value'] = twitter_index
+        resp_dict['explain'] = "We scan tweets in real-time and use some complicated AI/ML algorithm to find the sentiment of those tweets. We then assign it a normalized value. Tl;dr 100% means everyone (almost) on twitter loves the stock and -100% means everyone hates it."
     return resp_dict
 
 def make_volume_response(symbol, resp_dict):
