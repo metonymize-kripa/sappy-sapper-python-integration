@@ -181,7 +181,7 @@ def make_twitter_response(symbol, resp_dict):
         resp_dict['symbol'] = symbol
         twitter_index = round(input_dict['twitter_index'])
         resp_dict['main_point'] = f"Twitter sentiment: {twitter_index}% "
-        resp_dict['description'] = "What are the current tweets saying about {symbol}"
+        resp_dict['description'] = "Real time sentiments of stock tweets"
         if int(twitter_index) > 20:
             resp_dict['main_class'] = 'bullish'
         elif int(twitter_index) < -20:
