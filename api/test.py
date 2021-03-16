@@ -138,14 +138,14 @@ def make_doom_response(symbol, resp_dict):
             resp_dict['main_point'] = "Option data is unavailable"
             return resp_dict
         resp_dict['symbol'] = symbol
-        resp_dict['main_point'] = f'Chance of stock crashing down: {round(100*input_dict["prob_down"])}%'
-        resp_dict['description'] = 'Options implied Prb. of 5%👇 in month ahead'
+        resp_dict['main_point'] = f'Chance of big drop: {round(100*input_dict["prob_down"])}%'
+        resp_dict['description'] = 'For the month ahead'
         prob_down = float(input_dict['prob_down'])
         if prob_down < 0.1:
             resp_dict['main_class'] = 'bullish'
         elif prob_down > 0.2:
             resp_dict['main_class'] = 'bearish'
-        resp_dict['explain'] =  "FatNeo calculates the probability that the future price of stock falls down 5%. Option prices are, in a way, market's way of predicting stock price. We use some really cool math to do the complicated calculations for you and find the drawdown probability"
+        resp_dict['explain'] =  "A big drop is 5% or more decline in the stock price during the month ahead as implied by pricing of Options. Option prices are, in a way, market's way of predicting stock price. We use some really cool math to do the complicated calculations for you and find the drawdown probability"
 
     return resp_dict
 
@@ -158,8 +158,8 @@ def make_ape_response(symbol, resp_dict):
             resp_dict['main_point'] = "Option data is unavailable"
             return resp_dict
         resp_dict['symbol'] = symbol
-        resp_dict['main_point'] = f"Optimal portfolio allocation: {round(input_dict['kelly']*100)}% "
-        resp_dict['description'] = "Do not invest more than this"
+        resp_dict['main_point'] = f"Optimal cash allocation: {round(input_dict['kelly']*100)}% "
+        resp_dict['description'] = "Using gain/loss edge and odds from Option prices."
         prob_up = float(input_dict['prob_up'])
         if prob_up > 0.6:
             resp_dict['main_class'] = 'bullish'
@@ -187,7 +187,7 @@ def make_twitter_response(symbol, resp_dict):
         elif int(twitter_index) < -20:
             resp_dict['main_class'] = 'bearish'
         resp_dict['meter_value'] = twitter_index
-        resp_dict['explain'] = "We scan tweets in real-time and use some complicated AI/ML algorithm to find the sentiment of those tweets. We then assign it a normalized value. <br>tl;dr 100% means everyone (almost) on twitter loves the stock and -100% means everyone hates it."
+        resp_dict['explain'] = "We scan tweets in real-time to find the sentiment of those tweets. We then assign it a normalized value. <br>tl;dr 100% means everyone (almost) on twitter loves the stock and -100% means everyone hates it."
     return resp_dict
 
 def make_volume_response(symbol, resp_dict):
@@ -357,8 +357,8 @@ class handler(BaseHTTPRequestHandler):
                         api_output['main_point'] = f"Invalid Command - {skill}"
                     #message = f'{{"symbol":"{my_stock.ticker}", "prob_up":{prob_move}, "price":"{round(my_stock.price)}","low":"{round(low)}","high":"{round(high)}"}}'
                 except:
-                    api_output['main_point'] = f"Seem like Invalid Command - {skill}"
+                    api_output['main_point'] = f"Exceptional error on - {skill}"
         else:
-            api_output['main_point'] = f"Bro, you need to type in sumthin"
+            api_output['main_point'] = f"Nothing ventured, nothing gained. Please enter command."
         self.wfile.write((json.dumps(api_output)).encode())
         return
