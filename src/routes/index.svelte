@@ -127,7 +127,7 @@
         {:else}
             <div style="padding:0 1rem;" class='bd-dark text-center'>
             {#if tag1 != ""}
-                <h2 class="{api_output.main_class}"><a class="text-white bg-primary bd-dark" on:click={getAPIData("put",api_output.symbol)}>{tag1}</a>{ api_output.main_point}<a class="text-white bg-primary bd-dark" on:click={getAPIData("call",api_output.symbol)}>{tag2}</a></h2>
+                <h2 class="{api_output.main_class}"><a class="text-white bg-primary bd-dark" style='margin:0 0.4rem; font-size=1rem;' on:click={getAPIData("put",api_output.symbol)}>{tag1}</a>{ api_output.main_point}<a class="text-white bg-primary bd-dark" style='margin:0 0.4rem; font-size=1rem;' on:click={getAPIData("call",api_output.symbol)}>{tag2}</a></h2>
             {:else}
                 <h2 class="{api_output.main_class}">{ api_output.main_point}</h2>
             {/if}
