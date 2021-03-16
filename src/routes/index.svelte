@@ -126,8 +126,9 @@
             <h2> ☝️ Symbol+skill+↵ </h2>
         {:else}
             <div style="padding:0 1rem;" class='bd-dark text-center'>
+            <h2 class="{api_output.main_class}">{ api_output.main_point}</h2>
             {#if tag1 != ""}
-                <h2 class="{api_output.main_class}"><a class="text-white bg-primary bd-dark" style="margin:0 2rem; font-size:1.5rem;" href='' on:click={getAPIData("put",api_output.symbol)}>{tag1}</a>{ api_output.main_point}<a class="text-white bg-primary bd-dark" style='margin:0 2rem; font-size:1.5rem;' href='' on:click={getAPIData("call",api_output.symbol)}>{tag2}</a></h2>
+                <h3><a class="text-white bg-primary bd-dark" style="margin:0 2rem; font-size:1.7rem;" href='' on:click={getAPIData("put",api_output.symbol)}>{tag1}</a><a class="text-white bg-primary bd-dark" style='margin:0 2rem; font-size:1.7rem;' href='' on:click={getAPIData("call",api_output.symbol)}>{tag2}</a></h3>
             {:else}
                 <h2 class="{api_output.main_class}">{ api_output.main_point}</h2>
             {/if}
