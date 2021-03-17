@@ -50,6 +50,9 @@ def make_div2_response(symbol, resp_dict):
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        if 'error' in input_dict:
+            resp_dict['main_point'] = input_dict['error']
+            return resp_dict
         resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f'${float(input_dict["skill_output"]):.2f}'
         resp_dict['description'] = 'Updated dividend announced this year'
@@ -63,6 +66,9 @@ def make_dive_response(symbol, resp_dict):
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        if 'error' in input_dict:
+            resp_dict['main_point'] = input_dict['error']
+            return resp_dict
         resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f'${float(input_dict["skill_output"]["nextestpayout"]):.2f}'
         resp_dict['description'] = 'ExDiv: '+input_dict["skill_output"]["exdiv"]+'; '+'Next dividend payout on '+input_dict["skill_output"]["nextpaydate"]
@@ -77,6 +83,9 @@ def make_div_response(symbol, resp_dict):
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        if 'error' in input_dict:
+            resp_dict['main_point'] = input_dict['error']
+            return resp_dict
         resp_dict['symbol'] = symbol
         if float(input_dict["div"]) == 0:
             resp_dict['main_point'] = "{symbol} has had no dividend. A shame"
@@ -94,7 +103,7 @@ def make_range_response(symbol, resp_dict):
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
         if 'error' in input_dict:
-            resp_dict['main_point'] = "Option data is unavailable"
+            resp_dict['main_point'] = input_dict['error']
             return resp_dict
         resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f'${round(input_dict["low_range"])} - ${round(input_dict["high_range"])}'
@@ -121,6 +130,9 @@ def make_crypto_response(symbol, resp_dict):
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        if 'error' in input_dict:
+            resp_dict['main_point'] = input_dict['error']
+            return resp_dict
         resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f'${round(input_dict["low_range"]):,} - ${round(input_dict["high_range"]):,}'
         resp_dict['description'] = '1Wk Price Band, Historical implied @ 75% Prb.'
@@ -135,7 +147,7 @@ def make_doom_response(symbol, resp_dict):
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
         if 'error' in input_dict:
-            resp_dict['main_point'] = "Option data is unavailable"
+            resp_dict['main_point'] = input_dict['error']
             return resp_dict
         resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f'Chance of big drop: {round(100*input_dict["prob_down"])}%'
@@ -155,7 +167,7 @@ def make_ape_response(symbol, resp_dict):
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
         if 'error' in input_dict:
-            resp_dict['main_point'] = "Option data is unavailable"
+            resp_dict['main_point'] = input_dict['error']
             return resp_dict
         resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f"Optimal cash allocation: {round(input_dict['kelly']*100)}% "
@@ -178,6 +190,9 @@ def make_twitter_response(symbol, resp_dict):
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        if 'error' in input_dict:
+            resp_dict['main_point'] = input_dict['error']
+            return resp_dict
         resp_dict['symbol'] = symbol
         twitter_index = round(input_dict['twitter_index'])
         resp_dict['main_point'] = f"Twitter sentiment: {twitter_index}% "
@@ -195,6 +210,9 @@ def make_volume_response(symbol, resp_dict):
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        if 'error' in input_dict:
+            resp_dict['main_point'] = input_dict['error']
+            return resp_dict
         resp_dict['symbol'] = symbol
         adv_x_volume = input_dict["volume"]/input_dict["avg_10d_volume"]
         resp_dict['main_point'] = f'{adv_x_volume:.2f} times'
@@ -221,7 +239,7 @@ def make_call_response(symbol, resp_dict):
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
         if 'error' in input_dict:
-            resp_dict['main_point'] = "Option data is unavailable"
+            resp_dict['main_point'] = input_dict['error']
             return resp_dict
         resp_dict['symbol'] = symbol
         best_call = input_dict["best_call"]
@@ -251,7 +269,7 @@ def make_put_response(symbol, resp_dict):
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
         if 'error' in input_dict:
-            resp_dict['main_point'] = "Option data is unavailable"
+            resp_dict['main_point'] = input_dict['error']
             return resp_dict
         resp_dict['symbol'] = symbol
         best_put = input_dict["best_put"]
@@ -280,6 +298,9 @@ def make_gamma_response(symbol, resp_dict):
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        if 'error' in input_dict:
+            resp_dict['main_point'] = input_dict['error']
+            return resp_dict
         resp_dict['symbol'] = symbol
         shares = input_dict["stock_float"]
         gamma_1 = input_dict["gamma_1"]
