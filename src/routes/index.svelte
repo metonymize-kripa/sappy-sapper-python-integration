@@ -128,14 +128,14 @@
             <h2> ☝️ Symbol+skill+↵ </h2>
         {:else}
             <div style="padding:0 1rem;" class='bd-dark text-center'>
-            <h2 style ="margin:1rem 0px -0.5rem 0px;" class="{api_output.main_class}">{ api_output.main_point}</h2>
-            {#if tag1 != ""}
-                <a class="text-white bg-primary bd-dark" style="margin:0 2rem; font-size:1.5rem;" href='' on:click={getAPIData("put",api_output.symbol)}>{tag1}</a><a class="text-white bg-primary bd-dark" style='margin:0 2rem; font-size:1.5rem;' href='' on:click={getAPIData("call",api_output.symbol)}>{tag2}</a>
-            {/if}
-            {#if tag3 != ""}
-                <a class="text-white bg-primary bd-dark" style="margin:0 2rem; font-size:1.5rem;" href='' on:click={getAPIData("insure",api_output.symbol)}>{tag3}</a>
-            {/if}
+                <h2 style ="margin:1rem 0px -0.5rem 0px;" class="{api_output.main_class}">{ api_output.main_point}</h2>
+                {#if tag1 != ""}
+                    <a class="text-white bg-primary bd-dark" style="margin:0 2rem; font-size:1.5rem;" href='' on:click={getAPIData("put",api_output.symbol)}>{tag1}</a><a class="text-white bg-primary bd-dark" style='margin:0 2rem; font-size:1.5rem;' href='' on:click={getAPIData("call",api_output.symbol)}>{tag2}</a>
+                {/if}
                 <p>{@html api_output.description}</p>
+                {#if tag3 != ""}
+                    <a class="text-white bg-primary bd-dark" style="margin:1rem; font-size:1.5rem;" href='' on:click={getAPIData("insure",api_output.symbol)}>{tag3}</a>
+                {/if}
                 <h3 class="supporting">{api_output.supporting_data}</h3>
             </div>
             <div style="padding:0 1rem; margin-top:1rem;" class='text-grey text-center'>
