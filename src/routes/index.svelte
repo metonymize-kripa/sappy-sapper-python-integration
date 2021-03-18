@@ -43,6 +43,7 @@
     let card_ticker = 'SPY';
     let tag1 = "";
     let tag2 = "";
+    let tag3 = "";
 
     import { stores } from '@sapper/app';
     const { preloading, page, session } = stores();
