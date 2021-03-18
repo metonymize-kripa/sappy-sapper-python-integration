@@ -122,4 +122,4 @@
 <br><br><br>
 * - Optimal allocation amounts for a $100 portfolio
 <br>
-🔱 - Probability that the stock moves up 10% in a week
+🔱 - Windfall(Doom) is probability that the stock moves up(down) 10% in a week
