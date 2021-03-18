@@ -35,7 +35,10 @@ def make_wsbl_response(symbol, resp_dict):
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
         resp_dict['symbol'] = symbol
-        resp_dict['main_point'] = ",".join(input_dict["skill_output"])
+        main_pt = ""
+        for i in input_dict["skill_output"]:
+            main_pt = f"{main_pt},<a href='/?cmd=range&symbol={i}'>i</a>"
+        resp_dict['main_point'] = main_pt
         resp_dict['description'] = 'Top tickers by #mentions on r/wsb'
         resp_dict['supporting_data'] = ''
         resp_dict['secondary_point'] = ''
