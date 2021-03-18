@@ -28,6 +28,20 @@ def make_wsb_response(symbol, resp_dict):
         resp_dict['secondary_description'] =  f'Pulled as of {input_dict["datetime"]}'
     return resp_dict
 
+def make_wsbl_response(symbol, resp_dict):
+    # In this case symbol is overloaded as a number
+    api_end_point = f"{FAT_NEO_API_URL}/{symbol} WSBL"
+    resp = requests.get(api_end_point)
+    if resp.ok: #Good response from FastAPI
+        input_dict = resp.json()
+        resp_dict['symbol'] = symbol
+        resp_dict['main_point'] = ",".join(input_dict["skill_output"])
+        resp_dict['description'] = 'Top tickers by #mentions on r/wsb'
+        resp_dict['supporting_data'] = ''
+        resp_dict['secondary_point'] = ''
+        resp_dict['secondary_description'] =  f'Pulled as of {input_dict["datetime"]}'
+    return resp_dict
+
 def make_wise_response(symbol, resp_dict):
     api_end_point = f"{FAT_NEO_API_URL}/{symbol} WISE"
     resp = requests.get(api_end_point)
@@ -364,7 +378,8 @@ FUNCTION_MAP = {'range':make_range_response,
                 'dive':make_dive_response,
                 'twitter':make_twitter_response,
                 'crypto':make_crypto_response,
-                'gamma':make_gamma_response}
+                'gamma':make_gamma_response,
+               'wsbl':make_wsbl_response}
 
 
 class handler(BaseHTTPRequestHandler):
