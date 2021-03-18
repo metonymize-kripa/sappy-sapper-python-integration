@@ -85,6 +85,7 @@
                                 console.log(api_output);
                                 tag1 = api_output.tag1;
                                 tag2 = api_output.tag2;
+                                tag3 = api_output.tag3;
                             });
 	}
     function getAPIData(cmd,symbol){
@@ -130,12 +131,15 @@
             {#if tag1 != ""}
                 <a class="text-white bg-primary bd-dark" style="margin:0 2rem; font-size:1.5rem;" href='' on:click={getAPIData("put",api_output.symbol)}>{tag1}</a><a class="text-white bg-primary bd-dark" style='margin:0 2rem; font-size:1.5rem;' href='' on:click={getAPIData("call",api_output.symbol)}>{tag2}</a>
             {/if}
+            {#if tag3 != ""}
+                <a class="text-white bg-primary bd-dark" style="margin:0 2rem; font-size:1.5rem;" href='' on:click={getAPIData("insure",api_output.symbol)}>{tag3}</a>
+            {/if}
                 <p>{@html api_output.description}</p>
                 <h3 class="supporting">{api_output.supporting_data}</h3>
             </div>
             <div style="padding:0 1rem; margin-top:1rem;" class='text-grey text-center'>
                 <h4 style="margin:0.5rem 0 0 0; " class="{api_output.secondary_class}">{api_output.secondary_point}</h4>
-               <!-- 
+               <!--
                 {#if api_output.meter_value > -1}
                     <meter value="{api_output.meter_value}" min ="0" max="100"></meter>
                 {/if}

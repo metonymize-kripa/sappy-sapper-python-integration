@@ -152,6 +152,7 @@ def make_doom_response(symbol, resp_dict):
         resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f'Chance of big drop: {round(100*input_dict["prob_down"])}%'
         resp_dict['description'] = 'For the month ahead'
+        resp_dict['tag3'] = "buy put"
         prob_down = float(input_dict['prob_down'])
         if prob_down < 0.1:
             resp_dict['main_class'] = 'bullish'
@@ -293,6 +294,30 @@ def make_put_response(symbol, resp_dict):
         resp_dict['explain'] =  "FatNeo calculates the possible future price of stock based on option prices. Option prices are, in a way, market's way of predicting stock price. We use some really cool math to do the complicated calculations for you and find the optimal puts and spread for you. "
     return resp_dict
 
+def make_insure_response(symbol, resp_dict):
+    api_end_point = f"{API_URL}options/put_protection/{symbol}"
+    resp = requests.get(api_end_point)
+    if resp.ok: #Good response from FastAPI
+        input_dict = resp.json()
+        if 'error' in input_dict:
+            resp_dict['main_point'] = input_dict['error']
+            return resp_dict
+        resp_dict['symbol'] = symbol
+        best_put = input_dict["best_put"]
+
+        if best_put and 'strike' in best_put:
+            resp_dict['main_point'] = f'${best_put["strike"]} Strike Put Expiring on {datetime.strptime(best_put["expiry"], "%d-%m-%Y").strftime("%d %b")}'
+            resp_dict['description'] = "This is the optimal put to buy for insuring against doom"
+            resp_dict['supporting_data'] = f'Current option price: ${best_put["bid"]}'
+            if best_put["using_last"] == "true":
+                resp_dict['supporting_data'] = f'Current option price: ${best_put["bid"]} (**USING STALE DATA**)'
+            resp_dict['main_class'] = 'bullish'
+        else:
+            resp_dict['main_point'] = "Put data is unavailable"
+
+        resp_dict['explain'] =  "FatNeo calculates the possible future price of stock based on option prices. Option prices are, in a way, market's way of predicting stock price. We use some really cool math to do the complicated calculations for you and find the optimal puts that offer downside protection."
+    return resp_dict
+
 def make_gamma_response(symbol, resp_dict):
     api_end_point = f"{API_URL}options/gamma/{symbol}"
     resp = requests.get(api_end_point)
@@ -333,6 +358,7 @@ FUNCTION_MAP = {'range':make_range_response,
                 'wise':make_wise_response,
                 'call':make_call_response,
                 'put':make_put_response,
+                'insure':make_insure_respone,
                 'div':make_div_response,
                 'div2':make_div2_response,
                 'dive':make_dive_response,
@@ -360,7 +386,8 @@ class handler(BaseHTTPRequestHandler):
                       'secondary_description':'',
                       'explain':'',
                       'tag1':'',
-                      'tag2':'' }
+                      'tag2':'',
+                      'tag3':'' }
 
         if "input_cmd" in dic:
             if dic["input_cmd"] == 'WTF':
