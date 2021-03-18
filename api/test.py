@@ -37,7 +37,7 @@ def make_wsbl_response(symbol, resp_dict):
         resp_dict['symbol'] = symbol
         main_pt = ""
         for i in input_dict["skill_output"]:
-            main_pt = f"{main_pt},<a href='/?cmd=range&symbol={i}'>{i}</a>"
+            main_pt = f"{main_pt},<a rel=external href='/?cmd=range&symbol={i}'>{i}</a>"
         resp_dict['main_point'] = main_pt[1:]
         resp_dict['description'] = 'Top tickers by #mentions on r/wsb'
         resp_dict['supporting_data'] = ''
