@@ -96,7 +96,7 @@
         </tr>
     </thead>
     <tbody>
-        {#each table_list as { symbol,kelly,prob_up}, i}
+        {#each table_list as { symbol,kelly,prob_up,prob_down}, i}
         {#if kelly>0}
             <tr class="bullish">
                 <td class="emphasis"> <a  href="/?symbol={symbol}&cmd=call">{symbol}</a></td>
