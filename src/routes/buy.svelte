@@ -32,7 +32,7 @@
     let table_show = [];
     for(var i = 0; i < symbol_list.length; i++)
     {
-        table_list.push({"symbol":symbol_list[i].toUpperCase(),"kelly":"NA","prob_up":"NA"});
+        table_list.push({"symbol":symbol_list[i].toUpperCase(),"kelly":"NA","prob_up":"NA","prob_down":"NA"});
         //table_dict[symbol_list[i].toUpperCase()] = {"kelly":"NA","prob_up":"NA"}
     }
     function compare( a, b ) {
@@ -57,6 +57,7 @@
                     if (table_list[k].symbol == my_dict.symbol.toUpperCase())
                     {
                         table_list[k].prob_up = Math.round(my_dict.prob_up*100);
+                        table_list[k].prob_down = Math.round(my_dict.prob_down*100);
                     }
                 }
               });
@@ -89,7 +90,8 @@
         <tr>
           <th class="emphasis">Symbol</th>
           <th class="emphasis">$ to invest*</th>
-          <th class="no-emphasis">Windfall Chance🔱</th>
+          <th class="no-emphasis">Windfall%🔱</th>
+          <th class="no-emphasis">Doom%🔱</th>
 
         </tr>
     </thead>
@@ -100,12 +102,14 @@
                 <td class="emphasis"> <a  href="/?symbol={symbol}&cmd=call">{symbol}</a></td>
                 <td class="emphasis">${kelly}</td>
                 <td class="no-emphasis">{prob_up}%</td>
+                <td class="no-emphasis">{prob_down}%</td>
             </tr>
             {:else}
             <tr class="bearish">
                 <td class="emphasis"> <a class="bearish" href="/?symbol={symbol}&cmd=call">{symbol}</a></td>
                 <td class="emphasis">${kelly}</td>
                 <td class="no-emphasis">{prob_up}%</td>
+                <td class="no-emphasis">{prob_down}%</td>
             </tr>
             {/if}
         {/each}
