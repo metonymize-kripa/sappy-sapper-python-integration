@@ -188,7 +188,7 @@ def make_ape_response(symbol, resp_dict):
             resp_dict['main_point'] = input_dict['error']
             return resp_dict
         resp_dict['symbol'] = symbol
-        resp_dict['main_point'] = f"Optimal cash allocation: {round(input_dict['kelly']*100)}% "
+        resp_dict['main_point'] = f"Optimal cash allocation: {round(input_dict['kelly2']*100)}% "
         resp_dict['description'] = "Using gain/loss edge and odds from Option prices."
         prob_up = float(input_dict['prob_up'])
         if prob_up > 0.6:
