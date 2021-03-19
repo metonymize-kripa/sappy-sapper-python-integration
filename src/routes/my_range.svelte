@@ -83,12 +83,12 @@
         </tr>
     </thead>
     <tbody>
-        {#each table_list as { symbol,1Wk,2Wk,3Wk}, i}
+        {#each table_list as { symbol,range_1wk,range_2wk,range_3wk}, i}
             <tr class="bearish">
                 <td>{symbol}</td>
-                <td>{1Wk}</td>
-                <td>{2Wk}%</td>
-                <td>{3Wk}</td>
+                <td>{range_1wk}</td>
+                <td>{range_2wk}%</td>
+                <td>{range_3wk}</td>
             </tr>
 
         {/each}
