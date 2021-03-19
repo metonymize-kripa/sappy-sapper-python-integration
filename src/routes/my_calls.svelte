@@ -74,7 +74,7 @@
 
 <table class="striped">
     <caption>
-        7 day outlook
+
     </caption>
     <thead>
         <tr>
