@@ -90,7 +90,7 @@
             <tr class="bullish">
                 <td>{symbol}</td>
                 <td>{call_1wk}</td>
-                <td>{call_2wk}%</td>
+                <td>{call_2wk}</td>
                 <td>{call_3wk}</td>
             </tr>
 
