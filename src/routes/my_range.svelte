@@ -89,7 +89,7 @@
             <tr class="bullish">
                 <td>{symbol}</td>
                 <td>{range_1wk}</td>
-                <td>{range_2wk}%</td>
+                <td>{range_2wk}</td>
 
             </tr>
 
