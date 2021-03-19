@@ -71,7 +71,7 @@
     }
 </script>
 
-<h1>My Covered Calls</h1>
+<h1>Optimal OTM Calls to Sell</h1>
 
 <table class="striped">
     <caption>
