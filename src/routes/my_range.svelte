@@ -96,5 +96,5 @@
 </table>
 <br>
 <button class="pull-left button primary" on:click={get_portfolio_data()}>
-    Refresh
+    Get Data
 </button>

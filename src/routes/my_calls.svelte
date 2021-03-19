@@ -32,7 +32,7 @@
                 if (table_list[k].symbol.toUpperCase() == my_dict.symbol.toUpperCase())
                 {
                     if (my_dict.best_call.strike > 0)
-                        table_list[k].call_1wk = my_dict.best_call.strike+"c exp "+my_dict.best_call.expiry+" @ "+my_dict.best_call.bid+"-"+my_dict.best_call.ask;
+                        table_list[k].call_1wk = "$"+my_dict.best_call.strike+"()"+my_dict.best_call.expiry+")-"+my_dict.best_call.bid+"-"+my_dict.best_call.ask;
                 }
             }
           });
@@ -99,5 +99,5 @@
 </table>
 <br>
 <button class="pull-left button primary" on:click={get_portfolio_data()}>
-    Refresh
+    Get Data
 </button>
