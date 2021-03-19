@@ -17,7 +17,7 @@
     let table_list= [];
     for(var i = 0; i < symbol_list.length; i++)
     {
-        table_list.push({"symbol":symbol_list[i],"range_1wk":"NA","range_2wk":"NA","range_3wk":"NA"});
+        table_list.push({"symbol":symbol_list[i],"range_1wk":"NA","range_2wk":"NA"});
     }
     function get_portfolio_data() {
         for(var i = 0; i < table_list.length; i++)
@@ -48,6 +48,7 @@
                   }
               }
             });
+            /*
             fetch("https://www.insuremystock.com/options/range/"+table_list[i]['symbol']+"/?days=21")
             .then(d => d.text())
             .then(function(d) {
@@ -61,6 +62,7 @@
                     }
                 }
               });
+              */
 
 
          }
@@ -79,16 +81,16 @@
           <th>Symbol</th>
           <th>1Wk</th>
           <th>2Wk</th>
-          <th>3wk</th>
+
         </tr>
     </thead>
     <tbody>
-        {#each table_list as { symbol,range_1wk,range_2wk,range_3wk}, i}
+        {#each table_list as { symbol,range_1wk,range_2wk}, i}
             <tr class="bullish">
                 <td>{symbol}</td>
                 <td>{range_1wk}</td>
                 <td>{range_2wk}%</td>
-                <td>{range_3wk}</td>
+
             </tr>
 
         {/each}
