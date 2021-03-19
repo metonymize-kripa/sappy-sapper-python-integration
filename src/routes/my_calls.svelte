@@ -36,7 +36,7 @@
                 }
             }
           });
-          fetch("https://www.insuremystock.com/options/call_trades/"+table_list[i]['symbol'])
+          fetch("https://www.insuremystock.com/options/call_trades/"+table_list[i]['symbol']+"/?days=14")
           .then(d => d.text())
           .then(function(d) {
 
@@ -50,7 +50,7 @@
                   }
               }
             });
-            fetch("https://www.insuremystock.com/options/call_trades/"+table_list[i]['symbol'])
+            fetch("https://www.insuremystock.com/options/call_trades/"+table_list[i]['symbol']+"/?days=21")
             .then(d => d.text())
             .then(function(d) {
 
