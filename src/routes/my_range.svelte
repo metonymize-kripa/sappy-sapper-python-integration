@@ -84,7 +84,7 @@
     </thead>
     <tbody>
         {#each table_list as { symbol,range_1wk,range_2wk,range_3wk}, i}
-            <tr class="bearish">
+            <tr class="bullish">
                 <td>{symbol}</td>
                 <td>{range_1wk}</td>
                 <td>{range_2wk}%</td>
