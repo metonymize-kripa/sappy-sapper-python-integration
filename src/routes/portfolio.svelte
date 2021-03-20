@@ -69,7 +69,7 @@
                   {
                       if (table_list[k].symbol == my_dict.symbol.toUpperCase())
                       {
-                        table_list[k].range = '<a class="text-white bg-primary bd-dark" href="https://fatneo.com/?cmd=put&symbol='+my_dict.symbol.toUpperCase()+'">sell put</a>$'+Math.round(my_dict.low_range)+'-$'+Math.round(my_dict.high_range)+'<a class="text-white bg-primary bd-dark" href="https://fatneo.com/?cmd=call&symbol='+my_dict.symbol.toUpperCase()+'">sell call</a>';
+                        table_list[k].range = '<a class="text-white bg-primary bd-dark" style="margin:1rem; font-size:1.5rem;" href="https://fatneo.com/?cmd=put&symbol='+my_dict.symbol.toUpperCase()+'">sell put</a>$'+Math.round(my_dict.low_range)+'-$'+Math.round(my_dict.high_range)+'<a class="text-white bg-primary bd-dark" style="margin:1rem; font-size:1.5rem;" href="https://fatneo.com/?cmd=call&symbol='+my_dict.symbol.toUpperCase()+'">sell call</a>';
                       }
                 }
                 });
@@ -99,7 +99,7 @@
         {#if prob_up>prob_down}
             <tr class="bullish">
                 <td class="emphasis"> <a  href="/?symbol={symbol}&cmd=call">{symbol}</a></td>
-                <td class="emphasis">{range}</td>
+                <td class="emphasis">{@html range}</td>
                 <td class="no-emphasis">{prob_up}%</td>
                 <td class="no-emphasis">{prob_down}%</td>
             </tr>
