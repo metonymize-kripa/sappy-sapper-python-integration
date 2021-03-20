@@ -26,7 +26,7 @@
     import { stores } from '@sapper/app';
     const { preloading, page, session } = stores();
 
-	let symbol_list = ["AAPL","TSLA"];
+	let symbol_list = ["AAPL","BIGC","BZUN","GRWG","APHA","AMC","LAC","SNOW","PGNY"];
     //let table_dict= {};
     let table_list=[];
     let table_show = [];
