@@ -25,22 +25,20 @@
 <script>
     import { stores } from '@sapper/app';
     const { preloading, page, session } = stores();
-	//let symbol_list = ["LBRDK","IAC","TWTR","SE","MELI","GME","UWMC","SPY","AAPL","AMC","PLTR","RKT"];
-	//let symbol_list = ["LBRDK","IAC","TWTR","SE","MELI","GME","SPY","AMC","AAPL","UWMC","PLTR","TSLA"];
-	let symbol_list = ["MO","T","XOM","ABBV","GILD","GME","SPY","TSLA"];
+
+	let symbol_list = ["AAPL","TSLA"];
     //let table_dict= {};
     let table_list=[];
     let table_show = [];
     for(var i = 0; i < symbol_list.length; i++)
     {
-        table_list.push({"symbol":symbol_list[i].toUpperCase(),"kelly":"NA","prob_up":"NA","prob_down":"NA"});
-        //table_dict[symbol_list[i].toUpperCase()] = {"kelly":"NA","prob_up":"NA"}
+        table_list.push({"symbol":symbol_list[i].toUpperCase(),"range":"NA","prob_up":"NA","prob_down":"NA"});
     }
     function compare( a, b ) {
-      if ( parseFloat(a.kelly) > parseFloat(b.kelly) ){
+      if ( parseFloat(a.prob_up) > parseFloat(b.prob_up) ){
         return -1;
       }
-      if ( parseFloat(a.kelly) < parseFloat(b.kelly)){
+      if ( parseFloat(a.prob_up) < parseFloat(b.prob_up)){
         return 1;
       }
       return 0;
@@ -63,7 +61,7 @@
                 }
               });
 
-              fetch("https://www.insuremystock.com/options/kelly/"+table_list[i]['symbol'])
+              fetch("https://www.insuremystock.com/options/range/"+table_list[i]['symbol'])
               .then(d => d.text())
               .then(function(d) {
                   var my_dict = JSON.parse(d);
@@ -71,7 +69,7 @@
                   {
                       if (table_list[k].symbol == my_dict.symbol.toUpperCase())
                       {
-                          table_list[k].kelly = (my_dict.kelly2*100).toFixed(2);
+                        table_list[k].range = '<a class="text-white bg-primary bd-dark" href="https://fatneo.com/?cmd=put&symbol='+my_dict.symbol.toUpperCase()+'>sell put</a>$'+Math.round(my_dict.low_range)+'-$'+Math.round(my_dict.high_range)+'<a class="text-white bg-primary bd-dark" href="https://fatneo.com/?cmd=call&symbol='+my_dict.symbol.toUpperCase()+'>sell call</a>';
                       }
                 }
                 });
@@ -90,27 +88,27 @@
     <thead>
         <tr>
           <th class="emphasis">Symbol</th>
-          <th class="emphasis">$ to invest*</th>
+          <th class="emphasis">Range</th>
           <th class="no-emphasis">Windfall%🔱</th>
           <th class="no-emphasis">Doom%🔱</th>
 
         </tr>
     </thead>
     <tbody>
-        {#each table_list as { symbol,kelly,prob_up,prob_down}, i}
-        {#if kelly>0}
+        {#each table_list as { symbol,range,prob_up,prob_down}, i}
+        {#if prob_up>50}
             <tr class="bullish">
                 <td class="emphasis"> <a  href="/?symbol={symbol}&cmd=call">{symbol}</a></td>
-                <td class="emphasis">${kelly}</td>
+                <td class="emphasis">range</td>
                 <td class="no-emphasis">{prob_up}%</td>
                 <td class="no-emphasis">{prob_down}%</td>
             </tr>
             {:else}
             <tr class="bearish">
-                <td class="emphasis"> <a class="bearish" href="/?symbol={symbol}&cmd=call">{symbol}</a></td>
-                <td class="emphasis">${kelly}</td>
-                <td class="no-emphasis">{prob_up}%</td>
-                <td class="no-emphasis">{prob_down}%</td>
+            <td class="emphasis"> <a  href="/?symbol={symbol}&cmd=call">{symbol}</a></td>
+            <td class="emphasis">range</td>
+            <td class="no-emphasis">{prob_up}%</td>
+            <td class="no-emphasis">{prob_down}%</td>
             </tr>
             {/if}
         {/each}
