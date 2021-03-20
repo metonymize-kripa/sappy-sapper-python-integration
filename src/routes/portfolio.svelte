@@ -99,14 +99,14 @@
         {#if prob_up>prob_down}
             <tr class="bullish">
                 <td class="emphasis"> <a  href="/?symbol={symbol}&cmd=call">{symbol}</a></td>
-                <td class="emphasis">{range}</td>
+                <td class="emphasis">{@html range}</td>
                 <td class="no-emphasis">{prob_up}%</td>
                 <td class="no-emphasis">{prob_down}%</td>
             </tr>
             {:else}
             <tr class="bearish">
             <td class="emphasis"> <a  href="/?symbol={symbol}&cmd=call">{symbol}</a></td>
-            <td class="emphasis">{range}</td>
+            <td class="emphasis">{@html range}</td>
             <td class="no-emphasis">{prob_up}%</td>
             <td class="no-emphasis">{prob_down}%</td>
             </tr>
