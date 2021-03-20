@@ -21,4 +21,4 @@ import { user } from "./store.js";
 </form>
 <p>
 	{JSON.stringify($user, 0, 2)}</p>
-
+<h2 style='color:black;'>AAPL : <a style='font-size:1rem;border:1px solid black;' href='https://fatneo.com/?cmd=put&symbol=AAPL'>sell put</a>114-126 <a style='font-size:1rem;border:1px solid black;' href='https://fatneo.com/?cmd=call&symbol=AAPL'>sell call</a>. Windfall Chance 7%</h2><h2 style='color:black;'>TSLA : <a style='font-size:1rem;border:1px solid black;' href='https://fatneo.com/?cmd=put&symbol=TSLA'>sell put</a>577-733 <a style='font-size:1rem;border:1px solid black;' href='https://fatneo.com/?cmd=call&symbol=TSLA'>sell call</a>. Windfall Chance 24%</h2>
