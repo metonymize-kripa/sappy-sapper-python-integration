@@ -69,7 +69,7 @@
                   {
                       if (table_list[k].symbol == my_dict.symbol.toUpperCase())
                       {
-                        table_list[k].range = '$'+Math.round(my_dict.low_range)+'-$'+Math.round(my_dict.high_range;
+                        table_list[k].range = '$'+Math.round(my_dict.low_range)+'-$'+Math.round(my_dict.high_range);
                       }
                 }
                 });
