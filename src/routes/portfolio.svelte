@@ -55,8 +55,8 @@
                 {
                     if (table_list[k].symbol == my_dict.symbol.toUpperCase())
                     {
-                        table_list[k].prob_up = Math.round(my_dict.prob_up*100);
-                        table_list[k].prob_down = Math.round(my_dict.prob_down*100);
+                        table_list[k].prob_up = '<a class="text-white bg-primary bd-dark" style="margin:1rem; font-size:1.5rem;" href="https://fatneo.com/?cmd=put&symbol='+my_dict.symbol.toUpperCase()+'">sell put</a>'+Math.round(my_dict.prob_up*100)+'%';
+                        table_list[k].prob_down = '<a class="text-white bg-primary bd-dark" style="margin:1rem; font-size:1.5rem;" href="https://fatneo.com/?cmd=call&symbol='+my_dict.symbol.toUpperCase()+'">sell call</a>'+Math.round(my_dict.prob_down*100)+'%';
                     }
                 }
               });
@@ -69,7 +69,7 @@
                   {
                       if (table_list[k].symbol == my_dict.symbol.toUpperCase())
                       {
-                        table_list[k].range = '<a class="text-white bg-primary bd-dark" style="margin:1rem; font-size:1.5rem;" href="https://fatneo.com/?cmd=put&symbol='+my_dict.symbol.toUpperCase()+'">sell put</a>$'+Math.round(my_dict.low_range)+'-$'+Math.round(my_dict.high_range)+'<a class="text-white bg-primary bd-dark" style="margin:1rem; font-size:1.5rem;" href="https://fatneo.com/?cmd=call&symbol='+my_dict.symbol.toUpperCase()+'">sell call</a>';
+                        table_list[k].range = '$'+Math.round(my_dict.low_range)+'-$'+Math.round(my_dict.high_range;
                       }
                 }
                 });
@@ -99,16 +99,16 @@
         {#if prob_up>prob_down}
             <tr class="bullish">
                 <td class="emphasis"> <a  href="/?symbol={symbol}&cmd=call">{symbol}</a></td>
-                <td class="emphasis">{@html range}</td>
-                <td class="no-emphasis">{prob_up}%</td>
-                <td class="no-emphasis">{prob_down}%</td>
+                <td class="emphasis">{range}</td>
+                <td class="no-emphasis">{@html  prob_up}</td>
+                <td class="no-emphasis">{@html  prob_down}</td>
             </tr>
             {:else}
             <tr class="bearish">
             <td class="emphasis"> <a  href="/?symbol={symbol}&cmd=call">{symbol}</a></td>
-            <td class="emphasis">{@html range}</td>
-            <td class="no-emphasis">{prob_up}%</td>
-            <td class="no-emphasis">{prob_down}%</td>
+            <td class="emphasis">{range}</td>
+            <td class="no-emphasis">{@html prob_up}</td>
+            <td class="no-emphasis">{@html prob_down}</td>
             </tr>
             {/if}
         {/each}
