@@ -55,8 +55,8 @@
                 {
                     if (table_list[k].symbol == my_dict.symbol.toUpperCase())
                     {
-                        table_list[k].prob_up = '<a class="text-white bg-primary bd-dark" style="margin:1rem; font-size:1.5rem;" href="https://fatneo.com/?cmd=put&symbol='+my_dict.symbol.toUpperCase()+'">sell put</a>'+Math.round(my_dict.prob_up*100)+'%';
-                        table_list[k].prob_down = '<a class="text-white bg-primary bd-dark" style="margin:1rem; font-size:1.5rem;" href="https://fatneo.com/?cmd=call&symbol='+my_dict.symbol.toUpperCase()+'">sell call</a>'+Math.round(my_dict.prob_down*100)+'%';
+                        table_list[k].prob_up = '<a class="text-white bg-primary bd-dark" style="margin:1rem; font-size:1.5rem;" href="https://fatneo.com/?cmd=put&symbol='+my_dict.symbol.toUpperCase()+'">put</a>'+Math.round(my_dict.prob_up*100)+'%';
+                        table_list[k].prob_down = '<a class="text-white bg-primary bd-dark" style="margin:1rem; font-size:1.5rem;" href="https://fatneo.com/?cmd=call&symbol='+my_dict.symbol.toUpperCase()+'">call</a>'+Math.round(my_dict.prob_down*100)+'%';
                         if (my_dict.prob_up > my_dict.prob_down)
                             table_list[k].color="bullish";
                     }
