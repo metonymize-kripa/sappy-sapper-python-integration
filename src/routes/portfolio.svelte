@@ -32,7 +32,7 @@
     let table_show = [];
     for(var i = 0; i < symbol_list.length; i++)
     {
-        table_list.push({"symbol":symbol_list[i].toUpperCase(),"range":"NA","prob_up":"NA","prob_down":"NA"});
+        table_list.push({"symbol":symbol_list[i].toUpperCase(),"range":"NA","prob_up":"NA","prob_down":"NA", "color":"bearish"});
     }
     function compare( a, b ) {
       if ( parseFloat(a.prob_up) > parseFloat(b.prob_up) ){
@@ -57,6 +57,8 @@
                     {
                         table_list[k].prob_up = '<a class="text-white bg-primary bd-dark" style="margin:1rem; font-size:1.5rem;" href="https://fatneo.com/?cmd=put&symbol='+my_dict.symbol.toUpperCase()+'">sell put</a>'+Math.round(my_dict.prob_up*100)+'%';
                         table_list[k].prob_down = '<a class="text-white bg-primary bd-dark" style="margin:1rem; font-size:1.5rem;" href="https://fatneo.com/?cmd=call&symbol='+my_dict.symbol.toUpperCase()+'">sell call</a>'+Math.round(my_dict.prob_down*100)+'%';
+                        if (my_dict.prob_up > my_dict.prob_down)
+                            my_dict.color="bullish"
                     }
                 }
               });
@@ -95,22 +97,15 @@
         </tr>
     </thead>
     <tbody>
-        {#each table_list as { symbol,range,prob_up,prob_down}, i}
-        {#if prob_up>prob_down}
-            <tr class="bullish">
+        {#each table_list as { symbol,range,prob_up,prob_down,color}, i}
+
+            <tr class="{color}">
                 <td class="emphasis"> <a  href="/?symbol={symbol}&cmd=call">{symbol}</a></td>
                 <td class="emphasis">{range}</td>
                 <td class="no-emphasis">{@html  prob_up}</td>
                 <td class="no-emphasis">{@html  prob_down}</td>
             </tr>
-            {:else}
-            <tr class="bearish">
-            <td class="emphasis"> <a  href="/?symbol={symbol}&cmd=call">{symbol}</a></td>
-            <td class="emphasis">{range}</td>
-            <td class="no-emphasis">{@html prob_up}</td>
-            <td class="no-emphasis">{@html prob_down}</td>
-            </tr>
-            {/if}
+
         {/each}
     </tbody>
 </table>
