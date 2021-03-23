@@ -26,6 +26,7 @@ def make_wsb_response(symbol, resp_dict):
         resp_dict['supporting_data'] = ''
         resp_dict['secondary_point'] = ''
         resp_dict['secondary_description'] =  f'Pulled as of {input_dict["datetime"]}'
+        resp_dict['explain'] =  "FatNeo studies and gathers the chatter on the stock in reddit and displays it as a percentage."
     return resp_dict
 
 def make_wsbl_response(symbol, resp_dict):
@@ -93,6 +94,7 @@ def make_dive_response(symbol, resp_dict):
         resp_dict['supporting_data'] = ''
         resp_dict['secondary_point'] = f'{100*float(input_dict["skill_output"]["divyield"]):.2f}%'
         resp_dict['secondary_description'] =  f'Annual dividend yield, estimate as of {input_dict["datetime"]}'
+        resp_dict['explain'] =  "FatNeo gathers the upcoming forecasted dividend actions and displays it as a dollar amount and in terms of annualized yield."
     return resp_dict
 
 def make_shorts_response(symbol, resp_dict):
@@ -109,6 +111,7 @@ def make_shorts_response(symbol, resp_dict):
         resp_dict['supporting_data'] = ''
         resp_dict['secondary_point'] = ''
         resp_dict['secondary_description'] =  f'Uploaded on {input_dict["datetime"]}'
+        resp_dict['explain'] =  "FatNeo gathers the open short interest data from RegSho and other sources and displays it as a percentage of available float."
     return resp_dict
 
 def make_div_response(symbol, resp_dict):
@@ -127,7 +130,7 @@ def make_div_response(symbol, resp_dict):
             resp_dict['description'] = f'Last Dividend Date : {datetime.strptime(input_dict["div_date"], "%Y-%m-%d").strftime("%b %d")}'
             if input_dict["div_yld"]:
                 resp_dict['supporting_data'] = f'Div Yield @ {100*input_dict["div_yld"]:.2f}%'
-
+        resp_dict['explain'] =  "FatNeo gathers the past dividend actions and displays it as a dollar amount and in terms of annualized yield."
     return resp_dict
 
 def make_range_response(symbol, resp_dict):
@@ -192,7 +195,6 @@ def make_doom_response(symbol, resp_dict):
         elif prob_down > 0.2:
             resp_dict['main_class'] = 'bearish'
         resp_dict['explain'] =  "A big drop is 5% or more decline in the stock price during the month ahead as implied by pricing of Options. Option prices are, in a way, market's way of predicting stock price. We use some really cool math to do the complicated calculations for you and find the drawdown probability"
-
     return resp_dict
 
 def make_ape_response(symbol, resp_dict):
@@ -215,8 +217,6 @@ def make_ape_response(symbol, resp_dict):
         resp_dict['secondary_point'] = f"Probability of upside:{prob_up_percent}%"
         resp_dict['meter_value'] = prob_up_percent
         resp_dict['explain'] = "We use <a href = 'https://en.wikipedia.org/wiki/Kelly_criterion'>kelly criterion</a> to find the optimal amount you should invest in this stock. <br>Some investor use fraction kelly criterion where they invest a fraction of what kelly suggests"
-
-
     return resp_dict
 
 def make_twitter_response(symbol, resp_dict):
