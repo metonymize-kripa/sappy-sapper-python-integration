@@ -28,6 +28,23 @@ def make_wsb_response(symbol, resp_dict):
         resp_dict['secondary_description'] =  f'Pulled as of {input_dict["datetime"]}'
     return resp_dict
 
+def make_wsbl_response(symbol, resp_dict):
+    # In this case symbol is overloaded as a number
+    api_end_point = f"{FAT_NEO_API_URL}/{symbol} WSBL"
+    resp = requests.get(api_end_point)
+    if resp.ok: #Good response from FastAPI
+        input_dict = resp.json()
+        resp_dict['symbol'] = symbol
+        main_pt = ""
+        for i in input_dict["skill_output"]:
+            main_pt = f"{main_pt},<a rel=external href='/?cmd=range&symbol={i}'>{i}</a>"
+        resp_dict['main_point'] = main_pt[1:]
+        resp_dict['description'] = 'Top tickers by #mentions on r/wsb'
+        resp_dict['supporting_data'] = ''
+        resp_dict['secondary_point'] = ''
+        resp_dict['secondary_description'] =  f'Pulled as of {input_dict["datetime"]}'
+    return resp_dict
+
 def make_wise_response(symbol, resp_dict):
     api_end_point = f"{FAT_NEO_API_URL}/{symbol} WISE"
     resp = requests.get(api_end_point)
@@ -50,6 +67,9 @@ def make_div2_response(symbol, resp_dict):
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        if 'error' in input_dict:
+            resp_dict['main_point'] = input_dict['error']
+            return resp_dict
         resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f'${float(input_dict["skill_output"]):.2f}'
         resp_dict['description'] = 'Updated dividend announced this year'
@@ -63,6 +83,9 @@ def make_dive_response(symbol, resp_dict):
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        if 'error' in input_dict:
+            resp_dict['main_point'] = input_dict['error']
+            return resp_dict
         resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f'${float(input_dict["skill_output"]["nextestpayout"]):.2f}'
         resp_dict['description'] = 'ExDiv: '+input_dict["skill_output"]["exdiv"]+'; '+'Next dividend payout on '+input_dict["skill_output"]["nextpaydate"]
@@ -77,6 +100,9 @@ def make_div_response(symbol, resp_dict):
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        if 'error' in input_dict:
+            resp_dict['main_point'] = input_dict['error']
+            return resp_dict
         resp_dict['symbol'] = symbol
         if float(input_dict["div"]) == 0:
             resp_dict['main_point'] = "{symbol} has had no dividend. A shame"
@@ -94,11 +120,20 @@ def make_range_response(symbol, resp_dict):
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
         if 'error' in input_dict:
+<<<<<<< HEAD
             resp_dict['main_point'] = "Option data is unavailable"
             return resp_dict
         resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f'${round(input_dict["low_range"])} - ${round(input_dict["high_range"])}'
         #resp_dict['main_point'] = f'''${round(input_dict["low_range"])} - ${round(input_dict["high_range"])}<a class="card-button text-white bg-primary bd-dark" on:click="getAPIData('call',{symbol})" href="">sell call</a>'''
+=======
+            resp_dict['main_point'] = input_dict['error']
+            return resp_dict
+        resp_dict['symbol'] = symbol
+        resp_dict['main_point'] = f'${round(input_dict["low_range"])} - ${round(input_dict["high_range"])}'
+        resp_dict['tag1'] = "sell put"
+        resp_dict['tag2'] = "sell call"
+>>>>>>> dev2-branch
         resp_dict['description'] = 'Expected stock price range for next 7 days'
         if float(input_dict['prob_up']) > 0.6:
             resp_dict['main_class'] = 'bullish'
@@ -120,6 +155,9 @@ def make_crypto_response(symbol, resp_dict):
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        if 'error' in input_dict:
+            resp_dict['main_point'] = input_dict['error']
+            return resp_dict
         resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f'${round(input_dict["low_range"]):,} - ${round(input_dict["high_range"]):,}'
         resp_dict['description'] = '1Wk Price Band, Historical implied @ 75% Prb.'
@@ -134,16 +172,22 @@ def make_doom_response(symbol, resp_dict):
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
         if 'error' in input_dict:
+<<<<<<< HEAD
             resp_dict['main_point'] = "Option data is unavailable"
+=======
+            resp_dict['main_point'] = input_dict['error']
+>>>>>>> dev2-branch
             return resp_dict
         resp_dict['symbol'] = symbol
-        resp_dict['main_point'] = f'Crash Index @{round(100*input_dict["prob_down"])}'
-        resp_dict['description'] = 'Options implied Prb. of 5%👇 in month ahead'
+        resp_dict['main_point'] = f'Chance of big drop: {round(100*input_dict["prob_down"])}%'
+        resp_dict['description'] = 'For the month ahead'
+        resp_dict['tag3'] = "buy put"
         prob_down = float(input_dict['prob_down'])
         if prob_down < 0.1:
             resp_dict['main_class'] = 'bullish'
         elif prob_down > 0.2:
             resp_dict['main_class'] = 'bearish'
+        resp_dict['explain'] =  "A big drop is 5% or more decline in the stock price during the month ahead as implied by pricing of Options. Option prices are, in a way, market's way of predicting stock price. We use some really cool math to do the complicated calculations for you and find the drawdown probability"
 
     return resp_dict
 
@@ -153,19 +197,25 @@ def make_ape_response(symbol, resp_dict):
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
         if 'error' in input_dict:
+<<<<<<< HEAD
             resp_dict['main_point'] = "Option data is unavailable"
+=======
+            resp_dict['main_point'] = input_dict['error']
+>>>>>>> dev2-branch
             return resp_dict
         resp_dict['symbol'] = symbol
-        resp_dict['main_point'] = f"Consider Kelly-efficient bet sizing of: {round(input_dict['kelly']*100)}% "
-        resp_dict['description'] = "Experimental feature"
+        resp_dict['main_point'] = f"Optimal cash allocation: {round(input_dict['kelly2']*100)}% "
+        resp_dict['description'] = "Using gain/loss edge and odds from Option prices."
         prob_up = float(input_dict['prob_up'])
         if prob_up > 0.6:
             resp_dict['main_class'] = 'bullish'
         elif prob_up < 0.4:
             resp_dict['main_class'] = 'bearish'
         prob_up_percent = round(prob_up*100)
-        resp_dict['secondary_point'] = f"Probability of upside:@{prob_up_percent}"
+        resp_dict['secondary_point'] = f"Probability of upside:{prob_up_percent}%"
         resp_dict['meter_value'] = prob_up_percent
+        resp_dict['explain'] = "We use <a href = 'https://en.wikipedia.org/wiki/Kelly_criterion'>kelly criterion</a> to find the optimal amount you should invest in this stock. <br>Some investor use fraction kelly criterion where they invest a fraction of what kelly suggests"
+
 
     return resp_dict
 
@@ -174,15 +224,19 @@ def make_twitter_response(symbol, resp_dict):
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        if 'error' in input_dict:
+            resp_dict['main_point'] = input_dict['error']
+            return resp_dict
         resp_dict['symbol'] = symbol
         twitter_index = round(input_dict['twitter_index'])
-        resp_dict['main_point'] = f"Twitter sentiment index is : {twitter_index}% "
-        resp_dict['description'] = "Experimental feature: Real time twitter sentiment"
+        resp_dict['main_point'] = f"Twitter sentiment: {twitter_index}% "
+        resp_dict['description'] = "Real time sentiments of stock tweets"
         if int(twitter_index) > 20:
             resp_dict['main_class'] = 'bullish'
         elif int(twitter_index) < -20:
             resp_dict['main_class'] = 'bearish'
         resp_dict['meter_value'] = twitter_index
+        resp_dict['explain'] = "We scan tweets in real-time to find the sentiment of those tweets. We then assign it a normalized value. <br>tl;dr 100% means everyone (almost) on twitter loves the stock and -100% means everyone hates it."
     return resp_dict
 
 def make_volume_response(symbol, resp_dict):
@@ -190,6 +244,9 @@ def make_volume_response(symbol, resp_dict):
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        if 'error' in input_dict:
+            resp_dict['main_point'] = input_dict['error']
+            return resp_dict
         resp_dict['symbol'] = symbol
         adv_x_volume = input_dict["volume"]/input_dict["avg_10d_volume"]
         resp_dict['main_point'] = f'{adv_x_volume:.2f} times'
@@ -200,14 +257,14 @@ def make_volume_response(symbol, resp_dict):
             resp_dict['main_class'] = 'bearish'
         #resp_dict['supporting_data'] = f'Now@{(input_dict["percentile"])}'
         percentile = int(input_dict['percentile'])
-        resp_dict['secondary_point'] = f'Now@{percentile}'
+        resp_dict['secondary_point'] = f'Current volume percentile: {percentile}'
         if percentile > 55:
             resp_dict['secondary_class'] = 'bullish'
         elif percentile < 45:
             resp_dict['secondary_class'] = 'bearish'
         resp_dict['meter_value'] = percentile
-
-        resp_dict['secondary_description'] =  'Current volume percentile'
+        resp_dict['secondary_description'] =  'Rank based on past 10 days'
+        resp_dict['explain'] = "FatNeo calculates current volume and compares it to last 10 days average volume. The Relative volume number is how many times current volume is as a ratio of average. More than 1 means today is a heavy volume day.<br> The percentile is a rank out of 100. We rank past volumes and assign the current volume a rank based on past. 100 means today is the heaviest volume and 0 means the lowest. "
     return resp_dict
 
 def make_call_response(symbol, resp_dict):
@@ -216,7 +273,11 @@ def make_call_response(symbol, resp_dict):
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
         if 'error' in input_dict:
+<<<<<<< HEAD
             resp_dict['main_point'] = "Option data is unavailable"
+=======
+            resp_dict['main_point'] = input_dict['error']
+>>>>>>> dev2-branch
             return resp_dict
         resp_dict['symbol'] = symbol
         best_call = input_dict["best_call"]
@@ -246,7 +307,11 @@ def make_put_response(symbol, resp_dict):
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
         if 'error' in input_dict:
+<<<<<<< HEAD
             resp_dict['main_point'] = "Option data is unavailable"
+=======
+            resp_dict['main_point'] = input_dict['error']
+>>>>>>> dev2-branch
             return resp_dict
         resp_dict['symbol'] = symbol
         best_put = input_dict["best_put"]
@@ -270,11 +335,38 @@ def make_put_response(symbol, resp_dict):
         resp_dict['explain'] =  "FatNeo calculates the possible future price of stock based on option prices. Option prices are, in a way, market's way of predicting stock price. We use some really cool math to do the complicated calculations for you and find the optimal puts and spread for you. "
     return resp_dict
 
+def make_insure_response(symbol, resp_dict):
+    api_end_point = f"{API_URL}options/put_protection/{symbol}"
+    resp = requests.get(api_end_point)
+    if resp.ok: #Good response from FastAPI
+        input_dict = resp.json()
+        if 'error' in input_dict:
+            resp_dict['main_point'] = input_dict['error']
+            return resp_dict
+        resp_dict['symbol'] = symbol
+        best_put = input_dict["best_put"]
+
+        if best_put and 'strike' in best_put:
+            resp_dict['main_point'] = f'${best_put["strike"]} Strike Put Expiring on {datetime.strptime(best_put["expiry"], "%d-%m-%Y").strftime("%d %b")}'
+            resp_dict['description'] = "This is the optimal put to buy for insuring against doom"
+            resp_dict['supporting_data'] = f'Current option price: ${best_put["bid"]}'
+            if best_put["using_last"] == "true":
+                resp_dict['supporting_data'] = f'Current option price: ${best_put["bid"]} (**USING STALE DATA**)'
+            resp_dict['main_class'] = 'bullish'
+        else:
+            resp_dict['main_point'] = "Put data is unavailable"
+
+        resp_dict['explain'] =  "FatNeo calculates the possible future price of stock based on option prices. Option prices are, in a way, market's way of predicting stock price. We use some really cool math to do the complicated calculations for you and find the optimal puts that offer downside protection."
+    return resp_dict
+
 def make_gamma_response(symbol, resp_dict):
     api_end_point = f"{API_URL}options/gamma/{symbol}"
     resp = requests.get(api_end_point)
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
+        if 'error' in input_dict:
+            resp_dict['main_point'] = input_dict['error']
+            return resp_dict
         resp_dict['symbol'] = symbol
         shares = input_dict["stock_float"]
         gamma_1 = input_dict["gamma_1"]
@@ -307,12 +399,14 @@ FUNCTION_MAP = {'range':make_range_response,
                 'wise':make_wise_response,
                 'call':make_call_response,
                 'put':make_put_response,
+                'insure':make_insure_response,
                 'div':make_div_response,
                 'div2':make_div2_response,
                 'dive':make_dive_response,
                 'twitter':make_twitter_response,
                 'crypto':make_crypto_response,
-                'gamma':make_gamma_response}
+                'gamma':make_gamma_response,
+               'wsbl':make_wsbl_response}
 
 
 class handler(BaseHTTPRequestHandler):
@@ -332,7 +426,10 @@ class handler(BaseHTTPRequestHandler):
                       'secondary_class':'neutral',
                       'meter_value':-1,
                       'secondary_description':'',
-                      'explain':"" }
+                      'explain':'',
+                      'tag1':'',
+                      'tag2':'',
+                      'tag3':'' }
 
         if "input_cmd" in dic:
             if dic["input_cmd"] == 'WTF':
@@ -350,8 +447,8 @@ class handler(BaseHTTPRequestHandler):
                         api_output['main_point'] = f"Invalid Command - {skill}"
                     #message = f'{{"symbol":"{my_stock.ticker}", "prob_up":{prob_move}, "price":"{round(my_stock.price)}","low":"{round(low)}","high":"{round(high)}"}}'
                 except:
-                    api_output['main_point'] = f"Seem like Invalid Command - {skill}"
+                    api_output['main_point'] = f"Exceptional error on - {skill}"
         else:
-            api_output['main_point'] = f"Bro, you need to type in sumthin"
+            api_output['main_point'] = f"Nothing ventured, nothing gained. Please enter command."
         self.wfile.write((json.dumps(api_output)).encode())
         return

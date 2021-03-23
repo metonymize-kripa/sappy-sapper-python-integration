@@ -12,7 +12,7 @@
         color:navy;
     }
     .explain{
-    font-size:1rem;
+    font-size:1.2rem;
     color:grey;
     }
     a.card-button:hover{
@@ -41,6 +41,9 @@
 	let batch_commands = ["call", "wise"];
     let ticker = "";
     let card_ticker = 'SPY';
+    let tag1 = "";
+    let tag2 = "";
+    let tag3 = "";
 
     import { stores } from '@sapper/app';
     const { preloading, page, session } = stores();
@@ -80,6 +83,10 @@
 				.then(d => {
                                 api_output = JSON.parse(d);
                                 card_ticker = api_output.symbol;
+                                console.log(api_output);
+                                tag1 = api_output.tag1;
+                                tag2 = api_output.tag2;
+                                tag3 = api_output.tag3;
                             });
 	}
     function getAPIData(cmd,symbol){
@@ -103,14 +110,13 @@
 
 
 <div class="row">
-
-    <div class="col auto">
-        <a class="button error" style="margin:auto 1rem;" href="https://us1.list-manage.com/survey?u=cd4eb9eb314b5da2719efa0b6&id=4dd04bd1c1&e=26ea9ce559">Sign up for your customized portfolio checkup email</a>
-    </div>
-    <div class="grouped col-12">
-     <div class="col-8"> <input bind:value={ticker} on:keydown={handleKeydown} autofocus/></div>
-      <div class="col-4"><button class="button primary" on:click={runAPI}> GO </button></div>
-    </div>
+<div class="col auto">
+    <a class="button error" style="margin:auto 1rem;" href="https://us1.list-manage.com/survey?u=cd4eb9eb314b5da2719efa0b6&id=4dd04bd1c1&e=26ea9ce559">Sign up for your customized portfolio checkup email</a>
+</div>
+<div class="grouped col-12">
+ <div class="col-8"> <input bind:value={ticker} on:keydown={handleKeydown} autofocus/></div>
+  <div class="col-4"><button class="button primary" on:click={runAPI}> GO </button></div>
+</div>
 </div>
 
 
@@ -125,15 +131,23 @@
             <h2> ☝️ Symbol+skill+↵ </h2>
         {:else}
             <div style="padding:0 1rem;" class='bd-dark text-center'>
-                <h2 class="{api_output.main_class}">{@html api_output.main_point}</h2>
+                <h2 style ="margin:1rem 0px -0.5rem 0px;" class="{api_output.main_class}">{@html api_output.main_point}</h2>
+                {#if tag1 != ""}
+                    <a class="text-white bg-primary bd-dark" style="margin:0 2rem; font-size:1.5rem;" href='' on:click={getAPIData("put",api_output.symbol)}>{tag1}</a><a class="text-white bg-primary bd-dark" style='margin:0 2rem; font-size:1.5rem;' href='' on:click={getAPIData("call",api_output.symbol)}>{tag2}</a>
+                {/if}
                 <p>{@html api_output.description}</p>
+                {#if tag3 != ""}
+                    <a class="text-white bg-primary bd-dark" style="margin:1rem; font-size:1.5rem;" href='' on:click={getAPIData("insure",api_output.symbol)}>{tag3}</a>
+                {/if}
                 <h3 class="supporting">{api_output.supporting_data}</h3>
             </div>
             <div style="padding:0 1rem; margin-top:1rem;" class='text-grey text-center'>
                 <h4 style="margin:0.5rem 0 0 0; " class="{api_output.secondary_class}">{api_output.secondary_point}</h4>
+               <!--
                 {#if api_output.meter_value > -1}
                     <meter value="{api_output.meter_value}" min ="0" max="100"></meter>
                 {/if}
+                -->
                 <p>{api_output.secondary_description}</p>
             </div>
             <p class="explain">{@html api_output.explain}</p>
