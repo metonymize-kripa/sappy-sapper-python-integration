@@ -95,6 +95,22 @@ def make_dive_response(symbol, resp_dict):
         resp_dict['secondary_description'] =  f'Annual dividend yield, estimate as of {input_dict["datetime"]}'
     return resp_dict
 
+def make_shorts_response(symbol, resp_dict):
+    api_end_point = f"{FAT_NEO_API_URL}/{symbol} SHORTS"
+    resp = requests.get(api_end_point)
+    if resp.ok: #Good response from FastAPI
+        input_dict = resp.json()
+        if 'error' in input_dict:
+            resp_dict['main_point'] = input_dict['error']
+            return resp_dict
+        resp_dict['symbol'] = symbol
+        resp_dict['main_point'] = f'{input_dict["skill_output"]["shortvolumepercent"])}%'
+        resp_dict['description'] = 'Daily short volume percent'
+        resp_dict['supporting_data'] = ''
+        resp_dict['secondary_point'] = ''
+        resp_dict['secondary_description'] =  f'Uploaded on {input_dict["datetime"]}'
+    return resp_dict
+
 def make_div_response(symbol, resp_dict):
     api_end_point = f"{API_URL}stocks/dividend/{symbol}"
     resp = requests.get(api_end_point)
@@ -382,7 +398,8 @@ FUNCTION_MAP = {'range':make_range_response,
                 'twitter':make_twitter_response,
                 'crypto':make_crypto_response,
                 'gamma':make_gamma_response,
-               'wsbl':make_wsbl_response}
+               'wsbl':make_wsbl_response,
+               'shorts':make_shorts_response}
 
 
 class handler(BaseHTTPRequestHandler):
