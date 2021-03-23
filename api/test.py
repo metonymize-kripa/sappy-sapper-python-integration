@@ -120,20 +120,13 @@ def make_range_response(symbol, resp_dict):
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
         if 'error' in input_dict:
-<<<<<<< HEAD
-            resp_dict['main_point'] = "Option data is unavailable"
-            return resp_dict
-        resp_dict['symbol'] = symbol
-        resp_dict['main_point'] = f'${round(input_dict["low_range"])} - ${round(input_dict["high_range"])}'
-        #resp_dict['main_point'] = f'''${round(input_dict["low_range"])} - ${round(input_dict["high_range"])}<a class="card-button text-white bg-primary bd-dark" on:click="getAPIData('call',{symbol})" href="">sell call</a>'''
-=======
             resp_dict['main_point'] = input_dict['error']
             return resp_dict
         resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f'${round(input_dict["low_range"])} - ${round(input_dict["high_range"])}'
         resp_dict['tag1'] = "sell put"
         resp_dict['tag2'] = "sell call"
->>>>>>> dev2-branch
+
         resp_dict['description'] = 'Expected stock price range for next 7 days'
         if float(input_dict['prob_up']) > 0.6:
             resp_dict['main_class'] = 'bullish'
@@ -172,11 +165,7 @@ def make_doom_response(symbol, resp_dict):
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
         if 'error' in input_dict:
-<<<<<<< HEAD
-            resp_dict['main_point'] = "Option data is unavailable"
-=======
             resp_dict['main_point'] = input_dict['error']
->>>>>>> dev2-branch
             return resp_dict
         resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f'Chance of big drop: {round(100*input_dict["prob_down"])}%'
@@ -197,11 +186,7 @@ def make_ape_response(symbol, resp_dict):
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
         if 'error' in input_dict:
-<<<<<<< HEAD
-            resp_dict['main_point'] = "Option data is unavailable"
-=======
             resp_dict['main_point'] = input_dict['error']
->>>>>>> dev2-branch
             return resp_dict
         resp_dict['symbol'] = symbol
         resp_dict['main_point'] = f"Optimal cash allocation: {round(input_dict['kelly2']*100)}% "
@@ -273,11 +258,7 @@ def make_call_response(symbol, resp_dict):
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
         if 'error' in input_dict:
-<<<<<<< HEAD
-            resp_dict['main_point'] = "Option data is unavailable"
-=======
             resp_dict['main_point'] = input_dict['error']
->>>>>>> dev2-branch
             return resp_dict
         resp_dict['symbol'] = symbol
         best_call = input_dict["best_call"]
@@ -307,11 +288,7 @@ def make_put_response(symbol, resp_dict):
     if resp.ok: #Good response from FastAPI
         input_dict = resp.json()
         if 'error' in input_dict:
-<<<<<<< HEAD
-            resp_dict['main_point'] = "Option data is unavailable"
-=======
             resp_dict['main_point'] = input_dict['error']
->>>>>>> dev2-branch
             return resp_dict
         resp_dict['symbol'] = symbol
         best_put = input_dict["best_put"]
