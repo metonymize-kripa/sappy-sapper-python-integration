@@ -104,7 +104,7 @@ def make_shorts_response(symbol, resp_dict):
             resp_dict['main_point'] = input_dict['error']
             return resp_dict
         resp_dict['symbol'] = symbol
-        resp_dict['main_point'] = f'{input_dict["skill_output"]["shortvolumepercent"])}%'
+        resp_dict['main_point'] = f'{input_dict["skill_output"]["shortvolumepercent"]}%'
         resp_dict['description'] = 'Daily short volume percent'
         resp_dict['supporting_data'] = ''
         resp_dict['secondary_point'] = ''
