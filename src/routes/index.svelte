@@ -42,13 +42,6 @@ function currencyFormat(num) {
 </style>
 
 <div class="row">
-        <h4>Tactical Allocation for the Social Trader</h4>
-        <p>Retail investors now account for almost one-third of market activity. Tactical trading has gone mainstream, and fractional.</p>
-        <p>Social traders on platforms like Robinhood and Public are trading in ways that previously only large sophisticated investors could do (e.g. Gamma+Short Squeeze on GME). They need new tactical tools, enabled with Options data and Social intelligence. Oracled.com helps social traders make tactical moves like the pros.</p>
-        <p>The tool helps size one week out tactical trades, by ticker given a certain portfolio dollar amount. Learn more below about how Fractional Kelly sizing and Options data makes tactical trading smarter and safer.</p>
-</div>
-
-<div class="row">
     {#if show_entry_card}
     <div class="card col-8 bg-light" >
       <header>
@@ -74,3 +67,12 @@ function currencyFormat(num) {
     </div>
     {/if}
 </div>
+
+<div class="row">
+        <h4>Tactical Allocation for the Social Trader</h4>
+        <p>Retail investors now account for almost one-third of market activity. Tactical trading has gone mainstream, and fractional.</p>
+        <p>Social traders on platforms like Robinhood and Public are trading in ways that previously only large sophisticated investors could do (e.g. Gamma+Short Squeeze on GME). They need new tactical tools, enabled with Options data and Social intelligence. Oracled.com helps social traders make tactical moves like the pros.</p>
+        <p>The tool helps size one week out tactical trades, by ticker given a certain portfolio dollar amount. Learn more below about how Fractional Kelly sizing and Options data makes tactical trading smarter and safer.</p>
+</div>
+
+
