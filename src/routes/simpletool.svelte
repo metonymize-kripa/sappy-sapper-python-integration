@@ -18,13 +18,17 @@ function calculateKelly() {
             .then(d => {
                             api_output = JSON.parse(d);
                             console.log(api_output);
-                            amt_invest = (api_output.kelly2*portfolio_size).toFixed(2);
+                            amt_invest = currencyFormat(api_output.kelly2*portfolio_size);
                             show_entry_card=false;
             });
 
 }
 function goback(){
     show_entry_card = true;
+}
+
+function currencyFormat(num) {
+  return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }
 </script>
 
@@ -57,7 +61,7 @@ function goback(){
       <header>
         <h4>Oracle says do not invest more than:</h4>
       </header>
-        <h2>${amt_invest} in {ticker}</h2>
+        <h2>{amt_invest} in {ticker}</h2>
         <button class="button primary" on:click={goback}>Start Again</button>
     </div>
     {/if}
