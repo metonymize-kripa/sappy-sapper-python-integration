@@ -10,6 +10,7 @@ let portfolio_size = 100;
 let amt_invest=0;
 let api_output = {};
 let show_entry_card = true;
+let ticker_array = ['GME','AMC','SPY','PLTR','AMD']
 
 function calculateKelly() {
         fetch("https://www.insuremystock.com/options/kelly/"+ticker)
@@ -25,6 +26,7 @@ function calculateKelly() {
 function goback(){
     show_entry_card = true;
 }
+
 
 function currencyFormat(num) {
   return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
@@ -44,11 +46,14 @@ function currencyFormat(num) {
     {#if show_entry_card}
     <div class="card col-8 bg-light" >
       <header>
-        <h4>Please enter your symbol and portfolio size</h4>
+        <h4>Select from popular stock</h4>
+        {#each ticker_array as tx}
+            <button class="secondary button" on:click={e => ticker=tx}>{tx}</button>
+        {/each}
       </header>
       <div class="row">
-          <div class="col-6"> Symbol:</div>
-          <div class="col-6"> Portfolio Size:</div>
+          <div class="col-6"> Or enter symbol:</div>
+          <div class="col-6"> Your portfolio size:</div>
       </div>
       <div class="row">
           <div class="col-6"> <input bind:value={ticker}/></div>
@@ -66,5 +71,3 @@ function currencyFormat(num) {
     </div>
     {/if}
 </div>
-
-
