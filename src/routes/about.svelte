@@ -19,4 +19,13 @@
         <p>The tool helps source and size one week out tactical trades, by ticker and portfolio value. Learn more below about how Fractional Kelly sizing and Options data makes tactical trading smarter and safer.</p>
 </div>
 
+<div class="row">
+<div class="col auto">
+    <a class="button error" style="margin:auto 1rem;" href="https://us1.list-manage.com/survey?u=cd4eb9eb314b5da2719efa0b6&id=4dd04bd1c1&e=26ea9ce559">Sign up for your customized portfolio checkup email</a>
+</div>
+<div class="grouped col-12">
+ <div class="col-8"> <input bind:value={ticker} on:keydown={handleKeydown} autofocus/></div>
+  <div class="col-4"><button class="button primary" on:click={runAPI}> GO </button></div>
+</div>
+</div>
 
