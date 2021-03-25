@@ -6,7 +6,7 @@
 <script>
 import { fade } from 'svelte/transition';
 let ticker ='';
-let portfolio_size = 100;
+
 let amt_invest=0;
 let api_output = {};
 let low_range = 0;
@@ -70,23 +70,22 @@ function currencyFormat(num) {
         {/each}
       </header>
       <div class="row">
-          <div class="col-6"> Or enter symbol:</div>
-          <div class="col-6"> Your portfolio size:</div>
+          <div class="col-8"> Or enter symbol:</div>
       </div>
       <div class="row">
-          <div class="col-6"> <input bind:value={ticker}/></div>
-          <div class="col-6"> <input bind:value={portfolio_size}/></div>
+          <div class="col-8"> <input bind:value={ticker}/></div>
       </div>
         <button class="button primary" on:click={calculateRange}>Calculate</button>
     </div>
     {:else}
     <div class="card col-8 bg-light" >
-      <header>
-        <h4>Oracle says sell options outside this range:</h4>
-      </header>
+
       {#if low_range==0}
       <h2>Getting Data. Please wait..</h2>
       {:else}
+      <header>
+        <h4>Oracle says sell options outside this range:</h4>
+      </header>
         <h2 class="{color_class}"><a class="text-white bg-primary bd-dark" style="margin:0 1rem; font-size:1.5rem;" href='https://fatneo.com/?cmd=put&symbol={ticker}'>sell put</a>${low_range} - ${high_range}<a class="text-white bg-primary bd-dark" style="margin:0 1rem; font-size:1.5rem;" href='https://fatneo.com/?cmd=call&symbol={ticker}'>sell call</a></h2>
         <button class="button primary" on:click={goback}>Start Again</button>
     {/if}
