@@ -1,7 +1,7 @@
 <svelte:head>
 	<title>Ideal Size</title>
 </svelte:head>
-<h1>💎 Oracle: How much should I buy?</h1>
+<h1>💎 Oracle: What option should I buy?</h1>
 
 <script>
 import { fade } from 'svelte/transition';
