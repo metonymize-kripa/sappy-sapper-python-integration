@@ -60,7 +60,7 @@ function currencyFormat(num) {
     {#if show_entry_card}
     <div class="card col-8 bg-light" >
       <header>
-        <h4>Picks from Wallstreetbets & Hedge Fund 13Fs</h4>
+        <h4>Picks from r/CryptoCurrency & Hedgeye</h4>
         {#each ticker_array_wsb as tx}
             <button class="secondary button"  style="font:1.5rem;padding:1rem 0.6rem" on:click={e => ticker=tx}>{tx}</button>
         {/each}
