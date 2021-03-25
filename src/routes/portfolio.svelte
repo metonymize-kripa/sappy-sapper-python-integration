@@ -83,7 +83,7 @@
 
 </script>
 
-<h1>Picks for daily spread</h1>
+<h1>Personalized motion detectors</h1>
 
 <table class="striped">
 
@@ -114,6 +114,6 @@
     Fetch/Sort
 </button>
 <br><br><br>
-* - Optimal allocation amounts for a $100 portfolio
+* - Price range for one week ahead
 <br>
 🔱 - Windfall(Doom) is probability that the stock moves up(down) 10% in a week
