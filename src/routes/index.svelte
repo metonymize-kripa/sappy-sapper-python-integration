@@ -1,7 +1,7 @@
 <svelte:head>
 	<title>Options to Sell</title>
 </svelte:head>
-<h1>💎 Oracle: What options should I sell?</h1>
+<h1>💎 Oracle: How much crypto should I buy?</h1>
 
 <script>
 import { fade } from 'svelte/transition';
@@ -13,8 +13,7 @@ let low_range = 0;
 let high_range = 0;
 let show_entry_card = true;
 let color_class= "neutral";
-let ticker_array_wsb = ['GME','AMC','PLTR','TSLA']
-let ticker_array_gvip = ['MELI','TWTR','IAC','SE']
+let ticker_array_wsb = ['BTC','ETH','DAI','BAT']
 function calculateRange() {
         show_entry_card=false;
 	low_range = 0;
@@ -65,10 +64,6 @@ function currencyFormat(num) {
         {#each ticker_array_wsb as tx}
             <button class="secondary button"  style="font:1.5rem;padding:1rem 0.6rem" on:click={e => ticker=tx}>{tx}</button>
         {/each}
-        <br>
-        {#each ticker_array_gvip as tx}
-            <button class="secondary button"  style="font:1.5rem;padding:1rem 0.6rem" on:click={e => ticker=tx}>{tx}</button>
-        {/each}
       </header>
       <div class="row">
           <div class="col-8"> Or enter symbol:</div>
@@ -85,7 +80,7 @@ function currencyFormat(num) {
       <h2>Getting Data. Please wait..</h2>
       {:else}
       <header>
-        <h4>Oracle says sell options outside this range:</h4>
+        <h4>Oracle says trade outside this range:</h4>
       </header>
         <h2 class="{color_class}"><a class="text-white bg-primary bd-dark" style="margin:0 1rem; font-size:1.5rem;" href='https://fatneo.com/?cmd=put&symbol={ticker}'>put</a>${low_range} - ${high_range}<a class="text-white bg-primary bd-dark" style="margin:0 1rem; font-size:1.5rem;" href='https://fatneo.com/?cmd=call&symbol={ticker}'>call</a></h2>
         <button class="button primary" on:click={goback}>Start Again</button>
