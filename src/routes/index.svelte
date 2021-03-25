@@ -10,7 +10,8 @@ let portfolio_size = 100;
 let amt_invest=0;
 let api_output = {};
 let show_entry_card = true;
-let ticker_array = ['GME','AMC','SPY','PLTR','AMD']
+let ticker_array_wsb = ['GME','AMC','SPY','PLTR','TSLA']
+let ticker_array_gvip = ['MELI','TWTR','IAC','SE','LBRDK']
 
 function calculateKelly() {
         fetch("https://www.insuremystock.com/options/kelly/"+ticker)
@@ -47,8 +48,12 @@ function currencyFormat(num) {
     <div class="card col-8 bg-light" >
       <header>
         <h4>Select from popular stock</h4>
-        {#each ticker_array as tx}
-            <button class="secondary button" on:click={e => ticker=tx}>{tx}</button>
+        {#each ticker_array_wsb as tx}
+            <button class="secondary button"  style="font:1.5rem;padding:1rem 0.8rem" on:click={e => ticker=tx}>{tx}</button>
+        {/each}
+        <br>
+        {#each ticker_array_gvip as tx}
+            <button class="secondary button"  style="font:1.5rem;padding:1rem 0.8rem" on:click={e => ticker=tx}>{tx}</button>
         {/each}
       </header>
       <div class="row">
