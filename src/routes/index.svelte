@@ -172,7 +172,9 @@
       <!-- <a class="text-white bg-primary bd-dark" href="/?symbol=BTC&cmd=crypto">BTC crypto</a> - crypto 7 day range <br> -->
     </div>
 </div>
+<!--
 <footer>
 <p><strong>📯 Try the <a href='https://oracled.mailchimpsites.com/'>DailySpread</a></strong></p>
 <p>Check us at <a href='https://bearfox.live/'>Bearfox.live</a>, See us in action at <a href='https://oracled.com/'>Oracled.com</a></p>
 </footer>
+-->
