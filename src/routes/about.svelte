@@ -19,4 +19,8 @@
         <p>The tool helps size one week out tactical trades, by ticker and portfolio value. Learn more below about how Fractional Kelly sizing and Options data makes tactical trading smarter and safer.</p>
 </div>
 
-
+<div class="row">
+<h1> Get Oracled via email </h1>
+<iframe width="100%" height="600" src="https://us1.list-manage.com/survey?u=cd4eb9eb314b5da2719efa0b6&id=4dd04bd1c1&e=26ea9ce559" frameborder="0" allowfullscreen>
+</iframe>
+</div>
