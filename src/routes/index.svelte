@@ -63,11 +63,11 @@ function currencyFormat(num) {
       <header>
         <h4>Picks from Wallstreetbets & Hedge Fund 13Fs</h4>
         {#each ticker_array_wsb as tx}
-            <button class="secondary button"  style="font:1.5rem;padding:1rem 0.8rem" on:click={e => ticker=tx}>{tx}</button>
+            <button class="secondary button"  style="font:1.5rem;padding:1rem 0.6rem" on:click={e => ticker=tx}>{tx}</button>
         {/each}
         <br>
         {#each ticker_array_gvip as tx}
-            <button class="secondary button"  style="font:1.5rem;padding:1rem 0.8rem" on:click={e => ticker=tx}>{tx}</button>
+            <button class="secondary button"  style="font:1.5rem;padding:1rem 0.6rem" on:click={e => ticker=tx}>{tx}</button>
         {/each}
       </header>
       <div class="row">
@@ -87,7 +87,7 @@ function currencyFormat(num) {
       <header>
         <h4>Oracle says sell options outside this range:</h4>
       </header>
-        <h2 class="{color_class}"><a class="text-white bg-primary bd-dark" style="margin:0 1rem; font-size:1.5rem;" href='https://fatneo.com/?cmd=put&symbol={ticker}'>sell put</a>${low_range} - ${high_range}<a class="text-white bg-primary bd-dark" style="margin:0 1rem; font-size:1.5rem;" href='https://fatneo.com/?cmd=call&symbol={ticker}'>sell call</a></h2>
+        <h2 class="{color_class}"><a class="text-white bg-primary bd-dark" style="margin:0 1rem; font-size:1.5rem;" href='https://fatneo.com/?cmd=put&symbol={ticker}'>put</a>${low_range} - ${high_range}<a class="text-white bg-primary bd-dark" style="margin:0 1rem; font-size:1.5rem;" href='https://fatneo.com/?cmd=call&symbol={ticker}'>call</a></h2>
         <button class="button primary" on:click={goback}>Start Again</button>
     {/if}
 
