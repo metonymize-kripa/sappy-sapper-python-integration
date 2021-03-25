@@ -17,6 +17,7 @@ let ticker_array_wsb = ['GME','AMC','PLTR','TSLA']
 let ticker_array_gvip = ['MELI','TWTR','IAC','SE']
 function calculateRange() {
         show_entry_card=false;
+	low_range = 0;
         fetch("https://www.insuremystock.com/options/range/"+ticker)
             .then(d => d.text())
             .then(d => {
