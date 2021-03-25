@@ -13,10 +13,10 @@
 </svelte:head>
 
 <div class="row">
-        <h1>Tactical Speed for the Option Trader</h1>
-        <p>In Q3 2020, Nasdaq’s U.S. options market reached a quarterly record of 660 million contracts traded. This being a 52% increase year-over-year. Options trading is going mainstream.</p>
-        <p>More traders are participating in ways that previously only large sophisticated investors could do (e.g. Gamma+Short Squeeze on GME). They need new tactical tools, enabled with Options data and Social intelligence. Oracled.com helps Option traders make tactical moves like the pros.</p>
-        <p>The tool helps size one week out tactical trades, by ticker. Sign up for personalized alerts to make your tactical Option trading smarter and safer.</p>
+        <h1>Tactical Speed for the Crypto Trader</h1>
+        <p>In the fourth quarter of 2019, Coinbase reported $5 billion in retail trading volume matched with $9 million in institutional volume. Fast forward to the fourth quarter of 2020 and the exchange reported $32 billion in retail volume – a 540% increase – matched with $57 billion from institutional clients, a 533% increase. Crypto is going mainstream.</p>
+        <p>Crypto traders need tactical tools, enabled with AI analytics and Social intelligence. Oracled.com helps crypto traders make tactical moves like the pros.</p>
+        <p>The tool helps size one week out tactical trades, across popular exchange traded crypto currencies. Sign up for personalized alerts to make your tactical Crypto trading smarter and safer.</p>
 </div>
 
 <div class="row">
