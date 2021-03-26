@@ -1,7 +1,7 @@
 <svelte:head>
-	<title>Options to Sell</title>
+	<title>Crypto Range</title>
 </svelte:head>
-<h1>💎 Oracle: How much crypto should I buy?</h1>
+<h1>💎 Oracle: My next week prediction</h1>
 
 <script>
 import { fade } from 'svelte/transition';
@@ -12,22 +12,24 @@ let api_output = {};
 let low_range = 0;
 let high_range = 0;
 let show_entry_card = true;
+let show_error = false;
 let color_class= "neutral";
 let ticker_array_wsb = ['BTC','ETH','DAI','BAT']
 function calculateRange() {
         show_entry_card=false;
 	low_range = 0;
-        fetch("https://www.insuremystock.com/options/range/"+ticker)
+        fetch("https://www.insuremystock.com/crypto/range/"+ticker)
             .then(d => d.text())
             .then(d => {
                             api_output = JSON.parse(d);
                             console.log(api_output);
-                            low_range = Math.round(api_output.low_range);
-                            high_range = Math.round(api_output.high_range);
-                            if (api_output.prob_up>0.5)
-                                color_class = "bullish";
-                            else if (api_output.prob_up < 0.45)
-                                color_class = "bearish";
+                            low_range = currencyFormat(Math.round(api_output.low_range));
+                            high_range = currencyFormat(Math.round(api_output.high_range));
+                            if (api_output.symbol == 'Error')
+                            {
+                                show_error = true;
+                            }
+
 
             });
 }
@@ -35,7 +37,7 @@ function goback(){
     show_entry_card = true;
 }
 function currencyFormat(num) {
-  return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+  return '$' + num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }
 </script>
 
@@ -78,11 +80,14 @@ function currencyFormat(num) {
 
       {#if low_range==0}
       <h2>Getting Data. Please wait..</h2>
+      {:else if show_error}
+        <h4>{ticker} support is coming soon </h4>
+        <button class="button primary" on:click={goback}>Start Again</button>
       {:else}
       <header>
-        <h4>Oracle says trade outside this range:</h4>
+        <h4>Oracle says price will stay in this range:</h4>
       </header>
-        <h2 class="{color_class}"><a class="text-white bg-primary bd-dark" style="margin:0 1rem; font-size:1.5rem;" href='https://fatneo.com/?cmd=put&symbol={ticker}'>put</a>${low_range} - ${high_range}<a class="text-white bg-primary bd-dark" style="margin:0 1rem; font-size:1.5rem;" href='https://fatneo.com/?cmd=call&symbol={ticker}'>call</a></h2>
+        <h2 class="{color_class}">{low_range} - {high_range}</h2>
         <button class="button primary" on:click={goback}>Start Again</button>
     {/if}
 
