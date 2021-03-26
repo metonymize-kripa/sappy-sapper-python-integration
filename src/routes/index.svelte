@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>Ideal Size</title>
+	<title>Social Trader</title>
 </svelte:head>
 <h1>💎 Oracle: What option should I buy?</h1>
 
