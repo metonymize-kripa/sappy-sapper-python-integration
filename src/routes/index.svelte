@@ -81,7 +81,7 @@ function currencyFormat(num) {
       {#if low_range==0}
       <h2>Getting Data. Please wait..</h2>
       {:else if show_error}
-        <h4>{ticker} support is coming soon </h4>
+        <h4>{ticker} not supported...yet </h4>
         <button class="button primary" on:click={goback}>Start Again</button>
       {:else}
       <header>
