@@ -10,8 +10,8 @@ let portfolio_size = 100;
 let amt_invest=0;
 let api_output = {};
 let show_entry_card = true;
-let ticker_array_wsb = ['GME','AMC','SPY','PLTR','TSLA']
-let ticker_array_gvip = ['MELI','TWTR','IAC','SE','LBRDK']
+let ticker_array_wsb = ['GME ','AMC ','SPY ','PLTR']
+let ticker_array_gvip = ['MELI','TWTR','IAC ','TSLA']
 
 function calculateKelly() {
         fetch("https://www.insuremystock.com/options/kelly/"+ticker)
