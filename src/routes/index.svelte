@@ -1,7 +1,7 @@
 <svelte:head>
 	<title>Options to Sell</title>
 </svelte:head>
-<h1>💎 Oracle: What options should I sell?</h1>
+<h1>💎 Oracle: What options should I trade?</h1>
 
 <script>
 import { stores } from '@sapper/app';
