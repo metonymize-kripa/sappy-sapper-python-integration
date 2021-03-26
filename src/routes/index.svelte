@@ -4,9 +4,10 @@
 <h1>💎 Oracle: What options should I sell?</h1>
 
 <script>
-import { fade } from 'svelte/transition';
+import { stores } from '@sapper/app';
+const { preloading, page, session } = stores();
+const { host, path, params, query } = $page;
 let ticker ='';
-
 let amt_invest=0;
 let api_output = {};
 let low_range = 0;
@@ -17,6 +18,7 @@ let ticker_array_wsb = ['GME','AMC','PLTR','TSLA']
 let ticker_array_gvip = ['MELI','TWTR','IAC','SE']
 function calculateRange() {
         show_entry_card=false;
+        console.log(ticker);
         fetch("https://www.insuremystock.com/options/range/"+ticker)
             .then(d => d.text())
             .then(d => {
@@ -37,6 +39,14 @@ function goback(){
 function currencyFormat(num) {
   return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }
+
+if ('symbol' in  query){
+    console.log("here");
+    ticker = query['symbol'];
+    if (process.browser)
+        calculateRange();
+}
+
 </script>
 
 <style>
