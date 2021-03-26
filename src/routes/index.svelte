@@ -1,7 +1,7 @@
 <svelte:head>
 	<title>Crypto Range</title>
 </svelte:head>
-<h1>💎 Oracle: My next week prediction</h1>
+<h1>💎 Oracle, what's the price band for next week?</h1>
 
 <script>
 import { fade } from 'svelte/transition';
@@ -14,7 +14,7 @@ let high_range = 0;
 let show_entry_card = true;
 let show_error = false;
 let color_class= "neutral";
-let ticker_array_wsb = ['BTC','ETH','DAI','BAT']
+let ticker_array_wsb = ['BTC','ETH'];// ['USDT', 'DODGE', 'BAT', 'DAI']
 function calculateRange() {
         show_entry_card=false;
 	low_range = 0;
