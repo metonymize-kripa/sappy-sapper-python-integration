@@ -20,8 +20,7 @@
 </div>
 
 <div class="row">
-<div class="col auto">
-    <a class="button error" style="margin:auto 1rem;" href="https://us1.list-manage.com/survey?u=cd4eb9eb314b5da2719efa0b6&id=4dd04bd1c1&e=26ea9ce559">Sign up for your customized portfolio checkup email</a>
+<h1> Get Oracled via email </h1>
+<iframe width="100%" height="650" src="https://us1.list-manage.com/survey?u=cd4eb9eb314b5da2719efa0b6&id=4dd04bd1c1&e=26ea9ce559" frameborder="0" allowfullscreen>
+</iframe>
 </div>
-</div>
-
