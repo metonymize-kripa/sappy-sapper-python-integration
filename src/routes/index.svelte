@@ -4,7 +4,9 @@
 <h1>💎 Oracle, How much should I buy?</h1>
 
 <script>
-import { fade } from 'svelte/transition';
+import { stores } from '@sapper/app';
+const { preloading, page, session } = stores();
+const { host, path, params, query } = $page;
 let ticker ='TSLA';
 let portfolio_size = 100;
 let amt_invest=0;
@@ -28,14 +30,20 @@ function goback(){
     show_entry_card = true;
 }
 
-
 function currencyFormat(num) {
   return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+}
+
+
+if ('symbol' in  query){
+    console.log("here");
+    ticker = query['symbol'];
+    if (process.browser)
+        calculateKelly();
 }
 </script>
 
 <style>
-
 
 	figure, img {
 		width: 100%;
