@@ -5,8 +5,10 @@
 
 <script>
 import { stores } from '@sapper/app';
-const { preloading, page, session } = stores();
+const {  page, session } = stores();
 const { host, path, params, query } = $page;
+import { fade } from 'svelte/transition';
+let visible = true;
 let ticker ='';
 let amt_invest=0;
 let api_output = {};
@@ -18,6 +20,7 @@ let ticker_array_wsb = ['GME','AMC','PLTR','TSLA']
 let ticker_array_gvip = ['MELI','TWTR','IAC','SE']
 function calculateRange() {
         show_entry_card=false;
+        visible=true;
         console.log(ticker);
         fetch("https://www.insuremystock.com/options/range/"+ticker)
             .then(d => d.text())
@@ -45,6 +48,15 @@ if ('symbol' in  query){
     ticker = query['symbol'];
     if (process.browser)
         calculateRange();
+}
+
+function updateClipboard(newClip) {
+  navigator.clipboard.writeText(newClip).then(function() {
+    visible=false;
+    window.open("https://www.fidelity.com");
+  }, function() {
+    /* clipboard write failed */
+  });
 }
 
 </script>
@@ -97,6 +109,10 @@ if ('symbol' in  query){
         <h4>Oracle says sell options outside this range:</h4>
       </header>
         <h2 class="{color_class}"><a class="text-white bg-primary bd-dark" style="margin:0 1rem; font-size:1.5rem;" href='https://fatneo.com/?cmd=put&symbol={ticker}'>sell put</a>${low_range} - ${high_range}<a class="text-white bg-primary bd-dark" style="margin:0 1rem; font-size:1.5rem;" href='https://fatneo.com/?cmd=call&symbol={ticker}'>sell call</a></h2>
+        {#if visible}
+        <button  class="text-white bg-dark" style="margin:0 0 2rem 0 ;padding:0.5rem; font-size:1.25rem;" on:click|self={updateClipboard(low_range)}>Trade@Fidelity</button>
+        {/if}
+        <br>
         <button class="button primary" on:click={goback}>Start Again</button>
     {/if}
 
