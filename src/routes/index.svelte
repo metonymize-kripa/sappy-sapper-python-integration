@@ -49,6 +49,9 @@ if ('symbol' in  query){
     if (process.browser)
         calculateRange();
 }
+
+
+
 </script>
 
 <style>
