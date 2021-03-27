@@ -8,7 +8,7 @@ import { stores } from '@sapper/app';
 const { preloading, page, session } = stores();
 const { host, path, params, query } = $page;
 let ticker ='';
-
+let visible = true;
 let amt_invest=0;
 let api_output = {};
 let low_range = 0;
@@ -19,6 +19,7 @@ let color_class= "neutral";
 let ticker_array_wsb = ['BTC','ETH'];// ['USDT', 'DODGE', 'BAT', 'DAI']
 function calculateRange() {
         show_entry_card=false;
+        visible=true;
 	low_range = 0;
         fetch("https://www.insuremystock.com/crypto/range/"+ticker)
             .then(d => d.text())
@@ -49,7 +50,14 @@ if ('symbol' in  query){
     if (process.browser)
         calculateRange();
 }
-
+function updateClipboard(newClip) {
+  navigator.clipboard.writeText(newClip).then(function() {
+   visible=false;
+    window.open("https://www.coinbase.com")
+  }, function() {
+    /* clipboard write failed */
+  });
+}
 
 
 </script>
@@ -100,7 +108,12 @@ if ('symbol' in  query){
       <header>
         <h4>Oracle says price will stay in this range:</h4>
       </header>
-        <h2 class="{color_class}">{low_range} - {high_range}</h2>
+        <h2 style="margin-bottom:1rem;;" class="{color_class}">{low_range} - {high_range}</h2>
+        {#if visible}
+        <a class="button" style="margin:-1rem 0 2rem 0 ;padding:1rem; font-size:1.25rem; width:10rem;background: url(coinbase-logo-svg.svg) no-repeat;" href="https://www.coinbase.com"></a>
+        <!--<a class="button" style="margin:-1rem 0 2rem 0 ;padding:1rem; font-size:1.25rem; width:10rem;" href="https://www.gemini.com">gemini</a> -->
+        {/if}
+        <br>
         <button class="button primary" on:click={goback}>Start Again</button>
     {/if}
 
