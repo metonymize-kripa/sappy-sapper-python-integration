@@ -4,7 +4,9 @@
 <h1>💎 Oracle, what's the price band for next week?</h1>
 
 <script>
-import { fade } from 'svelte/transition';
+import { stores } from '@sapper/app';
+const { preloading, page, session } = stores();
+const { host, path, params, query } = $page;
 let ticker ='';
 
 let amt_invest=0;
@@ -38,6 +40,14 @@ function goback(){
 }
 function currencyFormat(num) {
   return '$' + num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+}
+
+
+if ('symbol' in  query){
+    console.log("here");
+    ticker = query['symbol'];
+    if (process.browser)
+        calculateRange();
 }
 </script>
 
