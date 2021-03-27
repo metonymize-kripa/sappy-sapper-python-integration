@@ -6,8 +6,8 @@
 <div style="text-align: left;">The Kelly criterion is a time-tested formula for sizing bets or investments. The idea is simple, and has been called&nbsp;<em><span style="display: inline-block;"><a href="https://www.amazon.com/Fortunes-Formula-Scientific-Betting-Casinos/dp/B072VX7DCS">Fortune&rsquo;s Formula</a></span></em>: Given a sum of money to invest, allocate it in proportion to your&nbsp;<strong>edge/odds</strong> (The edge is the&nbsp;<em>amount</em> of gain Vs loss. The odds, the&nbsp;<em>chances of</em> a gain Vs loss).&nbsp;</div>
 <div style="text-align: left;">The FatKelly, is our extension of the traditional Kelly criterion. With two modifications:</div>
 <ol>
-    <li style="text-align: left; list-style-type: decimal;">We use Options implied win/loss probabilities and expected returns, and</li>
-    <li style="text-align: left; list-style-type: decimal;">Make fractional adjustment as a margin of safety to keep enough dry powder for the unseen opportunities ahead.&nbsp;</li>
+    <li style="text-align: left; list-style-type: decimal;">We use Options data implied win/loss probabilities and expected returns, and</li>
+    <li style="text-align: left; list-style-type: decimal;">Make fractional adjustment to preserve dry powder for opportunities ahead&nbsp;</li>
 </ol>
 
 <h2 style="text-align: left;">How do I use it in my trading?</h2>
