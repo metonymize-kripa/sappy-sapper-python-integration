@@ -7,6 +7,8 @@
 import { stores } from '@sapper/app';
 const { preloading, page, session } = stores();
 const { host, path, params, query } = $page;
+import { fade } from 'svelte/transition';
+let visible = true;
 let ticker ='TSLA';
 let portfolio_size = 100;
 let amt_invest=0;
@@ -31,7 +33,7 @@ function goback(){
 }
 
 function currencyFormat(num) {
-  return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+  return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }
 
 
@@ -40,6 +42,14 @@ if ('symbol' in  query){
     ticker = query['symbol'];
     if (process.browser)
         calculateKelly();
+}
+
+function updateClipboard(newClip) {
+  navigator.clipboard.writeText(newClip).then(function() {
+    visible = false;
+  }, function() {
+    /* clipboard write failed */
+  });
 }
 </script>
 
@@ -79,7 +89,12 @@ if ('symbol' in  query){
       <header>
         <h4>Oracle says do not invest more than:</h4>
       </header>
-        <h2>{amt_invest} in {ticker}</h2>
+        <h2 style="margin-bottom:0;">${amt_invest} in {ticker}</h2>
+        {#if visible}
+        <button transition:fade class="text-white bg-dark" style="margin:0 0 2rem 0 ;padding:0.5rem; font-size:1.25rem;" on:click={updateClipboard(amt_invest)}>copy to clipboard</button>
+        {/if}
+<br>
+
         <button class="button primary" on:click={goback}>Start Again</button>
     </div>
     {/if}
