@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>Options to Sell</title>
+	<title>Trade Options</title>
 </svelte:head>
 <h1>💎 Oracle: What options should I trade?</h1>
 
