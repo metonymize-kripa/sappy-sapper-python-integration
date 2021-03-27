@@ -110,7 +110,7 @@ function updateClipboard(newClip) {
       </header>
         <h2 class="{color_class}"><a class="text-white bg-primary bd-dark" style="margin:0 1rem; font-size:1.5rem;" href='https://fatneo.com/?cmd=put&symbol={ticker}'>sell put</a>${low_range} - ${high_range}<a class="text-white bg-primary bd-dark" style="margin:0 1rem; font-size:1.5rem;" href='https://fatneo.com/?cmd=call&symbol={ticker}'>sell call</a></h2>
         {#if visible}
-        <button  class="text-white bg-dark" style="margin:0 0 2rem 0 ;padding:0.5rem; font-size:1.25rem;" on:click|self={updateClipboard(low_range)}>TradeNow@Fidelity</button>
+        <button  class="text-white bg-dark" style="margin:0 0 2rem 0 ;padding:0.5rem; font-size:1.25rem;" on:click|self={updateClipboard(low_range)}>Try@Fidelity</button>
         {/if}
         <br>
         <button class="button primary" on:click={goback}>Start Again</button>
