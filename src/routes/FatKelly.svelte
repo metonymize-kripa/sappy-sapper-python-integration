@@ -1,5 +1,5 @@
 <h2 style="text-align: left;">Why?</h2>
-<div style="text-align: left;">The FatKelly answers the most important question for any Fractional Share Trader:&nbsp;<strong><span style="display: inline-block;"><a href="https://social.oracled.com">How much should I buy?</a></span></strong></div>
+<div style="text-align: left;">The FatKelly answers the most important question for the Fractional Social Trader of today:&nbsp;<strong><span style="display: inline-block;"><a href="https://social.oracled.com">How much should I buy?</a></span></strong></div>
 <div style="text-align: left;">It is simple, and provably makes betting/investing better. Don&rsquo;t take just out word for it:&nbsp;<span style="display: inline-block;"><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/9781119020516.ch4">Warren Buffett</a></span>,&nbsp;<span style="display: inline-block;"><a href="https://www.gurufocus.com/news/4883/investing-with-the-kelly-criterion">Charlie Munger</a></span>,&nbsp;<span style="display: inline-block;"><a href="https://www.wiley.com/en-us/The+Dhandho+Investor%3A+The+Low+Risk+Value+Method+to+High+Returns-p-9780470043899">Mohnish Pabrai</a></span>, and&nbsp;<span style="display: inline-block;"><a href="https://25iq.com/2014/09/26/a-dozen-things-ive-learned-from-billl-gross/">Bill Gross</a></span>, and other impressive financial types love it too.</div>
 
 <h2 style="text-align: left;">How does it work?</h2>
@@ -15,7 +15,7 @@
 <div style="text-align: left;">It&rsquo;s a three step process:</div>
 <ol>
     <li style="text-align: left; list-style-type: decimal;">Consider how much money you have to invest (the purse/cash you&rsquo;re willing to risk without FDIC insurance)</li>
-    <li style="text-align: left; list-style-type: decimal;">Source and screen available investments/bets on the basis of edge and odds (Options &nbsp;data can help)</li>
+    <li style="text-align: left; list-style-type: decimal;">Source and screen available investments/bets on the basis of edge and odds (Surprise: Social-media and Options data do help)</li>
     <li style="text-align: left; list-style-type: decimal;">Pick the ones you like and use some type of modified Kelly to size the bet given your purse</li>
 </ol>
 <div style="text-align: left;">Check out the&nbsp;<span style="display: inline-block;"><a href="https://social.oracled.com/">💎 Oracle</a></span> if you like. It is a tool we made for ourselves and friends to make these steps easier.</div>
