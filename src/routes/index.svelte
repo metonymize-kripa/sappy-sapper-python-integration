@@ -30,6 +30,7 @@ function calculateKelly() {
 }
 function goback(){
     show_entry_card = true;
+    visible = true;
 }
 
 function currencyFormat(num) {
@@ -47,6 +48,7 @@ if ('symbol' in  query){
 function updateClipboard(newClip) {
   navigator.clipboard.writeText(newClip).then(function() {
     visible = false;
+    window.open("https://www.robinhood.com/stocks/"+ticker);
   }, function() {
     /* clipboard write failed */
   });
@@ -91,7 +93,7 @@ function updateClipboard(newClip) {
       </header>
         <h2 style="margin-bottom:0;">${amt_invest} in {ticker}</h2>
         {#if visible}
-        <button transition:fade class="text-white bg-dark" style="margin:0 0 2rem 0 ;padding:0.5rem; font-size:1.25rem;" on:click={updateClipboard(amt_invest)}>copy to clipboard</button>
+        <button transition:fade class="text-white bg-dark" style="margin:0 0 2rem 0 ;padding:0.5rem; font-size:1.25rem;" on:click={updateClipboard(amt_invest)}>copy and trade@RH</button>
         {/if}
 <br>
 
