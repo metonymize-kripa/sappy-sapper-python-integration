@@ -97,7 +97,7 @@ function updateClipboard(newClip) {
         {/if}
 <br>
 
-        <button class="button primary" on:click={goback}>Start Again</button>
+        <button class="button primary" on:click={goback}>Go back</button>
     </div>
     {/if}
 </div>
