@@ -27,7 +27,6 @@
     <li style="text-align: left; list-style-type: decimal;"><span style="display: inline-block;"><a href="https://www.globalcapital.com/article/k6543wh6f19l/option-prices-imply-a-probability-distribution">Option Prices Imply A Probability Distribution, Global Capital</a></span></li>
     <li style="text-align: left; list-style-type: decimal;"><span style="display: inline-block;"><a href="https://caia.org/sites/default/files/AIAR_Q3_2016_05_KellyCapital.pdf">Understanding the Kelly Capital Growth Investment Strategy, CAIA</a></span></li>
 </ol>
-<div style="text-align: left;"><br></div>
 <h2 style="text-align: left;">The&nbsp;<span style="display: inline-block;"><a href="https://social.oracled.com/">💎 Oracle</a></span> Design Principles: SAVER</h2>
 <div style="text-align: left;"><strong>S</strong>imple - to understand and explain</div>
 <div style="text-align: left;"><strong>A</strong>ctionable - to use and test</div>
