@@ -8,7 +8,7 @@ import { stores } from '@sapper/app';
 const { preloading, page, session } = stores();
 const { host, path, params, query } = $page;
 let ticker ='';
-let visible = true;
+
 let amt_invest=0;
 let api_output = {};
 let low_range = 0;
@@ -18,23 +18,21 @@ let show_error = false;
 let color_class= "neutral";
 let ticker_array_wsb = ['BTC','ETH'];// ['USDT', 'DODGE', 'BAT', 'DAI']
 function calculateRange() {
-        show_entry_card=false;
-        visible=true;
+    show_entry_card=false;
+
 	low_range = 0;
-        fetch("https://www.insuremystock.com/crypto/range/"+ticker)
-            .then(d => d.text())
-            .then(d => {
-                            api_output = JSON.parse(d);
-                            console.log(api_output);
-                            low_range = currencyFormat(Math.round(api_output.low_range));
-                            high_range = currencyFormat(Math.round(api_output.high_range));
-                            if (api_output.symbol == 'Error')
-                            {
-                                show_error = true;
-                            }
-
-
-            });
+    fetch("https://www.insuremystock.com/crypto/range/"+ticker)
+        .then(d => d.text())
+        .then(d => {
+                    api_output = JSON.parse(d);
+                    console.log(api_output);
+                    low_range = currencyFormat(Math.round(api_output.low_range));
+                    high_range = currencyFormat(Math.round(api_output.high_range));
+                    if (api_output.symbol == 'Error')
+                    {
+                        show_error = true;
+                    }
+        });
 }
 function goback(){
     show_entry_card = true;
@@ -43,22 +41,25 @@ function currencyFormat(num) {
   return '$' + num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }
 
-
 if ('symbol' in  query){
     console.log("here");
     ticker = query['symbol'];
     if (process.browser)
         calculateRange();
 }
-function updateClipboard(newClip) {
+function update_clipboard_crypto(newClip,broker) {
   navigator.clipboard.writeText(newClip).then(function() {
-   visible=false;
-    window.open("https://www.coinbase.com")
+
+   if (broker=="rh")
+        window.open("https://robinhood.com/crypto/"+ticker);
+   else if (broker=="coinbase")
+        window.open("https://pro.coinbase.com/trade/"+ticker+"USD");
+        else if (broker=="gemini")
+             window.open("https://exchange.gemini.com/buy/"+ticker);
   }, function() {
     /* clipboard write failed */
   });
 }
-
 
 </script>
 
@@ -109,13 +110,17 @@ function updateClipboard(newClip) {
         <h4>Oracle says price will stay in this range:</h4>
       </header>
         <h2 style="margin-bottom:1rem;;" class="{color_class}">{low_range} - {high_range}</h2>
-        {#if visible}
+
+            <img class ="pull-left" src="robinhood.png" style="width:80px;cursor:pointer;" on:click={()=> update_clipboard_crypto(high_range,'rh')}>
+            <img class ="pull-left" src="coinbase-logo-svg.svg" style="width:80px;cursor:pointer;margin-left:1rem;" on:click={()=> update_clipboard_crypto(high_range,'coinbase')}>
+            <img class ="pull-left" src="gemini.png" style="width:80px;cursor:pointer;margin-left:1rem;" on:click={()=> update_clipboard_crypto(high_range,'gemini')}>
+            <!--
         <a class="button" style="margin:-1rem 0 2rem 0 ;padding:1rem; font-size:1.25rem; width:10rem;background: url(coinbase-logo-svg.svg) no-repeat;" href="https://www.coinbase.com"></a>
-        <!--<a class="button" style="margin:-1rem 0 2rem 0 ;padding:1rem; font-size:1.25rem; width:10rem;" href="https://www.gemini.com">gemini</a> -->
+        <a class="button" style="margin:-1rem 0 2rem 0 ;padding:1rem; font-size:1.25rem; width:10rem;" href="https://www.gemini.com">gemini</a> -->
         {/if}
         <br>
-        <button class="button primary" on:click={goback}>Start Again</button>
-    {/if}
+        <button class="button dark pull-right" on:click={goback}>Go Back</button>
+
 
     </div>
     {/if}
