@@ -19,7 +19,7 @@ let color_class= "neutral";
 let ticker_array_wsb = ['BTC','ETH'];// ['USDT', 'DODGE', 'BAT', 'DAI']
 function calculateRange() {
     show_entry_card=false;
-
+    ticker = ticker.toUpperCase();
 	low_range = 0;
     fetch("https://www.insuremystock.com/crypto/range/"+ticker)
         .then(d => d.text())
@@ -53,7 +53,7 @@ function update_clipboard_crypto(newClip,broker) {
    if (broker=="rh")
         window.open("https://robinhood.com/crypto/"+ticker);
    else if (broker=="coinbase")
-        window.open("https://pro.coinbase.com/trade/"+ticker+"USD");
+        window.open("https://pro.coinbase.com/trade/"+ticker+"-USD");
         else if (broker=="gemini")
              window.open("https://exchange.gemini.com/buy/"+ticker);
   }, function() {
