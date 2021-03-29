@@ -7,7 +7,7 @@
 import { stores } from '@sapper/app';
 const { preloading, page, session } = stores();
 const { host, path, params, query } = $page;
-import { fade } from 'svelte/transition';
+
 let visible = true;
 let ticker ='TSLA';
 let portfolio_size = 100;
@@ -93,7 +93,7 @@ function updateClipboard(newClip) {
       </header>
         <h2 style="margin-bottom:0;">${amt_invest} in {ticker}</h2>
         {#if visible}
-        <button transition:fade class="text-white bg-dark" style="margin:0 0 2rem 0 ;padding:0.5rem; font-size:1.25rem;" on:click={updateClipboard(amt_invest)}>copy and trade@RH</button>
+        <button class="text-white bg-dark" style="margin:0 0 2rem 0 ;padding:0.5rem; font-size:1.25rem;" on:click={updateClipboard(amt_invest)}>copy and trade@RH</button>
         {/if}
 <br>
 
