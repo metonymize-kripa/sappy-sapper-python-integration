@@ -1,5 +1,6 @@
 <svelte:head>
 	<title>Social Trader</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </svelte:head>
 <h1>💎 Oracle, How much should I buy?</h1>
 
@@ -16,6 +17,8 @@ let api_output = {};
 let show_entry_card = true;
 let ticker_array_wsb = ['GME ','AMC ','SPY ','PLTR']
 let ticker_array_gvip = ['MELI','TWTR','IAC ','TSLA']
+let post_url = "https://social.oracled.com/"
+let post_title = "How much should you buy "
 
 function calculateKelly() {
         fetch("https://www.insuremystock.com/options/kelly/"+ticker)
@@ -57,11 +60,51 @@ function updateClipboard(newClip) {
 </script>
 
 <style>
-
 	figure, img {
 		width: 100%;
 		margin: 0;
 	}
+    .fa {
+      padding: 1rem;
+      font-size: 1.5rem;
+      width: 4rem;
+      text-align: center;
+    }
+
+    .fa:hover {
+        opacity: 0.7;
+    }
+
+    .fa-twitter {
+      background: #55ACEE;
+      color: white;
+    }
+
+    .fa-google {
+      background: #dd4b39;
+      color: white;
+    }
+
+    .fa-linkedin {
+      background: #007bb5;
+      color: white;
+    }
+
+    .fa-reddit {
+      background: #ff5700;
+      color: white;
+    }
+
+    .fa-whatsapp {
+      background: #43d854;
+      color: white;
+    }
+
+    .fa-envelope {
+      background: #3f4144;
+      color: white;
+    }
+
 </style>
 
 <div class="row">
@@ -100,6 +143,10 @@ function updateClipboard(newClip) {
         <button class="text-white bg-dark" style="margin:0 0 2rem 0 ;padding:0.5rem; font-size:1.25rem;" on:click={updateClipboard((my_kelly*portfolio_size).toFixed(2))}>copy and trade@RH</button>
 
         <br>
+        <a href="https://reddit.com/submit?url='{post_url+"?symbol="+ticker}'&title={post_title+ticker}" class="fa fa-reddit"></a>
+        <a href="https://twitter.com/share?url={post_url}?symbol={ticker}&text={post_title}{ticker}&hashtags=kelly,fatneo" class="fa fa-twitter"></a>
+        <a href="https://api.whatsapp.com/send?text={post_title}{ticker} {post_url}?symbol={ticker}" class="fa fa-whatsapp"></a>
+        <a href="https://mail.google.com/mail/u/1/?fs=1&su={post_title}{ticker}&tf={post_url}?symbol={ticker}" class="fa fa-envelope"></a>
 
         <button class="button dark pull-right" on:click={goback}>Go Back</button>
     </div>
