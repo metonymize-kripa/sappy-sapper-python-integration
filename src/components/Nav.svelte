@@ -50,7 +50,7 @@
 
 <nav>
 	<ul>
-		<li><a class='{segment === undefined ? "selected" : ""}' href='.'>home</a></li>
+	<li><a class='{segment === undefined ? "selected" : ""}' href='.'>home</a></li>
     <li><a class='{segment === "about" ? "selected" : ""}' href='about'>about</a></li>
     <li><a class='{segment === "FatKelly" ? "selected" : ""}' href='FatKelly'>FatKelly</a></li>
 	</ul>
