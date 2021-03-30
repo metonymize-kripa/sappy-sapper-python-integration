@@ -1,7 +1,7 @@
 <svelte:head>
 	<title>Social Trader</title>
 </svelte:head>
-<h1>💎 Oracle, How much should I buy?</h1>
+<h1>Oh 💎 Oracle, How much should I buy?</h1>
 
 <script>
 import { stores } from '@sapper/app';
