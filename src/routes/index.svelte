@@ -1,3 +1,3 @@
 <svelte:head>
-	<title>Social Trader</title>
+	<title>Source, Size, Share</title>
 </svelte:head>
