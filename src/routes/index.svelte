@@ -78,7 +78,7 @@ function updateClipboard(newClip) {
       </header>
       <div class="row">
           <div class="col-6"> Or enter symbol:</div>
-          <div class="col-6"> Your portfolio size:</div>
+          <div class="col-6"> Your portfolio size $:</div>
       </div>
       <div class="row">
           <div class="col-6"> <input bind:value={ticker}/></div>
