@@ -57,6 +57,16 @@ function updateClipboard(newClip) {
     /* clipboard write failed */
   });
 }
+
+function copyurl(my_url) {
+  navigator.clipboard.writeText(my_url).then(function() {
+
+    /* clipboard success. Maybe toast it? */
+  }, function() {
+    /* clipboard write failed */
+  });
+}
+
 </script>
 
 <style>
@@ -104,6 +114,10 @@ function updateClipboard(newClip) {
       background: #3f4144;
       color: white;
     }
+    .fa-copy {
+      background: #3f4144;
+      color: white;
+    }
 
 </style>
 
@@ -146,6 +160,7 @@ function updateClipboard(newClip) {
         <a href="https://reddit.com/submit?url={post_url}{ticker}&title={post_title+ticker}" class="fa fa-reddit"></a>
         <a href="https://twitter.com/share?url={post_url}?symbol={ticker}&text={post_title}{ticker}&hashtags=kelly,fatneo" class="fa fa-twitter"></a>
         <a href="https://api.whatsapp.com/send?text={post_title}{ticker} {post_url}?symbol={ticker}" class="fa fa-whatsapp"></a>
+        <a href="" on:click={copyurl("https://social.oracled.com/?symbol="+ticker)} class="fa fa-copy"></a>
         <a href="https://mail.google.com/mail/u/1/?fs=1&su={post_title}{ticker}&tf={post_url}?symbol={ticker}" class="fa fa-envelope"></a>
 
         <button class="button dark pull-right" on:click={goback}>Go Back</button>
