@@ -23,7 +23,7 @@ body {
     }
 </style>
 <script>
-    let symbol_list = ["MELI", "TSLA", "UWMC", "RKT", "IAC", "PLTR", "BB","CVNA","GME", "SKT", "AMC"];
+    let symbol_list  = ["BA","SAM","GNRC","DKS","GM","MSFT","PII","RBC","WFC","ADBE","DXC","MT","NVDA","PYPL","NOW","TSM","WSM","SE","PDD"];];
 
     let table_list= [];
     let table_show = [];
