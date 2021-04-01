@@ -23,8 +23,10 @@ body {
     }
 </style>
 <script>
-    let symbol_list = ["UPST","SE", "MELI", "TSLA", "UWMC", "RKT", "SNDL", "LBRDK", "IAC", "PLTR", "BB","CVNA","GME", "SKT", "AMC"];
+    let symbol_list = ["MVIS","UPST","SE", "MELI", "TSLA", "UWMC", "RKT", "SNDL", "LBRDK", "IAC", "PLTR", "BB","CVNA","GME", "SKT", "AMC"];
+	//["UPST","SE", "MELI", "TSLA", "UWMC", "RKT", "SNDL", "LBRDK", "IAC", "PLTR", "BB","CVNA","GME", "SKT", "AMC"];
 	//["MELI", "TSLA", "UWMC", "RKT", "SNDL", "LBRDK", "IAC", "PLTR", "BB","CVNA","GME", "SKT", "AMC", "SPY"];
+
     let table_list= [];
     let table_show = [];
     for(var i = 0; i < symbol_list.length; i++)
