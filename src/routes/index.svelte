@@ -1,8 +1,8 @@
 <svelte:head>
-	<title>Social Trader</title>
+	<title>Show Kelly Engine</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </svelte:head>
-<h1>💎 Oracle, How much should I buy?</h1>
+<h1>💎 Oracle, How much should I buy? (Show me your work)</h1>
 
 <script>
 import { stores } from '@sapper/app';
