@@ -18,7 +18,7 @@ let show_entry_card = true;
 let ticker_array_wsb = ['GME ','AMC ','SPY ','PLTR']
 let ticker_array_gvip = ['MELI','TWTR','IAC ','TSLA']
 let post_url = "https://social.oracled.com%2F%3fsymbol%3d"
-let post_title = "How%20much%20should%20you%20buy"
+let post_title = "How%20much%20should%20you%20own"
 
 function calculateKelly() {
         fetch("https://www.insuremystock.com/options/kelly/"+ticker)
@@ -157,11 +157,11 @@ function copyurl(my_url) {
         <button class="text-white bg-dark" style="margin:0 0 2rem 0 ;padding:0.5rem; font-size:1.25rem;" on:click={updateClipboard((my_kelly*portfolio_size).toFixed(2))}>copy and trade@RH</button>
 
         <br>
-        <a href="https://reddit.com/submit?url={post_url}{ticker}&title={post_title+ticker}" class="fa fa-reddit"></a>
+        <a href="https://reddit.com/submit?url={post_url}{ticker}&title={post_title}-{ticker}" class="fa fa-reddit"></a>
         <a href="https://twitter.com/share?url={post_url}?symbol={ticker}&text={post_title}{ticker}&hashtags=kelly,fatneo" class="fa fa-twitter"></a>
         <a href="https://api.whatsapp.com/send?text={post_title}{ticker} {post_url}?symbol={ticker}" class="fa fa-whatsapp"></a>
         <a href="" on:click={copyurl("https://social.oracled.com/?symbol="+ticker)} class="fa fa-copy"></a>
-        <a href="https://mail.google.com/mail/u/1/?fs=1&su={post_title}{ticker}&tf={post_url}?symbol={ticker}" class="fa fa-envelope"></a>
+        <!-- <a href="https://mail.google.com/mail/u/1/?fs=1&su={post_title}{ticker}&tf={post_url}?symbol={ticker}" class="fa fa-envelope"></a> -->
 
         <button class="button dark pull-right" on:click={goback}>Go Back</button>
     </div>
