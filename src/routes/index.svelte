@@ -76,24 +76,24 @@
 	}
 
 	function runAPI() {
-			api_output = {"symbol":"waiting"};
-			progress.set(0);
-			fetch("./api/test?input_cmd="+ticker)
-				.then(d => d.text())
-				.then(d => {
-                                api_output = JSON.parse(d);
-                                card_ticker = api_output.symbol;
-                                console.log(api_output);
-                                tag1 = api_output.tag1;
-                                tag2 = api_output.tag2;
-                                tag3 = api_output.tag3;
-                            });
-	}
+		api_output = {"symbol":"waiting"};
+		progress.set(0);
+		fetch("./api/test?input_cmd="+ticker)
+			.then(d => d.text())
+			.then(d => {
+                            api_output = JSON.parse(d);
+                            card_ticker = api_output.symbol;
+                            console.log(api_output);
+                            tag1 = api_output.tag1;
+                            tag2 = api_output.tag2;
+                            tag3 = api_output.tag3;
+                        });
+	    }
     function getAPIData(cmd,symbol){
-    ticker = symbol+" "+cmd;
-    runAPI();
+            ticker = symbol+" "+cmd;
+            runAPI();
+        }
 
-    }
     let cmd_to_run_from_get="";
     let symbol_to_run_from_get='spy';
     if ('cmd' in  query){
