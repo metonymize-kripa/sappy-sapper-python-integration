@@ -12,7 +12,7 @@ const { host, path, params, query } = $page;
 let ticker ='TSLA';
 let portfolio_size = 100;
 
-let my_kelly = 0;
+let my_kelly = "no";
 let api_output = {};
 let show_entry_card = true;
 let ticker_array_wsb = ['GME ','AMC ','SPY ','PLTR']
@@ -21,13 +21,18 @@ let post_url = "https://social.oracled.com%2F%3fsymbol%3d"
 let post_title = "How%20much%20should%20you%20own"
 
 function calculateKelly() {
+        my_kelly = "no";
+        show_entry_card=false;
+        ticker = ticker.toUpperCase();
         fetch("https://www.insuremystock.com/options/kelly/"+ticker)
             .then(d => d.text())
             .then(d => {
                             api_output = JSON.parse(d);
                             console.log(api_output);
-                            my_kelly = api_output.kelly2;
-                            show_entry_card=false;
+                            if ('error' in api_output)
+                                my_kelly="error";
+                            else
+                                my_kelly = api_output.kelly2;
             });
 
 }
@@ -146,6 +151,16 @@ function copyurl(my_url) {
     </div>
     {:else}
     <div class="card col-8 bg-light" >
+        {#if my_kelly == 'no' }
+        <header>
+          <h4>Oracle is thinking .....</h4>
+        </header>
+        {:else if my_kelly =="error"}
+        <header>
+          <h4>Oracle though hard and long but could not find enough option data to come up with an answer</h4>
+        </header>
+        <button class="button dark pull-right" on:click={goback}>Go Back</button>
+        {:else}
       <header>
         <h4>Oracle says do not invest more than:</h4>
       </header>
@@ -164,6 +179,7 @@ function copyurl(my_url) {
         <!-- <a href="https://mail.google.com/mail/u/1/?fs=1&su={post_title}{ticker}&tf={post_url}?symbol={ticker}" class="fa fa-envelope"></a> -->
 
         <button class="button dark pull-right" on:click={goback}>Go Back</button>
+        {/if}
     </div>
     {/if}
 </div>
