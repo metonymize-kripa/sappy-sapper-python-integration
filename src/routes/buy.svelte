@@ -30,7 +30,8 @@
 	//let symbol_list = ["LBRDK","IAC","TWTR","SE","MELI","GME","AMC","TSLA","SPY","PLTR","AAPL","UWMC"];
 	//let symbol_list = ["LBRDK","IAC","TWTR","SE","MELI","GME","AMC","PLTR","SPY","TSLA","UPST","AAPL"];
 	//let symbol_list = ["LBRDK","IAC","TWTR","SE","MELI","PLTR","GME","RKT","SPY","TSLA","VIAC","AMC"];
-	let symbol_list = ["LBRDK","IAC","TWTR","SE","MELI","GME","PLTR","SPY","BB","TSLA","RKT","VIAC"];
+	//let symbol_list = ["LBRDK","IAC","TWTR","SE","MELI","GME","PLTR","SPY","BB","TSLA","RKT","VIAC"];
+	let symbol_list = ["LBRDK","IAC","TWTR","SE","MELI","GME","PLTR","TSLA","SPY","MVIS","BB","AAPL"];
     //let table_dict= {};
     let table_list=[];
     let table_show = [];
