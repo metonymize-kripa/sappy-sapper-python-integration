@@ -108,7 +108,7 @@
 
 </script>
 
-<h1>💫 Aloha Deba!</h1>
+<h1>🚀 Welcome Deba!</h1>
 
 <div class="row">
 <div class="grouped col-12">
