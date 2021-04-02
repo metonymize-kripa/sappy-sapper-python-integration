@@ -2,7 +2,7 @@
 	<title>Show Kelly Engine</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </svelte:head>
-<h1>💎Oracle, What is the FOMO optimized buy amount for this stock? (Show me your work)</h1>
+<h1>💎Oracle, FOMO optimize this buy for me ... </h1>
 
 <script>
 import { stores } from '@sapper/app';
@@ -15,10 +15,10 @@ let portfolio_size = 100;
 let my_kelly = "no";
 let api_output = {};
 let show_entry_card = true;
-let ticker_array_wsb = ['GME ','AMC ','SPY ','PLTR']
-let ticker_array_gvip = ['MELI','TWTR','IAC ','TSLA']
+let ticker_array_wsb = ['GME ','AMC ','SPY ','PLTR', 'UPST']
+let ticker_array_gvip = ['MELI','TWTR','IAC ','TSLA', 'SE']
 let post_url = encodeURIComponent("https://social.oracled.com/?symbol=");
-let post_title =  encodeURIComponent("Hey, I just FOMO optimized "+ticker+" ... check it out");
+let post_title =  encodeURIComponent("Check it out: I just FOMO optimized ");
 
 function calculateKelly() {
         my_kelly = "no";
@@ -170,7 +170,7 @@ function copyurl(my_url) {
         <h2 style="margin-bottom:0;">{currencyFormat(api_output.kelly2*100,2)}% in {ticker}</h2>
         <div class="row">
             <div class="col-8" >
-                If FOMO made me choose (${currencyFormat(my_kelly*100,2)}) instead, what would that mean?
+                What if FOMO makes me pick (${currencyFormat(my_kelly*100,2)}) instead?
                 <input bind:value={my_kelly} type="range" min="0" max="1" step="0.01" style="width:50%;">
                 <br>
 
@@ -180,16 +180,16 @@ function copyurl(my_url) {
 
             </div>
             <div class="col-3" >
-                The chance of gain next week is: <button class="button success pull-right" style="width:7rem; padding:0.4rem 0.5rem">${(100*my_kelly*my_kelly).toFixed(2)}</button>
+                Gain chance: <button class="button success pull-right" style="width:7rem; padding:0.4rem 0.5rem">{(100*my_kelly*my_kelly).toFixed(2)}%</button>
                 <br>
                 <br>
-                FOMO choice implies a chance of: <button class="button error pull-right" style="width:7rem; padding:0.4rem 0.5rem">{(Math.pow( ((1-api_output.kelly2)/(1+api_output.kelly2)), (1/my_kelly) )*100).toFixed(2)}%</button>
+                FOMO implies: <button class="button error pull-right" style="width:7rem; padding:0.4rem 0.5rem">{(Math.pow( ((1-api_output.kelly2)/(1+api_output.kelly2)), (1/my_kelly) )*100).toFixed(2)}%</button>
 
             </div>
         </div>
-        <a href="https://reddit.com/submit?url={post_url}{ticker}&title={post_title}" class="fa fa-reddit"></a>
-        <a href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}&hashtags=fomo,oracled.com" class="fa fa-twitter"></a>
-        <a href="https://api.whatsapp.com/send?text={post_title} {post_url}{ticker}" class="fa fa-whatsapp"></a>
+        <a href="https://reddit.com/submit?url={post_url}{ticker}&title={post_title}{ticker}" class="fa fa-reddit"></a>
+        <a href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags=fomo,oracled.com" class="fa fa-twitter"></a>
+        <a href="https://api.whatsapp.com/send?text={post_title}{ticker} {post_url}{ticker}" class="fa fa-whatsapp"></a>
         <a href="" on:click={copyurl("https://social.oracled.com/?symbol="+ticker)} class="fa fa-copy"></a>
         <!-- <a href="https://mail.google.com/mail/u/1/?fs=1&su={post_title}{ticker}&tf={post_url}?symbol={ticker}" class="fa fa-envelope"></a> -->
         <br>
