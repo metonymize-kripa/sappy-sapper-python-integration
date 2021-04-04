@@ -193,6 +193,7 @@ function copyurl(my_url) {
         <a href="" on:click={copyurl("https://social.oracled.com/?symbol="+ticker)} class="fa fa-copy"></a>
         <!-- <a href="https://mail.google.com/mail/u/1/?fs=1&su={post_title}{ticker}&tf={post_url}?symbol={ticker}" class="fa fa-envelope"></a> -->
         <br>
+        <br>
         <button class="button dark pull-right" on:click={goback}>Go Back</button>
         {/if}
     </div>
