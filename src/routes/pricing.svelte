@@ -37,7 +37,7 @@ function openModalSignup() {
       <ul>
           <li>Price range outlook</li>
           <li>Options implied bet sizing</li>
-          <li>WSB Sentiment</li>
+          <li>WSB activity screening</li>
       </ul>
       <br>
       <footer class="is-center">
@@ -48,9 +48,10 @@ function openModalSignup() {
       <header>
         <h4>$60/Year</h4>
       </header>
+      Bespoke Skills list
       <ul>
           <li>Personalized stock lists</li>
-          <li>Limited subdomain names</li>
+          <li>Custom alert screening logic</li>
           <li>More coming soon..</li>
       </ul>
       <footer class="is-center">
