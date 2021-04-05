@@ -46,7 +46,7 @@ function openModalSignup() {
     </div>
     <div class="col-4 card bg-light">
       <header>
-        <h4>Amateur:<br> $6/Mo or $60/yr</h4>
+        <h4>Amateur:<br> $9.99/Mo or $99/yr</h4>
       </header>
       Personalized stock lists
       Extra skills like

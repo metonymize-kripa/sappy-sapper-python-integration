@@ -52,15 +52,9 @@
 	<ul>
 		<li><a class='{segment === undefined ? "selected" : ""}' href='.'>Home</a></li>
         <li><a class='{segment === "portfolio" ? "selected" : ""}' href='portfolio'>My Portfolio</a></li>
-
-<!--    <li><a class='{segment === "about" ? "selected" : ""}' href='about'>About</a></li>
-		<li><a class='{segment === "skills_key" ? "selected" : ""}' href='skills_key'>Skills</a></li>
-		<li><a class='{segment === "usecases" ? "selected" : ""}' href='usecases'>Usecases</a></li>
-       <li><a class='{segment === "alerts" ? "selected" : ""}' href='alerts'>Alerts</a></li>
-        <li><a class='{segment === "buy" ? "selected" : ""}' href='buy '>Buy</a></li>
-        <li><a class='{segment === "sell" ? "selected" : ""}' href='sell '>Sell</a></li>
         <li><a class='{segment === "pricing" ? "selected" : ""}' href='pricing'>Pricing</a></li>
--->
+		<li><a class='{segment === "usecases" ? "selected" : ""}' href='usecases'>Usecases</a></li>
+		<li><a class='{segment === "skills_key" ? "selected" : ""}' href='skills_key'>Skills</a></li>
 
 
 
