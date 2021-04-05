@@ -22,7 +22,7 @@ function openModalPayment() {
   modal_open = false
 }
 function openModalSignup() {
-  window.open('https://oracled.mailchimpsites.com/','_blank');
+  window.open('https://us1.list-manage.com/survey?u=cd4eb9eb314b5da2719efa0b6&id=4dd04bd1c1&e=26ea9ce559','_blank');
   modal_open = false
 }
 </script>
