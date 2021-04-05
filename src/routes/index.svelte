@@ -23,6 +23,10 @@ let post_title =  encodeURIComponent("Check it out: I just FOMO optimized ");
 let gain_chance= "NA";
 let gain_class = "dark";
 let risk_ruin=0;
+let widget_html = "";
+let widget_script = "";
+let chance_up=0;
+let chance_down=1;
 
 function calculateKelly() {
         my_kelly = "no";
@@ -30,24 +34,38 @@ function calculateKelly() {
         ticker = ticker.toUpperCase();
         fetch("https://www.insuremystock.com/options/kelly/"+ticker)
             .then(d => d.text())
-            .then(d => {
-                            api_output = JSON.parse(d);
-                            console.log(api_output);
-                            if ('error' in api_output)
-                                my_kelly="error";
-                            else
-                            {
-                                my_kelly = api_output.kelly2;
-                                let edge = api_output.prob_up - 0.5;
-                                risk_ruin = Math.pow( ((1-edge)/(1+edge)), (1/api_output.kelly2) );
-                                console.log(risk_ruin);
-                                gain_chance = +(api_output.prob_up*100).toFixed(2);
-                                if (gain_chance > 52)
-                                    gain_class = "success";
-                                else if (gain_chance < 49)
-                                    gain_class = "error";
-                            }
+            .then(d =>
+            {
+                api_output = JSON.parse(d);
+                console.log(api_output);
+                if ('error' in api_output)
+                    my_kelly="error";
+                else
+                {
+                    my_kelly = api_output.kelly2;
+                    let edge = api_output.prob_up - 0.5;
+                    risk_ruin = Math.pow( ((1-edge)/(1+edge)), (1/api_output.kelly2) );
+                    console.log(risk_ruin);
+                    gain_chance = +(api_output.prob_up*100).toFixed(2);
+                    if (gain_chance > 52)
+                        gain_class = "success";
+                    else if (gain_chance < 49)
+                        gain_class = "error";
+                    chance_up = api_output.prob_up-0.5;
+                    chance_down = api_output.prob_down;
+                }
 
+                widget_html = '<div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div><div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/';
+                widget_html +=ticker;
+                widget_html +='/" rel="noopener" target="_blank"><span class="blue-text">';
+                widget_html +=ticker;
+                widget_html +=' Quotes</span></a> by TradingView</div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>{"symbol": "';
+                widget_html +=ticker;
+                widget_html +='","width": "100%",height": "220","locale": "en", "dateRange": "12M", "colorTheme":"light", "trendLineColor": "rgba(69, 129, 142, 1)", "underLineColor": "rgba(217, 234, 211, 1)","isTransparent":true,"autosize":false,"largeChartUrl":"" }<\/script><\/div>';
+
+                widget_script = '<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>{"symbol": "';
+                widget_script +=ticker;
+                widget_script +='","width": "100%","height": "220","locale": "en", "dateRange": "12M", "colorTheme":"light", "trendLineColor": "rgba(69, 129, 142, 1)", "underLineColor": "rgba(217, 234, 211, 1)","isTransparent":true,"autosize":false,"largeChartUrl":"" }<\/script>'
             });
 }
 
@@ -196,7 +214,7 @@ function copyurl(my_url) {
         <div class="row">
             <div class="col-8" >
                 What if FOMO makes me pick (${currencyFormat(my_kelly*100,2)}) instead?
-                <input bind:value={my_kelly} type="range" min="0" max="1" step="0.01" style="width:50%;">
+                <input bind:value={my_kelly} type="range" min="0" max="0.5" step="0.01" style="width:50%;">
                 <br>
 
                 <button class="text-white bg-dark" style="margin:0 0 2rem 0 ;padding:0.5rem; font-size:1.25rem;" on:click={updateClipboard((my_kelly*portfolio_size).toFixed(2))}>copy and trade@RH</button>
@@ -208,7 +226,7 @@ function copyurl(my_url) {
                 Gain chance: <button class="button {gain_class} pull-right" style="width:7rem; padding:0.4rem 0.5rem">{gain_chance}%</button>
                 <br>
                 <br>
-                FOMO implies: <button class="button error pull-right" style="width:7rem; padding:0.4rem 0.5rem">{((1-risk_ruin*my_kelly)/(1+risk_ruin*my_kelly)).toFixed(2)}%</button>
+                Implied Win Odds: <button class="button error pull-right" style="width:7rem; padding:0.4rem 0.5rem">{((0.5+my_kelly)/(0.5-my_kelly)).toFixed(2)}</button>
 
             </div>
             <!--
@@ -220,6 +238,10 @@ function copyurl(my_url) {
             </div>
             -->
             <!-- TradingView Widget BEGIN -->
+            <!--{@html widget_html}
+            {@html widget_script}
+            -->
+
             <div class="tradingview-widget-container">
               <div class="tradingview-widget-container__widget"></div>
               <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/{ticker}/" rel="noopener" target="_blank"><span class="blue-text">{ticker} Quotes</span></a> by TradingView</div>
@@ -238,7 +260,10 @@ function copyurl(my_url) {
               "largeChartUrl": ""
             }
               </script>
+
+
             </div>
+
             <!-- TradingView Widget END -->
         </div>
 
