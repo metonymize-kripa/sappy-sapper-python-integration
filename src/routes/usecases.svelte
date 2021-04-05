@@ -2,12 +2,7 @@
 	<title>Use Cases</title>
 </svelte:head>
 
-<h1>Some of our use cases</h1>
-
-<p>Options are just one of the many sources of insights that we make available for traders.
-Here are a few use cases to inspire your exploration with our tools. Be bold. Hope you have fun!</p>
-
-<h1>Wall of Fame</h1>
+<h1>High ROI use cases</h1>
 
 <script>
 	import { onMount } from 'svelte';
