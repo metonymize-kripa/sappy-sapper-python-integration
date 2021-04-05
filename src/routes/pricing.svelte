@@ -54,6 +54,7 @@ function openModalSignup() {
           <li>Custom alert screening logic</li>
           <li>More coming soon..</li>
       </ul>
+      <br>
       <footer class="is-center">
          <Button primary on:click={openModalSignup}>Sign up</Button>
       </footer>
