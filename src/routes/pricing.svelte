@@ -27,7 +27,6 @@ function openModalSignup() {
 }
 </script>
 
-<h1 class="is-center">Pricing</h1>
 <div class="row">
     <div class="col-4 card">
       <header>
