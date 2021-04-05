@@ -12,6 +12,7 @@ const { host, path, params, query } = $page;
 let ticker ='TSLA';
 let portfolio_size = 100;
 
+
 let my_kelly = "no";
 let api_output = {};
 let show_entry_card = true;
@@ -19,6 +20,9 @@ let ticker_array_wsb = ['GME ','AMC ','SPY ','PLTR', 'UPST']
 let ticker_array_gvip = ['MELI','TWTR','IAC ','TSLA', 'SE']
 let post_url = encodeURIComponent("https://social.oracled.com/?symbol=");
 let post_title =  encodeURIComponent("Check it out: I just FOMO optimized ");
+let gain_chance= "NA";
+let gain_class = "dark";
+let risk_ruin=0;
 
 function calculateKelly() {
         my_kelly = "no";
@@ -32,7 +36,18 @@ function calculateKelly() {
                             if ('error' in api_output)
                                 my_kelly="error";
                             else
+                            {
                                 my_kelly = api_output.kelly2;
+                                let edge = api_output.prob_up - 0.5;
+                                risk_ruin = Math.pow( ((1-edge)/(1+edge)), (1/api_output.kelly2) );
+                                console.log(risk_ruin);
+                                gain_chance = +(api_output.prob_up*100).toFixed(2);
+                                if (gain_chance > 52)
+                                    gain_class = "success";
+                                else if (gain_chance < 49)
+                                    gain_class = "error";
+                            }
+
             });
 }
 
@@ -127,6 +142,16 @@ function copyurl(my_url) {
       color: white;
     }
 
+    .neutral{
+        color:black;
+	}
+	.bearish{
+		color:red;
+	}
+	.bullish{
+		color:green;
+	}
+
 </style>
 
 <div class="row">
@@ -179,14 +204,44 @@ function copyurl(my_url) {
                 <br>
 
             </div>
-            <div class="col-3" >
-                Gain chance: <button class="button success pull-right" style="width:7rem; padding:0.4rem 0.5rem">{(100*my_kelly*my_kelly).toFixed(2)}%</button>
+            <div class="col-4" >
+                Gain chance: <button class="button {gain_class} pull-right" style="width:7rem; padding:0.4rem 0.5rem">{gain_chance}%</button>
                 <br>
                 <br>
-                FOMO implies: <button class="button error pull-right" style="width:7rem; padding:0.4rem 0.5rem">{(Math.pow( ((1-api_output.kelly2)/(1+api_output.kelly2)), (1/my_kelly) )*100).toFixed(2)}%</button>
+                FOMO implies: <button class="button error pull-right" style="width:7rem; padding:0.4rem 0.5rem">{((1-risk_ruin*my_kelly)/(1+risk_ruin*my_kelly)).toFixed(2)}%</button>
 
             </div>
+            <!--
+            <div class = "col-12">
+            <embed
+                src="https://public.com/stocks/{ticker}/embed"
+                width = "100%"
+                height="100%">
+            </div>
+            -->
+            <!-- TradingView Widget BEGIN -->
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/{ticker}/" rel="noopener" target="_blank"><span class="blue-text">{ticker} Quotes</span></a> by TradingView</div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {
+              "symbol": "TSLA",
+              "width": "100%",
+              "height": "220",
+              "locale": "en",
+              "dateRange": "12M",
+              "colorTheme": "light",
+              "trendLineColor": "rgba(69, 129, 142, 1)",
+              "underLineColor": "rgba(217, 234, 211, 1)",
+              "isTransparent": true,
+              "autosize": false,
+              "largeChartUrl": ""
+            }
+              </script>
+            </div>
+            <!-- TradingView Widget END -->
         </div>
+
         <a href="https://reddit.com/submit?url={post_url}{ticker}&title={post_title}{ticker}" class="fa fa-reddit"></a>
         <a href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags=fomo,oracled.com" class="fa fa-twitter"></a>
         <a href="https://api.whatsapp.com/send?text={post_title}{ticker} {post_url}{ticker}" class="fa fa-whatsapp"></a>
