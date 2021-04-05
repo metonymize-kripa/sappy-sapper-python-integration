@@ -108,7 +108,7 @@
 
 </script>
 
-<h1>🔥 Greetings Avishek!</h1>
+<h1>🔥 Greetings Morpheus!</h1>
 
 <div class="row">
 <div class="grouped col-12">
@@ -127,10 +127,6 @@
         	</figure>
         {:else if api_output.symbol == "welcome"}
             <h2> ☝️ Symbol ⎵ skill ↵ </h2>
-        <!--    <figure>
-            	<img alt='Fat Tony' src='FatTony.png'>
-            	<figcaption>Fat Tony: I don't get mad. I get stabby.</figcaption>
-            </figure> -->
         {:else}
             <div style="padding:0 1rem;" class='bd-dark text-center'>
                 <h2 style ="margin:1rem 0px -0.5rem 0px;" class="{api_output.main_class}">{@html api_output.main_point}</h2>
@@ -172,9 +168,3 @@
       <!-- <a class="text-white bg-primary bd-dark" href="/?symbol=BTC&cmd=crypto">BTC crypto</a> - crypto 7 day range <br> -->
     </div>
 </div>
-<!--
-<footer>
-<p><strong>📯 Try the <a href='https://oracled.mailchimpsites.com/'>DailySpread</a></strong></p>
-<p>Check us at <a href='https://bearfox.live/'>Bearfox.live</a>, See us in action at <a href='https://oracled.com/'>Oracled.com</a></p>
-</footer>
--->
