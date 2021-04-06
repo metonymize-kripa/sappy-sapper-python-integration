@@ -220,6 +220,29 @@ function copyurl(my_url) {
                 <br>
 
             </div>
+            <div class="col-5" >
+                <table >
+                    <thead>
+                        <tr>
+                            <th>Viewpoint</th>
+                            <th>Gain%</th>
+                            <th>Loss%</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Market's</td>
+                            <td><span class="tag is-large bg-success text-white">{Math.round(gain_chance)}</span></td>
+                            <td><span class="tag is-large bg-error text-white">{Math.round(100-gain_chance)}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Your</td>
+                            <td><span class="tag is-large bg-success text-white">{Math.round((0.5+my_kelly)*100)}</span></td>
+                            <td><span class="tag is-large bg-error text-white">{Math.round((0.5-my_kelly)*100)}</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             <!--
             <div class="col-5" >
                 Gain chance: <button class="button {gain_class} pull-right" style="width:7rem; padding:0.4rem 0.5rem">{gain_chance}%</button>
@@ -228,6 +251,7 @@ function copyurl(my_url) {
                 Implied Win Odds: <button class="button error pull-right" style="width:7rem; padding:0.4rem 0.5rem">{((0.5+my_kelly)/(0.5-my_kelly)).toFixed(2)}</button>
             </div>
             -->
+            <!--
             <div class="col-3" >
             <br>
             Options Implied
@@ -248,6 +272,7 @@ function copyurl(my_url) {
             <br>
             <span class="tag bg-error text-white">{Math.round((0.5-my_kelly)*100)}</span>
             </div>
+            -->
             <div class = "col-1"></div>
             <div class = "col-10">
             <iframe width="100%" height="412" src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
