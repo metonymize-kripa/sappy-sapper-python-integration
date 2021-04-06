@@ -212,35 +212,56 @@ function copyurl(my_url) {
       </header>
         <h2 style="margin-bottom:0;">{currencyFormat(api_output.kelly2*100,2)}% in {ticker}</h2>
         <div class="row">
-            <div class="col-8" >
-                What if FOMO makes me pick (${currencyFormat(my_kelly*100,2)}) instead?
+            <div class="col-7" >
+                What if FOMO makes me allocate <span class="bg-grey text-white">{currencyFormat(my_kelly*100,2)}%</span> instead?
                 <input bind:value={my_kelly} type="range" min="0" max="0.5" step="0.01" style="width:50%;">
                 <br>
-
                 <button class="text-white bg-dark" style="margin:0 0 2rem 0 ;padding:0.5rem; font-size:1.25rem;" on:click={updateClipboard((my_kelly*portfolio_size).toFixed(2))}>copy and trade@RH</button>
-
                 <br>
 
             </div>
-            <div class="col-4" >
+            <!--
+            <div class="col-5" >
                 Gain chance: <button class="button {gain_class} pull-right" style="width:7rem; padding:0.4rem 0.5rem">{gain_chance}%</button>
                 <br>
                 <br>
                 Implied Win Odds: <button class="button error pull-right" style="width:7rem; padding:0.4rem 0.5rem">{((0.5+my_kelly)/(0.5-my_kelly)).toFixed(2)}</button>
-
-            </div>
-            <!--
-            <div class = "col-12">
-            <embed
-                src="https://public.com/stocks/{ticker}/embed"
-                width = "100%"
-                height="100%">
             </div>
             -->
+            <div class="col-3" >
+            <br>
+            Options Implied
+            <br>
+            My View
+            </div>
+            <div class="col-1" >
+            Win%
+            <br>
+            <span class="tag bg-success text-white">{Math.round(gain_chance)}</span>
+            <br>
+            <span class="tag bg-success text-white">{Math.round((0.5+my_kelly)*100)}</span>
+            </div>
+            <div class="col-1" >
+            Loss%
+            <br>
+            <span class="tag bg-error text-white">{Math.round(100-gain_chance)}</span>
+            <br>
+            <span class="tag bg-error text-white">{Math.round((0.5-my_kelly)*100)}</span>
+            </div>
+            <div class = "col-1"></div>
+            <div class = "col-10">
+            <iframe width="100%" height="412" src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
+            <!--<embed
+                src="https://public.com/stocks/{ticker}/embed"
+                width = "100%"
+                height="415px">
+            -->
+            </div>
+
             <!-- TradingView Widget BEGIN -->
             <!--{@html widget_html}
             {@html widget_script}
-            -->
+
 
             <div class="tradingview-widget-container">
               <div class="tradingview-widget-container__widget"></div>
@@ -263,7 +284,7 @@ function copyurl(my_url) {
 
 
             </div>
-
+-->
             <!-- TradingView Widget END -->
         </div>
 
