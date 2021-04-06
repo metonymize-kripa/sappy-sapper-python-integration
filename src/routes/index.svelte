@@ -180,7 +180,7 @@ function copyurl(my_url) {
         {#each ticker_array_wsb as tx}
             <button class="secondary button tx-button"  on:click={e => ticker=tx}>{tx}</button>
         {/each}
-        <br>
+        
         {#each ticker_array_gvip as tx}
             <button class="secondary button tx-button"  on:click={e => ticker=tx}>{tx}</button>
         {/each}
