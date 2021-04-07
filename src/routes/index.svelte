@@ -88,7 +88,6 @@ if ('symbol' in  query){
 
 function updateClipboard(newClip) {
   navigator.clipboard.writeText(newClip).then(function() {
-
     window.open("https://www.robinhood.com/stocks/"+ticker);
   }, function() {
     /* clipboard write failed */
@@ -97,7 +96,6 @@ function updateClipboard(newClip) {
 
 function copyurl(my_url) {
   navigator.clipboard.writeText(my_url).then(function() {
-
     /* clipboard success. Maybe toast it? */
   }, function() {
     /* clipboard write failed */
@@ -180,7 +178,7 @@ function copyurl(my_url) {
         {#each ticker_array_wsb as tx}
             <button class="secondary button tx-button"  on:click={e => ticker=tx}>{tx}</button>
         {/each}
-        
+
         {#each ticker_array_gvip as tx}
             <button class="secondary button tx-button"  on:click={e => ticker=tx}>{tx}</button>
         {/each}
