@@ -80,7 +80,12 @@
         if (process.browser)
             calculateKelly();
     }
-    
+    else{
+    ticker = 'SPY';
+    if (process.browser)
+        calculateKelly();
+    }
+
 
 </script>
 <style>
