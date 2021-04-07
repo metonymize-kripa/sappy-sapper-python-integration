@@ -77,10 +77,10 @@
     if ('symbol' in  query){
         console.log("here");
         ticker = query['symbol'];
+        if (process.browser)
+            calculateKelly();
     }
-    if (process.browser)
-        calculateKelly();
-
+    
 
 </script>
 <style>
