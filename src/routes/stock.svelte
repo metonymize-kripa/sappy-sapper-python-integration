@@ -153,6 +153,12 @@
       background: #3f4144;
       color: white;
     }
+    .card{
+        border-radius:2rem;
+        border: 1px solid #eaeaea;
+        box-shadow:none;
+
+    }
 </style>
 <main>
 <div class="row">
@@ -173,8 +179,8 @@
     </div>
     {#if my_kelly != 'no' && my_kelly != 'error' }
         <div class="col-10 card" >
-            <h2 style="font-size:4rem;">{ticker}</h2>
-            <h2 style="color:#00f;font-weight:700;font-size:4rem;">{currencyFormat(api_output.kelly2*100,2)}%</h2>
+            <h2 style="font-size:3rem;margin:0; ">{ticker}</h2>
+            <h2 style="color:#00f;margin:0;font-weight:700;font-size:3rem;">{currencyFormat(api_output.kelly2*100,2)}%</h2>
             <input bind:value={my_kelly} type="range" min="0" max="0.5" step="0.01" style="width:50%;margin:0 auto;">
             <span >My Allocation : {currencyFormat(my_kelly*100,2)}%</span>
         </div>
@@ -209,7 +215,7 @@
             <a href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags=fomo,oracled.com" class="fa fa-twitter pull-left"></a>
             <a href="https://api.whatsapp.com/send?text={post_title}{ticker} {post_url}{ticker}" class="fa fa-whatsapp pull-left"></a>
             <a href="" on:click={copyurl("https://social.oracled.com/?symbol="+ticker)} class="fa fa-copy pull-left"></a>
-            <button class="text-white bg-dark pull-right" on:click={updateClipboard((my_kelly*portfolio_size).toFixed(2))}>copy and trade@RH</button>
+            <button class="text-white bg-dark pull-right" on:click={updateClipboard((my_kelly*100).toFixed(2))}>copy and trade@RH</button>
         </div>
     {/if}
 </div>
