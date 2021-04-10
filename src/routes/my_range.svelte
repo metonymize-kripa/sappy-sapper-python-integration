@@ -17,7 +17,7 @@
     let table_list= [];
     for(var i = 0; i < symbol_list.length; i++)
     {
-        table_list.push({"symbol":symbol_list[i],"range_1wk":"NA","range_2wk":"NA"});
+        table_list.push({"symbol":symbol_list[i],"range_1wk":"NA","range_2wk":"NA","price_perc":-1,"volume_perc":-1});
     }
     function get_portfolio_data() {
         for(var i = 0; i < table_list.length; i++)
@@ -64,6 +64,34 @@
               });
               */
 
+              fetch("https://www.insuremystock.com/stocks/returns/"+table_list[i]['symbol'])
+              .then(d => d.text())
+              .then(function(d) {
+
+                  var my_dict = JSON.parse(d);
+                  for (var k = 0; k < table_list.length; k++)
+                  {
+                      if (table_list[k].symbol.toUpperCase() == my_dict.symbol.toUpperCase())
+                      {
+                          table_list[k].price_perc = Math.round(my_dict.percentile);
+                      }
+                  }
+                });
+
+                fetch("https://www.insuremystock.com/stocks/volume/"+table_list[i]['symbol'])
+                .then(d => d.text())
+                .then(function(d) {
+
+                    var my_dict = JSON.parse(d);
+                    for (var k = 0; k < table_list.length; k++)
+                    {
+                        if (table_list[k].symbol.toUpperCase() == my_dict.symbol.toUpperCase())
+                        {
+                            table_list[k].volume_perc = Math.round(my_dict.percentile);
+                        }
+                    }
+                  });
+
 
          }
     }
@@ -81,16 +109,19 @@
           <th>Symbol</th>
           <th>1Wk</th>
           <th>2Wk</th>
+          <th>Price %ile</th>
+          <th>Volume %ile</th>
 
         </tr>
     </thead>
     <tbody>
-        {#each table_list as { symbol,range_1wk,range_2wk}, i}
+        {#each table_list as { symbol,range_1wk,range_2wk,price_perc, volume_perc}, i}
             <tr class="bullish">
                 <td>{symbol}</td>
                 <td>{range_1wk}</td>
                 <td>{range_2wk}</td>
-
+                <td>{price_perc}</td>
+                <td>{volume_perc}</td>
             </tr>
 
         {/each}

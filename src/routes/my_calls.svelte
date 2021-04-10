@@ -17,7 +17,7 @@
     let table_list= [];
     for(var i = 0; i < symbol_list.length; i++)
     {
-        table_list.push({"symbol":symbol_list[i],"call_1wk":"NA","call_2wk":"NA"});
+        table_list.push({"symbol":symbol_list[i],"call_1wk":"NA","call_2wk":"NA","call_4wk":"NA"});
     }
     function get_portfolio_data() {
         for(var i = 0; i < table_list.length; i++)
@@ -50,8 +50,8 @@
                   }
               }
             });
-            /*
-            fetch("https://www.insuremystock.com/options/call_trades/"+table_list[i]['symbol']+"/?days=21")
+
+            fetch("https://www.insuremystock.com/options/call_trades/"+table_list[i]['symbol']+"/?days=28")
             .then(d => d.text())
             .then(function(d) {
 
@@ -61,11 +61,11 @@
                     if (table_list[k].symbol.toUpperCase() == my_dict.symbol.toUpperCase())
                     {
                         if (my_dict.best_call.strike > 0)
-                            table_list[k].call_3wk = "$"+my_dict.best_call.strike+"("+my_dict.best_call.expiry+"): $"+my_dict.best_call.bid+"-$"+my_dict.best_call.ask;
+                            table_list[k].call_4wk = "$"+my_dict.best_call.strike+"("+my_dict.best_call.expiry+"): $"+my_dict.best_call.bid+"-$"+my_dict.best_call.ask;
                     }
                 }
               });
-              */
+
 
          }
     }
@@ -83,16 +83,17 @@
           <th>Symbol</th>
           <th>1Wk</th>
           <th>2Wk</th>
+          <th>4Wk</th>
 
         </tr>
     </thead>
     <tbody>
-        {#each table_list as { symbol,call_1wk,call_2wk}, i}
+        {#each table_list as { symbol,call_1wk,call_2wk,call_4wk}, i}
             <tr class="bullish">
                 <td>{symbol}</td>
                 <td>{call_1wk}</td>
                 <td>{call_2wk}</td>
-
+                <td>{call_4wk}</td>
             </tr>
 
         {/each}
