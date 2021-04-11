@@ -29,7 +29,7 @@
     let post_title =  encodeURIComponent("Check it out: I just FOMO optimized ");
     let gain_chance= "NA";
     let gain_class = "dark";
-    let varx = 0;
+    let varx = 0; 
     function calculateKelly() {
             my_kelly = "no";
             ticker = ticker.toUpperCase();
