@@ -29,6 +29,7 @@
     let post_title =  encodeURIComponent("Check it out: I just FOMO optimized ");
     let gain_chance= "NA";
     let gain_class = "dark";
+    let varx = 0;
     function calculateKelly() {
             my_kelly = "no";
             ticker = ticker.toUpperCase();
@@ -42,7 +43,7 @@
                         my_kelly="error";
                     else
                     {
-                        my_kelly = api_output.kelly2;
+                        my_kelly = api_output.kelly_k;
                         let edge = api_output.prob_up - 0.5;
                         gain_chance = +(api_output.prob_up*100).toFixed(2);
                         console.log(gain_chance);
@@ -50,6 +51,7 @@
                             gain_class = "success";
                         else if (gain_chance < 49)
                             gain_class = "error";
+                        varx = api_output.prob_down_n/api_output.prob_up_n;
 
                     }
 
@@ -180,7 +182,7 @@
     {#if my_kelly != 'no' && my_kelly != 'error' }
         <div class="col-10 card" >
             <h2 style="font-size:3rem;margin:0; ">{ticker}</h2>
-            <h2 style="color:#00f;margin:0;font-weight:700;font-size:3rem;">{currencyFormat(api_output.kelly2*100,2)}%</h2>
+            <h2 style="color:#00f;margin:0;font-weight:700;font-size:3rem;">{currencyFormat(api_output.kelly_k*100,2)}%</h2>
             <input bind:value={my_kelly} type="range" min="0" max="0.5" step="0.01" style="width:50%;margin:0 auto;">
             <span >My Allocation : {currencyFormat(my_kelly*100,2)}%</span>
         </div>
@@ -201,8 +203,8 @@
                 </tr>
                 <tr>
                     <td>Override</td>
-                    <td><span class="tag is-large bg-success text-white">{Math.round((0.5+my_kelly)*100)}</span></td>
-                    <td><span class="tag is-large bg-error text-white">{Math.round((0.5-my_kelly)*100)}</span></td>
+                    <td><span class="tag is-large bg-success text-white">{Math.round(((3*my_kelly)+varx)*100/(1+varx))}</span></td>
+                    <td><span class="tag is-large bg-error text-white">{Math.round((1 - ((3*my_kelly+varx)/(1+varx)))*100)}</span></td>
                 </tr>
             </tbody>
         </table>
