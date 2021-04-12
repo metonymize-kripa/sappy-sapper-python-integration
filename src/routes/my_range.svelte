@@ -131,3 +131,6 @@
 <button class="pull-left button primary" on:click={get_portfolio_data()}>
     Get Data
 </button>
+<br><br>
+<b>Price Percentile:</b> Using 52week price data. Percentile is of the rolling weekly price change percentile<br>
+<b>Volume Percentile:</b> Percentile uses 10 days volume. Current volume is normalized for trading hour.
