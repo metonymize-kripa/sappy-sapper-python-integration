@@ -20,6 +20,25 @@
         table_list.push({"symbol":symbol_list[i],"call_1wk":"NA","call_2wk":"NA","call_4wk":"NA"});
     }
     function get_portfolio_data() {
+		fetch("https://www.insuremystock.com/helper/brad")
+		.then(d => d.text())
+		.then(function(d) {
+
+			var my_dict = JSON.parse(d);
+			for (var k = 0; k < table_list.length; k++)
+			{
+				var my_vals = my_dict[table_list[k].symbol.toUpperCase()];
+				console.log(my_vals);
+
+				if (my_vals[0].strike > 0)
+					table_list[k].call_1wk = "$"+my_vals[0].strike+"("+my_vals[0].expiry+"): $"+my_vals[0].bid+"-$"+my_vals[0].ask;
+				if (my_vals[1].strike > 0)
+					table_list[k].call_2wk = "$"+my_vals[1].strike+"("+my_vals[1].expiry+"): $"+my_vals[1].bid+"-$"+my_vals[1].ask;
+				if (my_vals[2].strike > 0)
+					table_list[k].call_4wk = "$"+my_vals[2].strike+"("+my_vals[2].expiry+"): $"+my_vals[2].bid+"-$"+my_vals[2].ask;
+			}
+		  });
+		 /*
         for(var i = 0; i < table_list.length; i++)
         {
         fetch("https://www.insuremystock.com/options/call_trades/"+table_list[i]['symbol'])
@@ -68,6 +87,7 @@
 
 
          }
+		 */
     }
 </script>
 

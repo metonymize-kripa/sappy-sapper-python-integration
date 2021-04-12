@@ -110,7 +110,7 @@
           <th>1Wk</th>
           <th>2Wk</th>
           <th>Price %ile</th>
-          <th>Volume %ile</th>
+          <th>Volume Rank</th>
 
         </tr>
     </thead>
@@ -121,7 +121,7 @@
                 <td>{range_1wk}</td>
                 <td>{range_2wk}</td>
                 <td>{price_perc}</td>
-                <td>{volume_perc}</td>
+                <td>{Math.round(volume_perc/10)}</td>
             </tr>
 
         {/each}
@@ -132,5 +132,5 @@
     Get Data
 </button>
 <br><br>
-<b>Price Percentile:</b> Using 52week price data. Percentile is of the rolling weekly price change percentile<br>
-<b>Volume Percentile:</b> Percentile uses 10 days volume. Current volume is normalized for trading hour.
+<b>Price %ile:</b>  Price change in last week, as percentile, over last 52 weeks of such changes.<br>
+<b>Volume Rank:</b> Rank of Current daily volume, over last 10 days of daily data. 10 is the highest, 0 the lowest
