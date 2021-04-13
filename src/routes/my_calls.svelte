@@ -103,7 +103,6 @@
 
           <th>Symbol</th>
           <th>1Wk</th>
-          <th>2Wk</th>
           <th>4Wk</th>
 
         </tr>
@@ -113,7 +112,6 @@
             <tr class="bullish">
                 <td>{symbol}</td>
                 <td>{call_1wk}</td>
-                <td>{call_2wk}</td>
                 <td>{call_4wk}</td>
             </tr>
 
