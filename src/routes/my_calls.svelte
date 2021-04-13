@@ -89,6 +89,7 @@
          }
 		 */
     }
+	get_portfolio_data();
 </script>
 
 <h1>Optimal OTM Calls to Sell</h1>
@@ -120,6 +121,8 @@
     </tbody>
 </table>
 <br>
+<!--
 <button class="pull-left button primary" on:click={get_portfolio_data()}>
     Get Data
 </button>
+-->
