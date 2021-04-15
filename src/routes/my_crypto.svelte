@@ -52,28 +52,28 @@
                     {
 					   if (my_dict.price > 100)
 					   	{
-							table_list[k].price = Math.round(my_dict.price);
+							table_list[k].price = currencyFormat(my_dict.price,0);
 							table_list[k].range = '$'+currencyFormat(my_dict.low_range,0)+" - $"+currencyFormat(my_dict.high_range,0);
 						}
 					   else if (my_dict.price > 10)
 					   {
-					   		table_list[k].price = (my_dict.price).toFixed(2);
+					   		table_list[k].price = currencyFormat(my_dict.price,2);
 							table_list[k].range = '$'+currencyFormat(my_dict.low_range,2)+" - $"+currencyFormat(my_dict.high_range,2);
 						}
 					   else if (my_dict.price > 2)
 					   {
-						   	table_list[k].price = (my_dict.price).toFixed(3);
+						   	table_list[k].price = currencyFormat(my_dict.price,3);
 							table_list[k].range = '$'+currencyFormat(my_dict.low_range,3)+" - $"+currencyFormat(my_dict.high_range,3);
 						}
 						else if (my_dict.price > 0.1)
 						{
 	  						table_list[k].price = (my_dict.price).toFixed(4);
-							table_list[k].range = '$'+currencyFormat(my_dict.low_range,4)+" - $"+currencyFormat(my_dict.high_range,4);
+							table_list[k].range = '$'+(my_dict.low_range).toFixed(4)+" - $"+(my_dict.high_range).toFixed(4);
 					    }
 						else
 						{
 							table_list[k].price = (my_dict.price).toFixed(6);
-							table_list[k].range = '$'+currencyFormat(my_dict.low_range,6)+" - $"+currencyFormat(my_dict.high_range,6);
+							table_list[k].range = '$'+(my_dict.low_range).toFixed(6)+" - $"+(my_dict.high_range).toFixed(6);
 						}
 						table_list[k].volume_pct = (my_dict.today_volume/my_dict.avg_10d_volume).toFixed(2);
 						table_list[k].wedge = (Math.random()*100).toFixed(2);
@@ -86,7 +86,7 @@
 
     }
 
-/*get_portfolio_data();*/
+get_portfolio_data();
 
 </script>
 
