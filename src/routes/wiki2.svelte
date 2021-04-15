@@ -21,13 +21,13 @@
     const { host, path, params, query } = $page;
 	let ticker = 'SPY';
     ticker = ticker.toUpperCase();
-    let my_kelly = "Fetching..";
+    let my_kelly = "no";
     let api_output = {};
     let post_url = encodeURIComponent("https://social.oracled.com/?symbol=");
     let post_title =  encodeURIComponent("Check it out: I just FOMO optimized ");
     let gain_chance= "NA";
     let gain_class = "dark";
-    let range = "Fetching.."; 
+    let range = "no"; 
     let price = 0;
     let desc = "NA"
     let count = 0;
@@ -44,7 +44,7 @@
                         my_kelly="error";
                     else
                     {
-                        my_kelly = (api_output.kelly_k*100).toFixed(2);
+                        my_kelly = api_output.kelly_k;
                         gain_chance = +(api_output.prob_up*100).toFixed(2);
                        
                         if (gain_chance > 52)
@@ -177,12 +177,6 @@
       background: #3f4144;
       color: white;
     }
-
-    .fa-heart {
-      background: white;
-     
-    }
-
     .fa-copy {
       background: #3f4144;
       color: white;
@@ -196,8 +190,8 @@
 </style>
 <main>
 <div class="row">
-    <div class="col-12" >
-        {#if my_kelly == 'Fetching..' }
+    <div class="col-12 " >
+        {#if my_kelly == 'no' }
         <header>
           <h4>Oracle is thinking .....</h4>
         </header>
@@ -211,50 +205,43 @@
         </header>
         {/if}
     </div>
-</div>
-<div class="row card">    
-        <div class="col-6" >
-            <h2 style="font-size:4rem;margin:0; color:#00f;font-weight:700">{ticker} (${price})</h2>
-           
+    {#if my_kelly != 'no' && my_kelly != 'error' }
+        <div class="col-12 card" >
+            <h2 style="font-size:3rem;margin:0; ">{ticker} (${price})</h2>
+             Oracle says limit your allocation in {desc} to:
+            <h2 style="color:#00f;margin:0;font-weight:700;font-size:3rem;">{currencyFormat(my_kelly*100,2)}%</h2>
         </div>
-        <div class="col-3 is-vertical-align is-center" style="font-size:3rem;" >
-                <button style="margin:0.1rem; padding:0.2rem;background:white;" on:click={handleUpVote}>👍🏼</button>
-                {count}
-                <button style="margin:0.1rem; padding:0.2rem; background:white" on:click={handleDownVote}>👎🏼</button>
+        <div class="col-12 card" >
+        Oracle looked at the option markets and thinks that stock will stay within this range in the next week. 
+        <h2 style="color:#00f;margin:0;font-weight:700;font-size:3rem;">{range}</h2>
         </div>
-        <div class="col-3 is-vertical-align is-center fa fa-heart" style="font-size:{2+count/15}rem;color:hsla(360, 100%, 50%, {0.1+count/20})" >
-               
+        <div class="col-9 card" >
+            <p style="font-weight:300" class="text-left">Oracle looked at the option markets and thinks that <span style="color:#00f;font-weight:500">{desc}</span> stock, currently at <span style="color:green;font-weight:500">${price}</span> will stay within <span style="color:purple;font-weight:500">{range}</span> range in the coming week. If you really are thinking about buying this stock, oracle would urge not to put in more than {currencyFormat(my_kelly*100,2)}% of your money into it. The best call to sell would be blah blah and if you are thinking of selling put might the oracle suggest blah blah.</p>
         </div>
-
-</div>
-<br>
-<div class="row ">
-    <div class="col-6 ">
-        <h2 style="margin:0;font-weight:700;font-size:2.5rem;">1Wk Range:</h2><h2 style="color:purple;margin:0;font-weight:700;font-size:2.5rem;">{range}</h2>
-    </div>
-    <div class="col-6 ">
-        <h2 style="margin:0;font-weight:700;font-size:2.5rem;">Optimal Allocation:</h2> <h2 style="color:pink;margin:0;font-weight:700;font-size:2.5rem;">{my_kelly}%</h2>
-     </div>
-</div>
-<div class="row ">
-        <div class='col-1'></div>
+        <div class="col-3 card" >
+        <button style="margin:0.1rem; padding:0.2rem;background:white;" on:click={handleUpVote}>👍🏼</button>
+        {count}
+        <button style="margin:0.1rem; padding:0.2rem; background:white" on:click={handleDownVote}>👎🏼</button>
+        </div>
+        <div class="col-12 card" >
+            <p style="font-weight:300;" class="text-left">Oracle looked at the option markets and thinks that <span style="color:#00f;font-weight:500">{desc}</span> stock, currently at <span style="color:green;font-weight:500">${price}</span> will stay within <span style="color:purple;font-weight:500">{range}</span> range in the coming week. If you really are thinking about buying this stock, oracle would urge not to put in more than {currencyFormat(my_kelly*100,2)}% of your money into it. The best call to sell would be blah blah and if you are thinking of selling put might the oracle suggest blah blah.</p>
+             <button style="margin:0.1rem; padding:0.2rem;" on:click={handleUpVote}>👍🏼</button>
+        {count}
+        <button style="margin:0.1rem; padding:0.2rem;" on:click={handleDownVote}>👎🏼</button>
+        </div>
+        <div class="col-1" ></div>
         <div class="col-10" >
             <iframe width="100%" height="412"  src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
         </div>
-</div>
-<div class="row ">
-    <div class='col-1'></div>
-        <div class="col-10 card" >
+        <div class="col-12 card" >
             <a href="https://reddit.com/submit?url={post_url}{ticker}&title={post_title}{ticker}" class="fa fa-reddit pull-left"></a>
             <a href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags=fomo,oracled.com" class="fa fa-twitter pull-left"></a>
             <a href="https://api.whatsapp.com/send?text={post_title}{ticker} {post_url}{ticker}" class="fa fa-whatsapp pull-left"></a>
             <a href="" on:click={copyurl("https://social.oracled.com/?symbol="+ticker)} class="fa fa-copy pull-left"></a>
-            <div class="clearfix text-left" style="margin:6rem 0 0 0;">
-            Copy And trade on:
-            <a class="text-white bg-dark" style="padding:0.2rem;"on:click={updateClipboard((my_kelly*100).toFixed(2))}>Robinhood</a>
-            </div>
+            <br>
+            <button class="text-white bg-dark pull-right" on:click={updateClipboard((my_kelly*100).toFixed(2))}>copy and trade@RH</button>
         </div>
-
+    {/if}
 </div>
 </main>
 

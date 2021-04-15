@@ -17,42 +17,7 @@ let show_entry_card = true;
 let ticker_array_wsb = ['GME ','AMC ','SPY ','PLTR']
 let ticker_array_gvip = ['MELI','TWTR','IAC ','TSLA']
 
-function calculateKelly() {
-        fetch("https://www.insuremystock.com/options/kelly/"+ticker)
-            .then(d => d.text())
-            .then(d => {
-                            api_output = JSON.parse(d);
-                            console.log(api_output);
-                            amt_invest = currencyFormat(api_output.kelly2*portfolio_size);
-                            show_entry_card=false;
-            });
 
-}
-function goback(){
-    show_entry_card = true;
-    visible = true;
-}
-
-function currencyFormat(num) {
-  return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-}
-
-
-if ('symbol' in  query){
-    console.log("here");
-    ticker = query['symbol'];
-    if (process.browser)
-        calculateKelly();
-}
-
-function updateClipboard(newClip) {
-  navigator.clipboard.writeText(newClip).then(function() {
-    visible = false;
-    window.open("https://www.robinhood.com/stocks/"+ticker);
-  }, function() {
-    /* clipboard write failed */
-  });
-}
 </script>
 
 <style>
@@ -64,40 +29,25 @@ function updateClipboard(newClip) {
 </style>
 
 <div class="row">
-    {#if show_entry_card}
-    <div class="card col-8 bg-light" >
+
+    <div class="card col-11 bg-light" >
       <header>
         <h4>Select from popular stock</h4>
         {#each ticker_array_wsb as tx}
-            <button class="secondary button"  style="font:1.5rem;padding:1rem 0.8rem" on:click={e => ticker=tx}>{tx}</button>
+            <a class="secondary button"  style="font:1.5rem;padding:1rem 0.8rem" href="/wiki/?symbol={tx}">{tx}</a>
         {/each}
-        <br>
+        
         {#each ticker_array_gvip as tx}
-            <button class="secondary button"  style="font:1.5rem;padding:1rem 0.8rem" on:click={e => ticker=tx}>{tx}</button>
+            <a class="secondary button"  style="font:1.5rem;padding:1rem 0.8rem" href="/wiki/?symbol={tx}">{tx}</a>
         {/each}
       </header>
       <div class="row">
           <div class="col-6"> Or enter symbol:</div>
-          <div class="col-6"> Your portfolio size $:</div>
       </div>
-      <div class="row">
+       <div class="row">
           <div class="col-6"> <input bind:value={ticker}/></div>
-          <div class="col-6"> <input bind:value={portfolio_size}/></div>
       </div>
-        <button class="button primary" on:click={calculateKelly}>Calculate</button>
+      
+        <a class="button primary" href="/wiki/?symbol={ticker}">Go</a>
     </div>
-    {:else}
-    <div class="card col-8 bg-light" >
-      <header>
-        <h4>Oracle says do not invest more than:</h4>
-      </header>
-        <h2 style="margin-bottom:0;">${amt_invest} in {ticker}</h2>
-        {#if visible}
-        <button class="text-white bg-dark" style="margin:0 0 2rem 0 ;padding:0.5rem; font-size:1.25rem;" on:click={updateClipboard(amt_invest)}>copy and trade@RH</button>
-        {/if}
-<br>
-
-        <button class="button primary" on:click={goback}>Go back</button>
-    </div>
-    {/if}
 </div>
