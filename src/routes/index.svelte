@@ -108,7 +108,7 @@
 
 </script>
 
-<h1>🚀 Welcome Peter!</h1>
+<h1>₿ Welcome Peter!</h1>
 
 <div class="row">
 <div class="grouped col-12">
