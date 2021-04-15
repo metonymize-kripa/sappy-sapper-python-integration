@@ -233,7 +233,7 @@
         <h2 style="margin:0;font-weight:700;font-size:2.5rem;">1Wk Range:</h2><h2 style="color:purple;margin:0;font-weight:700;font-size:2.5rem;">{range}</h2>
     </div>
     <div class="col-6 ">
-        <h2 style="margin:0;font-weight:700;font-size:2.5rem;">Optimal Allocation:</h2> <h2 style="color:pink;margin:0;font-weight:700;font-size:2.5rem;">{my_kelly}%</h2>
+        <h2 style="margin:0;font-weight:700;font-size:2.5rem;">Optimal Allocation:</h2> <h2 style="color:#fb6ea8;margin:0;font-weight:700;font-size:2.5rem;">{my_kelly}%</h2>
      </div>
 </div>
 <div class="row ">
