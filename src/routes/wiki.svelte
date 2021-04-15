@@ -250,7 +250,7 @@
             <a href="https://api.whatsapp.com/send?text={post_title}{ticker} {post_url}{ticker}" class="fa fa-whatsapp pull-left"></a>
             <a href="" on:click={copyurl("https://social.oracled.com/?symbol="+ticker)} class="fa fa-copy pull-left"></a>
             <div class="clearfix text-left" style="margin:6rem 0 0 0;">
-            Copy And trade on:
+            Copy+trade on:
             <a class="text-white bg-dark" style="padding:0.2rem;"on:click={updateClipboard((my_kelly*100).toFixed(2))}>Robinhood</a>
             </div>
         </div>
