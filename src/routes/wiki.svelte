@@ -219,9 +219,9 @@
             <p style="font-weight:300" class="text-left">Oracle looked at the option markets and thinks that <span style="color:#00f;font-weight:500">{desc}</span> stock, currently at <span style="color:green;font-weight:500">${price}</span> will stay within <span style="color:purple;font-weight:500">{range}</span> range in the coming week. If you really are thinking about buying this stock, oracle would urge not to put in more than {currencyFormat(my_kelly*100,2)}% of your money into it. The best call to sell would be blah blah and if you are thinking of selling put might the oracle suggest blah blah.</p>
         </div>
         <div class="col-3 card" >
-        <button style="margin:0.1rem; padding:0.2rem;" on:click={handleUpVote}>👍🏼</button>
+        <button style="margin:0.1rem; padding:0.2rem;background:white;" on:click={handleUpVote}>👍🏼</button>
         {count}
-        <button style="margin:0.1rem; padding:0.2rem;" on:click={handleDownVote}>👎🏼</button>
+        <button style="margin:0.1rem; padding:0.2rem; background:white" on:click={handleDownVote}>👎🏼</button>
         </div>
         <div class="col-12 card" >
             <p style="font-weight:300;" class="text-left">Oracle looked at the option markets and thinks that <span style="color:#00f;font-weight:500">{desc}</span> stock, currently at <span style="color:green;font-weight:500">${price}</span> will stay within <span style="color:purple;font-weight:500">{range}</span> range in the coming week. If you really are thinking about buying this stock, oracle would urge not to put in more than {currencyFormat(my_kelly*100,2)}% of your money into it. The best call to sell would be blah blah and if you are thinking of selling put might the oracle suggest blah blah.</p>
