@@ -76,8 +76,19 @@
 							table_list[k].range = '$'+(my_dict.low_range).toFixed(6)+" - $"+(my_dict.high_range).toFixed(6);
 						}
 						table_list[k].volume_pct = (my_dict.today_volume/my_dict.avg_10d_volume).toFixed(2);
-						table_list[k].wedge = (Math.random()*100).toFixed(2);
-						table_list[k].ascending_triangle = (Math.random()*100).toFixed(2)
+                        table_list[k].wedge = (my_dict.low_slope - my_dict.high_slope);
+                        if ( (my_dict.low_slope > my_dict.high_slope) && my_dict.high_slope <0.0001)
+                            table_list[k].wedge += 0.2;
+                        table_list[k].wedge = (table_list[k].wedge*1000).toFixed(2);
+                        if ( my_dict.high_slope <0.01 &&  my_dict.high_slope > 0.01)
+                            {
+                                if (my_dict.low_slope>0.02)
+                                    table_list[k].ascending_triangle = 0.5+my_dict.low_slope*10;
+                            }
+                        else{table_list[k].ascending_triangle = -1+my_dict.low_slope-my_dict.high_slope;}
+                        
+                    
+
 
                     }
                 }
@@ -100,7 +111,7 @@ get_portfolio_data();
           <th class="no-emphasis">Price</th>
           <th class="no-emphasis">Range</th>
           <th class="no-emphasis">Vol🔱</th>
-		  <th class="emphasis">Wedge</th>
+		  <th class="emphasis">Wedge*</th>
 		  <th class="emphasis">🔼📐</th>
 
         </tr>
@@ -113,7 +124,7 @@ get_portfolio_data();
                 <td class="no-emphasis">{range}</td>
                 <td class="no-emphasis">{volume_pct}</td>
 				<td class="emphasis">{wedge}%</td>
-				<td class="emphasis">{ascending_triangle}%</td>
+				<td class="emphasis">{(ascending_triangle*100).toFixed(2)}%</td>
             </tr>
 
         {/each}
@@ -124,6 +135,7 @@ get_portfolio_data();
     Fetch/Sort
 </button>
 <br><br><br>
-🔼📐- Chance of Ascending Triangle Forming
+🔼📐- Chance that the coin is in Ascending Triangle Formation. Long Term Foramtion (one month) 
 <br>
+* - Chance that the coin is in Downward Wedge Formation. Long Term Foramtion (one month)
 🔱 - Today's volume as a ratio of 10 day average
