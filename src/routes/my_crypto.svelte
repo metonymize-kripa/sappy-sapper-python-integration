@@ -109,9 +109,9 @@ get_portfolio_data();
         <tr>
           <th class="emphasis">Symbol</th>
           <th class="no-emphasis">Price</th>
-          <th class="no-emphasis">Range</th>
+          <th class="no-emphasis">Range🧰</th>
           <th class="no-emphasis">Vol🔱</th>
-		  <th class="emphasis">Wedge*</th>
+		  <th class="emphasis">Wedge🏁</th>
 		  <th class="emphasis">🔼📐</th>
 
         </tr>
@@ -135,8 +135,9 @@ get_portfolio_data();
     Fetch/Sort
 </button>
 <br><br><br>
-Range - Most likely one wek range given past month performance 
+🧰 - Most likely one week range given past month performance 
+<br>
 🔼📐- Chance that the coin is in Ascending Triangle Formation. Long Term Foramtion (one month) 
 <br>
-* - Chance that the coin is in Downward Wedge Formation. Long Term Foramtion (one month)
+🏁 - Chance that the coin is in Downward Wedge Formation. Long Term Foramtion (one month)
 🔱 - Today's volume as a ratio of 10 day average
