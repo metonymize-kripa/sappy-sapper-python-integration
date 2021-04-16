@@ -30,7 +30,7 @@
     let range = "Fetching.."; 
     let price = 0;
     let desc = "NA"
-    let count = 0;
+    let count = 9;
     function calculateKelly() {
             my_kelly = "no";
             ticker = ticker.toUpperCase();
@@ -120,27 +120,21 @@
 	main {
 		text-align: center;
 		padding: 1em;
-		max-width: 400px;
+		max-width: 800px;
 		margin: 0 auto;
 	}
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
 
-	@media (min-width: 640px) {
+	@media (min-width: 800px) {
 		main {
 			max-width: none;
 		}
 	}
 
     .fa {
-      padding: 1rem;
+      padding: 0.5rem;
       font-size: 1.5rem;
-      width: 4rem;
+      width: 3rem;
       text-align: center;
     }
 
@@ -193,6 +187,7 @@
 <main>
 
 {#if my_kelly == 'Fetching..' }
+
 <header>
   <h4 class="title is-4">Oracle is thinking .....</h4>
 </header>
@@ -205,19 +200,24 @@
   <h4 class="title is-4">The 💎Oracle's Says:</h4>
 </header>
 {/if}
-
+<br>
 <div class="tile is-ancestor">    
     <div class="tile is-parent is-12" >
-        <div class="tile is-child notification is-8" >
-            <h2 style="font-size:4rem;margin:0; color:#00f;font-weight:700">{ticker} (${price})</h2>
+        <div class="tile is-child notification is-warning is-8" >
+            <h2 style="font-size:3rem;margin:0; color:#00f;font-weight:700">{ticker} (${price})</h2>
             {desc}
         </div>
-        <div class="tile is-child notification is-primary is-4" >
-             <button  on:click={handleUpVote}>👍🏼</button>
+        <div class="tile is-child notification is-link  is-4" >
+             <button style="border:none;background:none;color:#eae5a3;"on:click={handleUpVote}><i style="font-size: 2rem;" class="fa fa-thumbs-up" aria-hidden="true"></i></button>
             {count}
-            <button style="margin:0.1rem; padding:0.2rem; background:white" on:click={handleDownVote}>👎🏼</button>
+            <button style="border:none;background:none;color:#eae5a3;" on:click={handleDownVote}><i style="font-size: 2rem;" class="fa fa-thumbs-down" aria-hidden="true"></button>
             <br>
-            <span class="col-3 is-vertical-align is-center fa fa-heart" style="font-size:{1+count/15}rem;color:hsla(360, 100%, 50%, {0.1+count/20})" ></span>
+
+            {#if count > -1}
+                <span class="col-3 is-vertical-align is-center fa fa-heart" style="font-size:{1.5+Math.min(count,15)/15}rem;color:hsla(360, 100%, 50%, {0.1+count/20})" ></span>
+            {:else}
+                <span class="col-3 is-vertical-align is-center fa fa-angle-double-down" style="font-size:{1.5+Math.min(-count,15)/15}rem;color:hsla(360, 100%, 50%, {0.1-count/20})" ></span>
+            {/if}
         </div>
     </div>
 </div>
