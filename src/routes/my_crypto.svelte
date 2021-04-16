@@ -139,6 +139,6 @@ get_portfolio_data();
 <br>
 🔼📐- Chance that the coin is in Ascending Triangle Formation. Long Term Foramtion (one month) 
 <br>
-🏁 - Chance that the coin is in Downward Wedge Formation. Long Term Foramtion (one month)
+🏁 - Chance that the coin is in Downward Wedge Formation. Long Term Foramtion (one month). 
 <br>
 🔱 - Today's volume as a ratio of 10 day average
