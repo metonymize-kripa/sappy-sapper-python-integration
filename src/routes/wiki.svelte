@@ -30,7 +30,7 @@
     let range = "Fetching.."; 
     let price = 0;
     let desc = "NA"
-    let count = 0;
+    let count = 11;
     function calculateKelly() {
             my_kelly = "no";
             ticker = ticker.toUpperCase();
