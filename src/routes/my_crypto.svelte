@@ -135,6 +135,7 @@ get_portfolio_data();
     Fetch/Sort
 </button>
 <br><br><br>
+Range - Most likely one wek range given past month performance 
 🔼📐- Chance that the coin is in Ascending Triangle Formation. Long Term Foramtion (one month) 
 <br>
 * - Chance that the coin is in Downward Wedge Formation. Long Term Foramtion (one month)
