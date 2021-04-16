@@ -1,6 +1,6 @@
 <svelte:head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/chota@latest">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
 </svelte:head>
 <!--
 <script context="module">
@@ -178,16 +178,12 @@
       color: white;
     }
 
-    .fa-heart {
-      background: white;
-     
-    }
 
     .fa-copy {
       background: #3f4144;
       color: white;
     }
-    .card{
+    .t-card{
         border-radius:2rem;
         border: 1px solid #eaeaea;
         box-shadow:none;
@@ -195,66 +191,60 @@
     }
 </style>
 <main>
-<div class="row">
-    <div class="col-12" >
-        {#if my_kelly == 'Fetching..' }
-        <header>
-          <h4>Oracle is thinking .....</h4>
-        </header>
-        {:else if my_kelly =="error"}
-        <header>
-          <h4>The 💎Oracle thought deep, but couldn't for shame my promise keep</h4>
-        </header>
-        {:else}
-        <header>
-          <h4>The 💎Oracle's Says:</h4>
-        </header>
-        {/if}
-    </div>
-</div>
-<div class="row card">    
-        <div class="col-6" >
+
+{#if my_kelly == 'Fetching..' }
+<header>
+  <h4 class="title is-4">Oracle is thinking .....</h4>
+</header>
+{:else if my_kelly =="error"}
+<header>
+  <h4 class="title is-4">The 💎Oracle thought deep, but couldn't for shame my promise keep</h4>
+</header>
+{:else}
+<header>
+  <h4 class="title is-4">The 💎Oracle's Says:</h4>
+</header>
+{/if}
+
+<div class="tile is-ancestor">    
+    <div class="tile is-parent is-12" >
+        <div class="tile is-child notification is-8" >
             <h2 style="font-size:4rem;margin:0; color:#00f;font-weight:700">{ticker} (${price})</h2>
-           
+            {desc}
         </div>
-        <div class="col-3 is-vertical-align is-center" style="font-size:3rem;" >
-                <button style="margin:0.1rem; padding:0.2rem;background:white;" on:click={handleUpVote}>👍🏼</button>
-                {count}
-                <button style="margin:0.1rem; padding:0.2rem; background:white" on:click={handleDownVote}>👎🏼</button>
+        <div class="tile is-child notification is-primary is-4" >
+             <button  on:click={handleUpVote}>👍🏼</button>
+            {count}
+            <button style="margin:0.1rem; padding:0.2rem; background:white" on:click={handleDownVote}>👎🏼</button>
+            <br>
+            <span class="col-3 is-vertical-align is-center fa fa-heart" style="font-size:{1+count/15}rem;color:hsla(360, 100%, 50%, {0.1+count/20})" ></span>
         </div>
-        <div class="col-3 is-vertical-align is-center fa fa-heart" style="font-size:{2+count/15}rem;color:hsla(360, 100%, 50%, {0.1+count/20})" >
-               
-        </div>
-
-</div>
-<br>
-<div class="row ">
-    <div class="col-6 ">
-        <h2 style="margin:0;font-weight:700;font-size:2.5rem;">1Wk Range:</h2><h2 style="color:purple;margin:0;font-weight:700;font-size:2.5rem;">{range}</h2>
     </div>
-    <div class="col-6 ">
-        <h2 style="margin:0;font-weight:700;font-size:2.5rem;">Optimal Allocation:</h2> <h2 style="color:#fb6ea8;margin:0;font-weight:700;font-size:2.5rem;">{my_kelly}%</h2>
+</div>
+<div class="tile is-ancestor">
+    <div class="tile is-parent is-4 is-vertical ">
+        <div class="tile is-child is-danger notification ">
+            <h2 style="margin:0;font-weight:700;font-size:2rem;">1Wk Range:</h2><h2 style="color:purple;margin:0;font-weight:700;font-size:2.5rem;">{range}</h2>
+        </div>
+        <div class="tile is-child is-info is-light notification">
+            <h2 style="margin:0;font-weight:700;font-size:2rem;">Optimal Allocation:</h2> <h2 style="color:#fb6ea8;margin:0;font-weight:700;font-size:2.5rem;">{my_kelly}%</h2>
+        </div>  
      </div>
+    <div class="tile is-parent is-vertical ">
+        <iframe width="100%" height="420"  src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
+    </div>
 </div>
-<div class="row ">
-        <div class='col-1'></div>
-        <div class="col-10" >
-            <iframe width="100%" height="412"  src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
-        </div>
-</div>
-<div class="row ">
-    <div class='col-1'></div>
-        <div class="col-10 card" >
-            <a href="https://reddit.com/submit?url={post_url}{ticker}&title={post_title}{ticker}" class="fa fa-reddit pull-left"></a>
-            <a href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags=fomo,oracled.com" class="fa fa-twitter pull-left"></a>
-            <a href="https://api.whatsapp.com/send?text={post_title}{ticker} {post_url}{ticker}" class="fa fa-whatsapp pull-left"></a>
-            <a href="" on:click={copyurl("https://social.oracled.com/?symbol="+ticker)} class="fa fa-copy pull-left"></a>
-            <div class="clearfix text-left" style="margin:6rem 0 0 0;">
-            Copy+trade on:
-            <a class="text-white bg-dark" style="padding:0.2rem;"on:click={updateClipboard((my_kelly*100).toFixed(2))}>Robinhood</a>
-            </div>
-        </div>
+<div class="tile is-ancestor">
+  <div class="tile is-parent is-12" >
+        <div class="tile is-child is-1"><a href="https://reddit.com/submit?url={post_url}{ticker}&title={post_title}{ticker}" class="fa fa-reddit pull-left"></a></div>
+        <div class="tile is-child is-1"><a href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags=fomo,oracled.com" class="fa fa-twitter pull-left"></a></div>
+        <div class="tile is-child is-1"><a href="https://api.whatsapp.com/send?text={post_title}{ticker} {post_url}{ticker}" class="fa fa-whatsapp pull-left"></a></div>
+        <div class="tile is-child is-1"><a href="" on:click={copyurl("https://social.oracled.com/?symbol="+ticker)} class="fa fa-copy pull-left"></a></div>
+        <div class="tile is-child "><a class="button is-danger" on:click={updateClipboard((my_kelly*100).toFixed(2))}>Trade@Robinhood</a></div>
+    </div>
 
 </div>
+
+
 </main>
 
