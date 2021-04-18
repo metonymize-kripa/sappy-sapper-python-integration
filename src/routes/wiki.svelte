@@ -197,7 +197,7 @@
 </header>
 {:else}
 <header>
-  <h4 class="title is-4">The 💎Oracle's Says:</h4>
+  <h4 class="title is-4">The 💎Oracle Says:</h4>
 </header>
 {/if}
 <br>
