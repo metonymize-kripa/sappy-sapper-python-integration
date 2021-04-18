@@ -240,7 +240,7 @@
         <div class="tile is-child is-1"><a href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags=fomo,oracled.com" class="fa fa-twitter pull-left"></a></div>
         <div class="tile is-child is-1"><a href="https://api.whatsapp.com/send?text={post_title}{ticker} {post_url}{ticker}" class="fa fa-whatsapp pull-left"></a></div>
         <div class="tile is-child is-1"><a href="" on:click={copyurl("https://social.oracled.com/?symbol="+ticker)} class="fa fa-copy pull-left"></a></div>
-        <div class="tile is-child "><a class="button is-danger" on:click={updateClipboard((my_kelly*100).toFixed(2))}>Trade@Robinhood</a></div>
+        <div class="tile is-child "><a class="button is-danger" on:click={updateClipboard((my_kelly*100).toFixed(2))}>CopyTrade@Robinhood</a></div>
     </div>
 
 </div>
