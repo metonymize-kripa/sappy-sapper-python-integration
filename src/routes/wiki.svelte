@@ -95,9 +95,17 @@
 
 	
 	function handleUpVote() {
+        fetch('https://www.insuremystock.com/stocks/setvote/'+ticker+'/?user=anon&vote_up=1',
+        {
+            method:"PUT",
+            headers: {
+                'Content-Type': 'application/json',
+              },
+        }).then(data => console.log(data));
 		count += 1;
 	}
 	function handleDownVote() {
+        fetch('https://www.insuremystock.com/stocks/setvote/'+ticker+'/?user=anon@anon.com&vote_down=1');
 		count -= 1;
 	}
     
