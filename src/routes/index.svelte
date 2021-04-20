@@ -27,7 +27,7 @@ let ticker_array_gvip = ['MELI','TWTR','IAC ','TSLA']
 <div class="columns card">
     <div class="column is-full" >
       <header class="title is-4">
-        <h4>Select from popular stock</h4>
+        <h4>Select from hot stock picks</h4>
         {#each ticker_array_wsb as tx}
             <a class="is-link button"  href="/wiki/?symbol={tx}">{tx}</a>
         {/each}
