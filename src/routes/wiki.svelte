@@ -22,6 +22,8 @@
 	let ticker = 'SPY';
     ticker = ticker.toUpperCase();
     let my_kelly = "Fetching..";
+    let fat_kelly = "Fetching..";
+    let friend_kelly = "Fetching..";
     let api_output = {};
     let post_url = encodeURIComponent("https://social.oracled.com/?symbol=");
     let post_title =  encodeURIComponent("Check it out: I just FOMO optimized ");
@@ -31,6 +33,8 @@
     let price = 0;
     let desc = "NA"
     let count = 9;
+    let varx = 0;
+   
     function calculateKelly() {
             my_kelly = "no";
             ticker = ticker.toUpperCase();
@@ -44,33 +48,21 @@
                         my_kelly="error";
                     else
                     {
-                        my_kelly = (api_output.kelly_k*100).toFixed(2);
+                        my_kelly = +(api_output.kelly_k*100).toFixed(2);
+                        fat_kelly = +(api_output.kelly_k*100).toFixed(2);
+                        friend_kelly = +(api_output.kelly_k*100).toFixed(2)-2.3;
                         gain_chance = +(api_output.prob_up*100).toFixed(2);
                        
                         if (gain_chance > 52)
                             gain_class = "success";
                         else if (gain_chance < 49)
                             gain_class = "error";
-                       
-                    }
-                });
-                fetch("https://www.insuremystock.com/options/range/"+ticker)
-                .then(d => d.text())
-                .then(d =>
-                {
-                    api_output = JSON.parse(d);
-                    console.log(api_output);
-                    if ('error' in api_output)
-                        range="error";
-                    else
-                    {
-                        range = "$"+currencyFormat(api_output.low_range,0)+" - $"+currencyFormat(api_output.high_range,0);
-                        price = +(api_output.price).toFixed(2);
-                        desc = api_output.desc;
+                        varx = api_output.prob_down_n/api_output.prob_up_n;
 
                        
                     }
                 });
+
     }
 
     function currencyFormat(num,decimals) {
@@ -203,36 +195,36 @@
 <br>
 <div class="tile is-ancestor">    
     <div class="tile is-parent is-12" >
-        <div class="tile is-child notification is-warning is-8" >
-            <h2 style="font-size:3rem;margin:0; color:#00f;font-weight:700">{ticker} (${price})</h2>
-            {desc}
-        </div>
-        <div class="tile is-child notification is-link  is-4" >
-             <button style="border:none;background:none;color:#eae5a3;"on:click={handleUpVote}><i style="font-size: 2rem;" class="fa fa-thumbs-up" aria-hidden="true"></i></button>
-            {count}
-            <button style="border:none;background:none;color:#eae5a3;" on:click={handleDownVote}><i style="font-size: 2rem;" class="fa fa-thumbs-down" aria-hidden="true"></button>
-            <br>
-
-            {#if count > -1}
-                <span class="col-3 is-vertical-align is-center fa fa-heart" style="font-size:{1.5+Math.min(count,15)/15}rem;color:hsla(360, 100%, 50%, {0.1+count/20})" ></span>
-            {:else}
-                <span class="col-3 is-vertical-align is-center fa fa-angle-double-down" style="font-size:{1.5+Math.min(-count,15)/15}rem;color:hsla(360, 100%, 50%, {0.1-count/20})" ></span>
-            {/if}
+        <div class="tile is-child is-vertical is-11" >
+            <iframe width="100%" height="420" src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
+      </div>
+    </div>
+</div>
+<div class="tile is-ancestor">
+    <div class="tile is-parent is-12  ">
+        <div class="tile is-child is-12 is-success notification ">
+            <h2 style="margin:0;font-weight:700;font-size:2rem;color:blue;">My Rating:</h2>
+            <h2 style="color:#480548;margin:0;font-weight:700;font-size:2.5rem;">{my_kelly}</h2>
+            <input bind:value={my_kelly} type="range" min="-10" max="10" step="1" style="width:60%;margin:0 auto;font-size:2rem;">
+            <p class="has-text-right">Chance:{Math.round((((3*my_kelly+varx)/(1+varx)))*100)}%</p>
         </div>
     </div>
 </div>
 <div class="tile is-ancestor">
-    <div class="tile is-parent is-4 is-vertical ">
-        <div class="tile is-child is-danger notification ">
-            <h2 style="margin:0;font-weight:700;font-size:2rem;">1Wk Range:</h2><h2 style="color:purple;margin:0;font-weight:700;font-size:2.5rem;">{range}</h2>
+    <div class="tile is-parent is-12  ">
+        <div class="tile is-child is-6 is-danger notification ">
+            <h2 style="margin:0;font-weight:700;font-size:2rem;">FatTony Says:</h2>
+            <h2 style="color:#480548;margin:0;font-weight:700;font-size:2.5rem;">{fat_kelly}</h2>
+            <input bind:value={fat_kelly} type="range" min="-10" max="10" step="1" style="width:60%;margin:0 auto;font-size:2rem;">
+            <p class="has-text-right">Chance:{Math.round(gain_chance)}%</p>
         </div>
-        <div class="tile is-child is-info is-light notification">
-            <h2 style="margin:0;font-weight:700;font-size:2rem;">Optimal Allocation:</h2> <h2 style="color:#fb6ea8;margin:0;font-weight:700;font-size:2.5rem;">{my_kelly}%</h2>
+        <div class="tile is-child is-6 is-info  notification">
+            <h2 style="margin:0;font-weight:700;font-size:2rem;">Friends Say:</h2> 
+            <h2 style="color:#6d114c;margin:0;font-weight:700;font-size:2.5rem;">{friend_kelly}%</h2>
+            <input bind:value={friend_kelly} type="range" min="-10" max="10" step="1" style="width:60%;margin:0 auto;font-size:2rem;">
+            <p class="has-text-right">Chance:{Math.round(gain_chance-3)}%</p>
         </div>  
      </div>
-    <div class="tile is-parent is-vertical ">
-        <iframe width="100%" height="420"  src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
-    </div>
 </div>
 <div class="tile is-ancestor">
   <div class="tile is-parent is-12" >
@@ -240,7 +232,7 @@
         <div class="tile is-child is-1"><a href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags=fomo,oracled.com" class="fa fa-twitter pull-left"></a></div>
         <div class="tile is-child is-1"><a href="https://api.whatsapp.com/send?text={post_title}{ticker} {post_url}{ticker}" class="fa fa-whatsapp pull-left"></a></div>
         <div class="tile is-child is-1"><a href="" on:click={copyurl("https://social.oracled.com/?symbol="+ticker)} class="fa fa-copy pull-left"></a></div>
-        <div class="tile is-child "><a class="button is-danger" on:click={updateClipboard((my_kelly*100).toFixed(2))}>CopyTrade@Robinhood</a></div>
+        <div class="tile is-child has-text-right"><a class="button is-danger text-left" on:click={updateClipboard((my_kelly*100).toFixed(2))}>Trade</a></div>
     </div>
 
 </div>
