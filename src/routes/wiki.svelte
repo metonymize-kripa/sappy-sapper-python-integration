@@ -95,17 +95,25 @@
 
 	
 	function handleUpVote() {
-        fetch('https://www.insuremystock.com/stocks/setvote/'+ticker+'/?user=anon&vote_up=1',
+        fetch('https://www.insuremystock.com/stocks/setvotes/'+ticker+'/?user=anon@anon.com&vote_up=1',
         {
             method:"PUT",
             headers: {
                 'Content-Type': 'application/json',
               },
-        }).then(data => console.log(data));
+            
+        }).then(d => console.log(d.text()));
 		count += 1;
 	}
 	function handleDownVote() {
-        fetch('https://www.insuremystock.com/stocks/setvote/'+ticker+'/?user=anon@anon.com&vote_down=1');
+        fetch('https://www.insuremystock.com/stocks/setvotes/'+ticker+'/?user=anon@anon.com&vote_down=1',
+        {
+            method:"PUT",
+            headers: {
+                'Content-Type': 'application/json',
+              },
+            
+        }).then(d => console.log(d.text()));
 		count -= 1;
 	}
     
