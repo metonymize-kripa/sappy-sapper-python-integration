@@ -119,14 +119,16 @@ if (process.browser)
     </thead>
     <tbody>
         {#each table_list as {symbol,price,range,volume_pct,wedge,ascending_triangle}, i}
+            
             <tr >
-                <td class="emphasis"> {symbol}</td>
+                <a href="https://www.tradingview.com/symbols/{symbol.replace('-','')}" target="_blank" ><td class="emphasis"> {symbol}</td></a>
                 <td class="no-emphasis">${price}</td>
                 <td class="no-emphasis">{range}</td>
                 <td class="no-emphasis">{volume_pct}</td>
-				<td class="emphasis">{wedge}%</td>
-				<td class="emphasis">{(ascending_triangle*100).toFixed(2)}%</td>
+				<a href="https://www.tradingview.com/symbols/{symbol.replace('-','')}" target="_blank" ><td class="emphasis">{wedge}%</td></a>
+				<a href="https://www.tradingview.com/symbols/{symbol.replace('-','')}" target="_blank" ><td class="emphasis">{(ascending_triangle*100).toFixed(2)}%</td></a>
             </tr>
+            
 
         {/each}
     </tbody>
