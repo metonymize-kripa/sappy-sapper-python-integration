@@ -114,7 +114,7 @@ if (process.browser)
           <th class="no-emphasis">Vol🔱</th>
 		  <th class="emphasis">Wedge🏁</th>
 		  <th class="emphasis">🔼📐</th>
-
+          <th class="no-emphasis">Chart</th>
         </tr>
     </thead>
     <tbody>
@@ -125,8 +125,9 @@ if (process.browser)
                 <td class="no-emphasis">${price}</td>
                 <td class="no-emphasis">{range}</td>
                 <td class="no-emphasis">{volume_pct}</td>
-				<a href="https://www.tradingview.com/symbols/{symbol.replace('-','')}" target="_blank" ><td class="emphasis">{wedge}%</td></a>
-				<a href="https://www.tradingview.com/symbols/{symbol.replace('-','')}" target="_blank" ><td class="emphasis">{(ascending_triangle*100).toFixed(2)}%</td></a>
+				<td class="emphasis">{wedge}%</td>
+				<td class="emphasis">{(ascending_triangle*100).toFixed(2)}%</td>
+				<a href="https://www.tradingview.com/symbols/{symbol.replace('-','')}" target="_blank" ><td class="no-emphasis">Chart</td>
             </tr>
             
 
