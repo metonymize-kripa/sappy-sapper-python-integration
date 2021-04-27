@@ -80,24 +80,25 @@
                         if ( (my_dict.low_slope > my_dict.high_slope) && my_dict.high_slope <0.0001)
                             table_list[k].wedge += 0.2;
                         table_list[k].wedge = (table_list[k].wedge*1000).toFixed(2);
+                        if (table_list[k].wedge <0)
+                            table_list[k].wedge = 0;
                         if ( my_dict.high_slope <0.01 &&  my_dict.high_slope > 0.01)
                             {
                                 if (my_dict.low_slope>0.02)
                                     table_list[k].ascending_triangle = 0.5+my_dict.low_slope*10;
                             }
                         else{table_list[k].ascending_triangle = -1+my_dict.low_slope-my_dict.high_slope;}
+                         if (table_list[k].ascending_triangle <0)
+                            table_list[k].ascending_triangle = 0;
                         
-                    
-
-
                     }
                 }
               });
         }
 
     }
-
-get_portfolio_data();
+if (process.browser)
+        get_portfolio_data();
 
 </script>
 
