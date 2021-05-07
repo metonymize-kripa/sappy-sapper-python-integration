@@ -432,7 +432,9 @@ class handler(BaseHTTPRequestHandler):
                       'explain':'',
                       'tag1':'',
                       'tag2':'',
-                      'tag3':'' }
+                      'tag3':'',
+                      'tag4':'',
+                      'tag5':'' }
 
         if "input_cmd" in dic:
             if dic["input_cmd"] == 'WTF':
