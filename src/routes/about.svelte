@@ -13,14 +13,9 @@
 </svelte:head>
 
 <div class="row">
-        <h1>Tactical Speed for the Option Trader</h1>
-        <p>In Q3 2020, Nasdaq’s U.S. options market reached a quarterly record of 660 million contracts traded. This being a 52% increase year-over-year. Options trading is going mainstream.</p>
-        <p>More traders are participating in ways that previously only large sophisticated investors could do (e.g. Gamma+Short Squeeze on GME). They need new tactical tools, enabled with Options data and Social intelligence. Oracled.com helps Option traders make tactical moves like the pros.</p>
-        <p>The tool helps size one week out tactical trades, by ticker. Sign up for personalized alerts to make your tactical Option trading smarter and safer.</p>
+        <h1>Options implied guidance for the Limit Trader</h1>
+        <p>Some longer-term traders are comfortable waiting for a good deal. Limit orders help strategic investors willing to wait fish for "good fills".</p>
+        <p>This tool helps size one week out limit trades. We use Options market premium to estimate the range of price movement, and use it to recommend Limit prices with a 1:5 chance of being filled.</p>
+	<p>For orders that fill, the advantage Vs placing market orders can really add up.</p>
 </div>
 
-<div class="row">
-<h1> Get Oracled via email </h1>
-<iframe width="100%" height="650" src="https://us1.list-manage.com/survey?u=cd4eb9eb314b5da2719efa0b6&id=4dd04bd1c1&e=26ea9ce559" frameborder="0" allowfullscreen>
-</iframe>
-</div>
