@@ -160,6 +160,7 @@
       <a class="text-white bg-primary bd-dark" on:click={getAPIData("range",card_ticker)}  href="">{card_ticker} range </a> - 7 day price range<br>
       <a class="text-white bg-primary bd-dark" on:click={getAPIData("call",card_ticker)} href="">{card_ticker} call</a> - Optimal calls<br>
       <a class="text-white bg-primary bd-dark" on:click={getAPIData("put",card_ticker)} href="">{card_ticker} put</a> - Optimal puts<br>
+      <a class="text-white bg-primary bd-dark" on:click={getAPIData("limit",card_ticker)} href="">{card_ticker} limit</a> - Limit Order<br>
       <a class="text-white bg-primary bd-dark" on:click={getAPIData("doom",card_ticker)} href="">{card_ticker} doom</a> - Prb of stock crash<br>
       <a class="text-white bg-primary bd-dark" on:click={getAPIData("wsb",card_ticker)} href="">{card_ticker} wsb</a> - r/wallstreetbets mentions<br>
       <a class="text-white bg-primary bd-dark" on:click={getAPIData("kelly",card_ticker)} href="">{card_ticker} kelly</a> - Optimal allocation<br>

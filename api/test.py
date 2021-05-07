@@ -143,6 +143,31 @@ def make_range_response(symbol, resp_dict):
         resp_dict['explain'] =  "FatNeo calculates the possible future price of stock based on option prices. Option prices are, in a way, market's way of predicting stock price. We use some really cool math to do the complicated calculations for you and find the range the stock will fall in with a 75% probability"
     return resp_dict
 
+def make_limit_response(symbol, resp_dict):
+    api_end_point = f"{API_URL}options/range/{symbol}/?days=7&sigma=0.85"
+    resp = requests.get(api_end_point)
+    if resp.ok: #Good response from FastAPI
+        input_dict = resp.json()
+        if 'error' in input_dict:
+            resp_dict['main_point'] = input_dict['error']
+            return resp_dict
+        resp_dict['symbol'] = symbol
+        adjustment_factor = float(input_dict['price'])*(float(input_dict['prob_up']) - 0.5)
+        resp_dict['main_point'] = f'${round(input_dict["low_range"])+adjustment_factor} - ${round(input_dict["high_range"])+adjustment_factor}'
+        resp_dict['tag1'] = "Sell"
+        resp_dict['tag2'] = "Buy"
+
+        resp_dict['description'] = 'Limit Order for Next Week'
+        if float(input_dict['prob_up']) > 0.6:
+            resp_dict['main_class'] = 'bullish'
+        elif float(input_dict['prob_up']) < 0.4:
+            resp_dict['main_class'] = 'bearish'
+        resp_dict['supporting_data'] = f'Current stock price: ${round(input_dict["price"])}'
+
+        resp_dict['explain'] =  "FatNeo calculates the possible future price of stock based on option prices. That informtion is used to figure out what limit order would give a decent chance of fill while maximizing your gain"
+    return resp_dict
+
+
 def make_crypto_response(symbol, resp_dict):
     api_end_point = f"{API_URL}crypto/range/{symbol}"
     resp = requests.get(api_end_point)
@@ -383,6 +408,7 @@ FUNCTION_MAP = {'range':make_range_response,
                 'twitter':make_twitter_response,
                 'crypto':make_crypto_response,
                 'gamma':make_gamma_response,
+                'limit':make_limit_response.
                'wsbl':make_wsbl_response}
 
 
