@@ -152,7 +152,8 @@ def make_limit_response(symbol, resp_dict):
             resp_dict['main_point'] = input_dict['error']
             return resp_dict
         resp_dict['symbol'] = symbol
-        adjustment_factor = float(input_dict['price'])*(float(input_dict['prob_up']) - 0.5)
+        #adjustment_factor = float(input_dict['price'])*(float(input_dict['prob_up']) - 0.5)
+        adjustment_factor = 0
         resp_dict['main_point'] = f'${round(input_dict["low_range"]+adjustment_factor)} - ${round(input_dict["high_range"]+adjustment_factor)}'
         resp_dict['tag4'] = "Buy Order"
         resp_dict['tag5'] = "Sell order"
