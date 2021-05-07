@@ -408,7 +408,7 @@ FUNCTION_MAP = {'range':make_range_response,
                 'twitter':make_twitter_response,
                 'crypto':make_crypto_response,
                 'gamma':make_gamma_response,
-                'limit':make_limit_response.
+                'limit':make_limit_response,
                'wsbl':make_wsbl_response}
 
 
