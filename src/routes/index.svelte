@@ -107,7 +107,7 @@ function updateClipboard(newClip) {
       <h2>Getting Data. Please wait..</h2>
       {:else}
       <header>
-        <h4>Oracle says,  sell {ticker} options outside this range:</h4>
+        <h4>💎Oracle buy/sell limit orders for {ticker}:</h4>
       </header>
         <h2 class="{color_class}"><span class="text-white bg-primary bd-dark" style="margin:0 1rem; font-size:1.5rem;" on:click={()=> updateClipboard(low_range)}>
 					Buy</span>${low_range} - ${high_range}
