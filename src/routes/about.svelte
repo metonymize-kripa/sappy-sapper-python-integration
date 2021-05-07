@@ -14,8 +14,8 @@
 
 <div class="row">
         <h1>Options implied guidance for the Limit Trader</h1>
-        <p>Some longer-term traders are comfortable waiting for a good deal. Limit orders help strategic investors willing to wait fish for "good fills".</p>
-        <p>This tool helps size one week out limit trades. We use Options market premium to estimate the range of price movement, and use it to recommend Limit prices with a 1:5 chance of being filled.</p>
-	<p>For orders that fill, the advantage Vs placing market orders can really add up.</p>
+        <p>Some longer-term traders are comfortable waiting for a good deal. Limit orders help strategic investors who are willing to patiently await "good fills".</p>
+        <p>This tool helps size one week out limit trades. We use Options market data to estimate the near term range of price movement. The Limit order set using this range then have a 1:5 chance of being filled.</p>
+	<p>For orders that fill, the advantage Vs placing market orders can add up significantly. E.g. 1-5% depending on market volatility.</p>
 </div>
 
