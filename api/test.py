@@ -164,7 +164,7 @@ def make_limit_response(symbol, resp_dict):
             resp_dict['main_class'] = 'bearish'
         resp_dict['supporting_data'] = f'Current stock price: ${round(input_dict["price"])}'
 
-        resp_dict['explain'] =  "FatNeo calculates the possible future price of stock based on option prices. That informtion is used to figure out what limit order would give a decent chance of fill while maximizing your gain"
+        resp_dict['explain'] =  "Limit orders help you trade off order fill rates for better prices. These estimates have a 1/5 chance of filling, given the implied distribution of stock prices using Option prices."
     return resp_dict
 
 
