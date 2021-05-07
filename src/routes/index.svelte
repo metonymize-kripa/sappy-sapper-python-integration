@@ -23,7 +23,7 @@ function calculateRange() {
     visible=true;
     console.log(ticker);
     ticker = ticker.toUpperCase();
-    fetch("https://www.insuremystock.com/options/range/"+ticker)
+    fetch("https://www.insuremystock.com/options/range/"+ticker+"/?days=7&sigma=0.85")
         .then(d => d.text())
         .then(d => {
                         api_output = JSON.parse(d);
@@ -109,7 +109,12 @@ function updateClipboard(newClip) {
       <header>
         <h4>Oracle says,  sell {ticker} options outside this range:</h4>
       </header>
-        <h2 class="{color_class}"><a class="text-white bg-primary bd-dark" style="margin:0 1rem; font-size:1.5rem;" href='https://fatneo.com/?cmd=put&symbol={ticker}'>sell put</a>${low_range} - ${high_range}<a class="text-white bg-primary bd-dark" style="margin:0 1rem; font-size:1.5rem;" href='https://fatneo.com/?cmd=call&symbol={ticker}'>sell call</a></h2>
+        <h2 class="{color_class}"><span class="text-white bg-primary bd-dark" style="margin:0 1rem; font-size:1.5rem;" on:click={()=> updateClipboard(low_range)}>
+					Buy</span>${low_range} - ${high_range}
+					<span class="text-white bg-primary bd-dark" style="margin:0 1rem; font-size:1.5rem;" on:click={()=> updateClipboard(high_range)}>
+						Sell
+					</span>
+				</h2>
         {#if visible}
         <img class ="pull-left" src="robinhood.png" style="width:20%;cursor:pointer;" on:click={()=> updateClipboard(low_range)}>
         {/if}
