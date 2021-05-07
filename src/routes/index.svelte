@@ -76,20 +76,27 @@ function updateClipboard(newClip) {
 	.bullish{
 		color:green;
 	}
+	h2{
+		color:#dc00b6;
+	}
+	h1{
+		color:#00f;
+	}
 
 </style>
 
 <div class="row">
     {#if show_entry_card}
-    <div class="card col-8 bg-light" >
+		<div class="col-2 " ></div>
+    <div class="card col-8" >
       <header>
-        <h4>Select from popular stock</h4>
+        <h2>Select from popular stock</h2>
         {#each ticker_array_wsb as tx}
-            <button class="secondary button"  style="font:1.5rem;padding:1rem 0.8rem" on:click={e => ticker=tx}>{tx}</button>
+            <button class="secondary button"  style="font-size: 2rem; padding: 0.6rem; margin: 0.2rem 0.2rem 1rem; background: rgb(53, 30, 181); color: white; border-radius: 1rem;" on:click={e => ticker=tx}>{tx}</button>
         {/each}
         <br>
         {#each ticker_array_gvip as tx}
-            <button class="secondary button"  style="font:1.5rem;padding:1rem 0.8rem" on:click={e => ticker=tx}>{tx}</button>
+            <button class="secondary button"  style="font-size: 2rem; padding: 0.6rem; margin: 0.2rem 0.2rem 1rem; background: rgb(53, 30, 181); color: white; border-radius: 1rem;" on:click={e => ticker=tx}>{tx}</button>
         {/each}
       </header>
       <div class="row">
@@ -98,16 +105,17 @@ function updateClipboard(newClip) {
       <div class="row">
           <div class="col-8"> <input bind:value={ticker}/></div>
       </div>
-        <button class="button primary" on:click={calculateRange}>Calculate</button>
+        <button class="button primary is-center" style="width: 50%; margin:0 auto; color: white; background: rgb(193, 10, 169); font-size: 3rem; font-weight: 700; padding: 1rem; border-radius: 20rem;" on:click={calculateRange}>Calculate</button>
     </div>
     {:else}
-    <div class="card col-8 bg-light" >
+		<div class="col-1"></div>
+    <div class="card col-10 text-center" >
 
       {#if low_range==0}
       <h2>Getting Data. Please wait..</h2>
       {:else}
       <header>
-        <h4>Oracle says,  sell {ticker} options outside this range:</h4>
+        <h2>Oracle says,  sell {ticker} options outside this range:</h2>
       </header>
         <h2 class="{color_class}"><span class="text-white bg-primary bd-dark" style="margin:0 1rem; font-size:1.5rem;" on:click={()=> updateClipboard(low_range)}>
 					Buy</span>${low_range} - ${high_range}
@@ -115,13 +123,18 @@ function updateClipboard(newClip) {
 						Sell
 					</span>
 				</h2>
+				<!--
         {#if visible}
         <img class ="pull-left" src="robinhood.png" style="width:20%;cursor:pointer;" on:click={()=> updateClipboard(low_range)}>
         {/if}
-        <br>
-        <button class="button dark pull-right" on:click={goback}>Go Back</button>
+				-->
     {/if}
 
     </div>
+			<div class="col-1"></div>	<div class="col-1"></div>
+		<div class="col-10 " >
+            <iframe width="100%" height="412"  src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
+    </div>
+		<button class="button is-center" style="width: 50%; margin:0 auto; color: white; background: rgb(193, 10, 169); font-size: 3rem; font-weight: 700; padding: 1rem; border-radius: 20rem;" on:click={goback}>Go Back</button>
     {/if}
 </div>
