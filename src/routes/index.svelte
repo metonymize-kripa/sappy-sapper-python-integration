@@ -1,7 +1,7 @@
 <svelte:head>
-	<title>Trade Options</title>
+	<title>Set 1:5 Limit Order</title>
 </svelte:head>
-<h1>💎 Oracle: What options should I trade?</h1>
+<h1>💎Oracle: What limit orders have a 1:5 chance of fill?</h1>
 
 <script>
 import { stores } from '@sapper/app';
