@@ -82,6 +82,13 @@ function updateClipboard(newClip) {
 	h1{
 		color:#00f;
 	}
+	.tabs>a.active {
+	    color: #00f;
+	    font-weight:700;
+	}
+	.tabs>a{
+	border:none;
+	}
 
 </style>
 
