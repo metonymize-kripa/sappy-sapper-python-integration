@@ -18,6 +18,11 @@ let show_entry_card = true;
 let color_class= "neutral";
 let ticker_array_wsb = ['GME','AMC','PLTR','TSLA']
 let ticker_array_gvip = ['MELI','TWTR','IAC','SE']
+let show_options = false;
+let put_dict = {'strike':0, 'expiry':"", 'mid':0, 'limit_px':0};
+let call_dict = {'strike':0, 'expiry':"", 'mid':0, 'limit_px':0}
+
+$: put_dict;
 function calculateRange() {
     show_entry_card=false;
     visible=true;
@@ -58,6 +63,33 @@ function updateClipboard(newClip) {
   }, function() {
     /* clipboard write failed */
   });
+}
+
+function showOptions(){
+	fetch("https://www.insuremystock.com/options/limit/"+ticker+"/P/"+low_range+"?days=7")
+        .then(d => d.text())
+        .then(d => {
+                        api_output = JSON.parse(d);
+						console.log(api_output);
+                        put_dict.strike = Math.round(api_output.strike);
+						put_dict.expiry = (api_output.expiry);
+						put_dict.mid = (api_output.bid+api_output.ask)/2;
+						put_dict.limit_px = put_dict.mid + Math.abs(api_output.option_move);
+        });
+	fetch("https://www.insuremystock.com/options/limit/"+ticker+"/C/"+high_range+"?days=7")
+        .then(d => d.text())
+        .then(d => {
+                        api_output = JSON.parse(d);
+						console.log(api_output);
+                        call_dict.strike = Math.round(api_output.strike);
+						call_dict.expiry = (api_output.expiry);
+						call_dict.mid = (api_output.bid+api_output.ask)/2;
+						call_dict.limit_px = put_dict.mid + Math.abs(api_output.option_move);
+						console.log(call_dict);
+
+        });
+
+	show_options = true;
 }
 
 </script>
@@ -135,6 +167,12 @@ function updateClipboard(newClip) {
         <img class ="pull-left" src="robinhood.png" style="width:20%;cursor:pointer;" on:click={()=> updateClipboard(low_range)}>
         {/if}
 				-->
+		{#if show_options}
+			Sell {call_dict.strike} strike call expiring {call_dict.expiry} for {(call_dict.limit_px).toFixed(2)}<br>
+			Sell {put_dict.strike} strike put expiring {put_dict.expiry} for {(put_dict.limit_px).toFixed(2)}
+		{:else}
+			<button class="button is-center" style="width: 40%; margin:0 auto; color: white; background: #00f; font-size: 3rem; font-weight: 400; padding: 0.5rem; border-radius: 10rem;" on:click={showOptions}>Show Options</button>
+		{/if}
     {/if}
 
     </div>
