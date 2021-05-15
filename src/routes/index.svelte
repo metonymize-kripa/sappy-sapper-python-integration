@@ -168,8 +168,8 @@ function showOptions(){
         {/if}
 				-->
 		{#if show_options}
-			Sell {call_dict.strike} strike call expiring {call_dict.expiry} for {(call_dict.limit_px).toFixed(2)}<br>
-			Sell {put_dict.strike} strike put expiring {put_dict.expiry} for {(put_dict.limit_px).toFixed(2)}
+			Sell {call_dict.strike} strike call expiring {call_dict.expiry} for {(call_dict.limit_px).toFixed(2)}. CurrentPx - {call_dict.mid} <br>
+			Sell {put_dict.strike} strike put expiring {put_dict.expiry} for {(put_dict.limit_px).toFixed(2)}. CurrentPx - {call_dict.mid} 
 		{:else}
 			<button class="button is-center" style="width: 40%; margin:0 auto; color: white; background: #00f; font-size: 3rem; font-weight: 400; padding: 0.5rem; border-radius: 10rem;" on:click={showOptions}>Show Options</button>
 		{/if}
