@@ -19,8 +19,8 @@ let color_class= "neutral";
 let ticker_array_wsb = ['GME','AMC','PLTR','TSLA']
 let ticker_array_gvip = ['MELI','TWTR','IAC','SE']
 let show_options = false;
-let put_dict = {'strike':0, 'expiry':"", 'mid':0, 'limit_px':0};
-let call_dict = {'strike':0, 'expiry':"", 'mid':0, 'limit_px':0}
+let put_dict = {'strike':0, 'expiry':"", 'bid':0, 'ask':0,'limit_px':0};
+let call_dict = {'strike':0, 'expiry':"", 'bid':0,'ask':0, 'limit_px':0}
 
 $: put_dict;
 function calculateRange() {
@@ -73,8 +73,10 @@ function showOptions(){
 						console.log(api_output);
                         put_dict.strike = Math.round(api_output.strike);
 						put_dict.expiry = (api_output.expiry);
-						put_dict.mid = (api_output.bid+api_output.ask)/2;
-						put_dict.limit_px = put_dict.mid + Math.abs(api_output.option_move);
+						let mid = (api_output.bid+api_output.ask)/2;
+						put_dict.bid = api_output.bid;
+						put_dict.ask = api_output.ask;
+						put_dict.limit_px = mid + Math.abs(api_output.option_move);
         });
 	fetch("https://www.insuremystock.com/options/limit/"+ticker+"/C/"+high_range+"?days=7")
         .then(d => d.text())
@@ -83,8 +85,10 @@ function showOptions(){
 						console.log(api_output);
                         call_dict.strike = Math.round(api_output.strike);
 						call_dict.expiry = (api_output.expiry);
-						call_dict.mid = (api_output.bid+api_output.ask)/2;
-						call_dict.limit_px = put_dict.mid + Math.abs(api_output.option_move);
+						let mid = (api_output.bid+api_output.ask)/2;
+						call_dict.bid = api_output.bid;
+						call_dict.ask = api_output.ask;
+						call_dict.limit_px = mid + Math.abs(api_output.option_move);
 						console.log(call_dict);
 
         });
@@ -168,8 +172,8 @@ function showOptions(){
         {/if}
 				-->
 		{#if show_options}
-			Sell {call_dict.strike} strike call expiring {call_dict.expiry} for {(call_dict.limit_px).toFixed(2)}. CurrentPx - {call_dict.mid} <br>
-			Sell {put_dict.strike} strike put expiring {put_dict.expiry} for {(put_dict.limit_px).toFixed(2)}. CurrentPx - {put_dict.mid} 
+			Sell {call_dict.strike} strike call expiring {call_dict.expiry} for ${(call_dict.limit_px).toFixed(2)}. Market@ - ${call_dict.bid}-${call_dict.ask} <br>
+			Sell {put_dict.strike} strike put expiring {put_dict.expiry} for ${(put_dict.limit_px).toFixed(2)}. Market@ - ${put_dict.bid}-${put_dict.ask}
 		{:else}
 			<button class="button is-center" style="width: 40%; margin:0 auto; color: white; background: #00f; font-size: 3rem; font-weight: 400; padding: 0.5rem; border-radius: 10rem;" on:click={showOptions}>Show Options</button>
 		{/if}
